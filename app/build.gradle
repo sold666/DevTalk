@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.developers_messenger'
+    namespace 'com.dev_talk'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.developers_messenger"
+        applicationId "com.dev_talk"
         minSdk 24
         targetSdk 33
         versionCode 1

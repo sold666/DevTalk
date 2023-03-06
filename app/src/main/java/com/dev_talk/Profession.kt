@@ -1,4 +1,4 @@
-package com.example.developers_messenger
+package com.dev_talk
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

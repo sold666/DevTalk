@@ -1,10 +1,10 @@
-package com.example.developers_messenger.view_pager_2_adapters
+package com.dev_talk.view_pager_2_adapters
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.developers_messenger.*
+import com.dev_talk.*
 
 class MainPageAdapter(activity: FragmentActivity, private val itemCount: Int): FragmentStateAdapter(activity) {
 
