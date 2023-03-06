@@ -38,6 +38,11 @@ class PersonalChatsFragment : Fragment() {
 
     }
 
+    override fun onDestroy() {
+        binding = null
+        super.onDestroy()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -47,11 +52,7 @@ class PersonalChatsFragment : Fragment() {
             } else {
                 arguments?.getParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY)!!
             }
-            val listWithNames = ArrayList<String>()
-            for (i in 0 until professions.tabCount) {
-                listWithNames.add(professions.getTabAt(i)?.text.toString())
-            }
-            chatsWithCategory.adapter = PersonalChatsAdapterViewPager(activity!!, professions.tabCount, data, listWithNames)
+            chatsWithCategory.adapter = PersonalChatsAdapterViewPager(activity!!, professions.tabCount, data, getProfessionsNames())
             chatsWithCategory.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
                 override fun onPageSelected(position: Int) {
                     professions.selectTab(professions.getTabAt(position))
@@ -67,6 +68,14 @@ class PersonalChatsFragment : Fragment() {
                 }
             })
         }
+    }
+
+    private fun getProfessionsNames() : ArrayList<String> {
+        val listWithNames = ArrayList<String>()
+        for (i in 0 until _binding.professions.tabCount) {
+            listWithNames.add(_binding.professions.getTabAt(i)?.text.toString())
+        }
+        return listWithNames
     }
 
     override fun onCreateView(

@@ -16,9 +16,7 @@ class PersonalChatsAdapter(
         )
     }
 
-    override fun getItemCount(): Int {
-        return profession.chats.size
-    }
+    override fun getItemCount() = profession.chats.size
 
     override fun onBindViewHolder(holder: ChatItemViewHolder, position: Int) {
         holder.bind(profession, position)

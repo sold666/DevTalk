@@ -16,9 +16,7 @@ private val chats: ArrayList<Chat>
         )
     }
 
-    override fun getItemCount(): Int {
-        return chats.size
-    }
+    override fun getItemCount() = chats.size
 
     override fun onBindViewHolder(holder: ChatItemViewHolder, position: Int) {
         holder.bind(chats[position])

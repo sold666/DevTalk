@@ -15,9 +15,7 @@ class ProfileChatsAdapter(
         )
     }
 
-    override fun getItemCount(): Int {
-        return professions.size
-    }
+    override fun getItemCount() = professions.size
 
     override fun onBindViewHolder(holder: ChatItemViewHolder, position: Int) {
         holder.bind(professions[position])
@@ -39,7 +37,6 @@ class ProfileChatsAdapter(
                 if (index != src.chats.size - 1) {
                     allTags += ", "
                 }
-
             }
             return allTags
         }

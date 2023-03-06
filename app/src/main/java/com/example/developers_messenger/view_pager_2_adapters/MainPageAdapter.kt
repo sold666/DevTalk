@@ -19,27 +19,24 @@ class MainPageAdapter(activity: FragmentActivity, private val itemCount: Int): F
                 }
                 fragment
             }
-            1 -> {
-                val fragment = PersonalChatsFragment()
-                fragment.arguments = Bundle().apply {
-                    putParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY, getChats())
-                }
-                fragment
-            }
             2 -> {
                 val fragment = ProfileFragment()
                 fragment.arguments = Bundle().apply {
-                    putParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY, getChats())
+                    putParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY, getProfessions())
                 }
                 fragment
             }
             else -> {
-                PersonalChatsFragment()
+                val fragment = PersonalChatsFragment()
+                fragment.arguments = Bundle().apply {
+                    putParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY, getProfessions())
+                }
+                fragment
             }
         }
     }
 
-    private fun getChats(): ArrayList<Profession> {
+    private fun getProfessions(): ArrayList<Profession> {
         return arrayListOf(
             Profession(
                 "Profession №1",

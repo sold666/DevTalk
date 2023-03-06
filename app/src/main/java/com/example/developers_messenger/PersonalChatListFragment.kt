@@ -34,6 +34,11 @@ class PersonalChatListFragment(private val profession: Profession) : Fragment() 
         }
     }
 
+    override fun onDestroy() {
+        binding = null
+        super.onDestroy()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(_binding) {

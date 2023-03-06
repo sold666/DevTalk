@@ -12,31 +12,29 @@ class MainActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)
-        setUpTabBar()
+        setUpNavigationView()
     }
 
-    private fun setUpTabBar() {
-        val navigationView = mainBinding.mainBottomNavView
-        val viewPager = mainBinding.mainContent
-        viewPager.isUserInputEnabled = false; // delete scroll
-        viewPager.adapter = MainPageAdapter(this, navigationView.menu.size())
-        navigationView.setOnNavigationItemSelectedListener { item ->
+    private fun setUpNavigationView() {
+        mainBinding.mainContent.isUserInputEnabled = false; // delete scroll
+        mainBinding.mainContent.adapter = MainPageAdapter(this, mainBinding.mainBottomNavView.menu.size())
+        mainBinding.mainBottomNavView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.recommended_chats -> {
-                    viewPager.currentItem = 0
+                    mainBinding.mainContent.currentItem = 0
                     true
                 }
                 R.id.my_chats -> {
-                    viewPager.currentItem = 1
+                    mainBinding.mainContent.currentItem = 1
                     true
                 }
                 R.id.profile -> {
-                    viewPager.currentItem = 2
+                    mainBinding.mainContent.currentItem = 2
                     true
                 }
                 else -> false
             }
         }
-        navigationView.selectedItemId = R.id.my_chats // setting default screen
+        mainBinding.mainBottomNavView.selectedItemId = R.id.my_chats // setting default screen
     }
 }
