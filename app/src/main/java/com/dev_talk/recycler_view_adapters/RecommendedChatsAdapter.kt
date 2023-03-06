@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.dev_talk.Chat
+import com.dev_talk.structures.Chat
 import com.dev_talk.R
 
 class RecommendedChatsAdapter(

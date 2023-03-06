@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.dev_talk.*
+import com.dev_talk.structures.Chat
+import com.dev_talk.structures.Profession
 
 class MainPageAdapter(activity: FragmentActivity, private val itemCount: Int): FragmentStateAdapter(activity) {
 

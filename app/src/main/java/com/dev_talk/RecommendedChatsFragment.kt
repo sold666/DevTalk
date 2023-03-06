@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev_talk.databinding.FragmentRecommendedChatsBinding
 import com.dev_talk.recycler_view_adapters.RecommendedChatsAdapter
+import com.dev_talk.structures.Chat
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

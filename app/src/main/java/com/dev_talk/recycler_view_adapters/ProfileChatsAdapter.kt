@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.dev_talk.Profession
+import com.dev_talk.structures.Profession
 import com.dev_talk.R
 
 class ProfileChatsAdapter(

@@ -1,7 +1,8 @@
-package com.dev_talk
+package com.dev_talk.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.dev_talk.R
 import com.dev_talk.databinding.ActivityMainBinding
 import com.dev_talk.view_pager_2_adapters.MainPageAdapter
 
