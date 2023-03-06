@@ -7,4 +7,16 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="tabIndicatorColor">#FFEB3B</color>
+    <color name="NavigationBarBackgroundColor">#000000</color>
+    <color name="NavigationItemBackgroundColor">#D9D9D9</color>
+    <color name="MainNavigationIconBackColor">#000000</color>
+    <color name="profileBorder">#FF000000</color>
+    <color name="searchBar">#BAB2B2</color>
+    <color name="ListWIthCHatsInProfileBackColor">#D9D9D9</color>
+    <color name="alterProfileBtnBackColor">#FFFFFFFF</color>
+    <color name="profileLineBetweenChatsColor">#FF000000</color>
+    <color name="defaultLineBetweenChatsColor">#FF000000</color>
+    <color name="listWithRecommendedChatsBackColor">#E5E4E2</color>
+    <color name="listWithPersonalChatsBackColor">#E5E4E2</color>
 </resources>

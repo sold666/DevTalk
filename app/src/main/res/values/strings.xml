@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">developers-messenger</string>
+    <string name="app_name">web</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="recommended_chats">Chats</string>
+    <string name="personal_chats">My chats</string>
+    <string name="profile">Profile</string>
+    <string name="create_chat">Create chat</string>
+    <string name="default_username">Username</string>
+    <string name="default_query_hint">Search…</string>
+    <string name="alter_profile">Alter profile</string>
+    <string name="my_chats_title">My chats</string>
+    <string name="profession_1">Profession №1</string>
+    <string name="profession_2">Profession №2</string>
+    <string name="profession_3">Profession №3</string>
+    <string name="chat_icon_description">Chat icon</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

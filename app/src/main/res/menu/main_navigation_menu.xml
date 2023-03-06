@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/recommended_chats"
+        android:icon="@drawable/recommended_chats_navigation_icon"
+        android:title="@string/recommended_chats" />
+    <item
+        android:id="@+id/my_chats"
+        android:icon="@drawable/my_chats_navigation_icon"
+        android:title="@string/personal_chats" />
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/profile_navigation_icon"
+        android:title="@string/profile" />
+
+</menu>
