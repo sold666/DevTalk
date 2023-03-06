@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 class PersonalChatsAdapter(
-    private val chats: Chat
+    private val profession: Profession
 ): RecyclerView.Adapter<PersonalChatsAdapter.ChatItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatItemViewHolder {
 
@@ -19,20 +19,20 @@ class PersonalChatsAdapter(
     }
 
     override fun getItemCount(): Int {
-        return chats.tags.size
+        return profession.chats.size
     }
 
     override fun onBindViewHolder(holder: ChatItemViewHolder, position: Int) {
-        holder.bind(chats, position)
+        holder.bind(profession, position)
     }
 
     class ChatItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val icon: ImageView = itemView.findViewById(R.id.chat_icon)
         private val chat: TextView = itemView.findViewById(R.id.chat_name)
 
-        fun bind(src: Chat, index: Int) {
-            icon.setImageResource(src.icon)
-            chat.text = src.tags[index]
+        fun bind(src: Profession, index: Int) {
+            icon.setImageResource(src.chats[index].icon)
+            chat.text = src.chats[index].tags
         }
     }
 }

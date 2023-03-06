@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 class ProfileChatsAdapter(
-    private val professions: ArrayList<Chat>
+    private val professions: ArrayList<Profession>
 ): RecyclerView.Adapter<ProfileChatsAdapter.ChatItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatItemViewHolder {
         return ChatItemViewHolder(
@@ -28,16 +28,16 @@ class ProfileChatsAdapter(
         private val profession: TextView = itemView.findViewById(R.id.profession)
         private val tags: TextView = itemView.findViewById(R.id.tags)
 
-        fun bind(chat: Chat) {
+        fun bind(chat: Profession) {
             profession.text = chat.profession
             tags.text = getTagsText(chat)
         }
 
-        private fun getTagsText(src: Chat) : String {
+        private fun getTagsText(src: Profession) : String {
             var allTags: String = ""
-            for ((index, tag) in src.tags.withIndex()) {
-                allTags += tag
-                if (index != src.tags.size - 1) {
+            for ((index, chat) in src.chats.withIndex()) {
+                allTags += chat.tags
+                if (index != src.chats.size - 1) {
                     allTags += ", "
                 }
 

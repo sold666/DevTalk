@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.developers_messenger.databinding.FragmentPersonalChatsBinding
+import com.example.developers_messenger.view_pager_2_adapters.PersonalChatsAdapterViewPager
 import com.google.android.material.tabs.TabLayout
 
 
@@ -42,7 +43,7 @@ class PersonalChatsFragment : Fragment() {
 
         with(_binding) {
             val data = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
-                arguments?.getParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY, Chat::class.java)!!
+                arguments?.getParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY, Profession::class.java)!!
             } else {
                 arguments?.getParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY)!!
             }

@@ -20,7 +20,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [PersonalChatListFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class PersonalChatListFragment(private val chats: Chat) : Fragment() {
+class PersonalChatListFragment(private val profession: Profession) : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -36,16 +36,11 @@ class PersonalChatListFragment(private val chats: Chat) : Fragment() {
         }
     }
 
-    private fun showChatsInSelectedProfession(container: RecyclerView, chat: Chat) {
-        container.adapter = PersonalChatsAdapter(chat)
-        container.layoutManager = LinearLayoutManager(container.context)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         with(_binding) {
-            listWithMyChats.adapter = PersonalChatsAdapter(chats)
+            listWithMyChats.adapter = PersonalChatsAdapter(profession)
             listWithMyChats.layoutManager = LinearLayoutManager(listWithMyChats.context)
         }
     }

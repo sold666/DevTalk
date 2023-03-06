@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class RecommendedChatsAdapter(
-private val chats: ArrayList<RecommendedChat>
+private val chats: ArrayList<Chat>
 ): RecyclerView.Adapter<RecommendedChatsAdapter.ChatItemViewHolder>()  {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatItemViewHolder {
 
@@ -29,7 +29,7 @@ private val chats: ArrayList<RecommendedChat>
         private val icon: ImageView = itemView.findViewById(R.id.chat_icon)
         private val chat: TextView = itemView.findViewById(R.id.chat_name)
 
-        fun bind(src: RecommendedChat) {
+        fun bind(src: Chat) {
             icon.setImageResource(src.icon)
             chat.text = src.tags
         }

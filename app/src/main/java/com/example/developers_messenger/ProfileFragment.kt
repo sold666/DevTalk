@@ -41,7 +41,7 @@ class ProfileFragment : Fragment() {
 
         with(_binding) {
             val professions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                arguments?.getParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY, Chat::class.java)!!
+                arguments?.getParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY, Profession::class.java)!!
             } else {
                 arguments?.getParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY)!!
             }

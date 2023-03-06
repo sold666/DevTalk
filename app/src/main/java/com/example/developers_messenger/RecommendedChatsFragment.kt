@@ -40,7 +40,7 @@ class RecommendedChatsFragment : Fragment() {
 
         with(_binding) {
             val data = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
-                arguments?.getParcelableArrayList(RECOMMENDED_LIST_PROFESSIONS_KEY, RecommendedChat::class.java)!!
+                arguments?.getParcelableArrayList(RECOMMENDED_LIST_PROFESSIONS_KEY, Chat::class.java)!!
             } else {
                 arguments?.getParcelableArrayList(RECOMMENDED_LIST_PROFESSIONS_KEY)!!
             }

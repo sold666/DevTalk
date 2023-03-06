@@ -3,6 +3,7 @@ package com.example.developers_messenger
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.developers_messenger.databinding.ActivityMainBinding
+import com.example.developers_messenger.view_pager_2_adapters.MainPageAdapter
 
 class MainActivity: AppCompatActivity() {
     private lateinit var mainBinding: ActivityMainBinding
