@@ -19,7 +19,7 @@ class PersonalChatsAdapter(
     override fun getItemCount() = profession.chats.size
 
     override fun onBindViewHolder(holder: ChatItemViewHolder, position: Int) {
-        holder.bind(profession, position)
+        holder.bind(src = profession, index = position)
     }
 
     class ChatItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

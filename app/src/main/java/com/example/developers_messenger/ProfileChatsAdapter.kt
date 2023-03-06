@@ -27,10 +27,10 @@ class ProfileChatsAdapter(
 
         fun bind(chat: Profession) {
             profession.text = chat.profession
-            tags.text = getTagsText(chat)
+                     tags.text = getChatsText(chat)
         }
 
-        private fun getTagsText(src: Profession) : String {
+        private fun getChatsText(src: Profession) : String {
             var allTags: String = ""
             for ((index, chat) in src.chats.withIndex()) {
                 allTags += chat.tags
