@@ -1,10 +1,12 @@
-package com.dev_talk
+package com.dev_talk.recycler_view_adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.dev_talk.Profession
+import com.dev_talk.R
 
 class ProfileChatsAdapter(
     private val professions: ArrayList<Profession>
