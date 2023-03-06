@@ -11,7 +11,6 @@ class RecommendedChatsAdapter(
 private val chats: ArrayList<Chat>
 ): RecyclerView.Adapter<RecommendedChatsAdapter.ChatItemViewHolder>()  {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatItemViewHolder {
-
         return ChatItemViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.default_chat_item, null)
         )
@@ -34,5 +33,4 @@ private val chats: ArrayList<Chat>
             chat.text = src.tags
         }
     }
-
 }

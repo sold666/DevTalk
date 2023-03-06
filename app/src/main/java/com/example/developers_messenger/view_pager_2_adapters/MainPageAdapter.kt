@@ -6,7 +6,6 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.developers_messenger.*
 
-
 class MainPageAdapter(activity: FragmentActivity, private val itemCount: Int): FragmentStateAdapter(activity) {
 
     override fun getItemCount(): Int = itemCount
@@ -114,6 +113,6 @@ class MainPageAdapter(activity: FragmentActivity, private val itemCount: Int): F
             Chat(
                 R.drawable.add_link_in_profile_icon,
                 "Assembler")
-            )
+        )
     }
 }

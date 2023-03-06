@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-
 class ProfileChatsAdapter(
     private val professions: ArrayList<Profession>
 ): RecyclerView.Adapter<ProfileChatsAdapter.ChatItemViewHolder>() {

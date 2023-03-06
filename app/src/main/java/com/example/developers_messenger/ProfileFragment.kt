@@ -27,7 +27,6 @@ class ProfileFragment : Fragment() {
     private val _binding: FragmentProfileBinding
         get() = binding!!
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -38,16 +37,13 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         with(_binding) {
             val professions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 arguments?.getParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY, Profession::class.java)!!
             } else {
                 arguments?.getParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY)!!
             }
-
             myChats.adapter = ProfileChatsAdapter(professions)
-
             myChats.layoutManager = LinearLayoutManager(myChats.context)
         }
     }

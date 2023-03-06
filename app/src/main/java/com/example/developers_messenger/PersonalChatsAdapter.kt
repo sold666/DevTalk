@@ -7,12 +7,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-
 class PersonalChatsAdapter(
     private val profession: Profession
 ): RecyclerView.Adapter<PersonalChatsAdapter.ChatItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatItemViewHolder {
-
         return ChatItemViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.default_chat_item, null)
         )

@@ -6,9 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.developers_messenger.databinding.FragmentPersonalChatListBinding
-
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -38,7 +36,6 @@ class PersonalChatListFragment(private val profession: Profession) : Fragment() 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         with(_binding) {
             listWithMyChats.adapter = PersonalChatsAdapter(profession)
             listWithMyChats.layoutManager = LinearLayoutManager(listWithMyChats.context)
