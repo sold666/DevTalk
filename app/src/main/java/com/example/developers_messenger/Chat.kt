@@ -5,6 +5,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Chat (
-    val icon: Int,
+    val icon: Int = 0,
     val tags: String
 ) : Parcelable
