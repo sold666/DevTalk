@@ -15,9 +15,9 @@ class PersonalChatsAdapterViewPager(activity: FragmentActivity, private val item
     }
 
     private fun findIndexOfProfession(profession: String): Int {
-        for (i in 0 until data.size) {
-            if (data[i].profession == profession) {
-                return i
+        for((index, professionName) in data.withIndex()) {
+            if (professionName.profession == profession) {
+                return index
             }
         }
         return 0

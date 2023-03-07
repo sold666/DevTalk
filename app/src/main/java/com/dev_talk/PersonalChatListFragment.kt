@@ -43,9 +43,9 @@ class PersonalChatListFragment(private val profession: Profession) : Fragment() 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        with(_binding) {
-            listWithMyChats.adapter = PersonalChatsAdapter(profession)
-            listWithMyChats.layoutManager = LinearLayoutManager(listWithMyChats.context)
+        with(_binding.listWithMyChats) {
+            adapter = PersonalChatsAdapter(profession)
+            layoutManager = LinearLayoutManager(context)
         }
     }
 

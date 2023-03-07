@@ -17,25 +17,28 @@ class MainActivity: AppCompatActivity() {
     }
 
     private fun setUpNavigationView() {
-        mainBinding.mainContent.isUserInputEnabled = false; // delete scroll
-        mainBinding.mainContent.adapter = MainPageAdapter(this, mainBinding.mainBottomNavView.menu.size())
-        mainBinding.mainBottomNavView.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.recommended_chats -> {
-                    mainBinding.mainContent.currentItem = 0
-                    true
+        val currentFragmentActivity = this
+        with(mainBinding) {
+            mainContent.isUserInputEnabled = false; // delete scroll
+            mainContent.adapter = MainPageAdapter(currentFragmentActivity, mainBottomNavView.menu.size())
+            mainBottomNavView.setOnNavigationItemSelectedListener { item ->
+                when (item.itemId) {
+                    R.id.recommended_chats -> {
+                        mainContent.currentItem = 0
+                        true
+                    }
+                    R.id.my_chats -> {
+                        mainContent.currentItem = 1
+                        true
+                    }
+                    R.id.profile -> {
+                        mainContent.currentItem = 2
+                        true
+                    }
+                    else -> false
                 }
-                R.id.my_chats -> {
-                    mainBinding.mainContent.currentItem = 1
-                    true
-                }
-                R.id.profile -> {
-                    mainBinding.mainContent.currentItem = 2
-                    true
-                }
-                else -> false
             }
+            mainBottomNavView.selectedItemId = R.id.my_chats // setting default screen
         }
-        mainBinding.mainBottomNavView.selectedItemId = R.id.my_chats // setting default screen
     }
 }

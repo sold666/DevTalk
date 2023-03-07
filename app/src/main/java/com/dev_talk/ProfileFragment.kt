@@ -45,8 +45,10 @@ class ProfileFragment : Fragment() {
             } else {
                 arguments?.getParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY)!!
             }
-            myChats.adapter = ProfileChatsAdapter(professions)
-            myChats.layoutManager = LinearLayoutManager(myChats.context)
+            with (myChats) {
+                adapter = ProfileChatsAdapter(professions)
+                layoutManager = LinearLayoutManager(context)
+            }
         }
     }
 

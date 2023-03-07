@@ -10,7 +10,7 @@ import com.dev_talk.structures.Chat
 import com.dev_talk.R
 
 class RecommendedChatsAdapter(
-private val chats: ArrayList<Chat>
+    private val chats: ArrayList<Chat>
 ): RecyclerView.Adapter<RecommendedChatsAdapter.ChatItemViewHolder>()  {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatItemViewHolder {
         return ChatItemViewHolder(

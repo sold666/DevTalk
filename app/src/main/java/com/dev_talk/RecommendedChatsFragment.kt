@@ -49,8 +49,10 @@ class RecommendedChatsFragment : Fragment() {
             } else {
                 arguments?.getParcelableArrayList(RECOMMENDED_LIST_PROFESSIONS_KEY)!!
             }
-            recommendedChats.adapter = RecommendedChatsAdapter(data)
-            recommendedChats.layoutManager = LinearLayoutManager(recommendedChats.context)
+            with (recommendedChats) {
+                adapter = RecommendedChatsAdapter(data)
+                layoutManager = LinearLayoutManager(context)
+            }
         }
     }
 

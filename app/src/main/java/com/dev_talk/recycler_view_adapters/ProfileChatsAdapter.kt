@@ -29,7 +29,7 @@ class ProfileChatsAdapter(
 
         fun bind(chat: Profession) {
             profession.text = chat.profession
-                     tags.text = getChatsText(chat)
+            tags.text = getChatsText(chat)
         }
 
         private fun getChatsText(src: Profession) : String {
