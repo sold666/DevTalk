@@ -4,9 +4,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.dev_talk.R
 import com.dev_talk.databinding.ActivityMainBinding
+import com.dev_talk.structures.ChatsNavigation
 import com.dev_talk.view_pager_2_adapters.MainPageAdapter
+import java.text.FieldPosition
 
 class MainActivity: AppCompatActivity() {
+
     private lateinit var mainBinding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,15 +27,15 @@ class MainActivity: AppCompatActivity() {
             mainBottomNavView.setOnNavigationItemSelectedListener { item ->
                 when (item.itemId) {
                     R.id.recommended_chats -> {
-                        mainContent.currentItem = 0
+                        mainContent.currentItem = ChatsNavigation.RECOMMENDED.position
                         true
                     }
                     R.id.my_chats -> {
-                        mainContent.currentItem = 1
+                        mainContent.currentItem = ChatsNavigation.PERSONAL.position
                         true
                     }
                     R.id.profile -> {
-                        mainContent.currentItem = 2
+                        mainContent.currentItem = ChatsNavigation.PROFILE.position
                         true
                     }
                     else -> false

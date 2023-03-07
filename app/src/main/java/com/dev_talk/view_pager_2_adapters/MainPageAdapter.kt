@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.dev_talk.*
 import com.dev_talk.structures.Chat
+import com.dev_talk.structures.ChatsNavigation
 import com.dev_talk.structures.Profession
 
 class MainPageAdapter(activity: FragmentActivity, private val itemCount: Int): FragmentStateAdapter(activity) {
@@ -14,14 +15,14 @@ class MainPageAdapter(activity: FragmentActivity, private val itemCount: Int): F
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> {
+            ChatsNavigation.RECOMMENDED.position -> {
                 val fragment = RecommendedChatsFragment()
                 fragment.arguments = Bundle().apply {
                     putParcelableArrayList(RECOMMENDED_LIST_PROFESSIONS_KEY, getRecommendedChats())
                 }
                 fragment
             }
-            2 -> {
+            ChatsNavigation.PROFILE.position -> {
                 val fragment = ProfileFragment()
                 fragment.arguments = Bundle().apply {
                     putParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY, getProfessions())
