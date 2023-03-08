@@ -8,9 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.structures.Profession
 import com.dev_talk.R
+import com.dev_talk.structures.Chat
 
 class PersonalChatsAdapter(
-    private val profession: Profession
+    private val chats: List<Chat>
 ): RecyclerView.Adapter<PersonalChatsAdapter.ChatItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatItemViewHolder {
         return ChatItemViewHolder(
@@ -18,19 +19,19 @@ class PersonalChatsAdapter(
         )
     }
 
-    override fun getItemCount() = profession.chats.size
+    override fun getItemCount() = chats.size
 
     override fun onBindViewHolder(holder: ChatItemViewHolder, position: Int) {
-        holder.bind(src = profession, index = position)
+        holder.bind(chats[position])
     }
 
     class ChatItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val icon: ImageView = itemView.findViewById(R.id.chat_icon)
         private val chat: TextView = itemView.findViewById(R.id.chat_name)
 
-        fun bind(src: Profession, index: Int) {
-            icon.setImageResource(src.chats[index].icon)
-            chat.text = src.chats[index].tags
+        fun bind(chat: Chat) {
+            icon.setImageResource(chat.icon)
+            this.chat.text = chat.tags
         }
     }
 }
