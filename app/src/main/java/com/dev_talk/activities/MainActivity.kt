@@ -43,28 +43,7 @@ class MainActivity: AppCompatActivity() {
                     else -> false
                 }
             }
-
             mainBottomNavView.selectedItemId = R.id.my_chats // setting default screen
         }
     }
 }
-
-
-//    override fun onNavigationItemSelected(item) {
-//        when (item.itemId) {
-//            R.id.recommended_chats -> {
-//                mainContent.currentItem = ChatsNavigation.RECOMMENDED.position
-//                true
-//            }
-//            R.id.my_chats -> {
-//                mainContent.currentItem = ChatsNavigation.PERSONAL.position
-//                true
-//            }
-//            R.id.profile -> {
-//                mainContent.currentItem = ChatsNavigation.PROFILE.position
-//                true
-//            }
-//            else -> false
-//        }
-//    }
-//});
