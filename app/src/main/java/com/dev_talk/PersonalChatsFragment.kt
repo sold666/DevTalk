@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
+import com.dev_talk.Constants.DEFAULT_LIST_PROFESSIONS_KEY
 import com.dev_talk.databinding.FragmentPersonalChatsBinding
 import com.dev_talk.structures.Profession
 import com.dev_talk.view_pager_2_adapters.PersonalChatsAdapterViewPager
@@ -15,7 +16,6 @@ import com.google.android.material.tabs.TabLayout
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
-
 /**
  * A simple [Fragment] subclass.
  * Use the [PersonalChatsFragment.newInstance] factory method to
@@ -109,5 +109,7 @@ class PersonalChatsFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+
+
     }
 }

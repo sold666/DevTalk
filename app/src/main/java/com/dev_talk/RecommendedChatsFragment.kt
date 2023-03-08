@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dev_talk.Constants.RECOMMENDED_LIST_PROFESSIONS_KEY
 import com.dev_talk.databinding.FragmentRecommendedChatsBinding
 import com.dev_talk.recycler_view_adapters.RecommendedChatsAdapter
 import com.dev_talk.structures.Chat
