@@ -10,14 +10,12 @@ import com.dev_talk.databinding.FragmentPersonalChatListBinding
 import com.dev_talk.recycler_view_adapters.PersonalChatsAdapter
 import com.dev_talk.structures.Profession
 
-class PersonalChatListFragment(private val profession: Profession) : Fragment() {
+private const val PROFESSION_KEY = "Current profession"
+
+class PersonalChatListFragment : Fragment() {
     private var binding: FragmentPersonalChatListBinding? = null
     private val _binding: FragmentPersonalChatListBinding
         get() = binding!!
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onDestroy() {
         binding = null
@@ -27,7 +25,12 @@ class PersonalChatListFragment(private val profession: Profession) : Fragment() 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(_binding.listWithMyChats) {
-            adapter = PersonalChatsAdapter(profession.chats)
+            val data = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+                arguments?.getParcelable(PROFESSION_KEY, Profession::class.java)!!
+            } else {
+                arguments?.getParcelable(PROFESSION_KEY)!!
+            }
+            adapter = PersonalChatsAdapter(data.chats)
             layoutManager = LinearLayoutManager(context)
         }
     }
@@ -38,5 +41,15 @@ class PersonalChatListFragment(private val profession: Profession) : Fragment() 
     ): View {
         binding = FragmentPersonalChatListBinding.inflate(inflater)
         return _binding.root
+    }
+
+    companion object {
+        @JvmStatic
+        fun newInstance(profession: Profession) =
+            PersonalChatListFragment().apply {
+                arguments = Bundle().apply {
+                    putParcelable(PROFESSION_KEY, profession)
+                }
+            }
     }
 }
