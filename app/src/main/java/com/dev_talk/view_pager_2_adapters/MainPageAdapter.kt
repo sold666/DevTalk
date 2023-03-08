@@ -1,12 +1,9 @@
 package com.dev_talk.view_pager_2_adapters
 
-import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.dev_talk.*
-import com.dev_talk.Constants.DEFAULT_LIST_PROFESSIONS_KEY
-import com.dev_talk.Constants.RECOMMENDED_LIST_PROFESSIONS_KEY
 import com.dev_talk.structures.Chat
 import com.dev_talk.structures.ChatsNavigation
 import com.dev_talk.structures.Profession
@@ -18,25 +15,13 @@ class MainPageAdapter(activity: FragmentActivity, private val itemCount: Int): F
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             ChatsNavigation.RECOMMENDED.position -> {
-                val fragment = RecommendedChatsFragment()
-                fragment.arguments = Bundle().apply {
-                    putParcelableArrayList(RECOMMENDED_LIST_PROFESSIONS_KEY, getRecommendedChats())
-                }
-                fragment
+                RecommendedChatsFragment.newInstance(getRecommendedChats())
             }
             ChatsNavigation.PROFILE.position -> {
-                val fragment = ProfileFragment()
-                fragment.arguments = Bundle().apply {
-                    putParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY, getProfessions())
-                }
-                fragment
+                ProfileFragment.newInstance(getProfessions())
             }
             else -> {
-                val fragment = PersonalChatsFragment()
-                fragment.arguments = Bundle().apply {
-                    putParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY, getProfessions())
-                }
-                fragment
+                PersonalChatsFragment.newInstance(getProfessions())
             }
         }
     }

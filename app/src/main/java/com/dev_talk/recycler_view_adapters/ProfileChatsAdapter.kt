@@ -33,7 +33,7 @@ class ProfileChatsAdapter(
         }
 
         private fun getChatsText(src: Profession) : String {
-            var allTags: String = ""
+            var allTags = ""
             for ((index, chat) in src.chats.withIndex()) {
                 allTags += chat.tags
                 if (index != src.chats.size - 1) {
