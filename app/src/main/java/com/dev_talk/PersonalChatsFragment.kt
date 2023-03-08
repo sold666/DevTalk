@@ -71,7 +71,7 @@ class PersonalChatsFragment : Fragment() {
         }
     }
 
-    private fun getProfessionsNames() : ArrayList<String> {
+    private fun getProfessionsNames() : List<String> {
         val listWithNames = ArrayList<String>()
         with(_binding.professions) {
             for (i in 0 until tabCount) {

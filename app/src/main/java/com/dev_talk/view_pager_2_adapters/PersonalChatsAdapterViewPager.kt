@@ -6,7 +6,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.dev_talk.PersonalChatListFragment
 import com.dev_talk.structures.Profession
 
-class PersonalChatsAdapterViewPager(activity: FragmentActivity, private val itemCount: Int, private val data: ArrayList<Profession>, private val tabNames: ArrayList<String>): FragmentStateAdapter(activity) {
+class PersonalChatsAdapterViewPager(activity: FragmentActivity, private val itemCount: Int, private val data: List<Profession>, private val tabNames: List<String>): FragmentStateAdapter(activity) {
     override fun getItemCount(): Int = itemCount
 
     override fun createFragment(position: Int): Fragment {

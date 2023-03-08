@@ -9,7 +9,7 @@ import com.dev_talk.structures.Profession
 import com.dev_talk.R
 
 class ProfileChatsAdapter(
-    private val professions: ArrayList<Profession>
+    private val professions: List<Profession>
 ): RecyclerView.Adapter<ProfileChatsAdapter.ChatItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatItemViewHolder {
         return ChatItemViewHolder(
