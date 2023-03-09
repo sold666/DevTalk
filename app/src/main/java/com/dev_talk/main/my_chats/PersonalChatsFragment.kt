@@ -1,4 +1,4 @@
-package com.dev_talk.main
+package com.dev_talk.main.my_chats
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,11 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.dev_talk.main.databinding.FragmentPersonalChatsBinding
 import com.dev_talk.main.structures.Profession
-import com.dev_talk.main.view_pager_2_adapters.PersonalChatsAdapterViewPager
 import com.google.android.material.tabs.TabLayout
 
 private const val DEFAULT_LIST_PROFESSIONS_KEY = "professions"
-class PersonalChatsFragment : Fragment() {
+public class PersonalChatsFragment : Fragment() {
     private var binding: FragmentPersonalChatsBinding? = null
     private val _binding: FragmentPersonalChatsBinding
         get() = binding!!

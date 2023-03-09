@@ -1,9 +1,8 @@
-package com.dev_talk.main.view_pager_2_adapters
+package com.dev_talk.main.my_chats
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.dev_talk.main.PersonalChatListFragment
 import com.dev_talk.main.structures.Profession
 
 class PersonalChatsAdapterViewPager(activity: FragmentActivity, private val itemCount: Int, private val data: List<Profession>, private val tabNames: List<String>): FragmentStateAdapter(activity) {

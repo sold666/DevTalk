@@ -1,4 +1,4 @@
-package com.dev_talk.main.recycler_view_adapters
+package com.dev_talk.main.my_chats
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.main.R
 import com.dev_talk.main.structures.Chat
 
-class RecommendedChatsAdapter(
+class PersonalChatsAdapter(
     private val chats: List<Chat>
-): RecyclerView.Adapter<RecommendedChatsAdapter.ChatItemViewHolder>()  {
+): RecyclerView.Adapter<PersonalChatsAdapter.ChatItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatItemViewHolder {
         return ChatItemViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.default_chat_item, null)
@@ -28,9 +28,9 @@ class RecommendedChatsAdapter(
         private val icon: ImageView = itemView.findViewById(R.id.chat_icon)
         private val chat: TextView = itemView.findViewById(R.id.chat_name)
 
-        fun bind(src: Chat) {
-            icon.setImageResource(src.icon)
-            chat.text = src.tags
+        fun bind(chat: Chat) {
+            icon.setImageResource(chat.icon)
+            this.chat.text = chat.tags
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.dev_talk.main.recycler_view_adapters
+package com.dev_talk.main.profile
 
 import android.view.LayoutInflater
 import android.view.View

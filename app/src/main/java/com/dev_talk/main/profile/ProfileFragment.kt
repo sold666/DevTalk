@@ -1,4 +1,4 @@
-package com.dev_talk.main
+package com.dev_talk.main.profile
 
 import android.os.Build
 import android.os.Bundle
@@ -8,12 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev_talk.main.databinding.FragmentProfileBinding
-import com.dev_talk.main.recycler_view_adapters.ProfileChatsAdapter
 import com.dev_talk.main.structures.Profession
 
 private const val DEFAULT_LIST_PROFESSIONS_KEY = "professions"
 
-class ProfileFragment : Fragment() {
+public class ProfileFragment : Fragment() {
     private var binding: FragmentProfileBinding? = null
     private val _binding: FragmentProfileBinding
         get() = binding!!

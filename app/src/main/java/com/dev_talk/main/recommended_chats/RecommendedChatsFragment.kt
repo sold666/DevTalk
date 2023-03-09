@@ -1,4 +1,4 @@
-package com.dev_talk.main
+package com.dev_talk.main.recommended_chats
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev_talk.main.databinding.FragmentRecommendedChatsBinding
-import com.dev_talk.main.recycler_view_adapters.RecommendedChatsAdapter
 import com.dev_talk.main.structures.Chat
 
 private const val RECOMMENDED_LIST_PROFESSIONS_KEY = "recommendations"

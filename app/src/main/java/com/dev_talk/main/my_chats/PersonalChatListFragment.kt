@@ -1,4 +1,4 @@
-package com.dev_talk.main
+package com.dev_talk.main.my_chats
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,12 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev_talk.main.databinding.FragmentPersonalChatListBinding
-import com.dev_talk.main.recycler_view_adapters.PersonalChatsAdapter
 import com.dev_talk.main.structures.Profession
 
 private const val PROFESSION_KEY = "Current profession"
 
-class PersonalChatListFragment : Fragment() {
+public class PersonalChatListFragment : Fragment() {
     private var binding: FragmentPersonalChatListBinding? = null
     private val _binding: FragmentPersonalChatListBinding
         get() = binding!!
