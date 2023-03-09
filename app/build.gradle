@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.dev_talk'
+    namespace 'com.dev_talk.main'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.dev_talk"
+        applicationId "com.dev_talk.main"
         minSdk 24
         targetSdk 33
         versionCode 1

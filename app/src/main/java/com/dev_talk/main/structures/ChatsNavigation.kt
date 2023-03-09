@@ -1,4 +1,4 @@
-package com.dev_talk.structures
+package com.dev_talk.main.structures
 
 enum class ChatsNavigation(val position: Int) {
     RECOMMENDED(0),

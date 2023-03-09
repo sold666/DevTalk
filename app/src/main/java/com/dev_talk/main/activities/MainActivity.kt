@@ -1,11 +1,11 @@
-package com.dev_talk.activities
+package com.dev_talk.main.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.dev_talk.R
-import com.dev_talk.databinding.ActivityMainBinding
-import com.dev_talk.structures.ChatsNavigation
-import com.dev_talk.view_pager_2_adapters.MainPageAdapter
+import com.dev_talk.main.R
+import com.dev_talk.main.databinding.ActivityMainBinding
+import com.dev_talk.main.structures.ChatsNavigation
+import com.dev_talk.main.view_pager_2_adapters.MainPageAdapter
 
 class MainActivity: AppCompatActivity() {
 

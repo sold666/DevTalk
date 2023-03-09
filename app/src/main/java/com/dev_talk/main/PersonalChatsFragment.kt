@@ -1,4 +1,4 @@
-package com.dev_talk
+package com.dev_talk.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import com.dev_talk.databinding.FragmentPersonalChatsBinding
-import com.dev_talk.structures.Profession
-import com.dev_talk.view_pager_2_adapters.PersonalChatsAdapterViewPager
+import com.dev_talk.main.databinding.FragmentPersonalChatsBinding
+import com.dev_talk.main.structures.Profession
+import com.dev_talk.main.view_pager_2_adapters.PersonalChatsAdapterViewPager
 import com.google.android.material.tabs.TabLayout
 
 private const val DEFAULT_LIST_PROFESSIONS_KEY = "professions"

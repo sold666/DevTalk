@@ -1,4 +1,4 @@
-package com.dev_talk
+package com.dev_talk.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dev_talk.databinding.FragmentPersonalChatListBinding
-import com.dev_talk.recycler_view_adapters.PersonalChatsAdapter
-import com.dev_talk.structures.Profession
+import com.dev_talk.main.databinding.FragmentPersonalChatListBinding
+import com.dev_talk.main.recycler_view_adapters.PersonalChatsAdapter
+import com.dev_talk.main.structures.Profession
 
 private const val PROFESSION_KEY = "Current profession"
 

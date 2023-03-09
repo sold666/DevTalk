@@ -1,4 +1,4 @@
-package com.dev_talk.structures
+package com.dev_talk.main.structures
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
