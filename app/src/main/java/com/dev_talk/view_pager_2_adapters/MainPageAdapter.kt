@@ -3,7 +3,10 @@ package com.dev_talk.view_pager_2_adapters
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.dev_talk.*
+import com.dev_talk.PersonalChatsFragment
+import com.dev_talk.ProfileFragment
+import com.dev_talk.R
+import com.dev_talk.RecommendedChatsFragment
 import com.dev_talk.structures.Chat
 import com.dev_talk.structures.ChatsNavigation
 import com.dev_talk.structures.Profession
