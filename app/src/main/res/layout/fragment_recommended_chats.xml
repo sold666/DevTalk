@@ -9,12 +9,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/search_bar"
         android:queryHint="@string/default_query_hint"
-        android:background="@color/searchBar" />
+        android:background="?attr/search_bar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/listWithRecommendedChatsBackColor"
+        android:background="?attr/list_with_recommended_chats_bg_color"
         android:id="@+id/recommended_chats"
         android:layout_below="@id/search_bar"
         />

@@ -7,7 +7,7 @@
     <View
         android:layout_width="335dp"
         android:layout_height="1dp"
-        android:background="@color/profileLineBetweenChatsColor"
+        android:background="?attr/profile_line_between_chats_color"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/profession"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -48,7 +48,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_height="1dp"
-        android:background="@color/profileLineBetweenChatsColor"
+        android:background="?attr/profile_line_between_chats_color"
         app:layout_constraintTop_toBottomOf="@id/tags" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

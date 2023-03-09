@@ -9,7 +9,7 @@
         android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/defaultLineBetweenChatsColor"
+        android:background="?attr/default_line_between_chats_color"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/chat_icon"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -52,6 +52,6 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_height="1dp"
         android:layout_marginTop="10dp"
-        android:background="@color/defaultLineBetweenChatsColor"
+        android:background="?attr/default_line_between_chats_color"
         app:layout_constraintTop_toBottomOf="@id/chat_icon" />
 </androidx.constraintlayout.widget.ConstraintLayout>

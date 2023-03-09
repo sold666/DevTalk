@@ -8,7 +8,7 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/navigation_personal_chats"
-        android:background="@color/tabIndicatorColor"
+        android:background="?attr/tab_indicator_color"
          android:layout_height="wrap_content"
         android:layout_width="match_parent" >
 
@@ -22,11 +22,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@color/tabIndicatorColor"
+            android:background="?attr/tab_indicator_color"
             app:tabMaxWidth="0dp"
             app:tabGravity="fill"
             app:tabMode="fixed"
-            app:tabIndicatorColor="@color/tabIndicatorColor" >
+            app:tabIndicatorColor="?attr/tab_indicator_color" >
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
@@ -52,6 +52,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/navigation_personal_chats"
-        android:background="@color/listWithPersonalChatsBackColor"
+        android:background="?attr/list_with_personal_chats_bg_color"
         />
 </RelativeLayout>

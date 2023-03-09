@@ -9,7 +9,7 @@
     <ImageButton
         android:id="@+id/imageButton"
         android:src="@drawable/alter_profile_btn_image"
-        android:background="@color/alterProfileBtnBackColor"
+        android:background="?attr/alter_profile_btn_bg_color"
         android:layout_height="50dp"
         android:layout_width="50dp"
         app:layout_constraintRight_toRightOf="parent"
@@ -28,7 +28,7 @@
         android:src="@drawable/default_person_icon"
         android:layout_margin="10dp"
         app:civ_border_width="2dp"
-        app:civ_border_color="@color/profileBorder" />
+        app:civ_border_color="?attr/profile_border" />
 
     <TextView
         android:id="@+id/person_name"
@@ -51,7 +51,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         app:civ_border_width="2dp"
-        app:civ_border_color="@color/profileBorder"
+        app:civ_border_color="?attr/profile_border"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/person_name"
@@ -66,6 +66,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/links"
         android:layout_marginTop= "10dp"
-        android:background="@color/ListWIthCHatsInProfileBackColor" />
+        android:background="?attr/chat_list_in_profile_bg_color" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
