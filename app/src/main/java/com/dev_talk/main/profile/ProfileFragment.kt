@@ -17,21 +17,19 @@ import com.dev_talk.main.structures.Profession
 private const val DEFAULT_LIST_PROFESSIONS_KEY = "professions"
 
 class ProfileFragment : Fragment() {
-    private var binding: FragmentProfileBinding? = null
-    private val _binding: FragmentProfileBinding
-        get() = binding!!
+    private lateinit var binding: FragmentProfileBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentProfileBinding.inflate(inflater)
-        return _binding.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        with(_binding) {
+        with(binding) {
             val professions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 arguments?.getParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY, Profession::class.java)!!
             } else {
@@ -43,11 +41,6 @@ class ProfileFragment : Fragment() {
                 addItemDecoration(getRecyclerViewDivider(context))
             }
         }
-    }
-
-    override fun onDestroy() {
-        binding = null
-        super.onDestroy()
     }
 
     companion object {

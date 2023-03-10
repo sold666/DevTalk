@@ -13,13 +13,11 @@ import com.dev_talk.main.structures.Profession
 private const val PROFESSION_KEY = "Current profession"
 
 class PersonalChatListFragment : Fragment() {
-    private var binding: FragmentPersonalChatListBinding? = null
-    private val _binding: FragmentPersonalChatListBinding
-        get() = binding!!
+    private lateinit var binding: FragmentPersonalChatListBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        with(_binding.listWithMyChats) {
+        with(binding.listWithMyChats) {
             val data = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
                 arguments?.getParcelable(PROFESSION_KEY, Profession::class.java)!!
             } else {
@@ -29,11 +27,6 @@ class PersonalChatListFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
             addItemDecoration(getRecyclerViewDivider(context))
         }
-    }
-
-    override fun onDestroy() {
-        binding = null
-        super.onDestroy()
     }
     
     companion object {

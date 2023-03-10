@@ -12,21 +12,19 @@ import com.google.android.material.tabs.TabLayout
 
 private const val DEFAULT_LIST_PROFESSIONS_KEY = "professions"
 class PersonalChatsFragment : Fragment() {
-    private var binding: FragmentPersonalChatsBinding? = null
-    private val _binding: FragmentPersonalChatsBinding
-        get() = binding!!
+    private lateinit var binding: FragmentPersonalChatsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentPersonalChatsBinding.inflate(inflater)
-        return _binding.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        with(_binding) {
+        with(binding) {
             val data = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
                 arguments?.getParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY, Profession::class.java)!!
             } else {
@@ -52,11 +50,6 @@ class PersonalChatsFragment : Fragment() {
         }
     }
 
-    override fun onDestroy() {
-        binding = null
-        super.onDestroy()
-    }
-
     companion object {
         @JvmStatic
         fun newInstance(professions: ArrayList<Profession>) =
@@ -69,7 +62,7 @@ class PersonalChatsFragment : Fragment() {
 
     private fun getProfessionsNames() : List<String> {
         val listWithNames = ArrayList<String>()
-        with(_binding.professions) {
+        with(binding.professions) {
             for (i in 0 until tabCount) {
                 listWithNames.add(getTabAt(i)?.text.toString())
             }

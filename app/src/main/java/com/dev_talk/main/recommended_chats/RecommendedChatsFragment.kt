@@ -12,21 +12,19 @@ import com.dev_talk.main.structures.Chat
 private const val RECOMMENDED_LIST_PROFESSIONS_KEY = "recommendations"
 
 class RecommendedChatsFragment : Fragment() {
-    private var binding: FragmentRecommendedChatsBinding? = null
-    private val _binding: FragmentRecommendedChatsBinding
-        get() = binding!!
+    private lateinit var binding: FragmentRecommendedChatsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentRecommendedChatsBinding.inflate(inflater)
-        return _binding.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        with(_binding) {
+        with(binding) {
             val data = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
                 arguments?.getParcelableArrayList(RECOMMENDED_LIST_PROFESSIONS_KEY, Chat::class.java)!!
             } else {
@@ -37,11 +35,6 @@ class RecommendedChatsFragment : Fragment() {
                 layoutManager = LinearLayoutManager(context)
             }
         }
-    }
-
-    override fun onDestroy() {
-        binding = null
-        super.onDestroy()
     }
 
     companion object {
