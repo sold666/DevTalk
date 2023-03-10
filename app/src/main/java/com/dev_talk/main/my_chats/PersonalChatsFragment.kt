@@ -11,14 +11,17 @@ import com.dev_talk.main.structures.Profession
 import com.google.android.material.tabs.TabLayout
 
 private const val DEFAULT_LIST_PROFESSIONS_KEY = "professions"
-public class PersonalChatsFragment : Fragment() {
+class PersonalChatsFragment : Fragment() {
     private var binding: FragmentPersonalChatsBinding? = null
     private val _binding: FragmentPersonalChatsBinding
         get() = binding!!
 
-    override fun onDestroy() {
-        binding = null
-        super.onDestroy()
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentPersonalChatsBinding.inflate(inflater)
+        return _binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -49,22 +52,9 @@ public class PersonalChatsFragment : Fragment() {
         }
     }
 
-    private fun getProfessionsNames() : List<String> {
-        val listWithNames = ArrayList<String>()
-        with(_binding.professions) {
-            for (i in 0 until tabCount) {
-                listWithNames.add(getTabAt(i)?.text.toString())
-            }
-        }
-        return listWithNames
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentPersonalChatsBinding.inflate(inflater)
-        return _binding.root
+    override fun onDestroy() {
+        binding = null
+        super.onDestroy()
     }
 
     companion object {
@@ -75,5 +65,15 @@ public class PersonalChatsFragment : Fragment() {
                     putParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY, professions)
                 }
             }
+    }
+
+    private fun getProfessionsNames() : List<String> {
+        val listWithNames = ArrayList<String>()
+        with(_binding.professions) {
+            for (i in 0 until tabCount) {
+                listWithNames.add(getTabAt(i)?.text.toString())
+            }
+        }
+        return listWithNames
     }
 }

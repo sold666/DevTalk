@@ -4,14 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <View
-        android:layout_width="335dp"
-        android:layout_height="1dp"
-        android:background="?attr/profile_line_between_chats_color"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/profession"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+
     <TextView
         android:id="@+id/profession"
         android:layout_width="300dp"
@@ -43,12 +36,5 @@
         android:textSize="15sp"
         tools:text="Tag 1, tag 2, Tag 3"
         app:layout_constraintTop_toBottomOf="@id/profession" />
-    <View
-        android:layout_width="335dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_height="1dp"
-        android:background="?attr/profile_line_between_chats_color"
-        app:layout_constraintTop_toBottomOf="@id/tags" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,21 +1,33 @@
 package com.dev_talk.main.profile
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev_talk.main.databinding.FragmentProfileBinding
 import com.dev_talk.main.structures.Profession
 
+
 private const val DEFAULT_LIST_PROFESSIONS_KEY = "professions"
 
-public class ProfileFragment : Fragment() {
+class ProfileFragment : Fragment() {
     private var binding: FragmentProfileBinding? = null
     private val _binding: FragmentProfileBinding
         get() = binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentProfileBinding.inflate(inflater)
+        return _binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -25,19 +37,12 @@ public class ProfileFragment : Fragment() {
             } else {
                 arguments?.getParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY)!!
             }
-            with (myChats) {
+            myChats.apply {
                 adapter = ProfileChatsAdapter(professions)
                 layoutManager = LinearLayoutManager(context)
+                addItemDecoration(getRecyclerViewDivider(context))
             }
         }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentProfileBinding.inflate(inflater)
-        return _binding.root
     }
 
     override fun onDestroy() {
@@ -53,5 +58,11 @@ public class ProfileFragment : Fragment() {
                     putParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY, professions)
                 }
             }
+    }
+
+    private fun getRecyclerViewDivider(context: Context): DividerItemDecoration {
+        val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+        decoration.setDrawable(ContextCompat.getDrawable(context, com.dev_talk.main.R.drawable.divider)!!)
+        return decoration
     }
 }

@@ -3,20 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="#C1C1C1">
-    <View
-        android:id="@+id/line1"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="?attr/default_line_between_chats_color"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/chat_icon"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="10dp"/>
+    xmlns:tools="http://schemas.android.com/tools" >
 
     <ImageView
+        android:layout_margin="10dp"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:id="@+id/chat_icon"
@@ -24,7 +14,6 @@
         android:scaleType="centerCrop"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/line2"
         tools:background="@color/black"
         android:contentDescription="@string/chat_icon_description" />
 
@@ -43,15 +32,6 @@
         app:layout_constraintLeft_toRightOf="@id/chat_icon"
         app:layout_constraintRight_toRightOf="parent"
         android:maxLines="1"
-        app:layout_constraintTop_toTopOf="@id/line1"
+        app:layout_constraintTop_toTopOf="@id/chat_icon"
         />
-    <View
-        android:id="@+id/line2"
-        android:layout_width="match_parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="10dp"
-        android:background="?attr/default_line_between_chats_color"
-        app:layout_constraintTop_toBottomOf="@id/chat_icon" />
 </androidx.constraintlayout.widget.ConstraintLayout>

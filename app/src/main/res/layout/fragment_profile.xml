@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/edit_img_btn"
         android:src="@drawable/alter_profile_btn_image"
         android:background="?attr/alter_profile_btn_bg_color"
         android:layout_height="50dp"

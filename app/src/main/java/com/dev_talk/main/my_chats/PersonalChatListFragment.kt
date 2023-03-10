@@ -1,25 +1,21 @@
 package com.dev_talk.main.my_chats
 
+import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev_talk.main.databinding.FragmentPersonalChatListBinding
 import com.dev_talk.main.structures.Profession
 
 private const val PROFESSION_KEY = "Current profession"
 
-public class PersonalChatListFragment : Fragment() {
+class PersonalChatListFragment : Fragment() {
     private var binding: FragmentPersonalChatListBinding? = null
     private val _binding: FragmentPersonalChatListBinding
         get() = binding!!
-
-    override fun onDestroy() {
-        binding = null
-        super.onDestroy()
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,17 +27,15 @@ public class PersonalChatListFragment : Fragment() {
             }
             adapter = PersonalChatsAdapter(data.chats)
             layoutManager = LinearLayoutManager(context)
+            addItemDecoration(getRecyclerViewDivider(context))
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentPersonalChatListBinding.inflate(inflater)
-        return _binding.root
+    override fun onDestroy() {
+        binding = null
+        super.onDestroy()
     }
-
+    
     companion object {
         @JvmStatic
         fun newInstance(profession: Profession) =
@@ -50,5 +44,11 @@ public class PersonalChatListFragment : Fragment() {
                     putParcelable(PROFESSION_KEY, profession)
                 }
             }
+    }
+
+    private fun getRecyclerViewDivider(context: Context): DividerItemDecoration {
+        val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+        decoration.setDrawable(ContextCompat.getDrawable(context, com.dev_talk.main.R.drawable.divider)!!)
+        return decoration
     }
 }

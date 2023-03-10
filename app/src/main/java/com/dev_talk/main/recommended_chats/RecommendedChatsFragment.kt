@@ -16,9 +16,12 @@ class RecommendedChatsFragment : Fragment() {
     private val _binding: FragmentRecommendedChatsBinding
         get() = binding!!
 
-    override fun onDestroy() {
-        binding = null
-        super.onDestroy()
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentRecommendedChatsBinding.inflate(inflater)
+        return _binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,12 +39,9 @@ class RecommendedChatsFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentRecommendedChatsBinding.inflate(inflater)
-        return _binding.root
+    override fun onDestroy() {
+        binding = null
+        super.onDestroy()
     }
 
     companion object {
