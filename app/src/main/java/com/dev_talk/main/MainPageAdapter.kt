@@ -34,31 +34,31 @@ class MainPageAdapter(activity: FragmentActivity, private val itemCount: Int): F
                 "Profession №1",
                 arrayListOf(
                     Chat(
-                        R.drawable.my_chats_navigation_icon,
+                        R.drawable.my_chats_navigation,
                         "C++"
                     ),
                     Chat(
-                        R.drawable.my_chats_navigation_icon,
+                        R.drawable.my_chats_navigation,
                         "Java"
                     ),
                     Chat(
-                        R.drawable.my_chats_navigation_icon,
+                        R.drawable.my_chats_navigation,
                         "C"
                     ),
                     Chat(
-                        R.drawable.my_chats_navigation_icon,
+                        R.drawable.my_chats_navigation,
                         "Kotlin"
                     ),
                     Chat(
-                        R.drawable.my_chats_navigation_icon,
+                        R.drawable.my_chats_navigation,
                         "F"
                     ),
                     Chat(
-                        R.drawable.my_chats_navigation_icon,
+                        R.drawable.my_chats_navigation,
                         "Ruby"
                     ),
                     Chat(
-                        R.drawable.my_chats_navigation_icon,
+                        R.drawable.my_chats_navigation,
                         "Go"
                     ),
                 )
@@ -67,10 +67,10 @@ class MainPageAdapter(activity: FragmentActivity, private val itemCount: Int): F
                 "Profession №2",
                 arrayListOf(
                     Chat(
-                        R.drawable.default_person_icon,
+                        R.drawable.default_person,
                         "Css"),
                     Chat(
-                        R.drawable.default_person_icon,
+                        R.drawable.default_person,
                         "Html")
                 )
             ),
@@ -78,13 +78,13 @@ class MainPageAdapter(activity: FragmentActivity, private val itemCount: Int): F
                 "Profession №3",
                 arrayListOf(
                     Chat(
-                        R.drawable.add_link_in_profile_icon,
+                        R.drawable.add_new_chat_btn,
                         "Selenide"),
                     Chat(
-                        R.drawable.add_link_in_profile_icon,
+                        R.drawable.add_new_chat_btn,
                         "Selenium"),
                     Chat(
-                        R.drawable.add_link_in_profile_icon,
+                        R.drawable.add_new_chat_btn,
                         "Java")
                 )
             )
@@ -94,13 +94,13 @@ class MainPageAdapter(activity: FragmentActivity, private val itemCount: Int): F
     private fun getRecommendedChats(): ArrayList<Chat> {
         return arrayListOf(
             Chat(
-                R.drawable.my_chats_navigation_icon,
+                R.drawable.my_chats_navigation,
                 "Python"),
             Chat(
-                R.drawable.default_person_icon,
+                R.drawable.default_person,
                 "Java Script"),
             Chat(
-                R.drawable.add_link_in_profile_icon,
+                R.drawable.add_new_chat_btn,
                 "Assembler")
         )
     }
