@@ -1,0 +1,22 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="DevTalk" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorSecondary">@color/green_second</item>
+        <item name="text_color">@color/green</item>
+        <item name="text_color_secondary">@color/grey_second</item>
+        <item name="background">@color/white</item>
+        <item name="person_icon">@drawable/person_light</item>
+        <item name="lock_icon">@drawable/lock_light</item>
+        <item name="registration_icon">@drawable/registration_light</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:statusBarColor">@color/green_second</item>
+    </style>
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:background">@color/white</item>
+    </style>
+    <style name="Transition">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+</resources>
