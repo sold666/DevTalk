@@ -29,7 +29,7 @@ class ChatSettingsFragment : Fragment() {
         with(binding) {
             participantList.adapter = chatParticipantAdapter
             participantList.layoutManager = LinearLayoutManager(participantList.context)
-            amountChatParticipants.text = chatParticipantAdapter.itemCount.toString().plus(amountChatParticipants.text)
+            amountChatParticipants.text = chatParticipantAdapter.itemCount.toString().plus(" " + amountChatParticipants.text)
         }
         setListeners()
     }
