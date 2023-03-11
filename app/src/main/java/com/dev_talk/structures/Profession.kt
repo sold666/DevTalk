@@ -1,0 +1,10 @@
+package com.dev_talk.structures;
+
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class Profession (
+    val name: String,
+    val tags: List<String>
+) : Parcelable
