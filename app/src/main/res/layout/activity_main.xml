@@ -7,7 +7,6 @@
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/main_content"
-        android:background="#E5E5E5"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/main_bottom_nav_view"/>
@@ -19,7 +18,7 @@
         android:background="?attr/nav_bar_bg_color"
         app:itemBackground="?attr/nav_item_bg_color"
         app:itemIconTint="?attr/main_nav_icon_bg_color"
-        app:itemTextColor="@color/black"
+        app:itemTextColor="?attr/main_nav_text_color"
         app:menu="@menu/main_navigation_menu" />
 
 </RelativeLayout>

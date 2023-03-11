@@ -9,7 +9,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/navigation_personal_chats"
         android:background="?attr/tab_indicator_color"
-         android:layout_height="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent" >
 
         <com.google.android.material.appbar.MaterialToolbar

@@ -2,6 +2,7 @@
 <resources>
     <attr name="nav_bar_bg_color" format="reference" />
     <attr name="main_nav_icon_bg_color" format="reference" />
+    <attr name="main_nav_text_color" format="reference" />
     <attr name="profile_border" format="reference" />
     <attr name="profile_line_between_chats_color" format="reference" />
     <attr name="default_line_between_chats_color" format="reference" />
@@ -12,4 +13,5 @@
     <attr name="list_with_recommended_chats_bg_color" format="reference" />
     <attr name="list_with_personal_chats_bg_color" format="reference" />
     <attr name="alter_profile_btn_bg_color" format="reference" />
+    <attr name="create_chat_bg_color" format="reference" />
 </resources>

@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Developersmessenger" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.Developersmessenger" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -14,15 +14,17 @@
         <!-- Customize your theme here. -->
         <item name="nav_bar_bg_color">@color/black</item>
         <item name="main_nav_icon_bg_color">@color/black</item>
+        <item name="main_nav_text_color">@color/black</item>
         <item name="profile_border">@color/black</item>
         <item name="profile_line_between_chats_color">@color/black</item>
         <item name="default_line_between_chats_color">@color/black</item>
-        <item name="tab_indicator_color">@color/silver</item>
-        <item name="nav_item_bg_color">@color/light_telegraph</item>
-        <item name="search_bar">@color/light_grey</item>
-        <item name="chat_list_in_profile_bg_color">@color/light_grey_2</item>
-        <item name="list_with_recommended_chats_bg_color">@color/light_grey_2</item>
-        <item name="list_with_personal_chats_bg_color">@color/light_grey_2</item>
-        <item name="alter_profile_btn_bg_color">@color/gainsborough</item>
+        <item name="tab_indicator_color">@color/green</item>
+        <item name="nav_item_bg_color">@color/green</item>
+        <item name="search_bar">@color/green</item>
+        <item name="chat_list_in_profile_bg_color">@color/white</item>
+        <item name="list_with_recommended_chats_bg_color">@color/white</item>
+        <item name="list_with_personal_chats_bg_color">@color/white</item>
+        <item name="alter_profile_btn_bg_color">@color/white</item>
+        <item name="create_chat_bg_color">@color/green</item>
     </style>
 </resources>
