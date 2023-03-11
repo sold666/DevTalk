@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.dev_talk.main.databinding.ActivityMainBinding
 import com.dev_talk.main.structures.ChatsNavigation
 
-class MainActivity: AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var mainBinding: ActivityMainBinding
 
@@ -23,7 +23,7 @@ class MainActivity: AppCompatActivity() {
                 isUserInputEnabled = false // delete scroll
                 adapter = MainPageAdapter(currentFragmentActivity, mainBottomNavView.menu.size())
             }
-            mainBottomNavView.setOnItemSelectedListener{
+            mainBottomNavView.setOnItemSelectedListener {
                 when (it.itemId) {
                     R.id.recommended_chats -> {
                         mainContent.currentItem = ChatsNavigation.RECOMMENDED.position

@@ -5,7 +5,7 @@ import androidx.annotation.DrawableRes
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Chat (
+data class Chat(
     @DrawableRes
     val icon: Int = 0,
     val tags: String = ""

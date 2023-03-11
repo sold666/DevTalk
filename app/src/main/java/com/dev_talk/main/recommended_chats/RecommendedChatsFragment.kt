@@ -28,17 +28,21 @@ class RecommendedChatsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            val data = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
-                arguments?.getParcelableArrayList(RECOMMENDED_LIST_PROFESSIONS_KEY, Chat::class.java)!!
-            } else {
-                arguments?.getParcelableArrayList(RECOMMENDED_LIST_PROFESSIONS_KEY)!!
-            }
+            val data =
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+                    arguments?.getParcelableArrayList(
+                        RECOMMENDED_LIST_PROFESSIONS_KEY,
+                        Chat::class.java
+                    )!!
+                } else {
+                    arguments?.getParcelableArrayList(RECOMMENDED_LIST_PROFESSIONS_KEY)!!
+                }
             recommendedChats.apply {
                 adapter = RecommendedChatsAdapter(data)
                 layoutManager = LinearLayoutManager(context)
                 addItemDecoration(getRecyclerViewDivider(context))
             }
-            searchBar.setOnClickListener{
+            searchBar.setOnClickListener {
                 searchBar.onActionViewExpanded()
             }
         }
@@ -56,7 +60,12 @@ class RecommendedChatsFragment : Fragment() {
 
     private fun getRecyclerViewDivider(context: Context): DividerItemDecoration {
         val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-        decoration.setDrawable(ContextCompat.getDrawable(context, com.dev_talk.main.R.drawable.divider)!!)
+        decoration.setDrawable(
+            ContextCompat.getDrawable(
+                context,
+                com.dev_talk.main.R.drawable.divider
+            )!!
+        )
         return decoration
     }
 }

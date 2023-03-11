@@ -10,7 +10,7 @@ import com.dev_talk.main.structures.Profession
 
 class ProfileChatsAdapter(
     private val professions: List<Profession>
-): RecyclerView.Adapter<ProfileChatsAdapter.ChatItemViewHolder>() {
+) : RecyclerView.Adapter<ProfileChatsAdapter.ChatItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatItemViewHolder {
         return ChatItemViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.profile_chat_item, null)
@@ -32,7 +32,7 @@ class ProfileChatsAdapter(
             tags.text = getChatsText(chat)
         }
 
-        private fun getChatsText(src: Profession) : String {
+        private fun getChatsText(src: Profession): String {
             var allTags = ""
             for ((index, chat) in src.chats.withIndex()) {
                 allTags += chat.tags

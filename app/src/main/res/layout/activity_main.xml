@@ -9,7 +9,8 @@
         android:id="@+id/main_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/main_bottom_nav_view"/>
+        android:layout_above="@id/main_bottom_nav_view" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/main_bottom_nav_view"
         android:layout_width="match_parent"

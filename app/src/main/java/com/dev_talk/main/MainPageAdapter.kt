@@ -10,7 +10,8 @@ import com.dev_talk.main.structures.Chat
 import com.dev_talk.main.structures.ChatsNavigation
 import com.dev_talk.main.structures.Profession
 
-class MainPageAdapter(activity: FragmentActivity, private val itemCount: Int): FragmentStateAdapter(activity) {
+class MainPageAdapter(activity: FragmentActivity, private val itemCount: Int) :
+    FragmentStateAdapter(activity) {
 
     override fun getItemCount(): Int = itemCount
 
@@ -68,10 +69,12 @@ class MainPageAdapter(activity: FragmentActivity, private val itemCount: Int): F
                 arrayListOf(
                     Chat(
                         R.drawable.default_person,
-                        "Css"),
+                        "Css"
+                    ),
                     Chat(
                         R.drawable.default_person,
-                        "Html")
+                        "Html"
+                    )
                 )
             ),
             Profession(
@@ -79,13 +82,16 @@ class MainPageAdapter(activity: FragmentActivity, private val itemCount: Int): F
                 arrayListOf(
                     Chat(
                         R.drawable.add_new_chat_btn,
-                        "Selenide"),
+                        "Selenide"
+                    ),
                     Chat(
                         R.drawable.add_new_chat_btn,
-                        "Selenium"),
+                        "Selenium"
+                    ),
                     Chat(
                         R.drawable.add_new_chat_btn,
-                        "Java")
+                        "Java"
+                    )
                 )
             )
         )
@@ -95,13 +101,16 @@ class MainPageAdapter(activity: FragmentActivity, private val itemCount: Int): F
         return arrayListOf(
             Chat(
                 R.drawable.my_chats_navigation,
-                "Python"),
+                "Python"
+            ),
             Chat(
                 R.drawable.default_person,
-                "Java Script"),
+                "Java Script"
+            ),
             Chat(
                 R.drawable.add_new_chat_btn,
-                "Assembler")
+                "Assembler"
+            )
         )
     }
 }

@@ -11,7 +11,7 @@ import com.dev_talk.main.structures.Chat
 
 class RecommendedChatsAdapter(
     private val chats: List<Chat>
-): RecyclerView.Adapter<RecommendedChatsAdapter.ChatItemViewHolder>()  {
+) : RecyclerView.Adapter<RecommendedChatsAdapter.ChatItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatItemViewHolder {
         return ChatItemViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.default_chat_item, null)

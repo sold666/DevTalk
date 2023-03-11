@@ -5,7 +5,12 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.dev_talk.main.structures.Profession
 
-class PersonalChatsAdapterViewPager(activity: FragmentActivity, private val itemCount: Int, private val data: List<Profession>, private val tabNames: List<String>): FragmentStateAdapter(activity) {
+class PersonalChatsAdapterViewPager(
+    activity: FragmentActivity,
+    private val itemCount: Int,
+    private val data: List<Profession>,
+    private val tabNames: List<String>
+) : FragmentStateAdapter(activity) {
     override fun getItemCount(): Int = itemCount
 
     override fun createFragment(position: Int): Fragment {
@@ -14,7 +19,7 @@ class PersonalChatsAdapterViewPager(activity: FragmentActivity, private val item
     }
 
     private fun findIndexOfProfession(profession: String): Int {
-        for((index, professionName) in data.withIndex()) {
+        for ((index, professionName) in data.withIndex()) {
             if (professionName.profession == profession) {
                 return index
             }

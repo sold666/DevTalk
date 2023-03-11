@@ -11,6 +11,7 @@ import com.dev_talk.main.structures.Profession
 import com.google.android.material.tabs.TabLayout
 
 private const val DEFAULT_LIST_PROFESSIONS_KEY = "professions"
+
 class PersonalChatsFragment : Fragment() {
     private lateinit var binding: FragmentPersonalChatsBinding
 
@@ -25,19 +26,28 @@ class PersonalChatsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            val data = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
-                arguments?.getParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY, Profession::class.java)!!
-            } else {
-                arguments?.getParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY)!!
-            }
-            with (chatsWithCategory) {
-                adapter = PersonalChatsAdapterViewPager(requireActivity(), professions.tabCount, data, getProfessionsNames())
-                registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
+            val data =
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+                    arguments?.getParcelableArrayList(
+                        DEFAULT_LIST_PROFESSIONS_KEY,
+                        Profession::class.java
+                    )!!
+                } else {
+                    arguments?.getParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY)!!
+                }
+            with(chatsWithCategory) {
+                adapter = PersonalChatsAdapterViewPager(
+                    requireActivity(),
+                    professions.tabCount,
+                    data,
+                    getProfessionsNames()
+                )
+                registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                     override fun onPageSelected(position: Int) {
                         professions.selectTab(professions.getTabAt(position))
                     }
                 })
-                professions.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener {
+                professions.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                     override fun onTabReselected(tab: TabLayout.Tab?) {}
                     override fun onTabUnselected(tab: TabLayout.Tab?) {}
                     override fun onTabSelected(tab: TabLayout.Tab) {
@@ -58,7 +68,7 @@ class PersonalChatsFragment : Fragment() {
             }
     }
 
-    private fun getProfessionsNames() : List<String> {
+    private fun getProfessionsNames(): List<String> {
         val listWithNames = ArrayList<String>()
         with(binding.professions) {
             for (i in 0 until tabCount) {

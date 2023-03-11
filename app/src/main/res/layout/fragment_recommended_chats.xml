@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
+
     <SearchView
         app:iconifiedByDefault="false"
         android:layout_width="match_parent"
@@ -22,15 +23,13 @@
         android:contentDescription="@string/create_chat"
         android:layout_alignParentEnd="true"
         android:src="@drawable/add_new_chat_btn"
-        android:background="?attr/create_chat_bg_color"
-        />
+        android:background="?attr/create_chat_bg_color" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/list_with_recommended_chats_bg_color"
         android:id="@+id/recommended_chats"
-        android:layout_below="@id/search_bar"
-        />
+        android:layout_below="@id/search_bar" />
 
 </RelativeLayout>

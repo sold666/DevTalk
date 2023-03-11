@@ -31,7 +31,10 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
             val professions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                arguments?.getParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY, Profession::class.java)!!
+                arguments?.getParcelableArrayList(
+                    DEFAULT_LIST_PROFESSIONS_KEY,
+                    Profession::class.java
+                )!!
             } else {
                 arguments?.getParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY)!!
             }
@@ -55,7 +58,12 @@ class ProfileFragment : Fragment() {
 
     private fun getRecyclerViewDivider(context: Context): DividerItemDecoration {
         val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-        decoration.setDrawable(ContextCompat.getDrawable(context, com.dev_talk.main.R.drawable.divider)!!)
+        decoration.setDrawable(
+            ContextCompat.getDrawable(
+                context,
+                com.dev_talk.main.R.drawable.divider
+            )!!
+        )
         return decoration
     }
 }

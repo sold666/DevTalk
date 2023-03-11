@@ -28,17 +28,18 @@ class PersonalChatListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding.listWithMyChats) {
-            val data = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
-                arguments?.getParcelable(PROFESSION_KEY, Profession::class.java)!!
-            } else {
-                arguments?.getParcelable(PROFESSION_KEY)!!
-            }
+            val data =
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+                    arguments?.getParcelable(PROFESSION_KEY, Profession::class.java)!!
+                } else {
+                    arguments?.getParcelable(PROFESSION_KEY)!!
+                }
             adapter = PersonalChatsAdapter(data.chats)
             layoutManager = LinearLayoutManager(context)
             addItemDecoration(getRecyclerViewDivider(context))
         }
     }
-    
+
     companion object {
         @JvmStatic
         fun newInstance(profession: Profession) =
@@ -51,7 +52,12 @@ class PersonalChatListFragment : Fragment() {
 
     private fun getRecyclerViewDivider(context: Context): DividerItemDecoration {
         val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-        decoration.setDrawable(ContextCompat.getDrawable(context, com.dev_talk.main.R.drawable.divider)!!)
+        decoration.setDrawable(
+            ContextCompat.getDrawable(
+                context,
+                com.dev_talk.main.R.drawable.divider
+            )!!
+        )
         return decoration
     }
 }
