@@ -6,7 +6,7 @@
     app:startDestination="@id/chatFragment3">
     <fragment
         android:id="@+id/chatFragment3"
-        android:name="com.example.developers_messenger.chat.ChatFragment"
+        android:name="com.dev_talk.chat.ChatFragment"
         android:label="ChatFragment"
         tools:layout="@layout/chat_fragment"
         >
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/chatSettingsFragment3"
-        android:name="com.example.developers_messenger.chat.ChatSettingsFragment"
+        android:name="com.dev_talk.chat.ChatSettingsFragment"
         android:label="ChatSettingsFragment"
         tools:layout="@layout/chat_settings_fragment"
         >

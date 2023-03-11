@@ -1,6 +1,5 @@
-package com.example.developers_messenger.chat
+package com.dev_talk.chat
 
-import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
