@@ -20,6 +20,6 @@
     <string name="profession">Profession:</string>
     <string name="result">Result</string>
     <string name="check_if_you_have_chosen_everything_correctly">Check if you have chosen everything correctly</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="please_fill_out_the_forms_below">Please fill out the forms below</string>
 </resources>

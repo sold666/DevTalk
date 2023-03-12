@@ -7,7 +7,8 @@
         android:id="@+id/dev_talk_icon"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/dev_talk_icon"
-        android:layout_centerInParent="true" />
+        android:layout_centerInParent="true"
+        android:contentDescription="@string/dev_talk_icon"
+        android:src="@drawable/dev_talk_icon" />
 
 </RelativeLayout>

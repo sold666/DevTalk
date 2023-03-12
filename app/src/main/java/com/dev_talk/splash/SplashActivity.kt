@@ -11,8 +11,8 @@ import com.dev_talk.R
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
-    private lateinit var handler: Handler
 
+    private lateinit var handler: Handler
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash_screen_activity)
