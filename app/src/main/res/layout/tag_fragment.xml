@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,92 +8,57 @@
         android:id="@+id/back_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginStart="0dp"
-        android:text="@string/back"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/rounded_button"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        tools:layout_editor_absoluteY="625dp"
-        tools:ignore="MissingConstraints" />
+        android:text="@string/back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left" />
 
     <Button
         android:id="@+id/next_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginEnd="0dp"
-        android:text="@string/next"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/rounded_button"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        tools:layout_editor_absoluteY="625dp"
-        tools:ignore="MissingConstraints" />
+        android:text="@string/next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
+        android:id="@+id/guideline_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="40dp" />
+        app:layout_constraintGuide_begin="25dp" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
+        android:id="@+id/guideline_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="40dp" />
+        app:layout_constraintGuide_end="25dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="329dp"
-        android:layout_height="433dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        tools:layout_editor_absoluteY="125dp"
-        tools:ignore="MissingConstraints" />
+        android:id="@+id/list_of_professions"
+        android:layout_width="360dp"
+        android:layout_height="440dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/next_button"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left" />
 
     <TextView
-        android:id="@+id/select_tags"
+        android:id="@+id/select_tags_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
         android:text="@string/select_tags"
         android:textAlignment="center"
         android:textColor="?attr/text_color_primary"
-        android:textSize="25sp"
+        android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        tools:layout_editor_absoluteY="31dp"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/profession"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:text="@string/profession"
-        android:textColor="?attr/text_color_secondary"
-        android:textAlignment="center"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintHorizontal_bias="0.242"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@id/select_tags"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/chosen_profession"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:textAlignment="center"
-        android:textColor="?attr/text_color_secondary"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/profession"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="82dp" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/guideline_left"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
