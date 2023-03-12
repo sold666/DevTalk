@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <attr name="background" format="reference" />
-    <attr name="text_color" format="reference" />
-    <attr name="text_color_secondary" format="reference" />
-    <attr name="lock_icon" format="reference" />
-    <attr name="person_icon" format="reference" />
-    <attr name="registration_icon" format="reference" />
-</resources>
