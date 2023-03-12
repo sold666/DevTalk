@@ -17,7 +17,7 @@ class ChatFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = ChatFragmentBinding.inflate(inflater)
         return binding.root
     }
@@ -33,5 +33,4 @@ class ChatFragment : Fragment() {
             findNavController().navigate(R.id.action_chatFragment3_to_chatSettingsFragment3)
         }
     }
-
 }
