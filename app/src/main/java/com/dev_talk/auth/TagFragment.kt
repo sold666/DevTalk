@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev_talk.*
 import com.dev_talk.databinding.TagFragmentBinding
 import com.dev_talk.structures.Profession
+import androidx.navigation.fragment.findNavController
+import com.dev_talk.R
 
 class TagFragment : Fragment() {
 
@@ -23,10 +25,8 @@ class TagFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = TagFragmentBinding.inflate(inflater)
-
         binding.nextButton.setOnClickListener { onClickNext() }
         binding.backButton.setOnClickListener { onClickBack() }
-
         return binding.root
     }
 
@@ -82,7 +82,17 @@ class TagFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        
+        val buttonNext = binding.nextButton
+        val buttonBack = binding.backButton
 
+        buttonNext.setOnClickListener {
+            findNavController().navigate(R.id.action_tagsFragment_to_resultFragment)
+        }
+
+        buttonBack.setOnClickListener {
+            findNavController().navigate(R.id.action_tagsFragment_to_professionFragment)
+        }
         with(binding) {
             selectedProfessions =
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
@@ -103,6 +113,5 @@ class TagFragment : Fragment() {
             tagAdapter = TagAdapter(tags, selectedTags)
             tagList.adapter = tagAdapter
             tagList.layoutManager = LinearLayoutManager(tagList.context)
-        }
     }
 }

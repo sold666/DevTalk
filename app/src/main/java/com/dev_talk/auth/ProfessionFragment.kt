@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev_talk.LIST_SELECTED_PROFESSIONS_KEY
 import com.dev_talk.LIST_SELECTED_TAGS_KEY
@@ -24,9 +25,7 @@ class ProfessionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = ProfessionFragmentBinding.inflate(inflater)
-
         binding.nextButton.setOnClickListener { onClickNext() }
-
         return binding.root
     }
 
@@ -58,6 +57,16 @@ class ProfessionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val buttonNext = binding.nextButton
+        val buttonBack = binding.backButton
+
+        buttonNext.setOnClickListener {
+            findNavController().navigate(R.id.action_professionFragment_to_tagsFragment)
+        }
+
+        buttonBack.setOnClickListener {
+            findNavController().navigate(R.id.action_professionFragment_to_signUpFragment)
+        }
         with(binding) {
             val professions = getProfessions()
             val selectedProfessions =

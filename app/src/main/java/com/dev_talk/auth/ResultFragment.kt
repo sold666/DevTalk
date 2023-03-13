@@ -11,6 +11,7 @@ import com.dev_talk.LIST_TAGS_KEY
 import com.dev_talk.R
 import com.dev_talk.databinding.ResultFragmentBinding
 import com.dev_talk.structures.Profession
+import androidx.navigation.fragment.findNavController
 
 class ResultFragment : Fragment() {
 
@@ -25,9 +26,7 @@ class ResultFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = ResultFragmentBinding.inflate(inflater)
-
         binding.backButton.setOnClickListener { onClickBack() }
-
         return binding.root
     }
 
@@ -54,6 +53,17 @@ class ResultFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        
+        val buttonNext = binding.nextButton
+        val buttonBack = binding.backButton
+
+        buttonNext.setOnClickListener {
+
+        }
+
+        buttonBack.setOnClickListener {
+            findNavController().navigate(R.id.action_resultFragment_to_tagsFragment)
+        }
         with(binding) {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
                 tags = arguments?.getStringArrayList(LIST_TAGS_KEY)!!

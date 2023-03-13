@@ -1,16 +1,23 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.Developersmessenger" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+<resources>
+    <!-- Night application theme. -->
+    <style name="DevTalkMainTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorSecondary">@color/green_second</item>
+        <item name="text_color_primary">@color/green</item>
+        <item name="text_color_secondary">@color/grey_second</item>
+        <item name="background_color_primary">@color/grey_third</item>
+        <item name="icon_tint_color_primary">@color/grey_second</item>
+
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:statusBarColor">@color/black</item>
+    </style>
+
+    <style name="SplashScreenTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:background">@color/black</item>
+    </style>
+
+    <style name="Transition">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 </resources>
