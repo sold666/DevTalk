@@ -79,10 +79,10 @@ class ResultFragment : Fragment() {
                     arguments?.getParcelableArrayList(LIST_SELECTED_PROFESSIONS_KEY)!!
             }
             val listData = generateMapFromArrays()
-            val resultAdapter = ResultAdapter(tagResultExpandableList.context, listData)
-            tagResultExpandableList.setAdapter(resultAdapter)
+            val resultAdapter = ResultAdapter(resultList.context, listData)
+            resultList.setAdapter(resultAdapter)
             for (i in listData.keys.indices) {
-                tagResultExpandableList.expandGroup(i)
+                resultList.expandGroup(i)
             }
         }
     }

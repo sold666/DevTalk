@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
+import com.dev_talk.LIST_PROFESSIONS_KEY
+import com.dev_talk.LIST_SELECTED_PROFESSIONS_KEY
 import com.dev_talk.R
 import com.dev_talk.databinding.AuthActivityBinding
+import com.dev_talk.getProfessions
 
 class AuthActivity : AppCompatActivity() {
 
@@ -21,5 +24,25 @@ class AuthActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
         Navigation.setViewNavController(binding.navHostFragment, navController)
+
+        val professionFragment = ProfessionFragment()
+        val bundle = Bundle().apply {
+            putParcelableArrayList(
+                LIST_PROFESSIONS_KEY,
+                getProfessions()
+            )
+        }
+        bundle.apply {
+            putParcelableArrayList(
+                LIST_SELECTED_PROFESSIONS_KEY,
+                arrayListOf()
+            )
+        }
+        professionFragment.arguments = bundle
+
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.container, professionFragment)
+            .commit()
     }
 }

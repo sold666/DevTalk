@@ -39,7 +39,7 @@
         app:layout_constraintGuide_end="25dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_of_professions"
+        android:id="@+id/tag_list"
         android:layout_width="360dp"
         android:layout_height="440dp"
         android:layout_marginBottom="40dp"

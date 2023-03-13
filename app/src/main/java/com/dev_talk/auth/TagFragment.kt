@@ -82,7 +82,7 @@ class TagFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        
+
         val buttonNext = binding.nextButton
         val buttonBack = binding.backButton
 
@@ -113,5 +113,6 @@ class TagFragment : Fragment() {
             tagAdapter = TagAdapter(tags, selectedTags)
             tagList.adapter = tagAdapter
             tagList.layoutManager = LinearLayoutManager(tagList.context)
+        }
     }
 }
