@@ -18,6 +18,7 @@ class TagFragment : Fragment() {
     private lateinit var tagAdapter: TagAdapter
     private lateinit var tags: ArrayList<String>
     private lateinit var selectedProfessions: ArrayList<Profession>
+    private var selectedTags: ArrayList<String> = arrayListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,22 +36,26 @@ class TagFragment : Fragment() {
         val buttonBack = binding.backButton
 
         buttonNext.setOnClickListener {
+            selectedTags = tagAdapter.getSelectedTags()
             val bundle = Bundle().apply {
                 putStringArrayList(
                     LIST_SELECTED_TAGS_KEY,
-                    tagAdapter.getSelectedTags()
+                    selectedTags
                 )
                 putParcelableArrayList(
                     LIST_SELECTED_PROFESSIONS_KEY,
                     selectedProfessions
                 )
             }
-            findNavController().navigate(R.id.action_tagsFragment_to_resultFragment, bundle)
+            if (selectedTags.isNotEmpty()) {
+                findNavController().navigate(R.id.action_tagsFragment_to_resultFragment, bundle)
+            }
         }
 
         buttonBack.setOnClickListener {
-            findNavController().navigate(R.id.action_tagsFragment_to_professionFragment)
+            findNavController().popBackStack()
         }
+
         with(binding) {
             selectedProfessions =
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
@@ -62,7 +67,7 @@ class TagFragment : Fragment() {
                     arguments?.getParcelableArrayList(LIST_SELECTED_PROFESSIONS_KEY)!!
                 }
             tags = ArrayList(selectedProfessions.flatMap(Profession::tags))
-            tagAdapter = TagAdapter(tags, arrayListOf()) //todo
+            tagAdapter = TagAdapter(tags, selectedTags)
             tagList.adapter = tagAdapter
             tagList.layoutManager = LinearLayoutManager(tagList.context)
         }

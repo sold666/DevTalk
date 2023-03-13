@@ -9,11 +9,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev_talk.*
 import com.dev_talk.databinding.ProfessionFragmentBinding
+import com.dev_talk.structures.Profession
 
 class ProfessionFragment : Fragment() {
 
     private lateinit var binding: ProfessionFragmentBinding
     private lateinit var professionAdapter: ProfessionAdapter
+    private var selectedProfessions: ArrayList<Profession> = arrayListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,22 +33,25 @@ class ProfessionFragment : Fragment() {
         val buttonBack = binding.backButton
 
         buttonNext.setOnClickListener {
+            selectedProfessions = professionAdapter.getSelectedProfessions()
             val bundle = Bundle().apply {
                 putParcelableArrayList(
                     LIST_SELECTED_PROFESSIONS_KEY,
-                    professionAdapter.getSelectedProfessions()
+                    selectedProfessions
                 )
             }
-            findNavController().navigate(R.id.action_professionFragment_to_tagsFragment, bundle)
+            if (selectedProfessions.isNotEmpty()) {
+                findNavController().navigate(R.id.action_professionFragment_to_tagsFragment, bundle)
+            }
         }
 
         buttonBack.setOnClickListener {
-            findNavController().navigate(R.id.action_professionFragment_to_signUpFragment)
+            findNavController().popBackStack()
         }
 
         with(binding) {
             val professions = getProfessions()
-            professionAdapter = ProfessionAdapter(professions, arrayListOf()) //todo
+            professionAdapter = ProfessionAdapter(professions, selectedProfessions)
             professionList.adapter = professionAdapter
             professionList.layoutManager = LinearLayoutManager(professionList.context)
         }

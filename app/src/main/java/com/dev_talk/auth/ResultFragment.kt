@@ -38,8 +38,9 @@ class ResultFragment : Fragment() {
         }
 
         buttonBack.setOnClickListener {
-            findNavController().navigate(R.id.action_resultFragment_to_tagsFragment)
+            findNavController().popBackStack()
         }
+
         with(binding) {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
                 selectedTags = arguments?.getStringArrayList(LIST_SELECTED_TAGS_KEY)!!
@@ -71,4 +72,4 @@ class ResultFragment : Fragment() {
     }
 }
 
-//todo убрать галочку на пустых профессиях при развертывании списка
+// todo убрать галочку на пустых профессиях при развертывании списка
