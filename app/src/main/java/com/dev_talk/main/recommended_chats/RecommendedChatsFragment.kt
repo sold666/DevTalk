@@ -3,7 +3,6 @@ package com.dev_talk.main.recommended_chats
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -81,7 +80,6 @@ class RecommendedChatsFragment : Fragment() {
         with(searchView) {
 
             queryHint = getString(R.string.default_query_hint)
-            isSubmitButtonEnabled = true
             setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     clearFocus()
