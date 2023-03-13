@@ -40,7 +40,7 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
         android:contentDescription="@string/create_chat"
-        app:srcCompat="@drawable/add_new_chat_btn" />
+        app:srcCompat="@drawable/ic_add_new_chat_btn" />
 
 </RelativeLayout>
 
