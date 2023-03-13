@@ -88,7 +88,6 @@ class RecommendedChatsFragment : Fragment() {
                     setQuery("", false)
                     binding.searchBar.menu.findItem(R.id.menu_search)?.collapseActionView()
                     adapterRV.filter.filter(query)
-                    Log.d("hehe", "12414")
                     return true
                 }
 
