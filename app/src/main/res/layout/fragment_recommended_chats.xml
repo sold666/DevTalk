@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent" >
 
     <SearchView
         app:iconifiedByDefault="false"
@@ -11,19 +11,11 @@
         android:editTextColor="@color/white"
         android:textColorHint="@color/white"
         android:id="@+id/search_bar"
-        android:layout_toStartOf="@id/create_chat_btn"
-        android:queryHint="@string/default_query_hint"
+        android:queryBackground="@android:color/transparent"
+        app:queryHint="@string/default_query_hint"
         android:autoCompleteTextViewStyle="@color/white"
-        android:background="?attr/search_bar" />
+        android:background="@drawable/search_view_background" />
 
-    <ImageButton
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:id="@+id/create_chat_btn"
-        android:contentDescription="@string/create_chat"
-        android:layout_alignParentEnd="true"
-        android:src="@drawable/add_new_chat_btn"
-        android:background="?attr/create_chat_bg_color" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
@@ -32,4 +24,25 @@
         android:id="@+id/recommended_chats"
         android:layout_below="@id/search_bar" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_action_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/create_chat"
+        app:srcCompat="@drawable/add_new_chat_btn" />
+
 </RelativeLayout>
+<!--<androidx.appcompat.widget.AppCompatTextView-->
+<!--android:id="@+id/search_bar"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:layout_marginBottom="8dp"-->
+<!--android:textColor="@android:color/black"-->
+<!--android:textStyle="bold"-->
+<!--android:textSize="14sp"-->
+<!--android:background="@color/green"-->
+<!--android:text="@string/app_name" />-->
+
