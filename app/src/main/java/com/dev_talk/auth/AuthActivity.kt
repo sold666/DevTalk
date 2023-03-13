@@ -24,25 +24,5 @@ class AuthActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
         Navigation.setViewNavController(binding.navHostFragment, navController)
-
-        val professionFragment = ProfessionFragment()
-        val bundle = Bundle().apply {
-            putParcelableArrayList(
-                LIST_PROFESSIONS_KEY,
-                getProfessions()
-            )
-        }
-        bundle.apply {
-            putParcelableArrayList(
-                LIST_SELECTED_PROFESSIONS_KEY,
-                arrayListOf()
-            )
-        }
-        professionFragment.arguments = bundle
-
-        supportFragmentManager
-            .beginTransaction()
-            .add(R.id.container, professionFragment)
-            .commit()
     }
 }

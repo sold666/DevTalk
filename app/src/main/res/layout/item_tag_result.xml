@@ -10,10 +10,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
+        android:layout_marginBottom="10dp"
         android:paddingStart="?android:attr/expandableListPreferredItemPaddingLeft"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:textColor="?attr/background_color_primary"
+        android:textColor="?attr/text_color_secondary"
         android:textSize="16sp" />
 
-</RelativeLayout >
+</RelativeLayout>

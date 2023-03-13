@@ -25,59 +25,7 @@ class TagFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = TagFragmentBinding.inflate(inflater)
-        binding.nextButton.setOnClickListener { onClickNext() }
-        binding.backButton.setOnClickListener { onClickBack() }
         return binding.root
-    }
-
-    private fun onClickNext() {
-        val selectedTags = tagAdapter.getSelectedTags()
-        if (selectedTags.isEmpty()) {
-            return
-        }
-        val resultFragment = ResultFragment()
-        val bundle = Bundle().apply {
-            putStringArrayList(
-                LIST_TAGS_KEY,
-                tags
-            )
-            putStringArrayList(
-                LIST_SELECTED_TAGS_KEY,
-                selectedTags
-            )
-            putParcelableArrayList(
-                LIST_SELECTED_PROFESSIONS_KEY,
-                selectedProfessions
-            )
-        }
-        resultFragment.arguments = bundle
-
-        requireFragmentManager()
-            .beginTransaction()
-            .replace(R.id.container, resultFragment)
-            .addToBackStack(null)
-            .commit()
-    }
-
-    private fun onClickBack() {
-        val professionFragment = ProfessionFragment()
-        val bundle = Bundle().apply {
-            putParcelableArrayList(
-                LIST_PROFESSIONS_KEY,
-                getProfessions()
-            )
-            putParcelableArrayList(
-                LIST_SELECTED_PROFESSIONS_KEY,
-                selectedProfessions
-            )
-        }
-        professionFragment.arguments = bundle
-
-        requireFragmentManager()
-            .beginTransaction()
-            .replace(R.id.container, professionFragment)
-            .addToBackStack(null)
-            .commit()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -87,7 +35,17 @@ class TagFragment : Fragment() {
         val buttonBack = binding.backButton
 
         buttonNext.setOnClickListener {
-            findNavController().navigate(R.id.action_tagsFragment_to_resultFragment)
+            val bundle = Bundle().apply {
+                putStringArrayList(
+                    LIST_SELECTED_TAGS_KEY,
+                    tagAdapter.getSelectedTags()
+                )
+                putParcelableArrayList(
+                    LIST_SELECTED_PROFESSIONS_KEY,
+                    selectedProfessions
+                )
+            }
+            findNavController().navigate(R.id.action_tagsFragment_to_resultFragment, bundle)
         }
 
         buttonBack.setOnClickListener {
@@ -103,14 +61,8 @@ class TagFragment : Fragment() {
                 } else {
                     arguments?.getParcelableArrayList(LIST_SELECTED_PROFESSIONS_KEY)!!
                 }
-            val selectedTags =
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
-                    arguments?.getStringArrayList(LIST_SELECTED_TAGS_KEY)!!
-                } else {
-                    arguments?.getStringArrayList(LIST_SELECTED_TAGS_KEY)!!
-                }
             tags = ArrayList(selectedProfessions.flatMap(Profession::tags))
-            tagAdapter = TagAdapter(tags, selectedTags)
+            tagAdapter = TagAdapter(tags, arrayListOf()) //todo
             tagList.adapter = tagAdapter
             tagList.layoutManager = LinearLayoutManager(tagList.context)
         }
