@@ -47,9 +47,7 @@ class TagFragment : Fragment() {
                     selectedProfessions
                 )
             }
-            if (selectedTags.isNotEmpty()) {
-                findNavController().navigate(R.id.action_tagsFragment_to_resultFragment, bundle)
-            }
+            findNavController().navigate(R.id.action_tagsFragment_to_resultFragment, bundle)
         }
 
         buttonBack.setOnClickListener {
@@ -67,9 +65,10 @@ class TagFragment : Fragment() {
                     arguments?.getParcelableArrayList(LIST_SELECTED_PROFESSIONS_KEY)!!
                 }
             tags = ArrayList(selectedProfessions.flatMap(Profession::tags))
-            tagAdapter = TagAdapter(tags, selectedTags)
+            tagAdapter = TagAdapter(tags, selectedTags, buttonNext)
             tagList.adapter = tagAdapter
             tagList.layoutManager = LinearLayoutManager(tagList.context)
         }
+        buttonNext.isEnabled = tagAdapter.getSelectedTags().isNotEmpty()
     }
 }

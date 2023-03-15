@@ -4,6 +4,7 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
@@ -14,7 +15,8 @@ import com.dev_talk.structures.Profession
 class ProfessionAdapter(
 
     private val professions: ArrayList<Profession>,
-    private val selectedProfessions: ArrayList<Profession>
+    private val selectedProfessions: ArrayList<Profession>,
+    private val buttonNext: Button
 ) : RecyclerView.Adapter<ProfessionAdapter.ProfessionViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfessionViewHolder {
@@ -50,6 +52,7 @@ class ProfessionAdapter(
                     ContextCompat.getColor(holder.itemView.context, typedValueForButton.resourceId)
                 }
             )
+            buttonNext.isEnabled = selectedProfessions.isNotEmpty()
         }
         holder.itemView.findViewById<CardView>(R.id.profession_card).setCardBackgroundColor(
             if (selectedProfessions.contains(profession)) ContextCompat.getColor(

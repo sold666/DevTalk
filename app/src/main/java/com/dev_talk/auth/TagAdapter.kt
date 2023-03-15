@@ -4,6 +4,7 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
@@ -13,7 +14,8 @@ import com.dev_talk.R
 class TagAdapter(
 
     private val tags: ArrayList<String>,
-    private val selectedTags: ArrayList<String>
+    private val selectedTags: ArrayList<String>,
+    private val buttonNext: Button
 ) : RecyclerView.Adapter<TagAdapter.TagViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TagViewHolder {
@@ -49,6 +51,7 @@ class TagAdapter(
                     ContextCompat.getColor(holder.itemView.context, typedValueForButton.resourceId)
                 }
             )
+            buttonNext.isEnabled = selectedTags.isNotEmpty()
         }
         holder.itemView.findViewById<CardView>(R.id.tag_card).setCardBackgroundColor(
             if (selectedTags.contains(tag)) ContextCompat.getColor(

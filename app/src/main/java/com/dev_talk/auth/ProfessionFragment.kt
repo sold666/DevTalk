@@ -40,9 +40,7 @@ class ProfessionFragment : Fragment() {
                     selectedProfessions
                 )
             }
-            if (selectedProfessions.isNotEmpty()) {
-                findNavController().navigate(R.id.action_professionFragment_to_tagsFragment, bundle)
-            }
+            findNavController().navigate(R.id.action_professionFragment_to_tagsFragment, bundle)
         }
 
         buttonBack.setOnClickListener {
@@ -51,9 +49,10 @@ class ProfessionFragment : Fragment() {
 
         with(binding) {
             val professions = getProfessions()
-            professionAdapter = ProfessionAdapter(professions, selectedProfessions)
+            professionAdapter = ProfessionAdapter(professions, selectedProfessions, buttonNext)
             professionList.adapter = professionAdapter
             professionList.layoutManager = LinearLayoutManager(professionList.context)
         }
+        buttonNext.isEnabled = professionAdapter.getSelectedProfessions().isNotEmpty()
     }
 }
