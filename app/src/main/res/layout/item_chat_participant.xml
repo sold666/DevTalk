@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="80dp"
-    android:background="@drawable/patricipant_card">
+    android:background="@drawable/participant_card">
 
 
     <com.google.android.material.divider.MaterialDivider
