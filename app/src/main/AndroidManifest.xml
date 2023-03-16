@@ -15,7 +15,8 @@
         <activity
             android:name="com.dev_talk.splash.SplashActivity"
             android:theme="@style/SplashScreenTheme"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -23,7 +24,8 @@
         </activity>
         <activity
             android:name="com.dev_talk.auth.AuthActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 
