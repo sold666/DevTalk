@@ -29,8 +29,8 @@ class ChatFragment : Fragment() {
 
     private fun setListeners() {
         val settingsButton = binding.root.findViewById<View>(R.id.chatSettings)
-        settingsButton.setOnClickListener{
-            findNavController().navigate(R.id.action_chatFragment3_to_chatSettingsFragment3)
+        settingsButton.setOnClickListener {
+            findNavController().navigate(R.id.action_chatFragment_to_chatSettingsFragment)
         }
     }
 }
