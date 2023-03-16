@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.dev_talk.main.my_chats.PersonalChatsFragment">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/navigation_personal_chats"
-        android:background="?attr/tab_indicator_color"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent">
+        android:background="?attr/tab_indicator_color">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
@@ -23,10 +21,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:background="?attr/tab_indicator_color"
-            app:tabMaxWidth="0dp"
             app:tabGravity="fill"
-            app:tabMode="fixed"
-            app:tabIndicatorColor="?attr/tab_indicator_color">
+            app:tabIndicatorColor="?attr/tab_indicator_color"
+            app:tabMaxWidth="0dp"
+            app:tabMode="fixed">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
