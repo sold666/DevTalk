@@ -8,7 +8,7 @@ import com.example.developers_messenger.databinding.ItemChatParticipantBinding
 import com.google.android.material.imageview.ShapeableImageView
 
 class ChatParticipantAdapter(
-    private var participants: ArrayList<ChatParticipant>
+    private var participants: List<ChatParticipant>
 ) : RecyclerView.Adapter<ChatParticipantAdapter.ChatParticipantViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatParticipantViewHolder {
@@ -24,13 +24,13 @@ class ChatParticipantAdapter(
     }
 
     class ChatParticipantViewHolder(
-        private val binding: ItemChatParticipantBinding
+        binding: ItemChatParticipantBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        private val icon : ShapeableImageView = binding.iconParticipant
-        private val name : TextView = binding.nameParticipant
-        private val status : TextView = binding.statusParticipant
+        private val icon: ShapeableImageView = binding.iconParticipant
+        private val name: TextView = binding.nameParticipant
+        private val status: TextView = binding.statusParticipant
 
-        fun bind(participant : ChatParticipant) {
+        fun bind(participant: ChatParticipant) {
             icon.setImageResource(participant.icon)
             name.text = participant.name
             status.text = participant.status

@@ -29,23 +29,25 @@ class ChatSettingsFragment : Fragment() {
         with(binding) {
             participantList.adapter = chatParticipantAdapter
             participantList.layoutManager = LinearLayoutManager(participantList.context)
-            amountChatParticipants.text = chatParticipantAdapter.itemCount.toString().plus(" " + amountChatParticipants.text)
+            amountChatParticipants.text = String.format(
+                resources.getString(R.string.members),
+                chatParticipantAdapter.itemCount
+            )
         }
         setListeners()
     }
 
     private fun setListeners() {
-        binding.chatSettingsReturnButton.setOnClickListener{
-            findNavController().navigate(R.id.action_chatSettingsFragment3_to_chatFragment3)
+        binding.chatSettingsReturnButton.setOnClickListener {
+            findNavController().navigate(R.id.action_chatSettingsFragment_to_chatFragment)
         }
     }
 
-    private fun getParticipantList() : ArrayList<ChatParticipant> {
+    private fun getParticipantList(): List<ChatParticipant> {
         return arrayListOf(
             ChatParticipant(R.drawable.ic_launcher_foreground, "Gena", "online"),
             ChatParticipant(R.drawable.ic_launcher_foreground, "Alena", "online"),
             ChatParticipant(R.drawable.ic_launcher_foreground, "Alina", "offline")
         )
     }
-
 }
