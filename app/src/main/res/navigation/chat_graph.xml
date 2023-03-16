@@ -3,26 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/chat_graph"
-    app:startDestination="@id/chatFragment3">
+    app:startDestination="@id/chat_fragment_container">
     <fragment
-        android:id="@+id/chatFragment3"
+        android:id="@+id/chat_fragment_container"
         android:name="com.dev_talk.chat.ChatFragment"
         android:label="ChatFragment"
-        tools:layout="@layout/chat_fragment"
-        >
+        tools:layout="@layout/chat_fragment">
         <action
-            android:id="@+id/action_chatFragment3_to_chatSettingsFragment3"
-            app:destination="@id/chatSettingsFragment3"
-            app:popUpTo="@id/chatSettingsFragment3" />
+            android:id="@+id/action_chatFragment_to_chatSettingsFragment"
+            app:destination="@id/chat_settings_fragment_container"
+            app:popUpTo="@id/chat_settings_fragment_container" />
     </fragment>
     <fragment
-        android:id="@+id/chatSettingsFragment3"
+        android:id="@+id/chat_settings_fragment_container"
         android:name="com.dev_talk.chat.ChatSettingsFragment"
         android:label="ChatSettingsFragment"
-        tools:layout="@layout/chat_settings_fragment"
-        >
+        tools:layout="@layout/chat_settings_fragment">
         <action
-            android:id="@+id/action_chatSettingsFragment3_to_chatFragment3"
-            app:destination="@id/chatFragment3" />
+            android:id="@+id/action_chatSettingsFragment_to_chatFragment"
+            app:destination="@id/chat_fragment_container" />
     </fragment>
 </navigation>
