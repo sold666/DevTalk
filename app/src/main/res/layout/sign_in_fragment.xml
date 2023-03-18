@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="40dp"
                 android:text="@string/register"
-                android:textSize="17sp"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline_right"
                 app:layout_constraintStart_toEndOf="@+id/question_text" />
@@ -92,36 +92,36 @@
                 android:text="@string/welcome"
                 android:textAlignment="center"
                 android:textColor="?attr/text_color_primary"
-                android:textSize="30sp"
+                android:textSize="28sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/text"
                 app:layout_constraintStart_toStartOf="@+id/guideline_left" />
 
             <TextView
                 android:id="@+id/text"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:text="@string/use_our_messenger_and_everything_will_be_fine"
-                android:textAlignment="center"
                 android:textColor="?attr/text_color_secondary"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@id/username"
-                app:layout_constraintStart_toStartOf="@+id/guideline_left" />
+                app:layout_constraintStart_toStartOf="@+id/guideline_left"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_right"/>
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_begin="25dp" />
+                app:layout_constraintGuide_begin="24dp" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_end="25dp" />
+                app:layout_constraintGuide_end="24dp" />
 
             <TextView
                 android:id="@+id/question_text"
@@ -131,7 +131,7 @@
                 android:layout_marginBottom="40dp"
                 android:text="@string/don_t_have_an_account_yet"
                 android:textColor="?attr/text_color_secondary"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline_left"
                 app:layout_constraintTop_toBottomOf="@id/login_button" />
