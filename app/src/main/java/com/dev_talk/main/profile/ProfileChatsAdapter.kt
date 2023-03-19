@@ -3,17 +3,23 @@ package com.dev_talk.main.profile
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.main.R
+import com.dev_talk.main.structures.Chat
 import com.dev_talk.main.structures.Profession
+
 
 class ProfileChatsAdapter(
     private val professions: List<Profession>
 ) : RecyclerView.Adapter<ProfileChatsAdapter.ChatItemViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatItemViewHolder {
         return ChatItemViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.profile_chat_item, null)
+            LayoutInflater.from(parent.context).inflate(R.layout.profile_chat_parent_item, null)
         )
     }
 
@@ -24,23 +30,14 @@ class ProfileChatsAdapter(
     }
 
     class ChatItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val nestedRecyclerView:RecyclerView = itemView.findViewById(R.id.tags_list)
         private val profession: TextView = itemView.findViewById(R.id.profession)
-        private val tags: TextView = itemView.findViewById(R.id.tags)
-
         fun bind(chat: Profession) {
             profession.text = chat.profession
-            tags.text = getChatsText(chat)
-        }
-
-        private fun getChatsText(src: Profession): String {
-            var allTags = ""
-            for ((index, chat) in src.chats.withIndex()) {
-                allTags += chat.tags
-                if (index != src.chats.size - 1) {
-                    allTags += ", "
-                }
-            }
-            return allTags
+            profession.text = chat.profession
+            nestedRecyclerView.layoutManager = GridLayoutManager(itemView.context, 2)
+            nestedRecyclerView.setHasFixedSize(true)
+            nestedRecyclerView.adapter = ProfileChatsItemAdapter(chat.chats)
         }
     }
 }

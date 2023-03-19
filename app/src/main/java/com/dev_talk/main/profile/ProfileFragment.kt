@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.main.databinding.FragmentProfileBinding
 import com.dev_talk.main.structures.Profession
 
@@ -38,9 +39,12 @@ class ProfileFragment : Fragment() {
             } else {
                 arguments?.getParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY)!!
             }
+            val manager = LinearLayoutManager(context)
+            manager.orientation = RecyclerView.VERTICAL
             myChats.apply {
                 adapter = ProfileChatsAdapter(professions)
-                layoutManager = LinearLayoutManager(context)
+                setHasFixedSize(true)
+                layoutManager = manager
                 addItemDecoration(getRecyclerViewDivider(context))
             }
         }
