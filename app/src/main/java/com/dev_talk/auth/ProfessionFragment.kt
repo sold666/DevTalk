@@ -33,7 +33,7 @@ class ProfessionFragment : Fragment() {
         val buttonBack = binding.backButton
 
         buttonNext.setOnClickListener {
-            selectedProfessions = professionAdapter.getSelectedProfessions()
+            selectedProfessions = ArrayList(professionAdapter.getSelectedProfessions().sortedBy { it.id } )
             val bundle = Bundle().apply {
                 putParcelableArrayList(
                     LIST_SELECTED_PROFESSIONS_KEY,

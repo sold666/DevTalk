@@ -5,6 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Profession (
+    val id: Long,
     val name: String,
     val tags: List<String>
 ) : Parcelable

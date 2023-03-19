@@ -13,7 +13,7 @@ class ResultAdapter(
 
     private val context: Context,
     private val dataList: HashMap<String, List<String>>,
-    private val titleList: ArrayList<String> = ArrayList(dataList.keys)
+    private val titleList: ArrayList<String>
 ) : BaseExpandableListAdapter() {
 
     override fun getGroupCount(): Int {

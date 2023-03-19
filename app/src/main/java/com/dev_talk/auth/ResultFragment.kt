@@ -54,7 +54,8 @@ class ResultFragment : Fragment() {
                     arguments?.getParcelableArrayList(LIST_SELECTED_PROFESSIONS_KEY)!!
             }
             val listData = generateMapFromArrays()
-            val resultAdapter = ResultAdapter(resultList.context, listData)
+            val titleList = ArrayList(selectedProfessions.map { it.name } )
+            val resultAdapter = ResultAdapter(resultList.context, listData, titleList)
             resultList.setAdapter(resultAdapter)
             for (i in listData.keys.indices) {
                 resultList.expandGroup(i)
@@ -65,7 +66,7 @@ class ResultFragment : Fragment() {
     private fun generateMapFromArrays(): HashMap<String, List<String>> {
         val expandableListMap = HashMap<String, List<String>>()
         for (profession in selectedProfessions) {
-            val tagsNamesList = selectedTags.filter { profession.tags.contains(it) }
+            val tagsNamesList = profession.tags.filter { selectedTags.contains(it) }
             expandableListMap[profession.name] = tagsNamesList
         }
         return expandableListMap
