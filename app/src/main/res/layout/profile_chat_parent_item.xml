@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:layout_margin="10dp"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-app:cardCornerRadius="8dp"
-android:minHeight="70dp"
-app:cardElevation="6dp">
-
-<LinearLayout
-    android:id="@+id/profession_container"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:layout_margin="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
+    android:minHeight="70dp"
+    app:cardElevation="6dp">
 
-    <TextView
-        android:id="@+id/profession"
-        android:layout_width="300dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="20dp"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:textSize="20sp"
-        app:layout_constraintHorizontal_bias="0"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tags_list"
-        android:textColor="@color/black"
-        tools:text="Profession 1" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/tags_list"
+    <LinearLayout
+        android:id="@+id/profession_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/profession"
+            android:layout_width="300dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="20dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="20sp"
+            app:layout_constraintHorizontal_bias="0"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tags_list"
+            android:textColor="@color/black"
+            tools:text="Profession 1" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tags_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

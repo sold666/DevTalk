@@ -9,7 +9,7 @@ import com.dev_talk.main.R
 import com.dev_talk.main.structures.Chat
 import de.hdodenhof.circleimageview.CircleImageView
 
-class ProfileChatsItemAdapter (
+class ProfileChatsItemAdapter(
     private val chats: List<Chat>
 ) : RecyclerView.Adapter<ProfileChatsItemAdapter.ChatItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatItemViewHolder {

@@ -3,13 +3,10 @@ package com.dev_talk.main.profile
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.main.R
-import com.dev_talk.main.structures.Chat
 import com.dev_talk.main.structures.Profession
 
 
@@ -30,7 +27,7 @@ class ProfileChatsAdapter(
     }
 
     class ChatItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val nestedRecyclerView:RecyclerView = itemView.findViewById(R.id.tags_list)
+        private val nestedRecyclerView: RecyclerView = itemView.findViewById(R.id.tags_list)
         private val profession: TextView = itemView.findViewById(R.id.profession)
         fun bind(chat: Profession) {
             profession.text = chat.profession
