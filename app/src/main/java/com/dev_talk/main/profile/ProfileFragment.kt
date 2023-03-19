@@ -45,7 +45,6 @@ class ProfileFragment : Fragment() {
                 adapter = ProfileChatsAdapter(professions)
                 setHasFixedSize(true)
                 layoutManager = manager
-                addItemDecoration(getRecyclerViewDivider(context))
             }
         }
     }
@@ -58,16 +57,5 @@ class ProfileFragment : Fragment() {
                     putParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY, professions)
                 }
             }
-    }
-
-    private fun getRecyclerViewDivider(context: Context): DividerItemDecoration {
-        val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-        decoration.setDrawable(
-            ContextCompat.getDrawable(
-                context,
-                com.dev_talk.main.R.drawable.divider
-            )!!
-        )
-        return decoration
     }
 }
