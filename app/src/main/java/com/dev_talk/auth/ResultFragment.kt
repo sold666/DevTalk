@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.dev_talk.LIST_SELECTED_PROFESSIONS_KEY
 import com.dev_talk.LIST_SELECTED_TAGS_KEY
-import com.dev_talk.R
 import com.dev_talk.databinding.ResultFragmentBinding
 import com.dev_talk.structures.Profession
 import androidx.navigation.fragment.findNavController

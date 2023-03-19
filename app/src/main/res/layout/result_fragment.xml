@@ -12,6 +12,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:overScrollMode="never"
+        android:fastScrollEnabled="false"
+        android:groupIndicator="@null"
         app:layout_constraintBottom_toTopOf="@+id/next_button"
         app:layout_constraintTop_toBottomOf="@+id/text"
         app:layout_constraintVertical_bias="0.217"

@@ -36,7 +36,7 @@ class SignUpFragment : Fragment() {
         }
 
         buttonLogin.setOnClickListener {
-            findNavController().navigate(R.id.action_signUpFragment_to_signInFragment)
+            findNavController().popBackStack()
         }
     }
 }
