@@ -23,6 +23,7 @@
             android:background="?attr/tab_indicator_color"
             app:tabGravity="fill"
             app:tabIndicatorColor="?attr/tab_indicator_color"
+            style="@style/MyCustomTabTextAppearance"
             app:tabMaxWidth="0dp"
             app:tabMode="fixed">
 
