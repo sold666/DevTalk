@@ -36,6 +36,11 @@ class PersonalChatsFragment : Fragment() {
                     arguments?.getParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY)!!
                 }
             setUpViewPager2(viewPager = chatsWithCategory, tabLayout = professions, data = data)
+            for ((index, currentProfession) in data.withIndex()) {
+                if (index < 3) {
+                    professions.getTabAt(index)?.text = currentProfession.profession
+                }
+            }
             professions.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabReselected(tab: TabLayout.Tab?) {}
                 override fun onTabUnselected(tab: TabLayout.Tab?) {}
