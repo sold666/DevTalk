@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.main.databinding.FragmentProfileBinding
 import com.dev_talk.main.structures.Profession
 
-
 private const val DEFAULT_LIST_PROFESSIONS_KEY = "professions"
 
 class ProfileFragment : Fragment() {

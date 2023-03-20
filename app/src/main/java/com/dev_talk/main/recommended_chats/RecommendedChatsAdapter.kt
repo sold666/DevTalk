@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.main.R
 import com.dev_talk.main.structures.Chat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class RecommendedChatsAdapter(
     private var chats: List<Chat>

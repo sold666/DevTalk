@@ -1,19 +1,16 @@
 package com.dev_talk.main.recommended_chats
 
-
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
-import androidx.core.content.ContextCompat
 import androidx.core.view.size
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.main.R
+import com.dev_talk.main.common.Divider.Companion.getRecyclerViewDivider
 import com.dev_talk.main.databinding.FragmentRecommendedChatsBinding
 import com.dev_talk.main.structures.Chat
 
@@ -58,17 +55,6 @@ class RecommendedChatsFragment : Fragment() {
                     putParcelableArrayList(RECOMMENDED_LIST_PROFESSIONS_KEY, chats)
                 }
             }
-    }
-
-    private fun getRecyclerViewDivider(context: Context): DividerItemDecoration {
-        val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-        decoration.setDrawable(
-            ContextCompat.getDrawable(
-                context,
-                R.drawable.divider
-            )!!
-        )
-        return decoration
     }
 
     private fun setUpSearchView() {
