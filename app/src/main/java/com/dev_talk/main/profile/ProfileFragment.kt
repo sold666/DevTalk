@@ -1,14 +1,11 @@
 package com.dev_talk.main.profile
 
-import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.main.databinding.FragmentProfileBinding
@@ -39,13 +36,21 @@ class ProfileFragment : Fragment() {
             } else {
                 arguments?.getParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY)!!
             }
-            val manager = LinearLayoutManager(context)
-            manager.orientation = RecyclerView.VERTICAL
-            myChats.apply {
-                adapter = ProfileChatsAdapter(professions)
-                setHasFixedSize(true)
-                layoutManager = manager
-            }
+            setUpRecyclerView(recyclerView = myChats, professions = professions)
+
+        }
+    }
+
+    private fun setUpRecyclerView(
+        recyclerView: RecyclerView,
+        professions: ArrayList<Profession>
+    ) {
+        val manager = LinearLayoutManager(context)
+        manager.orientation = RecyclerView.VERTICAL
+        recyclerView.apply {
+            adapter = ProfileChatsAdapter(professions)
+            setHasFixedSize(true)
+            layoutManager = manager
         }
     }
 

@@ -12,11 +12,9 @@ import de.hdodenhof.circleimageview.CircleImageView
 class ProfileChatsItemAdapter(
     private val chats: List<Chat>
 ) : RecyclerView.Adapter<ProfileChatsItemAdapter.ChatItemViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatItemViewHolder {
-        return ChatItemViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.profile_chat_child_item, null)
-        )
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ChatItemViewHolder(
+        LayoutInflater.from(parent.context).inflate(R.layout.profile_chat_child_item, null)
+    )
 
     override fun getItemCount() = chats.size
 

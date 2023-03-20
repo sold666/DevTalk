@@ -35,26 +35,14 @@ class PersonalChatsFragment : Fragment() {
                 } else {
                     arguments?.getParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY)!!
                 }
-            with(chatsWithCategory) {
-                adapter = PersonalChatsAdapterViewPager(
-                    requireActivity(),
-                    professions.tabCount,
-                    data,
-                    getProfessionsNames()
-                )
-                registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-                    override fun onPageSelected(position: Int) {
-                        professions.selectTab(professions.getTabAt(position))
-                    }
-                })
-                professions.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-                    override fun onTabReselected(tab: TabLayout.Tab?) {}
-                    override fun onTabUnselected(tab: TabLayout.Tab?) {}
-                    override fun onTabSelected(tab: TabLayout.Tab) {
-                        currentItem = tab.position
-                    }
-                })
-            }
+            setUpViewPager2(viewPager = chatsWithCategory, tabLayout = professions, data = data)
+            professions.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+                override fun onTabReselected(tab: TabLayout.Tab?) {}
+                override fun onTabUnselected(tab: TabLayout.Tab?) {}
+                override fun onTabSelected(tab: TabLayout.Tab) {
+                    chatsWithCategory.currentItem = tab.position
+                }
+            })
         }
     }
 
@@ -76,5 +64,25 @@ class PersonalChatsFragment : Fragment() {
             }
         }
         return listWithNames
+    }
+
+    private fun setUpViewPager2(
+        viewPager: ViewPager2,
+        tabLayout: TabLayout,
+        data: java.util.ArrayList<Profession>
+    ) {
+        viewPager.apply {
+            adapter = PersonalChatsAdapterViewPager(
+                activity = requireActivity(),
+                itemCount = tabLayout.tabCount,
+                data = data,
+                tabNames = getProfessionsNames()
+            )
+            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    tabLayout.selectTab(tabLayout.getTabAt(position))
+                }
+            })
+        }
     }
 }

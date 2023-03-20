@@ -14,11 +14,9 @@ class ProfileChatsAdapter(
     private val professions: List<Profession>
 ) : RecyclerView.Adapter<ProfileChatsAdapter.ChatItemViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatItemViewHolder {
-        return ChatItemViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.profile_chat_parent_item, null)
-        )
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ChatItemViewHolder(
+        LayoutInflater.from(parent.context).inflate(R.layout.profile_chat_parent_item, null)
+    )
 
     override fun getItemCount() = professions.size
 
@@ -29,6 +27,7 @@ class ProfileChatsAdapter(
     class ChatItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val nestedRecyclerView: RecyclerView = itemView.findViewById(R.id.tags_list)
         private val profession: TextView = itemView.findViewById(R.id.profession)
+
         fun bind(chat: Profession) {
             profession.text = chat.profession
             profession.text = chat.profession

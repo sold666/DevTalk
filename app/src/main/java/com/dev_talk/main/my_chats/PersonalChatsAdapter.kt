@@ -12,11 +12,9 @@ import com.dev_talk.main.structures.Chat
 class PersonalChatsAdapter(
     private val chats: List<Chat>
 ) : RecyclerView.Adapter<PersonalChatsAdapter.ChatItemViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatItemViewHolder {
-        return ChatItemViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.default_chat_item, null)
-        )
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ChatItemViewHolder(
+        LayoutInflater.from(parent.context).inflate(R.layout.default_chat_item, null)
+    )
 
     override fun getItemCount() = chats.size
 

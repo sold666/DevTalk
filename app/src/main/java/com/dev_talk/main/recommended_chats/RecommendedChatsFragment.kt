@@ -12,10 +12,10 @@ import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.main.R
 import com.dev_talk.main.databinding.FragmentRecommendedChatsBinding
 import com.dev_talk.main.structures.Chat
-
 
 private const val RECOMMENDED_LIST_PROFESSIONS_KEY = "recommendations"
 
@@ -45,13 +45,8 @@ class RecommendedChatsFragment : Fragment() {
                     arguments?.getParcelableArrayList(RECOMMENDED_LIST_PROFESSIONS_KEY)!!
                 }
             adapterRV = RecommendedChatsAdapter(dataRV)
-            recommendedChats.apply {
-                adapter = adapterRV
-                layoutManager = LinearLayoutManager(context)
-                addItemDecoration(getRecyclerViewDivider(context))
-            }
+            setUpRecyclerView(recommendedChats)
             setUpSearchView()
-
         }
     }
 
@@ -97,6 +92,14 @@ class RecommendedChatsFragment : Fragment() {
                     return true
                 }
             })
+        }
+    }
+
+    private fun setUpRecyclerView(recyclerView: RecyclerView) {
+        recyclerView.apply {
+            adapter = adapterRV
+            layoutManager = LinearLayoutManager(context)
+            addItemDecoration(getRecyclerViewDivider(context))
         }
     }
 }
