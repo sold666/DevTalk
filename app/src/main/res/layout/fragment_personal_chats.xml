@@ -13,17 +13,18 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:title="@string/my_chats_title" />
+            app:title="@string/my_chats_title"
+            app:titleCentered="true" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/professions"
+            style="@style/MyCustomTabTextAppearance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:background="?attr/tab_indicator_color"
             app:tabGravity="fill"
             app:tabIndicatorColor="?attr/tab_indicator_color"
-            style="@style/MyCustomTabTextAppearance"
             app:tabMaxWidth="0dp"
             app:tabMode="fixed">
 

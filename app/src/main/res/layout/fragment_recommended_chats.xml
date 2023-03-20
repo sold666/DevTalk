@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/recommended_chats_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:focusableInTouchMode="true"
-    android:id="@+id/recommended_chats_layout">
-
+    android:focusableInTouchMode="true">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_marginBottom="8dp"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
+        android:layout_marginBottom="8dp"
+        android:background="@color/green"
         android:textColor="@android:color/black"
         android:textSize="14sp"
-        android:background="@color/green"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
@@ -23,17 +22,18 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/green"
+            app:titleCentered="true"
             app:menu="@menu/recommendations_search_menu"
             app:title="@string/app_name" />
     </com.google.android.material.appbar.AppBarLayout>
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recommended_chats"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/list_with_recommended_chats_bg_color"
-        android:id="@+id/recommended_chats"
-        android:layout_below="@id/app_bar" />
+        android:layout_below="@id/app_bar"
+        android:background="?attr/list_with_recommended_chats_bg_color" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floating_action_button"

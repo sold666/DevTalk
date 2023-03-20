@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.main.R
 import com.dev_talk.main.structures.Profession
 
-
 class ProfileChatsAdapter(
     private val professions: List<Profession>
 ) : RecyclerView.Adapter<ProfileChatsAdapter.ChatItemViewHolder>() {
