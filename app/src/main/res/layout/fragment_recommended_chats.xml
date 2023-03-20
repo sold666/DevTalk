@@ -46,15 +46,3 @@
         app:srcCompat="@drawable/ic_add_new_chat_btn" />
 
 </RelativeLayout>
-
-    <!--<SearchView-->
-    <!--app:iconifiedByDefault="false"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="45dp"-->
-    <!--android:editTextColor="@color/white"-->
-    <!--android:textColorHint="@color/white"-->
-    <!--android:id="@+id/search_bar"-->
-    <!--android:queryBackground="@android:color/transparent"-->
-    <!--app:queryHint="@string/default_query_hint"-->
-    <!--android:autoCompleteTextViewStyle="@color/white"-->
-    <!--android:background="@drawable/search_view_background" />-->
