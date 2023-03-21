@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.dev_talk.LIST_SELECTED_PROFESSIONS_KEY
-import com.dev_talk.LIST_SELECTED_TAGS_KEY
+import androidx.navigation.fragment.findNavController
+import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
+import com.dev_talk.utils.LIST_SELECTED_TAGS_KEY
 import com.dev_talk.databinding.ResultFragmentBinding
 import com.dev_talk.structures.Profession
-import androidx.navigation.fragment.findNavController
 
 class ResultFragment : Fragment() {
 
@@ -53,7 +53,7 @@ class ResultFragment : Fragment() {
                     arguments?.getParcelableArrayList(LIST_SELECTED_PROFESSIONS_KEY)!!
             }
             val listData = generateMapFromArrays()
-            val titleList = ArrayList(selectedProfessions.map { it.name } )
+            val titleList = ArrayList(selectedProfessions.map { it.name })
             val resultAdapter = ResultAdapter(resultList.context, listData, titleList)
             resultList.setAdapter(resultAdapter)
             for (i in listData.keys.indices) {
@@ -71,5 +71,3 @@ class ResultFragment : Fragment() {
         return expandableListMap
     }
 }
-
-// todo убрать галочку на пустых профессиях при развертывании списка

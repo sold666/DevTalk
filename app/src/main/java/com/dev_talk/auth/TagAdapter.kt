@@ -10,6 +10,7 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.R
+import com.dev_talk.utils.getThemeColorRes
 
 class TagAdapter(
 
@@ -32,11 +33,8 @@ class TagAdapter(
         val tag = tags[position]
         holder.bind(tag)
 
-        val typedValueForBackground = TypedValue()
-        val theme = holder.itemView.context.theme
-        theme.resolveAttribute(R.attr.background_color_primary, typedValueForBackground, true)
-        val typedValueForButton = TypedValue()
-        theme.resolveAttribute(R.attr.button_click_color_secondary, typedValueForButton, true)
+        val backgroundColor = holder.itemView.context.getThemeColorRes(R.attr.background_color_primary)
+        val buttonColor = holder.itemView.context.getThemeColorRes(R.attr.button_click_color_secondary)
 
         holder.itemView.setOnClickListener {
             holder.itemView.findViewById<CardView>(R.id.tag_card).setCardBackgroundColor(
@@ -44,11 +42,11 @@ class TagAdapter(
                     selectedTags.remove(tag)
                     ContextCompat.getColor(
                         holder.itemView.context,
-                        typedValueForBackground.resourceId
+                        backgroundColor
                     )
                 } else {
                     selectedTags.add(tag)
-                    ContextCompat.getColor(holder.itemView.context, typedValueForButton.resourceId)
+                    ContextCompat.getColor(holder.itemView.context, buttonColor)
                 }
             )
             buttonNext.isEnabled = selectedTags.isNotEmpty()
@@ -56,10 +54,10 @@ class TagAdapter(
         holder.itemView.findViewById<CardView>(R.id.tag_card).setCardBackgroundColor(
             if (selectedTags.contains(tag)) ContextCompat.getColor(
                 holder.itemView.context,
-                typedValueForButton.resourceId
+                buttonColor
             ) else ContextCompat.getColor(
                 holder.itemView.context,
-                typedValueForBackground.resourceId
+                backgroundColor
             )
         )
     }

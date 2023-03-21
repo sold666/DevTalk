@@ -1,4 +1,4 @@
-package com.dev_talk
+package com.dev_talk.utils
 
 import com.dev_talk.structures.Profession
 
@@ -11,7 +11,8 @@ fun getProfessions(): ArrayList<Profession> {
                 "Spring Boot",
                 "Django",
                 "Flask"
-            )
+            ),
+            false
         ),
         Profession(
             2,
@@ -20,7 +21,8 @@ fun getProfessions(): ArrayList<Profession> {
                 "Angular",
                 "React",
                 "Vue.js"
-            )
+            ),
+            false
         ),
         Profession(
             3,
@@ -29,7 +31,8 @@ fun getProfessions(): ArrayList<Profession> {
                 "Unity",
                 "Unreal Endine",
                 "Godot"
-            )
+            ),
+            false
         ),
         Profession(
             4,
@@ -38,7 +41,8 @@ fun getProfessions(): ArrayList<Profession> {
                 "Machine Learning",
                 "Data Mining",
                 "Data Analysis"
-            )
+            ),
+            false
         ),
         Profession(
             5,
@@ -47,7 +51,8 @@ fun getProfessions(): ArrayList<Profession> {
                 "Android SDK",
                 "Flutter",
                 "React Native"
-            )
+            ),
+            false
         ),
         Profession(
             6,
@@ -57,7 +62,8 @@ fun getProfessions(): ArrayList<Profession> {
                 "Figma",
                 "Sketch",
                 "InVision"
-            )
+            ),
+           false
         ),
         Profession(
             7,
@@ -67,7 +73,8 @@ fun getProfessions(): ArrayList<Profession> {
                 "Network Security",
                 "Ethical Hacking",
                 "Vulnerability Assessment"
-            )
+            ),
+            false
         ),
         Profession(
             8,
@@ -78,7 +85,8 @@ fun getProfessions(): ArrayList<Profession> {
                 "AWS",
                 "Jenkins",
                 "CI/CD"
-            )
+            ),
+            false
         ),
         Profession(
             9,
@@ -89,7 +97,8 @@ fun getProfessions(): ArrayList<Profession> {
                 "Hyperledger Fabric",
                 "Smart Contracts",
                 "Decentralized Applications (dApps)"
-            )
+            ),
+            false
         )
     )
 }

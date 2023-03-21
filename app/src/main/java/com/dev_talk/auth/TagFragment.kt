@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dev_talk.LIST_SELECTED_PROFESSIONS_KEY
-import com.dev_talk.LIST_SELECTED_TAGS_KEY
+import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
+import com.dev_talk.utils.LIST_SELECTED_TAGS_KEY
 import com.dev_talk.R
 import com.dev_talk.databinding.TagFragmentBinding
 import com.dev_talk.structures.Profession

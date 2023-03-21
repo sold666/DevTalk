@@ -1,22 +1,20 @@
 package com.dev_talk.auth
 
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.R
 import com.dev_talk.structures.Profession
+import com.dev_talk.utils.getThemeColorRes
 
 class ProfessionAdapter(
 
-    private val professions: ArrayList<Profession>,
-    private val selectedProfessions: ArrayList<Profession>,
-    private val buttonNext: Button
+    val professions: ArrayList<Profession>,
+    private val onProfessionsChanged: () -> Unit
 ) : RecyclerView.Adapter<ProfessionAdapter.ProfessionViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfessionViewHolder {
@@ -33,40 +31,27 @@ class ProfessionAdapter(
         val profession = professions[position]
         holder.bind(profession)
 
-        val typedValueForBackground = TypedValue()
-        val theme = holder.itemView.context.theme
-        theme.resolveAttribute(R.attr.background_color_primary, typedValueForBackground, true)
-        val typedValueForButton = TypedValue()
-        theme.resolveAttribute(R.attr.button_click_color_secondary, typedValueForButton, true)
+        val backgroundColor = holder.itemView.context.getThemeColorRes(R.attr.background_color_primary)
+        val buttonColor = holder.itemView.context.getThemeColorRes(R.attr.button_click_color_secondary)
 
         holder.itemView.setOnClickListener {
+            profession.isSelected = !profession.isSelected
             holder.itemView.findViewById<CardView>(R.id.profession_card).setCardBackgroundColor(
-                if (selectedProfessions.contains(profession)) {
-                    selectedProfessions.remove(profession)
+                if (profession.isSelected) {
+                    ContextCompat.getColor(holder.itemView.context, buttonColor)
+                } else {
                     ContextCompat.getColor(
                         holder.itemView.context,
-                        typedValueForBackground.resourceId
+                        backgroundColor
                     )
-                } else {
-                    selectedProfessions.add(profession)
-                    ContextCompat.getColor(holder.itemView.context, typedValueForButton.resourceId)
                 }
             )
-            buttonNext.isEnabled = selectedProfessions.isNotEmpty()
+            onProfessionsChanged.invoke()
         }
-        holder.itemView.findViewById<CardView>(R.id.profession_card).setCardBackgroundColor(
-            if (selectedProfessions.contains(profession)) ContextCompat.getColor(
-                holder.itemView.context,
-                typedValueForButton.resourceId
-            ) else ContextCompat.getColor(
-                holder.itemView.context,
-                typedValueForBackground.resourceId
-            )
-        )
     }
 
-    fun getSelectedProfessions(): ArrayList<Profession> {
-        return selectedProfessions
+    fun List<Profession>.getSelectedProfessions(): List<Profession> {
+        return this.filter { it.isSelected }
     }
 
     class ProfessionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

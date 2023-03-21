@@ -7,5 +7,6 @@ import kotlinx.parcelize.Parcelize
 data class Profession (
     val id: Long,
     val name: String,
-    val tags: List<String>
+    val tags: List<String>,
+    var isSelected: Boolean
 ) : Parcelable

@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dev_talk.*
+import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
+import com.dev_talk.R
 import com.dev_talk.databinding.ProfessionFragmentBinding
+import com.dev_talk.utils.getProfessions
 import com.dev_talk.structures.Profession
 
 class ProfessionFragment : Fragment() {
@@ -33,7 +35,8 @@ class ProfessionFragment : Fragment() {
         val buttonBack = binding.backButton
 
         buttonNext.setOnClickListener {
-            selectedProfessions = ArrayList(professionAdapter.getSelectedProfessions().sortedBy { it.id } )
+            selectedProfessions =
+                ArrayList(professionAdapter.professions.filter { it.isSelected }.sortedBy { it.id })
             val bundle = Bundle().apply {
                 putParcelableArrayList(
                     LIST_SELECTED_PROFESSIONS_KEY,
@@ -47,12 +50,16 @@ class ProfessionFragment : Fragment() {
             findNavController().popBackStack()
         }
 
+        val onProfessionsChanged: () -> Unit = {
+            buttonNext.isEnabled = professionAdapter.professions.any { it.isSelected }
+        }
+
         with(binding) {
             val professions = getProfessions()
-            professionAdapter = ProfessionAdapter(professions, selectedProfessions, buttonNext)
+            professionAdapter = ProfessionAdapter(professions, onProfessionsChanged)
             professionList.adapter = professionAdapter
             professionList.layoutManager = LinearLayoutManager(professionList.context)
+            onProfessionsChanged.invoke()
         }
-        buttonNext.isEnabled = professionAdapter.getSelectedProfessions().isNotEmpty()
     }
 }
