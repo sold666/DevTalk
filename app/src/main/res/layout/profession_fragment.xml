@@ -11,6 +11,7 @@
         android:layout_marginBottom="40dp"
         android:background="@drawable/rounded_button"
         android:text="@string/back"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/next_button"
         app:layout_constraintStart_toStartOf="parent" />
@@ -22,6 +23,7 @@
         android:layout_marginBottom="40dp"
         android:background="@drawable/rounded_button"
         android:text="@string/next"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/back_button" />
