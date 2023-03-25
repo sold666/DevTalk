@@ -59,23 +59,28 @@ class RecommendedChatsFragment : Fragment() {
 
     private fun setUpSearchView() {
         val searchView = binding.searchBar.menu.findItem(R.id.menu_search)?.actionView as SearchView
-        with(searchView) {
+        val searchBarMenu = binding.searchBar.menu
+        searchView.apply {
             maxWidth = Integer.MAX_VALUE;
             queryHint = getString(R.string.default_query_hint)
             setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     clearFocus()
-                    binding.searchBar.menu.findItem(R.id.menu_search)?.collapseActionView()
-                    adapterRV.filter.filter(query)
+                    searchBarMenu.findItem(R.id.menu_search)?.collapseActionView()
+                    filterData(query)
                     if (binding.recommendedChats.size == 0) {
-                        adapterRV.filter.filter("")
+                        filterData("")
                     }
                     return true
                 }
 
                 override fun onQueryTextChange(query: String?): Boolean {
-                    adapterRV.filter.filter(query)
+                    filterData(query)
                     return true
+                }
+
+                private fun filterData(query: String?) {
+                    adapterRV.filter.filter(query)
                 }
             })
         }

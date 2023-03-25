@@ -29,7 +29,6 @@ class ProfileChatsAdapter(
 
         fun bind(chat: Profession) {
             profession.text = chat.profession
-            profession.text = chat.profession
             nestedRecyclerView.layoutManager = GridLayoutManager(itemView.context, 2)
             nestedRecyclerView.setHasFixedSize(true)
             nestedRecyclerView.adapter = ProfileChatsItemAdapter(chat.chats)
