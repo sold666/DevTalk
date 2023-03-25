@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">DevTalk</string>
+    <string name="recommended_chats">Чаты</string>
+    <string name="personal_chats">Мои чаты</string>
+    <string name="profile">Профиль</string>
+    <string name="create_chat">Создать чат</string>
+    <string name="default_username">Имя пользователя</string>
+    <string name="default_query_hint">Поиск…</string>
+    <string name="alter_profile">Редактировать профиль</string>
+    <string name="my_chats_title">Мои чаты</string>
+    <string name="profession_1">Профессия №1</string>
+    <string name="profession_2">Профессия №2</string>
+    <string name="profession_3">Профессия №3</string>
+    <string name="chat_icon_description">Иконка чата</string>
+    <string name="search_menu_tem">Поиск</string>
+</resources>
