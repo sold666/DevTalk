@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">developers-messenger</string>
+    <string name="chat_name">Имя чата</string>
+    <string name="chat_settings">Настройки чата</string>
+    <string name="message_input">Введите сообщение...</string>
+    <string name="send_a_message">Отправить сообщение</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="notifications">Уведомления</string>
+    <string name="members">Участники: %1$d</string>
+</resources>
