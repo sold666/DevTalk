@@ -12,7 +12,6 @@ import com.dev_talk.structures.Profession
 import com.dev_talk.utils.getThemeColorRes
 
 class ProfessionAdapter(
-
     val professions: ArrayList<Profession>,
     private val onProfessionsChanged: () -> Unit
 ) : RecyclerView.Adapter<ProfessionAdapter.ProfessionViewHolder>() {
@@ -23,16 +22,16 @@ class ProfessionAdapter(
         )
     }
 
-    override fun getItemCount(): Int {
-        return professions.size
-    }
+    override fun getItemCount() = professions.size
 
     override fun onBindViewHolder(holder: ProfessionViewHolder, position: Int) {
         val profession = professions[position]
         holder.bind(profession)
 
-        val backgroundColor = holder.itemView.context.getThemeColorRes(R.attr.background_color_primary)
-        val buttonColor = holder.itemView.context.getThemeColorRes(R.attr.button_click_color_secondary)
+        val backgroundColor =
+            holder.itemView.context.getThemeColorRes(R.attr.background_color_primary)
+        val buttonColor =
+            holder.itemView.context.getThemeColorRes(R.attr.button_click_color_secondary)
 
         holder.itemView.setOnClickListener {
             profession.isSelected = !profession.isSelected

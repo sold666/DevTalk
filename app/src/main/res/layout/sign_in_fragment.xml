@@ -20,10 +20,10 @@
                 android:layout_marginTop="80dp"
                 android:contentDescription="@string/dev_talk_icon"
                 android:src="@drawable/dev_talk_icon"
-                app:layout_constraintBottom_toTopOf="@+id/welcome_text"
-                app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+                app:layout_constraintBottom_toTopOf="@id/welcome_text"
+                app:layout_constraintEnd_toStartOf="@id/guideline_right"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline_left"
+                app:layout_constraintStart_toStartOf="@id/guideline_left"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
@@ -41,8 +41,8 @@
                 android:inputType="textPersonName"
                 android:minWidth="48dp"
                 android:minHeight="48dp"
-                app:layout_constraintBottom_toTopOf="@+id/password"
-                app:layout_constraintStart_toStartOf="@+id/guideline_left" />
+                app:layout_constraintBottom_toTopOf="@id/password"
+                app:layout_constraintStart_toStartOf="@id/guideline_left" />
 
             <EditText
                 android:id="@+id/password"
@@ -58,8 +58,8 @@
                 android:inputType="textPassword"
                 android:minWidth="48dp"
                 android:minHeight="48dp"
-                app:layout_constraintBottom_toTopOf="@+id/login_button"
-                app:layout_constraintStart_toStartOf="@+id/guideline_left" />
+                app:layout_constraintBottom_toTopOf="@id/login_button"
+                app:layout_constraintStart_toStartOf="@id/guideline_left" />
 
             <Button
                 android:id="@+id/login_button"
@@ -69,9 +69,9 @@
                 android:background="@drawable/rounded_button"
                 android:text="@string/login"
                 android:textAllCaps="false"
-                app:layout_constraintBottom_toTopOf="@+id/register_button"
-                app:layout_constraintEnd_toStartOf="@+id/guideline_right"
-                app:layout_constraintStart_toStartOf="@+id/guideline_left" />
+                app:layout_constraintBottom_toTopOf="@id/register_button"
+                app:layout_constraintEnd_toStartOf="@id/guideline_right"
+                app:layout_constraintStart_toStartOf="@id/guideline_left" />
 
             <Button
                 android:id="@+id/register_button"
@@ -83,8 +83,8 @@
                 android:text="@string/registration"
                 android:textAllCaps="false"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/guideline_right"
-                app:layout_constraintStart_toEndOf="@+id/question_text" />
+                app:layout_constraintEnd_toStartOf="@id/guideline_right"
+                app:layout_constraintStart_toEndOf="@id/question_text" />
 
             <TextView
                 android:id="@+id/welcome_text"
@@ -92,12 +92,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:text="@string/welcome"
-                android:textAlignment="center"
                 android:textColor="?attr/text_color_primary"
                 android:textSize="28sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/text"
-                app:layout_constraintStart_toStartOf="@+id/guideline_left" />
+                app:layout_constraintBottom_toTopOf="@id/text"
+                app:layout_constraintStart_toStartOf="@id/guideline_left" />
 
             <TextView
                 android:id="@+id/text"
@@ -108,8 +107,8 @@
                 android:textColor="?attr/text_color_secondary"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@id/username"
-                app:layout_constraintEnd_toStartOf="@+id/guideline_right"
-                app:layout_constraintStart_toStartOf="@+id/guideline_left" />
+                app:layout_constraintEnd_toStartOf="@id/guideline_right"
+                app:layout_constraintStart_toStartOf="@id/guideline_left" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_left"
@@ -136,8 +135,8 @@
                 android:textColor="?attr/text_color_secondary"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/register_button"
-                app:layout_constraintStart_toStartOf="@+id/guideline_left"
+                app:layout_constraintEnd_toStartOf="@id/register_button"
+                app:layout_constraintStart_toStartOf="@id/guideline_left"
                 app:layout_constraintTop_toBottomOf="@id/login_button" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -13,7 +13,6 @@ import com.dev_talk.R
 import com.dev_talk.utils.getThemeColorRes
 
 class TagAdapter(
-
     private val tags: ArrayList<String>,
     private val selectedTags: ArrayList<String>,
     private val buttonNext: Button
@@ -25,16 +24,16 @@ class TagAdapter(
         )
     }
 
-    override fun getItemCount(): Int {
-        return tags.size
-    }
+    override fun getItemCount() = tags.size
 
     override fun onBindViewHolder(holder: TagViewHolder, position: Int) {
         val tag = tags[position]
         holder.bind(tag)
 
-        val backgroundColor = holder.itemView.context.getThemeColorRes(R.attr.background_color_primary)
-        val buttonColor = holder.itemView.context.getThemeColorRes(R.attr.button_click_color_secondary)
+        val backgroundColor =
+            holder.itemView.context.getThemeColorRes(R.attr.background_color_primary)
+        val buttonColor =
+            holder.itemView.context.getThemeColorRes(R.attr.button_click_color_secondary)
 
         holder.itemView.setOnClickListener {
             holder.itemView.findViewById<CardView>(R.id.tag_card).setCardBackgroundColor(

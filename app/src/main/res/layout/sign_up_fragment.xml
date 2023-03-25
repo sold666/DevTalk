@@ -20,15 +20,14 @@
                 android:layout_marginTop="80dp"
                 android:drawablePadding="20dp"
                 android:text="@string/registration"
-                android:textAlignment="center"
                 android:textColor="?attr/text_color_primary"
                 android:textSize="28sp"
                 android:textStyle="bold"
                 app:drawableEndCompat="@drawable/ic_registration"
                 app:drawableTint="?attr/icon_tint_color_primary"
-                app:layout_constraintBottom_toTopOf="@+id/asking"
-                app:layout_constraintEnd_toStartOf="@+id/guideline_right"
-                app:layout_constraintStart_toStartOf="@+id/guideline_left"
+                app:layout_constraintBottom_toTopOf="@id/asking"
+                app:layout_constraintEnd_toStartOf="@id/guideline_right"
+                app:layout_constraintStart_toStartOf="@id/guideline_left"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
@@ -38,11 +37,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:text="@string/please_fill_out_the_forms_below"
-                android:textAlignment="center"
                 android:textColor="?attr/text_color_secondary"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toTopOf="@+id/name"
-                app:layout_constraintStart_toStartOf="@+id/guideline_left" />
+                app:layout_constraintBottom_toTopOf="@id/name"
+                app:layout_constraintStart_toStartOf="@id/guideline_left" />
 
             <EditText
                 android:id="@+id/name"
@@ -56,8 +54,8 @@
                 android:inputType="textPersonName"
                 android:minWidth="48dp"
                 android:minHeight="48dp"
-                app:layout_constraintBottom_toTopOf="@+id/surname"
-                app:layout_constraintStart_toStartOf="@+id/guideline_left" />
+                app:layout_constraintBottom_toTopOf="@id/surname"
+                app:layout_constraintStart_toStartOf="@id/guideline_left" />
 
             <EditText
                 android:id="@+id/username"
@@ -71,8 +69,8 @@
                 android:inputType="textPersonName"
                 android:minWidth="48dp"
                 android:minHeight="48dp"
-                app:layout_constraintBottom_toTopOf="@+id/password"
-                app:layout_constraintStart_toStartOf="@+id/guideline_left" />
+                app:layout_constraintBottom_toTopOf="@id/password"
+                app:layout_constraintStart_toStartOf="@id/guideline_left" />
 
             <EditText
                 android:id="@+id/password"
@@ -86,8 +84,8 @@
                 android:inputType="textPersonName"
                 android:minWidth="48dp"
                 android:minHeight="48dp"
-                app:layout_constraintBottom_toTopOf="@+id/next_button"
-                app:layout_constraintStart_toStartOf="@+id/guideline_left" />
+                app:layout_constraintBottom_toTopOf="@id/next_button"
+                app:layout_constraintStart_toStartOf="@id/guideline_left" />
 
             <Button
                 android:id="@+id/next_button"
@@ -97,9 +95,9 @@
                 android:background="@drawable/rounded_button"
                 android:text="@string/next"
                 android:textAllCaps="false"
-                app:layout_constraintBottom_toTopOf="@+id/sign_in_button"
-                app:layout_constraintEnd_toStartOf="@+id/guideline_right"
-                app:layout_constraintStart_toStartOf="@+id/guideline_left" />
+                app:layout_constraintBottom_toTopOf="@id/sign_in_button"
+                app:layout_constraintEnd_toStartOf="@id/guideline_right"
+                app:layout_constraintStart_toStartOf="@id/guideline_left" />
 
             <TextView
                 android:id="@+id/question_text"
@@ -112,23 +110,22 @@
                 android:textColor="?attr/text_color_secondary"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/sign_in_button"
-                app:layout_constraintStart_toStartOf="@+id/guideline_left"
+                app:layout_constraintEnd_toStartOf="@id/sign_in_button"
+                app:layout_constraintStart_toStartOf="@id/guideline_left"
                 app:layout_constraintTop_toBottomOf="@id/next_button" />
 
             <Button
                 android:id="@+id/sign_in_button"
                 android:layout_width="152dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginStart="20dp"
                 android:layout_marginBottom="40dp"
                 android:background="@drawable/rounded_button"
                 android:text="@string/sign_in"
                 android:textAllCaps="false"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/guideline_right"
-                app:layout_constraintStart_toEndOf="@+id/question_text" />
+                app:layout_constraintEnd_toStartOf="@id/guideline_right"
+                app:layout_constraintStart_toEndOf="@id/question_text" />
 
             <EditText
                 android:id="@+id/surname"
@@ -142,8 +139,8 @@
                 android:inputType="textPersonName"
                 android:minWidth="48dp"
                 android:minHeight="48dp"
-                app:layout_constraintBottom_toTopOf="@+id/username"
-                app:layout_constraintStart_toStartOf="@+id/guideline_left" />
+                app:layout_constraintBottom_toTopOf="@id/username"
+                app:layout_constraintStart_toStartOf="@id/guideline_left" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_left"

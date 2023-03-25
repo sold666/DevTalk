@@ -55,7 +55,7 @@ class ResultAdapter(
         }
         val listTitleTextView = convertView!!.findViewById<TextView>(R.id.tag_name)
         if (isGroupEmpty(p0)) {
-            listTitle += " - " + context.getString(R.string.no_tags);
+            listTitle += " - " + context.getString(R.string.no_tags)
             listTitleTextView.setTypeface(null, Typeface.BOLD_ITALIC)
             convertView.isEnabled = false
         } else {

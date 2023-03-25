@@ -33,7 +33,7 @@
         android:id="@+id/professionFragment"
         android:name="com.dev_talk.auth.ProfessionFragment"
         android:label="ProfessionFragment"
-        tools:layout="@layout/proffesion_fragment">
+        tools:layout="@layout/profession_fragment">
         <action
             android:id="@+id/action_professionFragment_to_tagsFragment"
             app:destination="@id/tagsFragment"
