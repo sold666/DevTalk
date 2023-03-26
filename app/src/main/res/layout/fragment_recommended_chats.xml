@@ -22,9 +22,9 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/green"
-            app:titleCentered="true"
             app:menu="@menu/recommendations_search_menu"
-            app:title="@string/app_name" />
+            app:title="@string/app_name"
+            app:titleCentered="true" />
     </com.google.android.material.appbar.AppBarLayout>
 
 
