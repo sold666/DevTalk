@@ -6,16 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
-import com.dev_talk.utils.LIST_SELECTED_TAGS_KEY
 import com.dev_talk.databinding.ResultFragmentBinding
 import com.dev_talk.structures.Profession
+import com.dev_talk.structures.Tag
+import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
+import com.dev_talk.utils.LIST_SELECTED_TAGS_KEY
 
 class ResultFragment : Fragment() {
 
     private lateinit var binding: ResultFragmentBinding
-    private lateinit var selectedTags: ArrayList<String>
-    private lateinit var selectedProfessions: ArrayList<Profession>
+    private lateinit var selectedTags: List<Tag>
+    private lateinit var selectedProfessions: List<Profession>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,32 +29,24 @@ class ResultFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val buttonNext = binding.nextButton
-        val buttonBack = binding.backButton
-
-        buttonNext.setOnClickListener {
-
-        }
-
-        buttonBack.setOnClickListener {
-            findNavController().popBackStack()
-        }
-
+        initListeners()
         with(binding) {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
-                selectedTags = arguments?.getStringArrayList(LIST_SELECTED_TAGS_KEY)!!
+                selectedTags = arguments?.getParcelableArrayList(
+                    LIST_SELECTED_TAGS_KEY,
+                    Tag::class.java
+                )!!
                 selectedProfessions = arguments?.getParcelableArrayList(
                     LIST_SELECTED_PROFESSIONS_KEY,
                     Profession::class.java
                 )!!
             } else {
-                selectedTags = arguments?.getStringArrayList(LIST_SELECTED_TAGS_KEY)!!
+                selectedTags = arguments?.getParcelableArrayList(LIST_SELECTED_TAGS_KEY)!!
                 selectedProfessions =
                     arguments?.getParcelableArrayList(LIST_SELECTED_PROFESSIONS_KEY)!!
             }
             val listData = generateMapFromArrays()
-            val titleList = ArrayList(selectedProfessions.map { it.name })
+            val titleList = selectedProfessions.map { it.name }
             val resultAdapter = ResultAdapter(resultList.context, listData, titleList)
             resultList.setAdapter(resultAdapter)
             for (i in listData.keys.indices) {
@@ -62,10 +55,18 @@ class ResultFragment : Fragment() {
         }
     }
 
-    private fun generateMapFromArrays(): HashMap<String, List<String>> {
+    private fun initListeners() {
+        binding.backButton.setOnClickListener { findNavController().popBackStack() }
+
+        binding.nextButton.setOnClickListener {
+
+        }
+    }
+
+    private fun generateMapFromArrays(): Map<String, List<String>> {
         val expandableListMap = HashMap<String, List<String>>()
         for (profession in selectedProfessions) {
-            val tagsNamesList = profession.tags.filter { selectedTags.contains(it) }
+            val tagsNamesList = profession.tags.filter { selectedTags.contains(it) }.map { it.name }
             expandableListMap[profession.name] = tagsNamesList
         }
         return expandableListMap

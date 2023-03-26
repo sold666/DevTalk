@@ -13,9 +13,22 @@ import com.dev_talk.utils.getThemeColorRes
 
 class ProfessionAdapter(
 
-    val professions: ArrayList<Profession>,
-    private val onProfessionsChanged: () -> Unit
+    private val onProfessionsClickListener: (profession: Profession, adapterPosition: Int) -> Unit
 ) : RecyclerView.Adapter<ProfessionAdapter.ProfessionViewHolder>() {
+
+    private var professions = arrayListOf<Profession>()
+
+    fun setData(data: List<Profession>) {
+        professions.clear()
+        professions.addAll(data)
+        notifyDataSetChanged()
+    }
+
+    fun setData(data: List<Profession>, position: Int) {
+        professions.clear()
+        professions.addAll(data)
+        notifyItemChanged(position)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfessionViewHolder {
         return ProfessionViewHolder(
@@ -28,37 +41,32 @@ class ProfessionAdapter(
     }
 
     override fun onBindViewHolder(holder: ProfessionViewHolder, position: Int) {
-        val profession = professions[position]
-        holder.bind(profession)
-
-        val backgroundColor = holder.itemView.context.getThemeColorRes(R.attr.background_color_primary)
-        val buttonColor = holder.itemView.context.getThemeColorRes(R.attr.button_click_color_secondary)
-
-        holder.itemView.setOnClickListener {
-            profession.isSelected = !profession.isSelected
-            holder.itemView.findViewById<CardView>(R.id.profession_card).setCardBackgroundColor(
-                if (profession.isSelected) {
-                    ContextCompat.getColor(holder.itemView.context, buttonColor)
-                } else {
-                    ContextCompat.getColor(
-                        holder.itemView.context,
-                        backgroundColor
-                    )
-                }
-            )
-            onProfessionsChanged.invoke()
-        }
-    }
-
-    fun List<Profession>.getSelectedProfessions(): List<Profession> {
-        return this.filter { it.isSelected }
+        holder.bind(professions[position], onProfessionsClickListener)
     }
 
     class ProfessionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val container: CardView = itemView.findViewById(R.id.profession_card)
         private val professionName: TextView = itemView.findViewById(R.id.profession_name)
 
-        fun bind(profession: Profession) {
+        private val backgroundColor =
+            itemView.context.getThemeColorRes(R.attr.background_color_primary)
+        private val buttonColor =
+            itemView.context.getThemeColorRes(R.attr.button_click_color_secondary)
+
+        fun bind(
+            profession: Profession,
+            listener: (profession: Profession, adapterPosition: Int) -> Unit
+        ) {
+
             professionName.text = profession.name
+            val bgColor = if (profession.isSelected) {
+                ContextCompat.getColor(itemView.context, buttonColor)
+            } else {
+                ContextCompat.getColor(itemView.context, backgroundColor)
+            }
+            container.setCardBackgroundColor(bgColor)
+
+            container.setOnClickListener { listener.invoke(profession, adapterPosition) }
         }
     }
 }

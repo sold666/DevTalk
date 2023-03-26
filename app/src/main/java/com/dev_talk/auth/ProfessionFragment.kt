@@ -7,17 +7,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
 import com.dev_talk.R
 import com.dev_talk.databinding.ProfessionFragmentBinding
-import com.dev_talk.utils.getProfessions
 import com.dev_talk.structures.Profession
+import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
+import com.dev_talk.utils.getProfessions
 
 class ProfessionFragment : Fragment() {
 
     private lateinit var binding: ProfessionFragmentBinding
     private lateinit var professionAdapter: ProfessionAdapter
-    private var selectedProfessions: ArrayList<Profession> = arrayListOf()
+    private lateinit var onProfessionsClickListener: (profession: Profession, adapterPosition: Int) -> Unit
+    private var professions: List<Profession> = getProfessions()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,36 +31,44 @@ class ProfessionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initListeners()
+        with(binding) {
+            nextButton.isEnabled = false
+            professionAdapter = ProfessionAdapter(onProfessionsClickListener)
+            professionList.adapter = professionAdapter
+            professionList.itemAnimator = null
+            professionList.layoutManager = LinearLayoutManager(professionList.context)
+        }
+        professionAdapter.setData(professions)
+        updateNextButtonStatus()
+    }
 
-        val buttonNext = binding.nextButton
-        val buttonBack = binding.backButton
+    private fun initListeners() {
+        binding.backButton.setOnClickListener { findNavController().popBackStack() }
 
-        buttonNext.setOnClickListener {
-            selectedProfessions =
-                ArrayList(professionAdapter.professions.filter { it.isSelected }.sortedBy { it.id })
+        binding.nextButton.setOnClickListener {
+            val selectedProfessions = professions.filter { it.isSelected }.sortedBy { it.id }
             val bundle = Bundle().apply {
                 putParcelableArrayList(
                     LIST_SELECTED_PROFESSIONS_KEY,
-                    selectedProfessions
+                    ArrayList(selectedProfessions)
                 )
             }
             findNavController().navigate(R.id.action_professionFragment_to_tagsFragment, bundle)
         }
 
-        buttonBack.setOnClickListener {
-            findNavController().popBackStack()
+        onProfessionsClickListener = { profession, position ->
+            professions.forEach {
+                if (it.id == profession.id) {
+                    profession.isSelected = !profession.isSelected
+                }
+            }
+            professionAdapter.setData(professions, position)
+            updateNextButtonStatus()
         }
+    }
 
-        val onProfessionsChanged: () -> Unit = {
-            buttonNext.isEnabled = professionAdapter.professions.any { it.isSelected }
-        }
-
-        with(binding) {
-            val professions = getProfessions()
-            professionAdapter = ProfessionAdapter(professions, onProfessionsChanged)
-            professionList.adapter = professionAdapter
-            professionList.layoutManager = LinearLayoutManager(professionList.context)
-            onProfessionsChanged.invoke()
-        }
+    private fun updateNextButtonStatus() {
+        binding.nextButton.isEnabled = professions.any { it.isSelected }
     }
 }

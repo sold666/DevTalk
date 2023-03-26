@@ -12,8 +12,8 @@ import com.dev_talk.R
 class ResultAdapter(
 
     private val context: Context,
-    private val dataList: HashMap<String, List<String>>,
-    private val titleList: ArrayList<String>
+    private val dataList: Map<String, List<String>>,
+    private val titleList: List<String>
 ) : BaseExpandableListAdapter() {
 
     override fun getGroupCount(): Int {
