@@ -2,6 +2,7 @@ package com.dev_talk.auth
 
 import android.content.Context
 import android.graphics.Typeface
+import android.provider.Settings.Global.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,7 +55,7 @@ class ResultAdapter(
         }
         val listTitleTextView = convertView!!.findViewById<TextView>(R.id.tag_name)
         if (isGroupEmpty(p0)) {
-            listTitle += " - no tags!"
+            listTitle += " - " + context.getString(R.string.no_tags)
             listTitleTextView.setTypeface(null, Typeface.BOLD_ITALIC)
             convertView.isEnabled = false
         } else {

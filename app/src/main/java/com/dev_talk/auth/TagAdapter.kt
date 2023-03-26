@@ -36,9 +36,7 @@ class TagAdapter(
         )
     }
 
-    override fun getItemCount(): Int {
-        return tags.size
-    }
+    override fun getItemCount() = tags.size
 
     override fun onBindViewHolder(holder: TagViewHolder, position: Int) {
         holder.bind(tags[position], onTagsClickListener)

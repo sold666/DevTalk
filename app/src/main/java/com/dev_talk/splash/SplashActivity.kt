@@ -10,8 +10,6 @@ import com.dev_talk.auth.AuthActivity
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
 
-    private val SPLASH_DELAY_TIME = 3000L
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash_screen_activity)
@@ -20,6 +18,10 @@ class SplashActivity : AppCompatActivity() {
             startActivity(Intent(this@SplashActivity, AuthActivity::class.java))
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             finish()
-        }, SPLASH_DELAY_TIME)
+        }, Companion.SPLASH_DELAY_TIME)
+    }
+
+    companion object {
+        private const val SPLASH_DELAY_TIME = 3000L
     }
 }

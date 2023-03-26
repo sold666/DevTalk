@@ -11,11 +11,11 @@
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:overScrollMode="never"
         android:fastScrollEnabled="false"
         android:groupIndicator="@null"
-        app:layout_constraintBottom_toTopOf="@+id/next_button"
-        app:layout_constraintTop_toBottomOf="@+id/text"
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toTopOf="@id/next_button"
+        app:layout_constraintTop_toBottomOf="@id/text"
         app:layout_constraintVertical_bias="0.217"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -26,8 +26,9 @@
         android:layout_marginBottom="40dp"
         android:background="@drawable/rounded_button"
         android:text="@string/back"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/next_button"
+        app:layout_constraintEnd_toStartOf="@id/next_button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -38,10 +39,11 @@
         android:layout_marginBottom="40dp"
         android:background="@drawable/rounded_button"
         android:text="@string/next"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/back_button" />
+        app:layout_constraintStart_toEndOf="@id/back_button" />
 
     <TextView
         android:id="@+id/result_text"
@@ -49,7 +51,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="@string/result"
-        android:textAlignment="center"
         android:textColor="?attr/text_color_primary"
         android:textSize="28sp"
         android:textStyle="bold"
@@ -62,11 +63,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/check_if_you_have_chosen_everything_correctly"
-        android:textAlignment="center"
         android:textColor="?attr/text_color_secondary"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/result_text" />
+        app:layout_constraintTop_toBottomOf="@id/result_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

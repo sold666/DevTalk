@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">DevTalk</string>
+    <string name="username">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="login">Войти</string>
+    <string name="dev_talk_icon">логотип DevTalk</string>
+    <string name="next">Далее</string>
+    <string name="registration">Регистрация</string>
+    <string name="already_have_an_account">Уже есть аккаунт?</string>
+    <string name="surname">Фамилия</string>
+    <string name="name">Имя</string>
+    <string name="sign_in">Вход</string>
+    <string name="back">Назад</string>
+    <string name="who_do_you_work_for">Кем вы работаете?</string>
+    <string name="welcome">Добро пожаловать!</string>
+    <string name="use_our_messenger_and_everything_will_be_fine">Пользуйтесь нашим мессенджером и всё будет супер!</string>
+    <string name="don_t_have_an_account_yet">Ещё нет аккаунта?</string>
+    <string name="select_tags">Выберите теги</string>
+    <string name="result">Итог</string>
+    <string name="check_if_you_have_chosen_everything_correctly">Проверьте, всё ли Вы выбрали правильно</string>
+    <string name="please_fill_out_the_forms_below">Пожалуйста, заполните формы ниже</string>
+    <string name="no_tags">нет тегов!</string>
+</resources>

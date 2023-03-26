@@ -36,9 +36,7 @@ class ProfessionAdapter(
         )
     }
 
-    override fun getItemCount(): Int {
-        return professions.size
-    }
+    override fun getItemCount() = professions.size
 
     override fun onBindViewHolder(holder: ProfessionViewHolder, position: Int) {
         holder.bind(professions[position], onProfessionsClickListener)
