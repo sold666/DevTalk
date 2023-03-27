@@ -1,4 +1,4 @@
-package com.dev_talk.auth
+package com.dev_talk.auth.result
 
 import android.os.Bundle
 import android.view.LayoutInflater

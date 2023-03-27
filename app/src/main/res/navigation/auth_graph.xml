@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/professionFragment"
-        android:name="com.dev_talk.auth.ProfessionFragment"
+        android:name="com.dev_talk.auth.profession.ProfessionFragment"
         android:label="ProfessionFragment"
         tools:layout="@layout/profession_fragment">
         <action
@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/tagsFragment"
-        android:name="com.dev_talk.auth.TagFragment"
+        android:name="com.dev_talk.auth.tag.TagFragment"
         android:label="TagsFragment"
         tools:layout="@layout/tag_fragment">
         <action
@@ -59,7 +59,7 @@
     </fragment>
     <fragment
         android:id="@+id/resultFragment"
-        android:name="com.dev_talk.auth.ResultFragment"
+        android:name="com.dev_talk.auth.result.ResultFragment"
         android:label="ResultFragment"
         tools:layout="@layout/result_fragment">
         <action
