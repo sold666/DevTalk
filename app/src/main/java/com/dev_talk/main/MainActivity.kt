@@ -2,7 +2,8 @@ package com.dev_talk.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.dev_talk.main.databinding.ActivityMainBinding
+import com.dev_talk.R
+import com.dev_talk.databinding.ActivityMainBinding
 import com.dev_talk.main.structures.ChatsNavigation
 
 class MainActivity : AppCompatActivity() {

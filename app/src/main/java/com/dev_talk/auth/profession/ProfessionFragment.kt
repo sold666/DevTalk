@@ -11,8 +11,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev_talk.R
 import com.dev_talk.auth.AuthActivity
+import com.dev_talk.auth.structures.Profession
 import com.dev_talk.databinding.ProfessionFragmentBinding
-import com.dev_talk.structures.Profession
 import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
 import com.dev_talk.utils.getProfessions
 

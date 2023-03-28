@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.dev_talk.main.R
+import com.dev_talk.R
 import com.dev_talk.main.structures.Chat
 
 class PersonalChatsAdapter(

@@ -1,7 +1,7 @@
 package com.dev_talk.utils
 
-import com.dev_talk.structures.Profession
-import com.dev_talk.structures.Tag
+import com.dev_talk.auth.structures.Profession
+import com.dev_talk.auth.structures.Tag
 
 fun getProfessions(): List<Profession> {
     return listOf(

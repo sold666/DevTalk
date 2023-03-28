@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import com.dev_talk.main.databinding.FragmentPersonalChatsBinding
+import com.dev_talk.databinding.FragmentPersonalChatsBinding
 import com.dev_talk.main.structures.Profession
 import com.google.android.material.tabs.TabLayout
 

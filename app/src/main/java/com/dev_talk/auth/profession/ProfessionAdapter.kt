@@ -8,7 +8,7 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.R
-import com.dev_talk.structures.Profession
+import com.dev_talk.auth.structures.Profession
 import com.dev_talk.utils.getThemeColorRes
 
 class ProfessionAdapter(

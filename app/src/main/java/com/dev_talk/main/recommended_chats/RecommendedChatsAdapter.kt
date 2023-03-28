@@ -9,10 +9,9 @@ import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.dev_talk.main.R
+import com.dev_talk.R
 import com.dev_talk.main.structures.Chat
 import java.util.*
-import kotlin.collections.ArrayList
 
 class RecommendedChatsAdapter(
     private var chats: List<Chat>

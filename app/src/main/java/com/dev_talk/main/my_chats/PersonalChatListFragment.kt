@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dev_talk.databinding.FragmentPersonalChatListBinding
 import com.dev_talk.main.common.Divider.Companion.getRecyclerViewDivider
-import com.dev_talk.main.databinding.FragmentPersonalChatListBinding
 import com.dev_talk.main.structures.Profession
 
 private const val PROFESSION_KEY = "Current profession"

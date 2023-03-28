@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import com.example.developers_messenger.R
-import com.example.developers_messenger.databinding.ChatActivityBinding
+import com.dev_talk.R
+import com.dev_talk.databinding.ChatActivityBinding
 
 class ChatActivity : AppCompatActivity() {
 

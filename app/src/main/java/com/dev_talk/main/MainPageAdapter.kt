@@ -3,6 +3,7 @@ package com.dev_talk.main
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.dev_talk.R
 import com.dev_talk.main.my_chats.PersonalChatsFragment
 import com.dev_talk.main.profile.ProfileFragment
 import com.dev_talk.main.recommended_chats.RecommendedChatsFragment

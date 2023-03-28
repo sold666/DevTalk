@@ -1,14 +1,15 @@
 package com.dev_talk.main.profile
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.dev_talk.main.R
-import com.dev_talk.main.structures.*
+import com.dev_talk.R
+import com.dev_talk.main.structures.Chat
+import com.dev_talk.main.structures.Header
+import com.dev_talk.main.structures.Item
+import com.dev_talk.main.structures.ProfileData
 import de.hdodenhof.circleimageview.CircleImageView
 
 class ProfileChatsAdapter(

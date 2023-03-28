@@ -3,7 +3,7 @@ package com.dev_talk.main.common
 import android.content.Context
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
-import com.dev_talk.main.R
+import com.dev_talk.R
 
 class Divider {
     companion object {

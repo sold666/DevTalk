@@ -4,7 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.developers_messenger.databinding.ItemChatParticipantBinding
+import com.dev_talk.chat.structures.ChatParticipant
+import com.dev_talk.databinding.ItemChatParticipantBinding
 import com.google.android.material.imageview.ShapeableImageView
 
 class ChatParticipantAdapter(

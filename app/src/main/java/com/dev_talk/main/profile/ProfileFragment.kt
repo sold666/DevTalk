@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import androidx.recyclerview.widget.RecyclerView
-import com.dev_talk.main.databinding.FragmentProfileBinding
+import com.dev_talk.databinding.FragmentProfileBinding
 import com.dev_talk.main.structures.Header
 import com.dev_talk.main.structures.Item
 import com.dev_talk.main.structures.ProfileData

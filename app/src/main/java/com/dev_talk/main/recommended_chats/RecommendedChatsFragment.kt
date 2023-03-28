@@ -9,9 +9,9 @@ import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.dev_talk.main.R
+import com.dev_talk.R
+import com.dev_talk.databinding.FragmentRecommendedChatsBinding
 import com.dev_talk.main.common.Divider.Companion.getRecyclerViewDivider
-import com.dev_talk.main.databinding.FragmentRecommendedChatsBinding
 import com.dev_talk.main.structures.Chat
 
 private const val RECOMMENDED_LIST_PROFESSIONS_KEY = "recommendations"

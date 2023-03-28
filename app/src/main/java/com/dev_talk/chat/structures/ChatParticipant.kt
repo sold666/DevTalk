@@ -1,4 +1,4 @@
-package com.dev_talk.chat
+package com.dev_talk.chat.structures
 
 import androidx.annotation.DrawableRes
 
