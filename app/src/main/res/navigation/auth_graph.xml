@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navgraph"
+    app:startDestination="@id/signInFragment">
+
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.dev_talk.auth.SignInFragment"
+        android:label="SignInFragment"
+        tools:layout="@layout/sign_in_fragment">
+        <action
+            android:id="@+id/action_signInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.dev_talk.auth.SignUpFragment"
+        android:label="SignUpFragment"
+        tools:layout="@layout/sign_up_fragment">
+        <action
+            android:id="@+id/action_signUpFragment_to_signInFragment"
+            app:destination="@id/signInFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_signUpFragment_to_professionFragment"
+            app:destination="@id/professionFragment"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/professionFragment"
+        android:name="com.dev_talk.auth.profession.ProfessionFragment"
+        android:label="ProfessionFragment"
+        tools:layout="@layout/profession_fragment">
+        <action
+            android:id="@+id/action_professionFragment_to_tagsFragment"
+            app:destination="@id/tagsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+        <action
+            android:id="@+id/action_professionFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/tagsFragment"
+        android:name="com.dev_talk.auth.tag.TagFragment"
+        android:label="TagsFragment"
+        tools:layout="@layout/tag_fragment">
+        <action
+            android:id="@+id/action_tagsFragment_to_professionFragment"
+            app:destination="@id/professionFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_tagsFragment_to_resultFragment"
+            app:destination="@id/resultFragment"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.dev_talk.auth.result.ResultFragment"
+        android:label="ResultFragment"
+        tools:layout="@layout/result_fragment">
+        <action
+            android:id="@+id/action_resultFragment_to_tagsFragment"
+            app:destination="@id/tagsFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+</navigation>

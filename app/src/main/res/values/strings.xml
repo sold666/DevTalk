@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">DevTalk</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="dev_talk_icon">DevTalk icon</string>
+    <string name="next">Next</string>
+    <string name="registration">Registration</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="surname">Surname</string>
+    <string name="name">Name</string>
+    <string name="sign_in">Sign In</string>
+    <string name="back">Back</string>
+    <string name="who_do_you_work_for">Who do you work for?</string>
+    <string name="welcome">Welcome!</string>
+    <string name="use_our_messenger_and_everything_will_be_fine">Use our messenger and everything will be fine!</string>
+    <string name="don_t_have_an_account_yet">Don\'t have an account?</string>
+    <string name="select_tags">Select tags</string>
+    <string name="result">Result</string>
+    <string name="check_if_you_have_chosen_everything_correctly">Check if you have chosen everything correctly</string>
+    <string name="please_fill_out_the_forms_below">Please fill out the forms below</string>
+    <string name="no_tags">no tags!</string>
+</resources>
