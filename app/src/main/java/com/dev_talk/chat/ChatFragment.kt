@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.developers_messenger.R
-import com.example.developers_messenger.databinding.ChatFragmentBinding
+import com.dev_talk.R
+import com.dev_talk.databinding.ChatFragmentBinding
 
 class ChatFragment : Fragment() {
 
