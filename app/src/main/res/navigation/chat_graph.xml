@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chat_graph"
+    app:startDestination="@id/chat_fragment_container">
+    <fragment
+        android:id="@+id/chat_fragment_container"
+        android:name="com.dev_talk.chat.ChatFragment"
+        android:label="ChatFragment"
+        tools:layout="@layout/chat_fragment">
+        <action
+            android:id="@+id/action_chatFragment_to_chatSettingsFragment"
+            app:destination="@id/chat_settings_fragment_container"
+            app:popUpTo="@id/chat_settings_fragment_container" />
+    </fragment>
+    <fragment
+        android:id="@+id/chat_settings_fragment_container"
+        android:name="com.dev_talk.chat.ChatSettingsFragment"
+        android:label="ChatSettingsFragment"
+        tools:layout="@layout/chat_settings_fragment">
+        <action
+            android:id="@+id/action_chatSettingsFragment_to_chatFragment"
+            app:destination="@id/chat_fragment_container" />
+    </fragment>
+</navigation>

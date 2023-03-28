@@ -33,4 +33,12 @@
     <string name="profession_3">Profession №3</string>
     <string name="chat_icon_description">Chat icon</string>
     <string name="search_menu_tem">Search</string>
+    <string name="chat_name">Chat name</string>
+    <string name="chat_settings">Chat settings</string>
+    <string name="message_input">Text message...</string>
+    <string name="send_a_message">Send a message</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="notifications">Notifications</string>
+    <string name="members">Members: %1$d</string>
 </resources>

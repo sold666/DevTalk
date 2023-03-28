@@ -30,6 +30,10 @@
             android:name="com.dev_talk.main.MainActivity"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name="com.dev_talk.chat.ChatActivity"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>
