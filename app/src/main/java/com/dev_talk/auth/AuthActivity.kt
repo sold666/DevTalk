@@ -13,11 +13,20 @@ class AuthActivity : AppCompatActivity() {
     private val navController by lazy {
         (supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment).navController
     }
+    var isAppRestarted = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (savedInstanceState == null) {
+            isAppRestarted = true
+        }
         binding = AuthActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
         Navigation.setViewNavController(binding.navHostFragment, navController)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        isAppRestarted = false
     }
 }
