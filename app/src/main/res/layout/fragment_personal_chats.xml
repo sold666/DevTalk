@@ -53,4 +53,5 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/navigation_personal_chats"
         android:background="?attr/list_with_personal_chats_bg_color" />
+
 </RelativeLayout>

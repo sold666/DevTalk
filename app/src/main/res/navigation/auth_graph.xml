@@ -15,6 +15,7 @@
             app:destination="@id/signUpFragment"
             app:enterAnim="@anim/nav_default_enter_anim" />
     </fragment>
+
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.dev_talk.auth.SignUpFragment"
@@ -29,6 +30,7 @@
             app:destination="@id/professionFragment"
             app:enterAnim="@anim/nav_default_enter_anim" />
     </fragment>
+
     <fragment
         android:id="@+id/professionFragment"
         android:name="com.dev_talk.auth.profession.ProfessionFragment"
@@ -43,6 +45,7 @@
             app:destination="@id/signUpFragment"
             app:popUpToInclusive="false" />
     </fragment>
+
     <fragment
         android:id="@+id/tagsFragment"
         android:name="com.dev_talk.auth.tag.TagFragment"
@@ -57,6 +60,7 @@
             app:destination="@id/resultFragment"
             app:enterAnim="@anim/nav_default_enter_anim" />
     </fragment>
+
     <fragment
         android:id="@+id/resultFragment"
         android:name="com.dev_talk.auth.result.ResultFragment"
@@ -67,4 +71,5 @@
             app:destination="@id/tagsFragment"
             app:popUpToInclusive="false" />
     </fragment>
+
 </navigation>

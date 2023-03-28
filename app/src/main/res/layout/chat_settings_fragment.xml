@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/chat_settings_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -31,11 +30,10 @@
         android:id="@+id/chat_icon_settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/ic_launcher_background"
+        android:background="?attr/background_color_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chat_settings_return_button"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+        app:layout_constraintTop_toBottomOf="@id/chat_settings_return_button" />
 
     <TextView
         android:id="@+id/chat_name_settings"
@@ -64,7 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:background="@color/grey"
+        android:background="?attr/background_color_primary"
         android:paddingHorizontal="8dp"
         android:paddingVertical="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -106,6 +104,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -115,4 +114,5 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/navigation_panel" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
