@@ -8,13 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.dev_talk.auth.structures.Profession
 import com.dev_talk.auth.structures.Tag
-import com.dev_talk.databinding.ResultFragmentBinding
+import com.dev_talk.databinding.FragmentResultBinding
 import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
 import com.dev_talk.utils.LIST_SELECTED_TAGS_KEY
 
 class ResultFragment : Fragment() {
 
-    private lateinit var binding: ResultFragmentBinding
+    private lateinit var binding: FragmentResultBinding
     private lateinit var selectedTags: List<Tag>
     private lateinit var selectedProfessions: List<Profession>
 
@@ -23,7 +23,7 @@ class ResultFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = ResultFragmentBinding.inflate(inflater)
+        binding = FragmentResultBinding.inflate(inflater)
         return binding.root
     }
 

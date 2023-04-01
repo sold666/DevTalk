@@ -19,10 +19,10 @@ class ProfileChatsAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             0 -> HeaderViewHolder(
-                LayoutInflater.from(parent.context).inflate(R.layout.profile_chat_parent_item, null)
+                LayoutInflater.from(parent.context).inflate(R.layout.item_profile_chat_parent, null)
             )
             else -> ItemViewHolder(
-                LayoutInflater.from(parent.context).inflate(R.layout.profile_chat_child_item, null)
+                LayoutInflater.from(parent.context).inflate(R.layout.item_profile_chat_child, null)
             )
         }
     }

@@ -7,17 +7,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.dev_talk.R
-import com.dev_talk.databinding.SignUpFragmentBinding
+import com.dev_talk.databinding.FragmentSignUpBinding
 
 class SignUpFragment : Fragment() {
 
-    private lateinit var binding: SignUpFragmentBinding
+    private lateinit var binding: FragmentSignUpBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = SignUpFragmentBinding.inflate(inflater)
+        binding = FragmentSignUpBinding.inflate(inflater)
         return binding.root
     }
 

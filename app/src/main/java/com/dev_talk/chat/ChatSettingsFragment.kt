@@ -9,18 +9,18 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev_talk.R
 import com.dev_talk.chat.structures.ChatParticipant
-import com.dev_talk.databinding.ChatSettingsFragmentBinding
+import com.dev_talk.databinding.FragmentChatSettingsBinding
 
 class ChatSettingsFragment : Fragment() {
 
-    private lateinit var binding: ChatSettingsFragmentBinding
+    private lateinit var binding: FragmentChatSettingsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = ChatSettingsFragmentBinding.inflate(inflater)
+        binding = FragmentChatSettingsBinding.inflate(inflater)
         return binding.root
     }
 

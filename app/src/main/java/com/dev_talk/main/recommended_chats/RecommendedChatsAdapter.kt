@@ -24,7 +24,7 @@ class RecommendedChatsAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ChatItemViewHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.default_chat_item, null)
+        LayoutInflater.from(parent.context).inflate(R.layout.item_default_chat, null)
     )
 
     override fun getItemCount() = filteredChats.size

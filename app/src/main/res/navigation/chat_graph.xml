@@ -9,7 +9,7 @@
         android:id="@+id/chat_fragment_container"
         android:name="com.dev_talk.chat.ChatFragment"
         android:label="ChatFragment"
-        tools:layout="@layout/chat_fragment">
+        tools:layout="@layout/fragment_chat">
         <action
             android:id="@+id/action_chatFragment_to_chatSettingsFragment"
             app:destination="@id/chat_settings_fragment_container"
@@ -20,7 +20,7 @@
         android:id="@+id/chat_settings_fragment_container"
         android:name="com.dev_talk.chat.ChatSettingsFragment"
         android:label="ChatSettingsFragment"
-        tools:layout="@layout/chat_settings_fragment">
+        tools:layout="@layout/fragment_chat_settings">
         <action
             android:id="@+id/action_chatSettingsFragment_to_chatFragment"
             app:destination="@id/chat_fragment_container" />

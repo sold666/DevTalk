@@ -10,13 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev_talk.R
 import com.dev_talk.auth.structures.Profession
 import com.dev_talk.auth.structures.Tag
-import com.dev_talk.databinding.TagFragmentBinding
+import com.dev_talk.databinding.FragmentTagBinding
 import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
 import com.dev_talk.utils.LIST_SELECTED_TAGS_KEY
 
 class TagFragment : Fragment() {
 
-    private lateinit var binding: TagFragmentBinding
+    private lateinit var binding: FragmentTagBinding
     private lateinit var tagAdapter: TagAdapter
     private lateinit var onTagsClickListener: (tag: Tag, adapterPosition: Int) -> Unit
     private lateinit var tags: List<Tag>
@@ -27,7 +27,7 @@ class TagFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = TagFragmentBinding.inflate(inflater)
+        binding = FragmentTagBinding.inflate(inflater)
         return binding.root
     }
 

@@ -9,7 +9,7 @@
         android:id="@+id/signInFragment"
         android:name="com.dev_talk.auth.SignInFragment"
         android:label="SignInFragment"
-        tools:layout="@layout/sign_in_fragment">
+        tools:layout="@layout/fragment_sign_in">
         <action
             android:id="@+id/action_signInFragment_to_signUpFragment"
             app:destination="@id/signUpFragment"
@@ -20,7 +20,7 @@
         android:id="@+id/signUpFragment"
         android:name="com.dev_talk.auth.SignUpFragment"
         android:label="SignUpFragment"
-        tools:layout="@layout/sign_up_fragment">
+        tools:layout="@layout/fragment_sign_up">
         <action
             android:id="@+id/action_signUpFragment_to_signInFragment"
             app:destination="@id/signInFragment"
@@ -35,7 +35,7 @@
         android:id="@+id/professionFragment"
         android:name="com.dev_talk.auth.profession.ProfessionFragment"
         android:label="ProfessionFragment"
-        tools:layout="@layout/profession_fragment">
+        tools:layout="@layout/fragment_profession">
         <action
             android:id="@+id/action_professionFragment_to_tagsFragment"
             app:destination="@id/tagsFragment"
@@ -50,7 +50,7 @@
         android:id="@+id/tagsFragment"
         android:name="com.dev_talk.auth.tag.TagFragment"
         android:label="TagsFragment"
-        tools:layout="@layout/tag_fragment">
+        tools:layout="@layout/fragment_tag">
         <action
             android:id="@+id/action_tagsFragment_to_professionFragment"
             app:destination="@id/professionFragment"
@@ -65,7 +65,7 @@
         android:id="@+id/resultFragment"
         android:name="com.dev_talk.auth.result.ResultFragment"
         android:label="ResultFragment"
-        tools:layout="@layout/result_fragment">
+        tools:layout="@layout/fragment_result">
         <action
             android:id="@+id/action_resultFragment_to_tagsFragment"
             app:destination="@id/tagsFragment"

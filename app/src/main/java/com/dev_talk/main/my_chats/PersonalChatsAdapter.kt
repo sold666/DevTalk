@@ -13,7 +13,7 @@ class PersonalChatsAdapter(
     private val chats: List<Chat>
 ) : RecyclerView.Adapter<PersonalChatsAdapter.ChatItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ChatItemViewHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.default_chat_item, null)
+        LayoutInflater.from(parent.context).inflate(R.layout.item_default_chat, null)
     )
 
     override fun getItemCount() = chats.size

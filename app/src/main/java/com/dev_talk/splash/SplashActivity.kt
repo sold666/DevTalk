@@ -12,13 +12,13 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.splash_screen_activity)
+        setContentView(R.layout.activity_splash_screen)
 
         window.decorView.postDelayed({
             startActivity(Intent(this@SplashActivity, AuthActivity::class.java))
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             finish()
-        }, Companion.SPLASH_DELAY_TIME)
+        }, SPLASH_DELAY_TIME)
     }
 
     companion object {

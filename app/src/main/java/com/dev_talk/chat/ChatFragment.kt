@@ -7,18 +7,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.dev_talk.R
-import com.dev_talk.databinding.ChatFragmentBinding
+import com.dev_talk.databinding.FragmentChatBinding
 
 class ChatFragment : Fragment() {
 
-    private lateinit var binding: ChatFragmentBinding
+    private lateinit var binding: FragmentChatBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = ChatFragmentBinding.inflate(inflater)
+        binding = FragmentChatBinding.inflate(inflater)
         return binding.root
     }
 

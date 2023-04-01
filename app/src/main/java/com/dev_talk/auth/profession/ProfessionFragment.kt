@@ -12,13 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev_talk.R
 import com.dev_talk.auth.AuthActivity
 import com.dev_talk.auth.structures.Profession
-import com.dev_talk.databinding.ProfessionFragmentBinding
+import com.dev_talk.databinding.FragmentProfessionBinding
 import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
 import com.dev_talk.utils.getProfessions
 
 class ProfessionFragment : Fragment() {
 
-    private lateinit var binding: ProfessionFragmentBinding
+    private lateinit var binding: FragmentProfessionBinding
     private lateinit var professionAdapter: ProfessionAdapter
     private lateinit var onProfessionsClickListener: (profession: Profession, adapterPosition: Int) -> Unit
     private var professions: List<Profession> = getProfessions()
@@ -28,7 +28,7 @@ class ProfessionFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = ProfessionFragmentBinding.inflate(inflater)
+        binding = FragmentProfessionBinding.inflate(inflater)
         return binding.root
     }
 
