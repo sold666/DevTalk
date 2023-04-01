@@ -10,21 +10,18 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:background="@color/green"
-        android:textColor="@android:color/black"
-        android:textSize="14sp"
-        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/search_bar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/green"
+            android:theme="@style/CustomSearchView"
             app:menu="@menu/menu_recommendations_search"
             app:title="@string/app_name"
-            app:titleCentered="true" />
+            app:titleCentered="true"
+            app:titleTextColor="?attr/text_main_nav_color" />
     </com.google.android.material.appbar.AppBarLayout>
 
 
@@ -33,7 +30,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/app_bar"
-        android:background="?attr/list_with_recommended_chats_bg_color" />
+        android:background="?attr/background_color_primary"
+        android:overScrollMode="never"
+        app:fastScrollEnabled="false" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floating_action_button"
@@ -43,6 +42,7 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
         android:contentDescription="@string/create_chat"
+        app:backgroundTint="@color/green"
         app:srcCompat="@drawable/ic_add_new_chat_btn" />
 
 </RelativeLayout>

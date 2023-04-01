@@ -23,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Participant name"
+        android:textColor="?attr/text_color_secondary"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@id/icon_participant"
         app:layout_constraintTop_toTopOf="@id/icon_participant" />
@@ -32,15 +33,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Status"
+        android:textColor="?attr/text_color_secondary"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@id/name_participant"
         app:layout_constraintTop_toBottomOf="@id/name_participant" />
 
     <com.google.android.material.divider.MaterialDivider
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:dividerColor="@color/grey"
+        android:layout_width="408dp"
+        android:layout_height="0dp"
+        app:dividerColor="?attr/background_color_primary"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/icon_participant" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

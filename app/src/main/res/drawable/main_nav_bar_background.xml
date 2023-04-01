@@ -5,5 +5,5 @@
         android:topLeftRadius="10dp"
         android:topRightRadius="10dp" />
 
-    <solid android:color="?attr/nav_bar_bg_color" />
+    <solid android:color="@color/green" />
 </shape>

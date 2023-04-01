@@ -1,22 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <attr name="background_color_primary" format="reference" />
+    <attr name="background_color_individual_parts" format="reference" />
     <attr name="text_color_primary" format="reference" />
     <attr name="text_color_secondary" format="reference" />
+    <attr name="text_main_nav_color" format="reference" />
     <attr name="icon_tint_color_primary" format="reference" />
+    <attr name="icon_tint_color_primary_second" format="reference" />
     <attr name="button_click_color_secondary" format="reference" />
-    <attr name="nav_bar_bg_color" format="reference" />
-    <attr name="main_nav_icon_bg_color" format="reference" />
-    <attr name="main_nav_text_color" format="reference" />
-    <attr name="profile_border" format="reference" />
-    <attr name="profile_line_between_chats_color" format="reference" />
-    <attr name="default_line_between_chats_color" format="reference" />
-    <attr name="tab_indicator_color" format="reference" />
-    <attr name="nav_item_bg_color" format="reference" />
-    <attr name="search_bar" format="reference" />
-    <attr name="chat_list_in_profile_bg_color" format="reference" />
-    <attr name="list_with_recommended_chats_bg_color" format="reference" />
-    <attr name="list_with_personal_chats_bg_color" format="reference" />
-    <attr name="alter_profile_btn_bg_color" format="reference" />
-    <attr name="create_chat_bg_color" format="reference" />
 </resources>

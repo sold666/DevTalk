@@ -8,23 +8,24 @@
         android:id="@+id/navigation_personal_chats"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/tab_indicator_color">
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/green"
             app:title="@string/my_chats_title"
-            app:titleCentered="true" />
+            app:titleCentered="true"
+            app:titleTextColor="?attr/text_main_nav_color" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/professions"
-            style="@style/MyCustomTabTextAppearance"
+            style="@style/CustomTabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="?attr/tab_indicator_color"
+            android:background="@color/green"
             app:tabGravity="fill"
-            app:tabIndicatorColor="?attr/tab_indicator_color"
             app:tabMaxWidth="0dp"
             app:tabMode="fixed">
 
@@ -52,6 +53,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/navigation_personal_chats"
-        android:background="?attr/list_with_personal_chats_bg_color" />
+        android:background="?attr/background_color_primary" />
 
 </RelativeLayout>

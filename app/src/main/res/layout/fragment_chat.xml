@@ -11,23 +11,41 @@
         android:id="@+id/top_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/chat_app_bar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/grey"
+            android:layout_height="wrap_content"
+            android:background="@color/green"
+            app:layout_constraintBottom_toBottomOf="@id/chat_avatar"
+            app:layout_constraintStart_toEndOf="@id/chat_avatar"
+            app:layout_constraintTop_toTopOf="@id/chat_avatar"
             app:menu="@menu/menu_chat_app_bar"
             app:navigationIcon="@drawable/ic_arrow_back"
-            app:title="@string/chat_name" />
+            app:title="@string/chat_name"
+            app:titleMarginStart="124dp"
+            app:titleTextColor="?attr/text_main_nav_color">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/chat_avatar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_person"
+                android:translationX="-150dp"
+                app:civ_border_color="?attr/icon_tint_color_primary_second"
+                app:civ_border_width="2dp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chat_field"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:overScrollMode="never"
+        app:fastScrollEnabled="false"
         app:layout_constraintBottom_toTopOf="@+id/message_field"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_bar" />
@@ -37,7 +55,7 @@
         android:id="@+id/message_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/grey"
+        android:background="@color/green"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent">
 
@@ -60,11 +78,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
+            android:autofillHints=""
             android:background="@drawable/message_input"
             android:hint="@string/message_input"
-            android:maxLines="13"
-            android:paddingStart="4dp"
-            android:paddingEnd="4dp"
+            android:inputType="textMultiLine|textCapSentences"
+            android:maxLines="4"
+            android:padding="4dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey_second"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@+id/left_message_guideline"
             app:layout_constraintRight_toRightOf="@id/right_message_guideline"
@@ -74,7 +95,7 @@
             android:id="@+id/message_sender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/grey"
+            android:background="@android:color/transparent"
             android:contentDescription="@string/send_a_message"
             android:padding="12dp"
             android:src="@drawable/ic_send"

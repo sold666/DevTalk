@@ -4,26 +4,16 @@
         <item name="colorPrimary">@color/green</item>
         <item name="colorSecondary">@color/green_second</item>
         <item name="text_color_primary">@color/green</item>
-        <item name="text_color_secondary">@color/grey_second</item>
+        <item name="text_color_secondary">@color/black</item>
+        <item name="text_main_nav_color">@color/white</item>
         <item name="background_color_primary">@color/white</item>
+        <item name="background_color_individual_parts">@color/grey_second</item>
         <item name="icon_tint_color_primary">@color/green</item>
+        <item name="icon_tint_color_primary_second">@color/white</item>
         <item name="button_click_color_secondary">@color/green_second</item>
 
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:statusBarColor">@color/green_second</item>
-        <item name="nav_bar_bg_color">@color/green</item>
-        <item name="main_nav_icon_bg_color">@color/black</item>
-        <item name="main_nav_text_color">@color/black</item>
-        <item name="profile_border">@color/black</item>
-        <item name="profile_line_between_chats_color">@color/black</item>
-        <item name="default_line_between_chats_color">@color/black</item>
-        <item name="tab_indicator_color">@color/green</item>
-        <item name="search_bar">@color/green</item>
-        <item name="chat_list_in_profile_bg_color">@color/white</item>
-        <item name="list_with_recommended_chats_bg_color">@color/white</item>
-        <item name="list_with_personal_chats_bg_color">@color/white</item>
-        <item name="alter_profile_btn_bg_color">@color/white</item>
-        <item name="create_chat_bg_color">@color/green</item>
     </style>
 
     <style name="SplashScreenTheme" parent="Theme.AppCompat.NoActionBar">
@@ -35,20 +25,28 @@
         <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 
-    <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
+    <style name="CustomSearchView" parent="Widget.AppCompat.SearchView">
+        <item name="android:tint">@color/white</item>
+        <item name="android:textColorHint">@color/white</item>
+    </style>
+
+    <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
         <item name="tabMaxWidth">200dp</item>
-        <item name="tabIndicatorColor">?attr/colorAccent</item>
+        <item name="tabIndicatorColor">@color/white</item>
         <item name="tabIndicatorHeight">2dp</item>
         <item name="tabPaddingStart">12dp</item>
         <item name="tabPaddingEnd">12dp</item>
-        <item name="tabBackground">?attr/selectableItemBackground</item>
-        <item name="tabTextAppearance">@style/MyCustomTabTextAppearance</item>
-        <item name="tabSelectedTextColor">?android:textColorPrimary</item>
+        <item name="tabTextAppearance">@style/CustomTabTextAppearance</item>
+        <item name="tabSelectedTextAppearance">@style/CustomTabSelectedText</item>
     </style>
 
-    <style name="MyCustomTabTextAppearance" parent="TextAppearance.Design.Tab">
+    <style name="CustomTabTextAppearance" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">?android:textColorSecondary</item>
+        <item name="android:textColor">@color/white</item>
         <item name="textAllCaps">true</item>
+    </style>
+
+    <style name="CustomTabSelectedText">
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>
