@@ -32,7 +32,7 @@
     <string name="profession_2">Профессия №2</string>
     <string name="profession_3">Профессия №3</string>
     <string name="chat_icon_description">Иконка чата</string>
-    <string name="search_menu_tem">Поиск</string>
+    <string name="search_menu_item">Поиск</string>
     <string name="chat_name">Имя чата</string>
     <string name="chat_settings">Настройки чата</string>
     <string name="message_input">Введите сообщение...</string>
@@ -41,4 +41,6 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="notifications">Уведомления</string>
     <string name="members">Участники: %1$d</string>
+    <string name="back_to_chat">Вернуться обратно в чат</string>
+    <string name="leave_chat">Выйти из чата</string>
 </resources>

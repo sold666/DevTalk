@@ -76,32 +76,32 @@ class MainPageAdapter(activity: FragmentActivity, private val itemCount: Int) :
             Header("Profession №2"),
             Item(
                 Chat(
-                    R.drawable.ic_default_person,
+                    R.drawable.ic_my_chats_navigation,
                     "Css"
                 )
             ),
             Item(
                 Chat(
-                    R.drawable.ic_default_person,
+                    R.drawable.ic_my_chats_navigation,
                     "Html"
                 )
             ),
             Header("Profession №3"),
             Item(
                 Chat(
-                    R.drawable.ic_add_new_chat_btn,
+                    R.drawable.ic_my_chats_navigation,
                     "Selenide"
                 )
             ),
             Item(
                 Chat(
-                    R.drawable.ic_add_new_chat_btn,
+                    R.drawable.ic_my_chats_navigation,
                     "Selenium"
                 )
             ),
             Item(
                 Chat(
-                    R.drawable.ic_add_new_chat_btn,
+                    R.drawable.ic_my_chats_navigation,
                     "Java"
                 )
             )
@@ -147,11 +147,11 @@ class MainPageAdapter(activity: FragmentActivity, private val itemCount: Int) :
                 "Profession №2",
                 arrayListOf(
                     Chat(
-                        R.drawable.ic_default_person,
+                        R.drawable.ic_my_chats_navigation,
                         "Css"
                     ),
                     Chat(
-                        R.drawable.ic_default_person,
+                        R.drawable.ic_my_chats_navigation,
                         "Html"
                     )
                 )
@@ -160,15 +160,15 @@ class MainPageAdapter(activity: FragmentActivity, private val itemCount: Int) :
                 "Profession №3",
                 arrayListOf(
                     Chat(
-                        R.drawable.ic_add_new_chat_btn,
+                        R.drawable.ic_my_chats_navigation,
                         "Selenide"
                     ),
                     Chat(
-                        R.drawable.ic_add_new_chat_btn,
+                        R.drawable.ic_my_chats_navigation,
                         "Selenium"
                     ),
                     Chat(
-                        R.drawable.ic_add_new_chat_btn,
+                        R.drawable.ic_my_chats_navigation,
                         "Java"
                     )
                 )
@@ -183,11 +183,11 @@ class MainPageAdapter(activity: FragmentActivity, private val itemCount: Int) :
                 "Python"
             ),
             Chat(
-                R.drawable.ic_default_person,
+                R.drawable.ic_my_chats_navigation,
                 "Java Script"
             ),
             Chat(
-                R.drawable.ic_add_new_chat_btn,
+                R.drawable.ic_my_chats_navigation,
                 "Assembler"
             )
         )

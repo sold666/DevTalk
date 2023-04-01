@@ -46,9 +46,9 @@ class ChatSettingsFragment : Fragment() {
 
     private fun getParticipantList(): List<ChatParticipant> {
         return arrayListOf(
-            ChatParticipant(androidx.appcompat.R.drawable.abc_control_background_material, "Gena", "online"),
-            ChatParticipant(androidx.appcompat.R.drawable.abc_control_background_material, "Alena", "online"),
-            ChatParticipant(androidx.appcompat.R.drawable.abc_control_background_material, "Alina", "offline")
+            ChatParticipant(R.drawable.ic_person, "Gena", "online"),
+            ChatParticipant(R.drawable.ic_person, "Alena", "online"),
+            ChatParticipant(R.drawable.ic_person, "Alina", "offline")
         )
     }
 }

@@ -32,7 +32,7 @@
     <string name="profession_2">Profession №2</string>
     <string name="profession_3">Profession №3</string>
     <string name="chat_icon_description">Chat icon</string>
-    <string name="search_menu_tem">Search</string>
+    <string name="search_menu_item">Search</string>
     <string name="chat_name">Chat name</string>
     <string name="chat_settings">Chat settings</string>
     <string name="message_input">Text message...</string>
@@ -41,4 +41,6 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="notifications">Notifications</string>
     <string name="members">Members: %1$d</string>
+    <string name="back_to_chat">Return back to chat</string>
+    <string name="leave_chat">Log out of the chat</string>
 </resources>
