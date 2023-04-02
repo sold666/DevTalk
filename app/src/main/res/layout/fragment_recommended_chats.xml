@@ -42,7 +42,9 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
         android:contentDescription="@string/create_chat"
+        android:theme="@style/FloatingButtonShapeStyle"
         app:backgroundTint="@color/green"
+        app:elevation="4dp"
         app:srcCompat="@drawable/ic_add_new_chat_btn" />
 
 </RelativeLayout>

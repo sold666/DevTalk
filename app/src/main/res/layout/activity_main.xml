@@ -19,7 +19,7 @@
         android:id="@+id/main_bottom_nav_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/main_nav_bar_background"
+        android:background="@drawable/background_main_nav_bar"
         app:itemIconTint="?attr/icon_tint_color_primary_second"
         app:itemTextColor="?attr/text_main_nav_color"
         app:layout_constraintBottom_toBottomOf="parent"

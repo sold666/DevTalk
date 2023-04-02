@@ -19,7 +19,7 @@
                 android:layout_height="100dp"
                 android:layout_marginTop="80dp"
                 android:contentDescription="@string/dev_talk_icon"
-                android:src="@drawable/dev_talk_icon"
+                android:src="@drawable/ic_dev_talk"
                 app:layout_constraintBottom_toTopOf="@id/welcome_text"
                 app:layout_constraintEnd_toStartOf="@id/guideline_right"
                 app:layout_constraintLeft_toLeftOf="parent"
