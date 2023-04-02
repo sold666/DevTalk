@@ -40,7 +40,7 @@ class ChatSettingsFragment : Fragment() {
 
     private fun setListeners() {
         binding.chatSettingsReturnButton.setOnClickListener {
-            findNavController().navigate(R.id.action_chatSettingsFragment_to_chatFragment)
+            findNavController().popBackStack()
         }
     }
 

@@ -1,5 +1,6 @@
 package com.dev_talk.auth.result
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.dev_talk.auth.structures.Profession
 import com.dev_talk.auth.structures.Tag
 import com.dev_talk.databinding.FragmentResultBinding
+import com.dev_talk.main.MainActivity
 import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
 import com.dev_talk.utils.LIST_SELECTED_TAGS_KEY
 
@@ -59,7 +61,10 @@ class ResultFragment : Fragment() {
         binding.backButton.setOnClickListener { findNavController().popBackStack() }
 
         binding.nextButton.setOnClickListener {
-
+            val intent = Intent(context, MainActivity::class.java)
+            intent.putParcelableArrayListExtra(LIST_SELECTED_PROFESSIONS_KEY, ArrayList(selectedProfessions))
+            intent.putParcelableArrayListExtra(LIST_SELECTED_TAGS_KEY, ArrayList(selectedTags))
+            context?.startActivity(intent)
         }
     }
 
