@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.dev_talk.R
 import com.dev_talk.auth.structures.Profession
 import com.dev_talk.auth.structures.Tag
 import com.dev_talk.databinding.FragmentResultBinding
@@ -61,10 +62,7 @@ class ResultFragment : Fragment() {
         binding.backButton.setOnClickListener { findNavController().popBackStack() }
 
         binding.nextButton.setOnClickListener {
-            val intent = Intent(context, MainActivity::class.java)
-            intent.putParcelableArrayListExtra(LIST_SELECTED_PROFESSIONS_KEY, ArrayList(selectedProfessions))
-            intent.putParcelableArrayListExtra(LIST_SELECTED_TAGS_KEY, ArrayList(selectedTags))
-            context?.startActivity(intent)
+            findNavController().navigate(R.id.action_resultFragment_to_mainActivity)
         }
     }
 

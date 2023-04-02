@@ -67,9 +67,15 @@
         android:label="ResultFragment"
         tools:layout="@layout/fragment_result">
         <action
-            android:id="@+id/action_resultFragment_to_tagsFragment"
-            app:destination="@id/tagsFragment"
-            app:popUpToInclusive="false" />
+            android:id="@+id/action_resultFragment_to_mainActivity"
+            app:destination="@id/mainActivity" />
     </fragment>
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.dev_talk.main.MainActivity"
+        android:label="MainActivity"
+        tools:layout="@layout/activity_main">
+    </activity>
 
 </navigation>

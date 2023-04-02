@@ -24,7 +24,6 @@ private const val PROFESSION_KEY = "Current profession"
 
 class PersonalChatListFragment : Fragment() {
     private lateinit var binding: FragmentPersonalChatListBinding
-    private lateinit var chats: List<Chat>
     private lateinit var onChatClickListener: (chat: Chat, adapterPosition: Int) -> Unit
 
     override fun onCreateView(
