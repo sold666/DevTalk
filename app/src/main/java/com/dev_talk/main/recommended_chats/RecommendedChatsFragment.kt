@@ -67,10 +67,7 @@ class RecommendedChatsFragment : Fragment() {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     clearFocus()
                     searchBarMenu.findItem(R.id.menu_search)?.collapseActionView()
-                    filterData(query)
-                    if (binding.recommendedChats.size == 0) {
-                        filterData("")
-                    }
+                    filterData("")
                     return true
                 }
 
