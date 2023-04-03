@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
+import com.dev_talk.R
 import com.dev_talk.databinding.FragmentPersonalChatsBinding
+import com.dev_talk.main.structures.Chat
 import com.dev_talk.main.structures.Profession
 import com.google.android.material.tabs.TabLayout
 
@@ -26,15 +28,7 @@ class PersonalChatsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            val data =
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
-                    arguments?.getParcelableArrayList(
-                        DEFAULT_LIST_PROFESSIONS_KEY,
-                        Profession::class.java
-                    )!!
-                } else {
-                    arguments?.getParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY)!!
-                }
+            val data = getProfessions()
             setUpViewPager2(viewPager = chatsWithCategory, tabLayout = professions, data = data)
             for ((index, currentProfession) in data.withIndex()) {
                 if (index < 3) {
@@ -49,16 +43,6 @@ class PersonalChatsFragment : Fragment() {
                 }
             })
         }
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance(professions: ArrayList<Profession>) =
-            PersonalChatsFragment().apply {
-                arguments = Bundle().apply {
-                    putParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY, professions)
-                }
-            }
     }
 
     private fun getProfessionsNames(): List<String> {
@@ -89,5 +73,73 @@ class PersonalChatsFragment : Fragment() {
                 }
             })
         }
+    }
+
+    private fun getProfessions(): ArrayList<Profession> {
+        return arrayListOf(
+            Profession(
+                "Profession №1",
+                arrayListOf(
+                    Chat(
+                        R.drawable.ic_my_chats_navigation,
+                        "C++"
+                    ),
+                    Chat(
+                        R.drawable.ic_my_chats_navigation,
+                        "Java"
+                    ),
+                    Chat(
+                        R.drawable.ic_my_chats_navigation,
+                        "C"
+                    ),
+                    Chat(
+                        R.drawable.ic_my_chats_navigation,
+                        "Kotlin"
+                    ),
+                    Chat(
+                        R.drawable.ic_my_chats_navigation,
+                        "F"
+                    ),
+                    Chat(
+                        R.drawable.ic_my_chats_navigation,
+                        "Ruby"
+                    ),
+                    Chat(
+                        R.drawable.ic_my_chats_navigation,
+                        "Go"
+                    ),
+                )
+            ),
+            Profession(
+                "Profession №2",
+                arrayListOf(
+                    Chat(
+                        R.drawable.ic_my_chats_navigation,
+                        "Css"
+                    ),
+                    Chat(
+                        R.drawable.ic_my_chats_navigation,
+                        "Html"
+                    )
+                )
+            ),
+            Profession(
+                "Profession №3",
+                arrayListOf(
+                    Chat(
+                        R.drawable.ic_my_chats_navigation,
+                        "Selenide"
+                    ),
+                    Chat(
+                        R.drawable.ic_my_chats_navigation,
+                        "Selenium"
+                    ),
+                    Chat(
+                        R.drawable.ic_my_chats_navigation,
+                        "Java"
+                    )
+                )
+            )
+        )
     }
 }

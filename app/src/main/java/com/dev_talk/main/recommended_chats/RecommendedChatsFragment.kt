@@ -32,29 +32,28 @@ class RecommendedChatsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            dataRV =
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
-                    arguments?.getParcelableArrayList(
-                        RECOMMENDED_LIST_PROFESSIONS_KEY,
-                        Chat::class.java
-                    )!!
-                } else {
-                    arguments?.getParcelableArrayList(RECOMMENDED_LIST_PROFESSIONS_KEY)!!
-                }
+            dataRV = getRecommendedChats()
             adapterRV = RecommendedChatsAdapter(dataRV)
             setUpRecyclerView(recommendedChats)
             setUpSearchView()
         }
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance(chats: ArrayList<Chat>) =
-            RecommendedChatsFragment().apply {
-                arguments = Bundle().apply {
-                    putParcelableArrayList(RECOMMENDED_LIST_PROFESSIONS_KEY, chats)
-                }
-            }
+    private fun getRecommendedChats(): ArrayList<Chat> {
+        return arrayListOf(
+            Chat(
+                R.drawable.ic_my_chats_navigation,
+                "Python"
+            ),
+            Chat(
+                R.drawable.ic_my_chats_navigation,
+                "Java Script"
+            ),
+            Chat(
+                R.drawable.ic_my_chats_navigation,
+                "Assembler"
+            )
+        )
     }
 
     private fun setUpSearchView() {

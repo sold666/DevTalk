@@ -2,8 +2,21 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_graph">
-
-    <!-- TODO перенести весь naviation из кода MainActivity в граф -->
-
+    android:id="@+id/main_graph"
+    app:startDestination="@id/personal_chats_fragment_container">
+    <fragment
+        android:id="@+id/recommended_chats_fragment_container"
+        tools:layout="@layout/fragment_recommended_chats"
+        android:name="com.dev_talk.main.recommended_chats.RecommendedChatsFragment"
+        android:label="RecommendedChatsFragment" />
+    <fragment
+        android:id="@+id/profile_fragment_container"
+        android:name="com.dev_talk.main.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        tools:layout="@layout/fragment_personal_chats"
+        android:id="@+id/personal_chats_fragment_container"
+        android:name="com.dev_talk.main.my_chats.PersonalChatsFragment"
+        android:label="PersonalChatsFragment" />
 </navigation>

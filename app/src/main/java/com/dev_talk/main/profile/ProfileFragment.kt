@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import androidx.recyclerview.widget.RecyclerView
+import com.dev_talk.R
 import com.dev_talk.databinding.FragmentProfileBinding
+import com.dev_talk.main.structures.Chat
 import com.dev_talk.main.structures.Header
 import com.dev_talk.main.structures.Item
 import com.dev_talk.main.structures.ProfileData
@@ -31,14 +33,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            data = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                arguments?.getParcelableArrayList(
-                    DEFAULT_LIST_PROFESSIONS_KEY,
-                    ProfileData::class.java
-                )!!
-            } else {
-                arguments?.getParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY)!!
-            }
+            data = getProfileData()
             setUpRecyclerView(recyclerView = myChats)
 
         }
@@ -66,13 +61,84 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance(professions: ArrayList<ProfileData>) =
-            ProfileFragment().apply {
-                arguments = Bundle().apply {
-                    putParcelableArrayList(DEFAULT_LIST_PROFESSIONS_KEY, professions)
-                }
-            }
+    private fun getProfileData(): ArrayList<ProfileData> {
+        return arrayListOf(
+            Header("Profession №1"),
+            Item(
+                Chat(
+                    R.drawable.ic_my_chats_navigation,
+                    "C++"
+                )
+            ),
+            Item(
+                Chat(
+                    R.drawable.ic_my_chats_navigation,
+                    "Java"
+                )
+            ),
+            Item(
+                Chat(
+                    R.drawable.ic_my_chats_navigation,
+                    "C"
+                )
+            ),
+            Item(
+                Chat(
+                    R.drawable.ic_my_chats_navigation,
+                    "Kotlin"
+                )
+            ),
+            Item(
+                Chat(
+                    R.drawable.ic_my_chats_navigation,
+                    "F"
+                )
+            ),
+            Item(
+                Chat(
+                    R.drawable.ic_my_chats_navigation,
+                    "Ruby"
+                )
+            ),
+            Item(
+                Chat(
+                    R.drawable.ic_my_chats_navigation,
+                    "Go"
+                )
+            ),
+            Header("Profession №2"),
+            Item(
+                Chat(
+                    R.drawable.ic_my_chats_navigation,
+                    "Css"
+                )
+            ),
+            Item(
+                Chat(
+                    R.drawable.ic_my_chats_navigation,
+                    "Html"
+                )
+            ),
+            Header("Profession №3"),
+            Item(
+                Chat(
+                    R.drawable.ic_my_chats_navigation,
+                    "Selenide"
+                )
+            ),
+            Item(
+                Chat(
+                    R.drawable.ic_my_chats_navigation,
+                    "Selenium"
+                )
+            ),
+            Item(
+                Chat(
+                    R.drawable.ic_my_chats_navigation,
+                    "Java"
+                )
+            )
+        )
     }
+
 }
