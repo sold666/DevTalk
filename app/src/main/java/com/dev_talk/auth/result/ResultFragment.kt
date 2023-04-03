@@ -1,17 +1,17 @@
 package com.dev_talk.auth.result
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.dev_talk.R
 import com.dev_talk.auth.structures.Profession
 import com.dev_talk.auth.structures.Tag
 import com.dev_talk.databinding.FragmentResultBinding
-import com.dev_talk.main.MainActivity
 import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
 import com.dev_talk.utils.LIST_SELECTED_TAGS_KEY
 
@@ -20,6 +20,7 @@ class ResultFragment : Fragment() {
     private lateinit var binding: FragmentResultBinding
     private lateinit var selectedTags: List<Tag>
     private lateinit var selectedProfessions: List<Profession>
+    private lateinit var progressBar: ProgressBar
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,6 +33,7 @@ class ResultFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        progressBar = view.findViewById(R.id.progress_bar)
         initListeners()
         with(binding) {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
@@ -62,7 +64,9 @@ class ResultFragment : Fragment() {
         binding.backButton.setOnClickListener { findNavController().popBackStack() }
 
         binding.nextButton.setOnClickListener {
+            progressBar.isVisible = true
             findNavController().navigate(R.id.action_resultFragment_to_mainActivity)
+            activity?.finish()
         }
     }
 

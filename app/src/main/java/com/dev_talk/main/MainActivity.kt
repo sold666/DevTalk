@@ -1,6 +1,8 @@
 package com.dev_talk.main
 
 import android.os.Bundle
+import android.view.View
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import com.dev_talk.R
 import com.dev_talk.databinding.ActivityMainBinding

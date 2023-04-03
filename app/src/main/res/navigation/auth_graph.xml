@@ -22,10 +22,6 @@
         android:label="SignUpFragment"
         tools:layout="@layout/fragment_sign_up">
         <action
-            android:id="@+id/action_signUpFragment_to_signInFragment"
-            app:destination="@id/signInFragment"
-            app:popUpToInclusive="false" />
-        <action
             android:id="@+id/action_signUpFragment_to_professionFragment"
             app:destination="@id/professionFragment"
             app:enterAnim="@anim/nav_default_enter_anim" />
@@ -40,10 +36,6 @@
             android:id="@+id/action_professionFragment_to_tagsFragment"
             app:destination="@id/tagsFragment"
             app:enterAnim="@anim/nav_default_enter_anim" />
-        <action
-            android:id="@+id/action_professionFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment"
-            app:popUpToInclusive="false" />
     </fragment>
 
     <fragment
@@ -51,10 +43,6 @@
         android:name="com.dev_talk.auth.tag.TagFragment"
         android:label="TagsFragment"
         tools:layout="@layout/fragment_tag">
-        <action
-            android:id="@+id/action_tagsFragment_to_professionFragment"
-            app:destination="@id/professionFragment"
-            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_tagsFragment_to_resultFragment"
             app:destination="@id/resultFragment"
@@ -68,7 +56,9 @@
         tools:layout="@layout/fragment_result">
         <action
             android:id="@+id/action_resultFragment_to_mainActivity"
-            app:destination="@id/mainActivity" />
+            app:destination="@id/mainActivity"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
 
     <activity
