@@ -16,6 +16,7 @@
             app:menu="@menu/menu_search_bar"
             android:layout_height="match_parent"
             android:background="@color/green"
+            android:theme="@style/CustomSearchView"
             app:title="@string/my_chats_title"
             app:titleCentered="true"
             app:titleTextColor="?attr/text_main_nav_color" />
