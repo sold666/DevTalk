@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:theme="@style/CustomSearchView"
-            app:menu="@menu/menu_recommendations_search"
+            app:menu="@menu/menu_search_bar"
             app:title="@string/app_name"
             app:titleCentered="true"
             app:titleTextColor="?attr/text_main_nav_color" />

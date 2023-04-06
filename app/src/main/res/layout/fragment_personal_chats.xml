@@ -13,7 +13,7 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/personal_chats_toolbar"
             android:layout_width="match_parent"
-            app:menu="@menu/menu_recommendations_search"
+            app:menu="@menu/menu_search_bar"
             android:layout_height="match_parent"
             android:background="@color/green"
             app:title="@string/my_chats_title"
@@ -53,7 +53,7 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/chats_with_category"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@id/navigation_personal_chats"
         android:background="?attr/background_color_primary" />
 
