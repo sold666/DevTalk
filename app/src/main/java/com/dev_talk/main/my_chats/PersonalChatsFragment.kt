@@ -1,10 +1,13 @@
 package com.dev_talk.main.my_chats
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.dev_talk.R
 import com.dev_talk.databinding.FragmentPersonalChatsBinding
@@ -42,6 +45,7 @@ class PersonalChatsFragment : Fragment() {
                     chatsWithCategory.currentItem = tab.position
                 }
             })
+            setUpSearchView()
         }
     }
 
@@ -53,6 +57,35 @@ class PersonalChatsFragment : Fragment() {
             }
         }
         return listWithNames
+    }
+
+    private fun setUpSearchView() {
+        val searchView = binding.personalChatsToolbar.menu.findItem(R.id.menu_search)?.actionView as SearchView
+        val searchBarMenu = binding.personalChatsToolbar.menu
+        searchView.apply {
+            maxWidth = Integer.MAX_VALUE;
+            queryHint = getString(R.string.default_query_hint)
+            setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    clearFocus()
+                    searchBarMenu.findItem(R.id.menu_search)?.collapseActionView()
+                    filterData("")
+                    return true
+                }
+
+                override fun onQueryTextChange(query: String?): Boolean {
+                    filterData(query)
+                    return true
+                }
+
+                private fun filterData(query: String?) {
+                    Log.d("hehe", "123")
+                    val myAdapter = binding.chatsWithCategory.findViewById<RecyclerView>(R.id.list_with_my_chats).adapter as PersonalChatsAdapter
+
+                    myAdapter.filter.filter(query)
+                }
+            })
+        }
     }
 
     private fun setUpViewPager2(

@@ -1,9 +1,13 @@
 package com.dev_talk.main.my_chats
 
+import android.annotation.SuppressLint
 import android.text.Layout
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -11,20 +15,28 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.R
 import com.dev_talk.main.structures.Chat
+import java.util.*
 
 class PersonalChatsAdapter(
 
     private val chats: List<Chat>,
     private val onChatClickListener: (chat: Chat, adapterPosition: Int) -> Unit
-) : RecyclerView.Adapter<PersonalChatsAdapter.ChatItemViewHolder>() {
+) : RecyclerView.Adapter<PersonalChatsAdapter.ChatItemViewHolder>(), Filterable {
+
+    internal var filteredChats: List<Chat>
+
+    init {
+        filteredChats = chats
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ChatItemViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.item_default_chat, null)
     )
 
-    override fun getItemCount() = chats.size
+    override fun getItemCount() = filteredChats.size
 
     override fun onBindViewHolder(holder: ChatItemViewHolder, position: Int) {
-        holder.bind(chats[position], onChatClickListener)
+        holder.bind(filteredChats[position], onChatClickListener)
     }
 
     class ChatItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -38,6 +50,38 @@ class PersonalChatsAdapter(
             this.chat.text = chat.tags
 
             container.setOnClickListener { listener.invoke(chat, adapterPosition) }
+        }
+    }
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(p0: CharSequence?): FilterResults {
+                val query = p0.toString()
+                filteredChats = if (query.isEmpty()) {
+                    chats
+                } else {
+                    val resultList = ArrayList<Chat>()
+                    for (chat in chats) {
+                        if (chat.tags.lowercase(Locale.ROOT)
+                                .contains(query.lowercase(Locale.ROOT))
+                        ) {
+                            resultList.add(chat)
+                        }
+                    }
+                    resultList
+                }
+                val filterResults = FilterResults()
+                filterResults.values = filteredChats
+                return filterResults
+            }
+
+            @SuppressLint("NotifyDataSetChanged")
+            override fun publishResults(quary: CharSequence?, filterResults: FilterResults?) {
+                Log.d("hehe", "gggg")
+                filteredChats = filterResults!!.values as List<Chat>
+                notifyDataSetChanged()
+            }
+
         }
     }
 }
