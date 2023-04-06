@@ -77,7 +77,6 @@ class PersonalChatsAdapter(
 
             @SuppressLint("NotifyDataSetChanged")
             override fun publishResults(quary: CharSequence?, filterResults: FilterResults?) {
-                Log.d("hehe", "gggg")
                 filteredChats = filterResults!!.values as List<Chat>
                 notifyDataSetChanged()
             }

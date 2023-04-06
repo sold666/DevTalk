@@ -79,9 +79,7 @@ class PersonalChatsFragment : Fragment() {
                 }
 
                 private fun filterData(query: String?) {
-                    Log.d("hehe", "123")
                     val myAdapter = binding.chatsWithCategory.findViewById<RecyclerView>(R.id.list_with_my_chats).adapter as PersonalChatsAdapter
-
                     myAdapter.filter.filter(query)
                 }
             })
