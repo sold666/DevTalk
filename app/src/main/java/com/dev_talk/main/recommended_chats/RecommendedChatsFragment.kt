@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.size
 import androidx.fragment.app.Fragment
@@ -59,6 +61,8 @@ class RecommendedChatsFragment : Fragment() {
     private fun setUpSearchView() {
         val searchView = binding.searchBar.menu.findItem(R.id.menu_search)?.actionView as SearchView
         val searchBarMenu = binding.searchBar.menu
+        val searchViewIcon: ImageView = searchView.findViewById(androidx.appcompat.R.id.search_mag_icon)
+        searchViewIcon.layoutParams = LinearLayout.LayoutParams(0, 0)
         searchView.apply {
             maxWidth = Integer.MAX_VALUE;
             queryHint = getString(R.string.default_query_hint)

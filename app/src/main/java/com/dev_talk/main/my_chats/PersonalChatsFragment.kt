@@ -1,10 +1,11 @@
 package com.dev_talk.main.my_chats
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +15,7 @@ import com.dev_talk.databinding.FragmentPersonalChatsBinding
 import com.dev_talk.main.structures.Chat
 import com.dev_talk.main.structures.Profession
 import com.google.android.material.tabs.TabLayout
+
 
 private const val DEFAULT_LIST_PROFESSIONS_KEY = "professions"
 
@@ -62,7 +64,10 @@ class PersonalChatsFragment : Fragment() {
     private fun setUpSearchView() {
         val searchView = binding.personalChatsToolbar.menu.findItem(R.id.menu_search)?.actionView as SearchView
         val searchBarMenu = binding.personalChatsToolbar.menu
+        val searchViewIcon: ImageView = searchView.findViewById(androidx.appcompat.R.id.search_mag_icon)
+        searchViewIcon.layoutParams = LinearLayout.LayoutParams(0, 0)
         searchView.apply {
+            isIconified = false
             maxWidth = Integer.MAX_VALUE;
             queryHint = getString(R.string.default_query_hint)
             setOnQueryTextListener(object : SearchView.OnQueryTextListener {
