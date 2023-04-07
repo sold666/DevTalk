@@ -41,7 +41,6 @@
     <style name="CustomSearchView" parent="Widget.AppCompat.SearchView">
         <item name="android:tint">@color/white</item>
         <item name="android:textColorHint">@color/white</item>
-        <item name="iconifiedByDefault">false</item>
     </style>
 
     <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
