@@ -6,24 +6,42 @@
     android:layout_height="wrap_content"
     android:padding="4dp">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/image_profile"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:text="Username"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/text_message"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/text_message"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
         android:background="@drawable/background_recieved_message"
-        android:padding="12dp"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@id/image_profile"
-        app:layout_constraintStart_toEndOf="@+id/image_profile"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.8" />
+        android:elevation="4dp"
+        android:maxWidth="240dp"
+        android:padding="16dp"
+        android:text="Hi, username message"
+        android:textColor="?attr/text_color_secondary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username" />
+
+    <TextView
+        android:id="@+id/text_message_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="12:00 PM"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/text_message"
+        app:layout_constraintLeft_toRightOf="@+id/text_message" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
