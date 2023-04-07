@@ -22,20 +22,26 @@
             app:layout_constraintStart_toEndOf="@id/chat_avatar"
             app:layout_constraintTop_toTopOf="@id/chat_avatar"
             app:menu="@menu/menu_chat_app_bar"
-            app:navigationIcon="@drawable/ic_arrow_back"
-            app:title="@string/chat_name"
-            app:titleMarginStart="124dp"
-            app:titleTextColor="?attr/text_main_nav_color">
+            app:navigationIcon="@drawable/ic_arrow_back">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/chat_avatar"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:layout_gravity="left"
+                android:layout_marginStart="16dp"
                 android:src="@drawable/ic_person"
-                android:translationX="-150dp"
                 app:civ_border_color="?attr/icon_tint_color_primary_second"
                 app:civ_border_width="2dp"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="@string/chat_name"
+                android:textColor="?attr/text_main_nav_color"
+                android:textSize="20sp" />
 
         </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
@@ -83,7 +89,7 @@
             android:hint="@string/message_input"
             android:inputType="textMultiLine|textCapSentences"
             android:maxLines="4"
-            android:padding="4dp"
+            android:padding="8dp"
             android:textColor="@color/black"
             android:textColorHint="@color/grey_second"
             app:layout_constraintBottom_toBottomOf="parent"
