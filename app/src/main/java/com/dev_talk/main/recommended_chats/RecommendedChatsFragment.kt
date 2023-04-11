@@ -1,6 +1,7 @@
 package com.dev_talk.main.recommended_chats
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -71,6 +72,7 @@ class RecommendedChatsFragment : Fragment() {
                     clearFocus()
                     searchBarMenu.findItem(R.id.menu_search)?.collapseActionView()
                     filterData("")
+                    binding.noChatsDetected.visibility = View.VISIBLE
                     return true
                 }
 
@@ -81,6 +83,12 @@ class RecommendedChatsFragment : Fragment() {
 
                 private fun filterData(query: String?) {
                     adapterRV.filter.filter(query)
+                    if (binding.recommendedChats.size == 0) {
+                        binding.noChatsDetected.visibility = View.VISIBLE
+                    }
+                    else {
+                        binding.noChatsDetected.visibility = View.GONE
+                    }
                 }
             })
         }

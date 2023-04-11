@@ -18,8 +18,7 @@
             android:layout_height="wrap_content"
             android:background="?attr/background_color_primary"
             android:theme="@style/ProfileToolbarTheme"
-            app:menu="@menu/profile_app_bar"
-            app:navigationIcon="@drawable/ic_arrow_back">
+            app:menu="@menu/profile_app_bar">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
