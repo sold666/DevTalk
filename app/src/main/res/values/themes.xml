@@ -63,4 +63,11 @@
     <style name="CustomTabSelectedText">
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="ProfileToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">#61A0EA</item>
+        <item name="android:letterSpacing">.0</item>
+        <item name="android:tint">#61A0EA</item>
+    </style>
 </resources>

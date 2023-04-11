@@ -43,4 +43,8 @@
     <string name="members">Members: %1$d</string>
     <string name="back_to_chat">Return back to chat</string>
     <string name="leave_chat">Log out of the chat</string>
+    <string name="nothing_was_found_query">Nothing was found for your query</string>
+    <string name="profile_toolbar">Profile</string>
+    <string name="log_out_menu_item_text">Log out</string>
+    <string name="edit_profile_menu_item_text">Edit</string>
 </resources>
