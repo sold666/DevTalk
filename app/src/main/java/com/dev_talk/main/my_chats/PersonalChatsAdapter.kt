@@ -30,7 +30,7 @@ class PersonalChatsAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ChatItemViewHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.item_default_chat, null)
+        LayoutInflater.from(parent.context).inflate(R.layout.item_default_chat, parent, false)
     )
 
     override fun getItemCount() = filteredChats.size
@@ -43,11 +43,14 @@ class PersonalChatsAdapter(
         private val container: ConstraintLayout = itemView.findViewById(R.id.chat_layout)
         private val icon: ImageView = itemView.findViewById(R.id.chat_icon)
         private val chat: TextView = itemView.findViewById(R.id.chat_name)
+        private val lastMessage: TextView = itemView.findViewById(R.id.last_message)
+
 
         fun bind(chat: Chat,
                  listener: (chat: Chat, adapterPosition: Int) -> Unit) {
             icon.setImageResource(chat.icon)
             this.chat.text = chat.tags
+            lastMessage.text = chat.lastMessage
 
             container.setOnClickListener { listener.invoke(chat, adapterPosition) }
         }

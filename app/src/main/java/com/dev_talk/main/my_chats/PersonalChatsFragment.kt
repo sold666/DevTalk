@@ -118,31 +118,38 @@ class PersonalChatsFragment : Fragment() {
                 arrayListOf(
                     Chat(
                         R.drawable.ic_my_chats_navigation,
-                        "C++"
+                        "C++",
+                        "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
                         R.drawable.ic_my_chats_navigation,
-                        "Java"
+                        "Java",
+                        "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
                         R.drawable.ic_my_chats_navigation,
-                        "C"
+                        "C",
+                        "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
                         R.drawable.ic_my_chats_navigation,
-                        "Kotlin"
+                        "Kotlin",
+                        "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
                         R.drawable.ic_my_chats_navigation,
-                        "F"
+                        "F",
+                        "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
                         R.drawable.ic_my_chats_navigation,
-                        "Ruby"
+                        "Ruby",
+                        "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
                         R.drawable.ic_my_chats_navigation,
-                        "Go"
+                        "Go",
+                        "text text text text text text text text text text text text text text text"
                     ),
                 )
             ),
@@ -151,11 +158,13 @@ class PersonalChatsFragment : Fragment() {
                 arrayListOf(
                     Chat(
                         R.drawable.ic_my_chats_navigation,
-                        "Css"
+                        "Css",
+                        "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
                         R.drawable.ic_my_chats_navigation,
-                        "Html"
+                        "Html",
+                        "text text text text text text text text text text text text text text text"
                     )
                 )
             ),
@@ -164,15 +173,18 @@ class PersonalChatsFragment : Fragment() {
                 arrayListOf(
                     Chat(
                         R.drawable.ic_my_chats_navigation,
-                        "Selenide"
+                        "Selenide",
+                        "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
                         R.drawable.ic_my_chats_navigation,
-                        "Selenium"
+                        "Selenium",
+                        "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
                         R.drawable.ic_my_chats_navigation,
-                        "Java"
+                        "Java",
+                        "text text text text text text text text text text text text text text text"
                     )
                 )
             )
