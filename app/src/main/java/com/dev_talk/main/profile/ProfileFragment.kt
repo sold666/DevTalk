@@ -2,19 +2,18 @@ package com.dev_talk.main.profile
 
 import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.LinearLayout
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.R
 import com.dev_talk.databinding.FragmentProfileBinding
-import com.dev_talk.main.structures.Chat
-import com.dev_talk.main.structures.Header
-import com.dev_talk.main.structures.Item
-import com.dev_talk.main.structures.ProfileData
+import com.dev_talk.main.structures.*
 
 private const val DEFAULT_LIST_PROFESSIONS_KEY = "professions"
 
@@ -35,8 +34,35 @@ class ProfileFragment : Fragment() {
         with(binding) {
             data = getProfileData()
             setUpRecyclerView(recyclerView = myChats)
-
+            setUpLinks(socialNetwork)
+//            (requireActivity() as MenuHost).addMenuProvider(object : MenuProvider {
+//                override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+//                    menuInflater.inflate(R.menu.profile_app_bar, menu)
+//                }
+//
+//                override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+//                    TODO("Not yet implemented")
+//                }
+//
+//            })
         }
+    }
+
+    private fun setUpLinks(recyclerView: RecyclerView) {
+        val manager = LinearLayoutManager(context)
+        manager.orientation = RecyclerView.HORIZONTAL
+        recyclerView.apply {
+            layoutManager = manager
+            adapter = ProfileLinkAdapter(getLinks())
+            setHasFixedSize(true)
+        }
+    }
+
+    private fun getLinks() : ArrayList<Link> {
+        return arrayListOf(
+            Link(R.drawable.ic_person),
+            Link(R.drawable.ic_person)
+        )
     }
 
     private fun setUpRecyclerView(
@@ -57,7 +83,6 @@ class ProfileFragment : Fragment() {
             layoutManager = manager
             adapter = ProfileChatsAdapter(data)
             setHasFixedSize(true)
-
         }
     }
 
