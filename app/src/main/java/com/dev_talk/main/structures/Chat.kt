@@ -8,5 +8,6 @@ import kotlinx.parcelize.Parcelize
 data class Chat(
     @DrawableRes
     val icon: Int = 0,
-    val tags: String = ""
+    val tags: String = "",
+    val lastMessage: String = ""
 ) : Parcelable

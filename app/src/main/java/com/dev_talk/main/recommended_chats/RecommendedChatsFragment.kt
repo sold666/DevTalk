@@ -1,9 +1,12 @@
 package com.dev_talk.main.recommended_chats
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.size
 import androidx.fragment.app.Fragment
@@ -59,6 +62,8 @@ class RecommendedChatsFragment : Fragment() {
     private fun setUpSearchView() {
         val searchView = binding.searchBar.menu.findItem(R.id.menu_search)?.actionView as SearchView
         val searchBarMenu = binding.searchBar.menu
+        val searchViewIcon: ImageView = searchView.findViewById(androidx.appcompat.R.id.search_mag_icon)
+        searchViewIcon.layoutParams = LinearLayout.LayoutParams(0, 0)
         searchView.apply {
             maxWidth = Integer.MAX_VALUE;
             queryHint = getString(R.string.default_query_hint)
@@ -67,6 +72,7 @@ class RecommendedChatsFragment : Fragment() {
                     clearFocus()
                     searchBarMenu.findItem(R.id.menu_search)?.collapseActionView()
                     filterData("")
+                    binding.noChatsDetected.visibility = View.VISIBLE
                     return true
                 }
 
@@ -77,6 +83,12 @@ class RecommendedChatsFragment : Fragment() {
 
                 private fun filterData(query: String?) {
                     adapterRV.filter.filter(query)
+                    if (binding.recommendedChats.size == 0) {
+                        binding.noChatsDetected.visibility = View.VISIBLE
+                    }
+                    else {
+                        binding.noChatsDetected.visibility = View.GONE
+                    }
                 }
             })
         }

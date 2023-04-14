@@ -4,13 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.dev_talk.R
 import com.dev_talk.databinding.FragmentPersonalChatsBinding
 import com.dev_talk.main.structures.Chat
 import com.dev_talk.main.structures.Profession
 import com.google.android.material.tabs.TabLayout
+
 
 private const val DEFAULT_LIST_PROFESSIONS_KEY = "professions"
 
@@ -42,6 +47,7 @@ class PersonalChatsFragment : Fragment() {
                     chatsWithCategory.currentItem = tab.position
                 }
             })
+            setUpSearchView()
         }
     }
 
@@ -53,6 +59,36 @@ class PersonalChatsFragment : Fragment() {
             }
         }
         return listWithNames
+    }
+
+    private fun setUpSearchView() {
+        val searchView = binding.personalChatsToolbar.menu.findItem(R.id.menu_search)?.actionView as SearchView
+        val searchBarMenu = binding.personalChatsToolbar.menu
+        val searchViewIcon: ImageView = searchView.findViewById(androidx.appcompat.R.id.search_mag_icon)
+        searchViewIcon.layoutParams = LinearLayout.LayoutParams(0, 0)
+        searchView.apply {
+            isIconified = false
+            maxWidth = Integer.MAX_VALUE;
+            queryHint = getString(R.string.default_query_hint)
+            setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    clearFocus()
+                    searchBarMenu.findItem(R.id.menu_search)?.collapseActionView()
+                    filterData("")
+                    return true
+                }
+
+                override fun onQueryTextChange(query: String?): Boolean {
+                    filterData(query)
+                    return true
+                }
+
+                private fun filterData(query: String?) {
+                    val myAdapter = binding.chatsWithCategory.findViewById<RecyclerView>(R.id.list_with_my_chats).adapter as PersonalChatsAdapter
+                    myAdapter.filter.filter(query)
+                }
+            })
+        }
     }
 
     private fun setUpViewPager2(
@@ -82,31 +118,38 @@ class PersonalChatsFragment : Fragment() {
                 arrayListOf(
                     Chat(
                         R.drawable.ic_my_chats_navigation,
-                        "C++"
+                        "C++",
+                        "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
                         R.drawable.ic_my_chats_navigation,
-                        "Java"
+                        "Java",
+                        "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
                         R.drawable.ic_my_chats_navigation,
-                        "C"
+                        "C",
+                        "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
                         R.drawable.ic_my_chats_navigation,
-                        "Kotlin"
+                        "Kotlin",
+                        "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
                         R.drawable.ic_my_chats_navigation,
-                        "F"
+                        "F",
+                        "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
                         R.drawable.ic_my_chats_navigation,
-                        "Ruby"
+                        "Ruby",
+                        "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
                         R.drawable.ic_my_chats_navigation,
-                        "Go"
+                        "Go",
+                        "text text text text text text text text text text text text text text text"
                     ),
                 )
             ),
@@ -115,11 +158,13 @@ class PersonalChatsFragment : Fragment() {
                 arrayListOf(
                     Chat(
                         R.drawable.ic_my_chats_navigation,
-                        "Css"
+                        "Css",
+                        "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
                         R.drawable.ic_my_chats_navigation,
-                        "Html"
+                        "Html",
+                        "text text text text text text text text text text text text text text text"
                     )
                 )
             ),
@@ -128,15 +173,18 @@ class PersonalChatsFragment : Fragment() {
                 arrayListOf(
                     Chat(
                         R.drawable.ic_my_chats_navigation,
-                        "Selenide"
+                        "Selenide",
+                        "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
                         R.drawable.ic_my_chats_navigation,
-                        "Selenium"
+                        "Selenium",
+                        "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
                         R.drawable.ic_my_chats_navigation,
-                        "Java"
+                        "Java",
+                        "text text text text text text text text text text text text text text text"
                     )
                 )
             )
