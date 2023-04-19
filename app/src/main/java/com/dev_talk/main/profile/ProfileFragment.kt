@@ -1,11 +1,9 @@
 package com.dev_talk.main.profile
 
-import android.os.Build
 import android.os.Bundle
-import android.view.*
-import android.widget.LinearLayout
-import androidx.core.view.MenuHost
-import androidx.core.view.MenuProvider
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
@@ -58,7 +56,7 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    private fun getLinks() : ArrayList<Link> {
+    private fun getLinks(): ArrayList<Link> {
         return arrayListOf(
             Link(R.drawable.ic_person),
             Link(R.drawable.ic_person)
@@ -91,79 +89,78 @@ class ProfileFragment : Fragment() {
             Header("Profession №1"),
             Item(
                 Chat(
-                    R.drawable.ic_my_chats_navigation,
+                    R.drawable.ic_person,
                     "C++"
                 )
             ),
             Item(
                 Chat(
-                    R.drawable.ic_my_chats_navigation,
+                    R.drawable.ic_person,
                     "Java"
                 )
             ),
             Item(
                 Chat(
-                    R.drawable.ic_my_chats_navigation,
+                    R.drawable.ic_person,
                     "C"
                 )
             ),
             Item(
                 Chat(
-                    R.drawable.ic_my_chats_navigation,
+                    R.drawable.ic_person,
                     "Kotlin"
                 )
             ),
             Item(
                 Chat(
-                    R.drawable.ic_my_chats_navigation,
+                    R.drawable.ic_person,
                     "F"
                 )
             ),
             Item(
                 Chat(
-                    R.drawable.ic_my_chats_navigation,
+                    R.drawable.ic_person,
                     "Ruby"
                 )
             ),
             Item(
                 Chat(
-                    R.drawable.ic_my_chats_navigation,
+                    R.drawable.ic_person,
                     "Go"
                 )
             ),
             Header("Profession №2"),
             Item(
                 Chat(
-                    R.drawable.ic_my_chats_navigation,
+                    R.drawable.ic_person,
                     "Css"
                 )
             ),
             Item(
                 Chat(
-                    R.drawable.ic_my_chats_navigation,
+                    R.drawable.ic_person,
                     "Html"
                 )
             ),
             Header("Profession №3"),
             Item(
                 Chat(
-                    R.drawable.ic_my_chats_navigation,
+                    R.drawable.ic_person,
                     "Selenide"
                 )
             ),
             Item(
                 Chat(
-                    R.drawable.ic_my_chats_navigation,
+                    R.drawable.ic_person,
                     "Selenium"
                 )
             ),
             Item(
                 Chat(
-                    R.drawable.ic_my_chats_navigation,
+                    R.drawable.ic_person,
                     "Java"
                 )
             )
         )
     }
-
 }

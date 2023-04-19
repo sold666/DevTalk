@@ -1,7 +1,6 @@
 package com.dev_talk.main.recommended_chats
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,8 +15,6 @@ import com.dev_talk.R
 import com.dev_talk.databinding.FragmentRecommendedChatsBinding
 import com.dev_talk.main.common.Divider.Companion.getRecyclerViewDivider
 import com.dev_talk.main.structures.Chat
-
-private const val RECOMMENDED_LIST_PROFESSIONS_KEY = "recommendations"
 
 class RecommendedChatsFragment : Fragment() {
     private lateinit var binding: FragmentRecommendedChatsBinding
@@ -45,15 +42,39 @@ class RecommendedChatsFragment : Fragment() {
     private fun getRecommendedChats(): ArrayList<Chat> {
         return arrayListOf(
             Chat(
-                R.drawable.ic_my_chats_navigation,
+                R.drawable.ic_person,
                 "Python"
             ),
             Chat(
-                R.drawable.ic_my_chats_navigation,
+                R.drawable.ic_person,
                 "Java Script"
             ),
             Chat(
-                R.drawable.ic_my_chats_navigation,
+                R.drawable.ic_person,
+                "Lua"
+            ),
+            Chat(
+                R.drawable.ic_person,
+                "Lisp"
+            ),
+            Chat(
+                R.drawable.ic_person,
+                "Fortran"
+            ),
+            Chat(
+                R.drawable.ic_person,
+                "MatLab"
+            ),
+            Chat(
+                R.drawable.ic_person,
+                "F"
+            ),
+            Chat(
+                R.drawable.ic_person,
+                "C++"
+            ),
+            Chat(
+                R.drawable.ic_person,
                 "Assembler"
             )
         )
@@ -62,10 +83,11 @@ class RecommendedChatsFragment : Fragment() {
     private fun setUpSearchView() {
         val searchView = binding.searchBar.menu.findItem(R.id.menu_search)?.actionView as SearchView
         val searchBarMenu = binding.searchBar.menu
-        val searchViewIcon: ImageView = searchView.findViewById(androidx.appcompat.R.id.search_mag_icon)
+        val searchViewIcon: ImageView =
+            searchView.findViewById(androidx.appcompat.R.id.search_mag_icon)
         searchViewIcon.layoutParams = LinearLayout.LayoutParams(0, 0)
         searchView.apply {
-            maxWidth = Integer.MAX_VALUE;
+            maxWidth = Integer.MAX_VALUE
             queryHint = getString(R.string.default_query_hint)
             setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
@@ -85,8 +107,7 @@ class RecommendedChatsFragment : Fragment() {
                     adapterRV.filter.filter(query)
                     if (binding.recommendedChats.size == 0) {
                         binding.noChatsDetected.visibility = View.VISIBLE
-                    }
-                    else {
+                    } else {
                         binding.noChatsDetected.visibility = View.GONE
                     }
                 }
