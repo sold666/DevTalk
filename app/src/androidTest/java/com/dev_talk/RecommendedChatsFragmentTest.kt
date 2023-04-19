@@ -35,8 +35,6 @@ class RecommendedChatsFragmentTest : TestCase() {
     fun testSearchInRecommendations() {
         onView(withId(R.id.menu_search)).perform(click()).perform(typeText(quary))
         onView(withSubstring(quary)).check(matches(isDisplayed()))
-
-
     }
 
 }
