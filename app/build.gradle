@@ -33,6 +33,9 @@ android {
     buildFeatures {
         viewBinding true
     }
+    defaultConfig {
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
     buildToolsVersion '33.0.2'
 }
 
@@ -49,4 +52,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.androidx.test:runner:1.0.2'
+    androidTestImplementation 'com.androidx.espresso:espresso-core:3.0.2'
 }
