@@ -12,8 +12,7 @@
         tools:layout="@layout/fragment_chat">
         <action
             android:id="@+id/action_chatFragment_to_chatSettingsFragment"
-            app:destination="@id/chat_settings_fragment_container"
-            app:popUpTo="@id/chat_settings_fragment_container" />
+            app:destination="@id/chat_settings_fragment_container" />
     </fragment>
 
     <fragment

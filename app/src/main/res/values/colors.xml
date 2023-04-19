@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="green">#1ACE5E</color>
-    <color name="green_second">#5DD87E</color>
-    <color name="white">#FFFFFF</color>
-    <color name="black">#000000</color>
-    <color name="grey">#212121</color>
-    <color name="grey_second">#C1C6C5</color>
-    <color name="grey_third">#303030</color>
+    <color name="green">#749D70</color> <!--buttons light theme -->
+    <color name="green_second">#81B47D</color> <!--main bar buttons light theme -->
+    <color name="green_third">#6D9169</color> <!--main bar buttons light theme -->
+    <color name="green_fourth">#7EB07A</color> <!--main bar buttons night theme -->
+    <color name="white">#FFFFFF</color> <!--main text night theme -->
+    <color name="white_second">#F3F3F5</color> <!--background light theme -->
+    <color name="grey">#303030</color> <!--background night theme -->
+    <color name="grey_second">#212121</color> <!--app bar night theme -->
+    <color name="grey_third">#424242</color> <!--buttons night theme -->
+    <color name="dark">#121212</color> <!--search + main text light theme -->
+    <color name="black">#000000</color> <!--status bar -->
+    <color name="grey_fourth">#67676B</color> <!--icons -->
 </resources>

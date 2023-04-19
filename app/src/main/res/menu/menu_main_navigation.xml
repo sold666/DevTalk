@@ -2,15 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@id/recommended_chats_fragment_container"
-        android:icon="@drawable/ic_recommended_chats_navigation"
+        android:icon="@drawable/ic_recommended_chats"
         android:title="@string/recommended_chats" />
     <item
         android:id="@id/personal_chats_fragment_container"
-        android:icon="@drawable/ic_my_chats_navigation"
+        android:icon="@drawable/ic_my_chats"
         android:title="@string/personal_chats" />
     <item
         android:id="@id/profile_fragment_container"
-        android:icon="@drawable/ic_profile_navigation"
+        android:icon="@drawable/ic_person"
         android:title="@string/profile" />
-
 </menu>

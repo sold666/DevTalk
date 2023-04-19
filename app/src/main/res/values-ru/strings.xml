@@ -31,16 +31,15 @@
     <string name="profession_1">Профессия №1</string>
     <string name="profession_2">Профессия №2</string>
     <string name="profession_3">Профессия №3</string>
-    <string name="chat_icon_description">Иконка чата</string>
-    <string name="search_menu_item">Поиск</string>
     <string name="chat_name">Имя чата</string>
-    <string name="chat_settings">Настройки чата</string>
     <string name="message_input">Введите сообщение...</string>
     <string name="send_a_message">Отправить сообщение</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="notifications">Уведомления</string>
     <string name="members">Участники: %1$d</string>
     <string name="back_to_chat">Вернуться обратно в чат</string>
     <string name="leave_chat">Выйти из чата</string>
+    <string name="nothing_was_found_query">По вашему запросу ничего не найдено</string>
+    <string name="profile_toolbar">Профиль</string>
+    <string name="log_out_menu_item_text">Выйти</string>
+    <string name="edit_profile_menu_item_text">Редактировать</string>
 </resources>

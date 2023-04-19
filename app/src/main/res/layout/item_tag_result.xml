@@ -14,7 +14,7 @@
         android:paddingStart="?android:attr/expandableListPreferredItemPaddingLeft"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:textColor="?attr/text_color_secondary"
+        android:textColor="?attr/text_color"
         android:textSize="16sp" />
 
 </RelativeLayout>

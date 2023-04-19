@@ -30,7 +30,7 @@
             android:layout_marginStart="12dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="?attr/text_color_secondary"
+            android:textColor="?attr/text_color"
             android:textSize="14sp"
             app:layout_constrainedWidth="true"
             app:layout_constraintBottom_toBottomOf="@id/tag_image"

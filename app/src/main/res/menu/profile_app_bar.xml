@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:icon="@drawable/ic_three_points"
         android:title="@null"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_person">
+        app:showAsAction="ifRoom">
         <menu>
             <item
                 android:id="@+id/edit"
@@ -13,11 +13,9 @@
                 app:showAsAction="never" />
             <item
                 android:id="@+id/log_out"
-                android:icon="@drawable/ic_log_out"
+                android:icon="@drawable/ic_leave"
                 android:title="@string/log_out_menu_item_text"
                 app:showAsAction="never" />
         </menu>
-
     </item>
-
 </menu>

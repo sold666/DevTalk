@@ -2,15 +2,17 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/participant_chat_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.google.android.material.imageview.ShapeableImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/icon_participant"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_marginVertical="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_margin="10dp"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -21,9 +23,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:text="Participant name"
-        android:textColor="?attr/text_color_secondary"
-        android:textSize="24sp"
+        android:textColor="?attr/text_color"
+        android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@id/icon_participant"
         app:layout_constraintTop_toTopOf="@id/icon_participant" />
 
@@ -31,18 +35,13 @@
         android:id="@+id/status_participant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:text="Status"
-        android:textColor="?attr/text_color_secondary"
-        android:textSize="16sp"
+        android:textColor="?attr/text_color"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@id/name_participant"
         app:layout_constraintTop_toBottomOf="@id/name_participant" />
-
-    <com.google.android.material.divider.MaterialDivider
-        android:layout_width="408dp"
-        android:layout_height="0dp"
-        app:dividerColor="?attr/background_color_primary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
