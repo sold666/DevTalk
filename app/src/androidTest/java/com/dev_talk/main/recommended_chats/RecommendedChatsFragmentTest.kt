@@ -1,4 +1,4 @@
-package com.dev_talk
+package com.dev_talk.main.recommended_chats
 
 import androidx.fragment.app.testing.FragmentScenario
 import androidx.fragment.app.testing.launchFragmentInContainer
@@ -8,11 +8,14 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.dev_talk.main.recommended_chats.RecommendedChatsFragment
+import com.dev_talk.main.MainActivity
+import com.dev_talk.R
 import junit.framework.TestCase
 import org.junit.Assert.*
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -22,6 +25,9 @@ class RecommendedChatsFragmentTest : TestCase() {
     companion object {
         private const val quary = "py"
     }
+
+    @get:Rule
+    val activityScenario = ActivityScenarioRule(MainActivity::class.java)
 
     private lateinit var scenario: FragmentScenario<RecommendedChatsFragment>
 
