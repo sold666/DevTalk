@@ -20,6 +20,16 @@
             android:theme="@style/ProfileIconsColor"
             app:menu="@menu/profile_app_bar">
 
+            <ImageButton
+                android:id="@+id/switch_theme_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:contentDescription="@null"
+                android:padding="12dp"
+                android:src="@drawable/sun"
+                android:theme="@style/ProfileIconsColor" />
+
             <TextView
                 android:id="@+id/toolbar_title"
                 android:layout_width="wrap_content"

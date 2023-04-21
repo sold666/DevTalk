@@ -41,6 +41,7 @@
 
     <style name="ProfileIconsColor">
         <item name="iconTint">@color/white</item>
+        <item name="tint">@color/white</item>
     </style>
 
     <style name="ChatIconsColor">
