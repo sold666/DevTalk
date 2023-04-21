@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev_talk.R
 import com.dev_talk.auth.AuthActivity
+import com.dev_talk.auth.SelectionViewModel
 import com.dev_talk.auth.structures.Profession
 import com.dev_talk.databinding.FragmentProfessionBinding
 import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
@@ -22,6 +24,7 @@ class ProfessionFragment : Fragment() {
     private lateinit var professionAdapter: ProfessionAdapter
     private lateinit var onProfessionsClickListener: (profession: Profession, adapterPosition: Int) -> Unit
     private var professions: List<Profession> = getProfessions()
+    private val viewModel: SelectionViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -64,6 +67,8 @@ class ProfessionFragment : Fragment() {
                     Context.MODE_PRIVATE
                 )
             )
+            viewModel.resetSelectedProfessionsCount()
+            professions.forEach { it.isSelected = false }
         }
 
         binding.nextButton.setOnClickListener {
@@ -78,6 +83,13 @@ class ProfessionFragment : Fragment() {
         }
 
         onProfessionsClickListener = { profession, position ->
+            if (profession.isSelected) {
+                if (viewModel.selectedProfessionsCount.value!! > 0) {
+                    viewModel.setSelectedProfessionsCount(viewModel.selectedProfessionsCount.value!! - 1)
+                }
+            } else {
+                viewModel.setSelectedProfessionsCount(viewModel.selectedProfessionsCount.value!! + 1)
+            }
             professions.forEach {
                 if (it.id == profession.id) {
                     profession.isSelected = !profession.isSelected
@@ -91,7 +103,14 @@ class ProfessionFragment : Fragment() {
     }
 
     private fun updateNextButtonStatus() {
-        binding.nextButton.isEnabled = professions.any { it.isSelected }
+        viewModel.selectedProfessionsCount.observe(viewLifecycleOwner) { count ->
+            binding.amountProfessions.text = String.format(
+                getString(R.string.selected_amount),
+                count,
+                professions.size
+            )
+            binding.nextButton.isEnabled = count > 0
+        }
     }
 
     private fun saveProfessionsState() {
@@ -112,5 +131,6 @@ class ProfessionFragment : Fragment() {
 
     private fun clearSavedValues(prefs: SharedPreferences) {
         prefs.edit().clear().apply()
+        viewModel.resetSelectedProfessionsCount()
     }
 }

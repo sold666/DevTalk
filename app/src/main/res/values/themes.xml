@@ -7,14 +7,13 @@
         <item name="text_color_secondary">@color/grey_fourth</item>
         <item name="background_color_primary">@color/white_second</item>
         <item name="background_color_individual_parts">@color/white</item>
-        <item name="icon_tint_color_primary">@color/green</item>
-        <item name="icon_tint_color_primary_second">@color/grey_fourth</item>
-        <item name="button_click_color_secondary">@color/green_second</item>
         <item name="search_color">@color/dark</item>
         <item name="add_chat_button_color">@drawable/custom_add_chat_button</item>
         <item name="bottom_main_nav_button_color">@color/green_second</item>
         <item name="profile_icons_color">@color/dark</item>
         <item name="secondary_button_color">@color/white</item>
+        <item name="recycler_button_color">@color/white</item>
+        <item name="recycler_stroke_and_text_button_color">@color/green</item>
 
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:statusBarColor">@color/black</item>

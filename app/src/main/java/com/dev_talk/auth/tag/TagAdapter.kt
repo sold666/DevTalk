@@ -46,25 +46,31 @@ class TagAdapter(
         private val container: CardView = itemView.findViewById(R.id.tag_card)
         private val tagName: TextView = itemView.findViewById(R.id.tag_name)
 
-        private val backgroundColor =
-            itemView.context.getThemeColorRes(R.attr.background_color_primary)
-        private val buttonColor =
-            itemView.context.getThemeColorRes(R.attr.button_click_color_secondary)
+        private val textColorIsSelected =
+            itemView.context.getThemeColorRes(R.attr.recycler_stroke_and_text_button_color)
+        private val textColor =
+            itemView.context.getThemeColorRes(R.attr.text_color)
 
         fun bind(
             tag: Tag,
             listener: (tag: Tag, adapterPosition: Int) -> Unit
         ) {
-
             tagName.text = tag.name
-            val bgColor = if (tag.isSelected) {
-                ContextCompat.getColor(itemView.context, buttonColor)
+            val textColor = if (tag.isSelected) {
+                ContextCompat.getColor(itemView.context, textColorIsSelected)
             } else {
-                ContextCompat.getColor(itemView.context, backgroundColor)
+                ContextCompat.getColor(itemView.context, textColor)
             }
-            container.setCardBackgroundColor(bgColor)
+            tagName.setTextColor(textColor)
 
-            container.setOnClickListener { listener.invoke(tag, adapterPosition) }
+            container.background = if (tag.isSelected) {
+                ContextCompat.getDrawable(itemView.context, R.drawable.selectable_recycler_button)
+            } else {
+                ContextCompat.getDrawable(itemView.context, R.drawable.unselectable_recycler_button)
+            }
+            container.setOnClickListener {
+                listener.invoke(tag, adapterPosition)
+            }
         }
     }
 }

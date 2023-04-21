@@ -4,12 +4,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.R
 import com.dev_talk.auth.structures.Profession
 import com.dev_talk.utils.getThemeColorRes
+import com.google.android.material.card.MaterialCardView
 
 class ProfessionAdapter(
 
@@ -43,28 +43,34 @@ class ProfessionAdapter(
     }
 
     class ProfessionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val container: CardView = itemView.findViewById(R.id.profession_card)
+        private val container: MaterialCardView = itemView.findViewById(R.id.profession_card)
         private val professionName: TextView = itemView.findViewById(R.id.profession_name)
 
-        private val backgroundColor =
-            itemView.context.getThemeColorRes(R.attr.background_color_primary)
-        private val buttonColor =
-            itemView.context.getThemeColorRes(R.attr.button_click_color_secondary)
+        private val textColorIsSelected =
+            itemView.context.getThemeColorRes(R.attr.recycler_stroke_and_text_button_color)
+        private val textColor =
+            itemView.context.getThemeColorRes(R.attr.text_color)
 
         fun bind(
             profession: Profession,
             listener: (profession: Profession, adapterPosition: Int) -> Unit
         ) {
-
             professionName.text = profession.name
-            val bgColor = if (profession.isSelected) {
-                ContextCompat.getColor(itemView.context, buttonColor)
+            val textColor = if (profession.isSelected) {
+                ContextCompat.getColor(itemView.context, textColorIsSelected)
             } else {
-                ContextCompat.getColor(itemView.context, backgroundColor)
+                ContextCompat.getColor(itemView.context, textColor)
             }
-            container.setCardBackgroundColor(bgColor)
+            professionName.setTextColor(textColor)
 
-            container.setOnClickListener { listener.invoke(profession, adapterPosition) }
+            container.background = if (profession.isSelected) {
+                ContextCompat.getDrawable(itemView.context, R.drawable.selectable_recycler_button)
+            } else {
+                ContextCompat.getDrawable(itemView.context, R.drawable.unselectable_recycler_button)
+            }
+            container.setOnClickListener {
+                listener.invoke(profession, adapterPosition)
+            }
         }
     }
 }

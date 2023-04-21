@@ -33,7 +33,7 @@ class ChatSettingsFragment : Fragment() {
             participantList.adapter = chatParticipantAdapter
             participantList.layoutManager = LinearLayoutManager(participantList.context)
             amountChatParticipants.text = String.format(
-                resources.getString(R.string.members),
+                getString(R.string.members),
                 chatParticipantAdapter.itemCount
             )
         }

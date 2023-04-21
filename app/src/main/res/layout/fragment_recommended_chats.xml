@@ -4,6 +4,7 @@
     android:id="@+id/recommended_chats_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/background_color_primary"
     android:focusableInTouchMode="true">
 
     <com.google.android.material.appbar.AppBarLayout
