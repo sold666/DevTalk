@@ -10,6 +10,8 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.dev_talk.R
 import com.dev_talk.main.MainActivity
+import com.dev_talk.main.screens.MainActivityScreen
+import com.dev_talk.main.screens.RecommendedChatsFragmentScreen
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
@@ -19,6 +21,10 @@ import org.junit.runner.RunWith
 //Emelyanov Pavel
 @RunWith(AndroidJUnit4::class)
 class RecommendedChatsFragmentTest {
+    private lateinit var mainActivityScreen: MainActivityScreen
+    private lateinit var recommendedChatsFragmentScreen: RecommendedChatsFragmentScreen
+
+
     companion object {
         private const val QUERY = "py"
     }
@@ -28,14 +34,14 @@ class RecommendedChatsFragmentTest {
 
     @Before
     fun setUp() {
-        onView(withId(R.id.recommended_chats_fragment_container)).perform(click())
-        onView(withId(R.id.recommended_chats)).check(matches(isDisplayed()))
+        mainActivityScreen = MainActivityScreen()
+        mainActivityScreen.openRecommendedChats()
+        recommendedChatsFragmentScreen = RecommendedChatsFragmentScreen()
     }
 
     @Test
     fun testSearchInRecommendations() {
-        onView(withId(R.id.menu_search)).perform(click())
-        onView(isAssignableFrom(AutoCompleteTextView::class.java)).perform(typeText(QUERY))
+        recommendedChatsFragmentScreen.searchChat(QUERY)
         onView(withSubstring(QUERY)).check(matches(isDisplayed()))
     }
 }

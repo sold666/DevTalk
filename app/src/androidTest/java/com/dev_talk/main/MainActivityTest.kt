@@ -7,23 +7,32 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.dev_talk.R
+import com.dev_talk.main.screens.MainActivityScreen
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
 //Emelyanov Pavel
 class MainActivityTest {
+    private lateinit var mainActivityScreen: MainActivityScreen
+
     @get:Rule
     var activityActivityTestRule = ActivityScenarioRule(
         MainActivity::class.java
     )
 
+    @Before
+    fun setup() {
+        mainActivityScreen = MainActivityScreen()
+    }
+
     @Test
     fun bottomNavigationTest() {
-        onView(withId(R.id.profile_fragment_container)).perform(click())
+        mainActivityScreen.openProfile()
         onView(withId(R.id.name)).check(matches(isDisplayed()))
-        onView(withId(R.id.recommended_chats_fragment_container)).perform(click())
+        mainActivityScreen.openRecommendedChats()
         onView(withId(R.id.recommended_chats)).check(matches(isDisplayed()))
-        onView(withId(R.id.personal_chats_fragment_container)).perform(click())
+        mainActivityScreen.openPersonalChats()
         onView(withId(R.id.chats_with_category)).check(matches(isDisplayed()))
     }
 }
