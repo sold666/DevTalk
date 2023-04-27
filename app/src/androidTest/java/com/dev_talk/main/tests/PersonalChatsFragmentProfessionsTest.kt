@@ -5,7 +5,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.dev_talk.main.MainActivity
 import com.dev_talk.main.screens.MainActivityScreen
 import com.dev_talk.main.screens.PersonalChatsFragmentScreen
-import com.dev_talk.main.screens.RecommendedChatsFragmentScreen
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -13,7 +12,7 @@ import org.junit.runner.RunWith
 
 //Bazhenov Kirill
 @RunWith(AndroidJUnit4::class)
-class PersonalChatsFragmentTest {
+class PersonalChatsFragmentProfessionsTest {
 
     private lateinit var mainActivityScreen: MainActivityScreen
     private lateinit var personalChatsFragmentScreen: PersonalChatsFragmentScreen
