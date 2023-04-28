@@ -47,88 +47,14 @@
         android:layout_height="wrap_content"
         android:overScrollMode="never"
         app:layout_constraintTop_toBottomOf="@id/profile_bar">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/profile_graph" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/profile_card"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_margin="16dp"
-                app:cardCornerRadius="30dp"
-                app:cardElevation="14dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/info_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/gradient">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/avatar"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:layout_marginStart="20dp"
-                        android:src="@drawable/ic_person"
-                        app:layout_constraintBottom_toBottomOf="@id/labels_container"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/labels_container" />
-
-                    <LinearLayout
-                        android:id="@+id/labels_container"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:orientation="vertical"
-                        app:layout_constrainedWidth="true"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0"
-                        app:layout_constraintStart_toEndOf="@id/avatar"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <TextView
-                            android:id="@+id/name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="20dp"
-                            android:ellipsize="end"
-                            android:maxLines="3"
-                            android:text="@string/default_username"
-                            android:textColor="?attr/text_color"
-                            android:textSize="22sp"
-                            app:layout_constrainedWidth="true" />
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/social_network"
-                            android:orientation="horizontal"
-                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                    </LinearLayout>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/my_chats"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:overScrollMode="never"
-                app:fastScrollEnabled="false"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/profile_card"
-                app:layout_constraintVertical_bias="1.0"
-                tools:layout_editor_absoluteX="-120dp" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
