@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev_talk.R
+import com.dev_talk.auth.SelectionViewModel
 import com.dev_talk.auth.structures.Profession
 import com.dev_talk.auth.structures.Tag
 import com.dev_talk.databinding.FragmentTagBinding
@@ -21,6 +23,7 @@ class TagFragment : Fragment() {
     private lateinit var onTagsClickListener: (tag: Tag, adapterPosition: Int) -> Unit
     private lateinit var tags: List<Tag>
     private lateinit var selectedProfessions: List<Profession>
+    private val viewModel: SelectionViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,7 +59,11 @@ class TagFragment : Fragment() {
     }
 
     private fun initListeners() {
-        binding.backButton.setOnClickListener { findNavController().popBackStack() }
+        binding.backButton.setOnClickListener {
+            findNavController().popBackStack()
+            tags.forEach { it.isSelected = false }
+            viewModel.resetSelectedTagsCount()
+        }
 
         binding.nextButton.setOnClickListener {
             val selectedTags = tags.filter { it.isSelected }.sortedBy { it.id }
@@ -74,6 +81,13 @@ class TagFragment : Fragment() {
         }
 
         onTagsClickListener = { tag, position ->
+            if (tag.isSelected) {
+                if (viewModel.selectedTagsCount.value!! > 0) {
+                    viewModel.setSelectedTagsCount(viewModel.selectedTagsCount.value!! - 1)
+                }
+            } else {
+                viewModel.setSelectedTagsCount(viewModel.selectedTagsCount.value!! + 1)
+            }
             tags.forEach {
                 if (it.id == tag.id) {
                     it.isSelected = !it.isSelected
@@ -85,6 +99,13 @@ class TagFragment : Fragment() {
     }
 
     private fun updateNextButtonStatus() {
-        binding.nextButton.isEnabled = tags.any { it.isSelected }
+        viewModel.selectedTagsCount.observe(viewLifecycleOwner) { count ->
+            binding.amountTags.text = String.format(
+                getString(R.string.selected_amount),
+                count,
+                tags.size
+            )
+            binding.nextButton.isEnabled = count > 0
+        }
     }
 }

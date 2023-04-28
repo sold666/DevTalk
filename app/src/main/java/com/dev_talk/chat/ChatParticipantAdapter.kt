@@ -6,7 +6,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.chat.structures.ChatParticipant
 import com.dev_talk.databinding.ItemChatParticipantBinding
-import com.google.android.material.imageview.ShapeableImageView
+import de.hdodenhof.circleimageview.CircleImageView
 
 class ChatParticipantAdapter(
     private var participants: List<ChatParticipant>
@@ -27,7 +27,7 @@ class ChatParticipantAdapter(
     class ChatParticipantViewHolder(
         binding: ItemChatParticipantBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        private val icon: ShapeableImageView = binding.iconParticipant
+        private val icon: CircleImageView = binding.iconParticipant
         private val name: TextView = binding.nameParticipant
         private val status: TextView = binding.statusParticipant
 

@@ -1,20 +1,17 @@
 package com.dev_talk.main.my_chats
 
 import android.annotation.SuppressLint
-import android.text.Layout
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
-import android.widget.ImageView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.R
 import com.dev_talk.main.structures.Chat
+import de.hdodenhof.circleimageview.CircleImageView
 import java.util.*
 
 class PersonalChatsAdapter(
@@ -41,13 +38,15 @@ class PersonalChatsAdapter(
 
     class ChatItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val container: ConstraintLayout = itemView.findViewById(R.id.chat_layout)
-        private val icon: ImageView = itemView.findViewById(R.id.chat_icon)
+        private val icon: CircleImageView = itemView.findViewById(R.id.chat_icon)
         private val chat: TextView = itemView.findViewById(R.id.chat_name)
         private val lastMessage: TextView = itemView.findViewById(R.id.last_message)
 
 
-        fun bind(chat: Chat,
-                 listener: (chat: Chat, adapterPosition: Int) -> Unit) {
+        fun bind(
+            chat: Chat,
+            listener: (chat: Chat, adapterPosition: Int) -> Unit
+        ) {
             icon.setImageResource(chat.icon)
             this.chat.text = chat.tags
             lastMessage.text = chat.lastMessage

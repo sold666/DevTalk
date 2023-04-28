@@ -3,14 +3,17 @@
     <style name="DevTalkMainTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimary">@color/green</item>
         <item name="colorSecondary">@color/green_second</item>
-        <item name="text_color_primary">@color/green</item>
-        <item name="text_color_secondary">@color/grey_second</item>
-        <item name="text_main_nav_color">@color/black</item>
-        <item name="background_color_primary">@color/grey_third</item>
-        <item name="background_color_individual_parts">@color/grey</item>
-        <item name="icon_tint_color_primary">@color/green</item>
-        <item name="icon_tint_color_primary_second">@color/black</item>
-        <item name="button_click_color_secondary">@color/grey</item>
+        <item name="text_color">@color/white</item>
+        <item name="text_color_secondary">@color/grey_fifth</item>
+        <item name="background_color_primary">@color/grey</item>
+        <item name="background_color_individual_parts">@color/grey_second</item>
+        <item name="search_color">@color/white</item>
+        <item name="add_chat_button_color">@drawable/custom_add_chat_button_night</item>
+        <item name="bottom_main_nav_button_color">@color/green_fourth</item>
+        <item name="profile_icons_color">@color/white</item>
+        <item name="secondary_button_color">@color/grey_third</item>
+        <item name="recycler_button_color">@color/grey_third</item>
+        <item name="recycler_stroke_and_text_button_color">@color/green_fourth</item>
 
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:statusBarColor">@color/black</item>
@@ -30,22 +33,29 @@
         <item name="trackTint">@drawable/selector_switch_track</item>
     </style>
 
-    <style name="CustomFloatingButton" parent="Widget.Design.FloatingActionButton">
-        <item name="shapeAppearanceOverlay">@style/FloatingButtonShapeStyle</item>
-    </style>
-
-    <style name="FloatingButtonShapeStyle" parent="ShapeAppearance.MaterialComponents.SmallComponent">
-        <item name="cornerSize">20%</item>
-    </style>
-
     <style name="CustomSearchView" parent="Widget.AppCompat.SearchView">
-        <item name="android:tint">@color/black</item>
-        <item name="android:textColorHint">@color/black</item>
+        <item name="tint">@color/white</item>
+        <item name="iconTint">@color/white</item>
+        <item name="android:textColorHint">@color/grey_second</item>
+    </style>
+
+    <style name="ProfileIconsColor">
+        <item name="iconTint">@color/white</item>
+        <item name="tint">@color/white</item>
+    </style>
+
+    <style name="ChatIconsColor">
+        <item name="iconTint">@color/white</item>
+        <item name="toolbarNavigationButtonStyle">@style/ToolbarButtonNavigationTint</item>
+    </style>
+
+    <style name="ToolbarButtonNavigationTint" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="tint">@color/white</item>
     </style>
 
     <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
         <item name="tabMaxWidth">200dp</item>
-        <item name="tabIndicatorColor">@color/black</item>
+        <item name="tabIndicatorColor">@color/green_second</item>
         <item name="tabIndicatorHeight">2dp</item>
         <item name="tabPaddingStart">12dp</item>
         <item name="tabPaddingEnd">12dp</item>
@@ -55,11 +65,12 @@
 
     <style name="CustomTabTextAppearance" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/white</item>
         <item name="textAllCaps">true</item>
     </style>
 
     <style name="CustomTabSelectedText">
+        <item name="android:textColor">@color/green_second</item>
         <item name="android:textStyle">bold</item>
     </style>
 </resources>

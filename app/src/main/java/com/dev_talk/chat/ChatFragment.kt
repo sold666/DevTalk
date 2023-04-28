@@ -29,7 +29,7 @@ class ChatFragment : Fragment() {
     }
 
     private fun setListeners() {
-        val settingsButton = binding.root.findViewById<View>(R.id.chatSettings)
+        val settingsButton = binding.root.findViewById<View>(R.id.chat_settings)
         val toolbar = binding.root.findViewById<Toolbar>(R.id.chat_app_bar)
 
         settingsButton.setOnClickListener {

@@ -1,10 +1,12 @@
 package com.dev_talk.auth.result
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -21,6 +23,7 @@ class ResultFragment : Fragment() {
     private lateinit var selectedTags: List<Tag>
     private lateinit var selectedProfessions: List<Profession>
     private lateinit var progressBar: ProgressBar
+    private lateinit var progressText: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,6 +37,7 @@ class ResultFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         progressBar = view.findViewById(R.id.progress_bar)
+        progressText = view.findViewById(R.id.progress_text)
         initListeners()
         with(binding) {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
@@ -65,8 +69,20 @@ class ResultFragment : Fragment() {
 
         binding.nextButton.setOnClickListener {
             progressBar.isVisible = true
-            findNavController().navigate(R.id.action_resultFragment_to_mainActivity)
-            activity?.finish()
+            object : CountDownTimer(3000, 1000) {
+                override fun onTick(millisUntilFinished: Long) {
+                    val progress = ((5000 - millisUntilFinished) / 50).toInt()
+                    progressBar.progress = progress
+                    progressText.text = "Processing data"
+                }
+
+                override fun onFinish() {
+                    progressText.text = "DevTalk is ready"
+                    progressBar.isVisible = false
+                    findNavController().navigate(R.id.action_resultFragment_to_mainActivity)
+                    activity?.finish()
+                }
+            }.start()
         }
     }
 

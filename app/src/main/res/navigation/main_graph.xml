@@ -6,17 +6,17 @@
     app:startDestination="@id/personal_chats_fragment_container">
     <fragment
         android:id="@+id/recommended_chats_fragment_container"
-        tools:layout="@layout/fragment_recommended_chats"
         android:name="com.dev_talk.main.recommended_chats.RecommendedChatsFragment"
-        android:label="RecommendedChatsFragment" />
+        android:label="RecommendedChatsFragment"
+        tools:layout="@layout/fragment_recommended_chats" />
     <fragment
         android:id="@+id/profile_fragment_container"
         android:name="com.dev_talk.main.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
-        tools:layout="@layout/fragment_personal_chats"
         android:id="@+id/personal_chats_fragment_container"
         android:name="com.dev_talk.main.my_chats.PersonalChatsFragment"
-        android:label="PersonalChatsFragment" />
+        android:label="PersonalChatsFragment"
+        tools:layout="@layout/fragment_personal_chats" />
 </navigation>

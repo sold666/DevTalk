@@ -18,8 +18,6 @@ import com.dev_talk.main.structures.Profession
 import com.google.android.material.tabs.TabLayout
 
 
-private const val DEFAULT_LIST_PROFESSIONS_KEY = "professions"
-
 class PersonalChatsFragment : Fragment() {
     private lateinit var binding: FragmentPersonalChatsBinding
 
@@ -63,13 +61,15 @@ class PersonalChatsFragment : Fragment() {
     }
 
     private fun setUpSearchView() {
-        val searchView = binding.personalChatsToolbar.menu.findItem(R.id.menu_search)?.actionView as SearchView
+        val searchView =
+            binding.personalChatsToolbar.menu.findItem(R.id.menu_search)?.actionView as SearchView
         val searchBarMenu = binding.personalChatsToolbar.menu
-        val searchViewIcon: ImageView = searchView.findViewById(androidx.appcompat.R.id.search_mag_icon)
+        val searchViewIcon: ImageView =
+            searchView.findViewById(androidx.appcompat.R.id.search_mag_icon)
         searchViewIcon.layoutParams = LinearLayout.LayoutParams(0, 0)
         searchView.apply {
             isIconified = false
-            maxWidth = Integer.MAX_VALUE;
+            maxWidth = Integer.MAX_VALUE
             queryHint = getString(R.string.default_query_hint)
             setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
@@ -86,7 +86,8 @@ class PersonalChatsFragment : Fragment() {
                 }
 
                 private fun filterData(query: String?) {
-                    val myAdapter = binding.chatsWithCategory.findViewById<RecyclerView>(R.id.list_with_my_chats).adapter as PersonalChatsAdapter
+                    val myAdapter =
+                        binding.chatsWithCategory.findViewById<RecyclerView>(R.id.list_with_my_chats).adapter as PersonalChatsAdapter
                     myAdapter.filter.filter(query)
                     if (myAdapter.itemCount == 0 && !query.equals("")) {
                         binding.chatsWithCategory.findViewById<TextView>(R.id.no_chats_detected).visibility = View.VISIBLE
@@ -102,7 +103,7 @@ class PersonalChatsFragment : Fragment() {
     private fun setUpViewPager2(
         viewPager: ViewPager2,
         tabLayout: TabLayout,
-        data: java.util.ArrayList<Profession>
+        data: List<Profession>
     ) {
         viewPager.apply {
             adapter = PersonalChatsAdapterViewPager(
@@ -119,43 +120,43 @@ class PersonalChatsFragment : Fragment() {
         }
     }
 
-    private fun getProfessions(): ArrayList<Profession> {
+    private fun getProfessions(): List<Profession> {
         return arrayListOf(
             Profession(
                 "Profession №1",
                 arrayListOf(
                     Chat(
-                        R.drawable.ic_my_chats_navigation,
+                        R.drawable.ic_person,
                         "C++",
                         "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
-                        R.drawable.ic_my_chats_navigation,
+                        R.drawable.ic_person,
                         "Java",
                         "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
-                        R.drawable.ic_my_chats_navigation,
+                        R.drawable.ic_person,
                         "C",
                         "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
-                        R.drawable.ic_my_chats_navigation,
+                        R.drawable.ic_person,
                         "Kotlin",
                         "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
-                        R.drawable.ic_my_chats_navigation,
+                        R.drawable.ic_person,
                         "F",
                         "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
-                        R.drawable.ic_my_chats_navigation,
+                        R.drawable.ic_person,
                         "Ruby",
                         "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
-                        R.drawable.ic_my_chats_navigation,
+                        R.drawable.ic_person,
                         "Go",
                         "text text text text text text text text text text text text text text text"
                     ),
@@ -165,12 +166,12 @@ class PersonalChatsFragment : Fragment() {
                 "Profession №2",
                 arrayListOf(
                     Chat(
-                        R.drawable.ic_my_chats_navigation,
+                        R.drawable.ic_person,
                         "Css",
                         "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
-                        R.drawable.ic_my_chats_navigation,
+                        R.drawable.ic_person,
                         "Html",
                         "text text text text text text text text text text text text text text text"
                     )
@@ -180,17 +181,17 @@ class PersonalChatsFragment : Fragment() {
                 "Profession №3",
                 arrayListOf(
                     Chat(
-                        R.drawable.ic_my_chats_navigation,
+                        R.drawable.ic_person,
                         "Selenide",
                         "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
-                        R.drawable.ic_my_chats_navigation,
+                        R.drawable.ic_person,
                         "Selenium",
                         "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
-                        R.drawable.ic_my_chats_navigation,
+                        R.drawable.ic_person,
                         "Java",
                         "text text text text text text text text text text text text text text text"
                     )

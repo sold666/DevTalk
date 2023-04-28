@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="green">#1ACE5E</color>
-    <color name="green_second">#5DD87E</color>
+    <color name="green">#749D70</color>
+    <color name="green_second">#81B47D</color>
+    <color name="green_third">#6D9169</color>
+    <color name="green_fourth">#7EB07A</color>
     <color name="white">#FFFFFF</color>
+    <color name="white_second">#F3F3F5</color>
+    <color name="grey">#303030</color>
+    <color name="grey_second">#212121</color>
+    <color name="grey_third">#424242</color>
+    <color name="grey_fourth">#67676B</color>
+    <color name="grey_fifth">#79797C</color>
+    <color name="dark">#121212</color>
     <color name="black">#000000</color>
-    <color name="grey">#212121</color>
-    <color name="grey_second">#C1C6C5</color>
-    <color name="grey_third">#303030</color>
 </resources>
