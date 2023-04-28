@@ -28,37 +28,39 @@
         android:id="@+id/no_chats_detected"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
         android:maxLines="3"
+        android:text="@string/nothing_was_found_query"
+        android:textSize="18sp"
+        android:visibility="gone"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/app_bar"
-        android:text="@string/nothing_was_found_query"
-        android:visibility="gone"
-        />
+        app:layout_constraintTop_toBottomOf="@id/app_bar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recommended_chats"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/no_chats_detected"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:background="?attr/background_color_primary"
         android:overScrollMode="never"
-        app:fastScrollEnabled="false" />
+        app:fastScrollEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/no_chats_detected" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floating_action_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="16dp"
         android:contentDescription="@string/create_chat"
         android:theme="@style/FloatingButtonShapeStyle"
         app:backgroundTint="@color/green"
         app:elevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_add_new_chat_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

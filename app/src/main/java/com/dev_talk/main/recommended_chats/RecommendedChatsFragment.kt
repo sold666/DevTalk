@@ -65,6 +65,7 @@ class RecommendedChatsFragment : Fragment() {
         val searchViewIcon: ImageView = searchView.findViewById(androidx.appcompat.R.id.search_mag_icon)
         searchViewIcon.layoutParams = LinearLayout.LayoutParams(0, 0)
         searchView.apply {
+            isIconified = false
             maxWidth = Integer.MAX_VALUE;
             queryHint = getString(R.string.default_query_hint)
             setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -72,7 +73,7 @@ class RecommendedChatsFragment : Fragment() {
                     clearFocus()
                     searchBarMenu.findItem(R.id.menu_search)?.collapseActionView()
                     filterData("")
-                    binding.noChatsDetected.visibility = View.VISIBLE
+                    binding.noChatsDetected.visibility = View.GONE
                     return true
                 }
 
@@ -83,7 +84,7 @@ class RecommendedChatsFragment : Fragment() {
 
                 private fun filterData(query: String?) {
                     adapterRV.filter.filter(query)
-                    if (binding.recommendedChats.size == 0) {
+                    if (adapterRV.itemCount == 0 && !query.equals("")) {
                         binding.noChatsDetected.visibility = View.VISIBLE
                     }
                     else {
