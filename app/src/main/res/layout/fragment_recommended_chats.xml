@@ -4,13 +4,14 @@
     android:id="@+id/recommended_chats_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/background_color_primary"
     android:focusableInTouchMode="true">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/green"
+        android:layout_height="56dp"
+        android:background="?attr/background_color_individual_parts"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
@@ -18,20 +19,32 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:theme="@style/CustomSearchView"
-            app:menu="@menu/menu_search_bar"
-            app:title="@string/app_name"
-            app:titleCentered="true"
-            app:titleTextColor="?attr/text_main_nav_color" />
+            app:menu="@menu/menu_search_bar" />
     </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recommended_chats"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp"
+        android:background="?attr/background_color_primary"
+        android:overScrollMode="never"
+        app:fastScrollEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_bar" />
 
     <TextView
         android:id="@+id/no_chats_detected"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="50dp"
+        app:drawableEnd="@drawable/ic_search"
+        android:drawablePadding="4dp"
+        app:drawableTint="?attr/text_color"
         android:maxLines="3"
         android:text="@string/nothing_was_found_query"
+        android:textColor="?attr/text_color"
         android:textSize="18sp"
         android:visibility="gone"
         app:layout_constrainedWidth="true"
@@ -39,28 +52,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/app_bar" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recommended_chats"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/background_color_primary"
-        android:overScrollMode="never"
-        app:fastScrollEnabled="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/no_chats_detected" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floating_action_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+    <ImageButton
+        android:id="@+id/add_chat_button"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:layout_margin="24dp"
+        android:background="?attr/add_chat_button_color"
         android:contentDescription="@string/create_chat"
-        android:theme="@style/FloatingButtonShapeStyle"
-        app:backgroundTint="@color/green"
-        app:elevation="4dp"
+        android:elevation="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_add_new_chat_btn" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

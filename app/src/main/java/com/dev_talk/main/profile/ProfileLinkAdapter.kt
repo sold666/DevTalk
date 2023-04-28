@@ -9,9 +9,11 @@ import com.dev_talk.main.structures.Link
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlin.math.min
 
-class ProfileLinkAdapter(val data: List<Link>): RecyclerView.Adapter<ProfileLinkAdapter.LinkItemViewHolder>() {
+class ProfileLinkAdapter(val data: List<Link>) :
+    RecyclerView.Adapter<ProfileLinkAdapter.LinkItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        LinkItemViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_link_profile, parent, false)
+        LinkItemViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.item_link_profile, parent, false)
         )
 
     override fun getItemCount() = min(data.size + 1, 4)
@@ -24,11 +26,11 @@ class ProfileLinkAdapter(val data: List<Link>): RecyclerView.Adapter<ProfileLink
         holder.bind(data[position])
     }
 
-    class LinkItemViewHolder(val view: View): RecyclerView.ViewHolder(view) {
+    class LinkItemViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         private val icon = view.findViewById<CircleImageView>(R.id.links)
 
         fun bind(link: Link) {
-             icon.setImageResource(link.icon)
+            icon.setImageResource(link.icon)
         }
     }
 }
