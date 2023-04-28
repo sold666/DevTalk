@@ -1,4 +1,4 @@
-package com.dev_talk.main.profile
+package com.dev_talk.main.profile.information
 
 import android.view.LayoutInflater
 import android.view.View

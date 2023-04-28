@@ -1,4 +1,4 @@
-package com.dev_talk.main.profile
+package com.dev_talk.main.profile.information
 
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +12,7 @@ import com.dev_talk.main.structures.Item
 import com.dev_talk.main.structures.ProfileData
 import de.hdodenhof.circleimageview.CircleImageView
 
-class ProfileChatsAdapter(
+class ProfileInformationChatsAdapter(
     private val data: List<ProfileData>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
