@@ -150,7 +150,7 @@ class ProfileFragment : Fragment() {
             ),
             Item(
                 Chat(
-                    R.drawable.ic_my_chats_navigation,
+                    R.drawable.ic_person,
                     "Html"
                 )
             ),
