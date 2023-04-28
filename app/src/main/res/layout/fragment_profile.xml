@@ -101,13 +101,15 @@
                             android:layout_marginBottom="20dp"
                             android:ellipsize="end"
                             android:maxLines="3"
-                            android:text="Username"
+                            android:text="@string/default_username"
                             android:textColor="?attr/text_color"
                             android:textSize="22sp"
                             app:layout_constrainedWidth="true" />
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/social_network"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
 
