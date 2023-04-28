@@ -1,4 +1,4 @@
-package com.dev_talk.main.edit_profile
+package com.dev_talk.main.profile.edit
 
 import android.view.LayoutInflater
 import android.view.View
@@ -12,10 +12,9 @@ import com.dev_talk.main.structures.Item
 import com.dev_talk.main.structures.ProfileData
 import de.hdodenhof.circleimageview.CircleImageView
 
-class EditProfileLinkAdapter(
+class EditProfileChatsAdapter(
     private val data: List<ProfileData>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             0 -> HeaderViewHolder(
