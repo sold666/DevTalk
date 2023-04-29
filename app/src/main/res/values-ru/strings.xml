@@ -32,7 +32,8 @@
     <string name="profession_2">Профессия №2</string>
     <string name="profession_3">Профессия №3</string>
     <string name="chat_name">Имя чата</string>
-    <string name="message_input">Введите сообщение...</string>
+    <string name="message_input">Введите сообщение…</string>
+    <string name="save_all_btn_text">Сохранить</string>
     <string name="send_a_message">Отправить сообщение</string>
     <string name="notifications">Уведомления</string>
     <string name="members">Участники: %1$d</string>
