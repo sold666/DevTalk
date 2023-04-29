@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +20,7 @@ import com.dev_talk.main.structures.*
 class ProfileInformationFragment : Fragment()  {
     private lateinit var binding: FragmentProfileInformationBinding
     private lateinit var data: List<ProfileData>
+    private var isNightModeOn: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +36,29 @@ class ProfileInformationFragment : Fragment()  {
             data = getProfileData()
             setUpRecyclerView(recyclerView = myChats)
             setUpLinks(socialNetwork)
+
+            profileAppBar.menu.getItem(0).subMenu?.getItem(0)?.setOnMenuItemClickListener {
+                findNavController().navigate(R.id.action_profileInformationFragment_to_profileEditFragment)
+                true
+            }
+            isNightModeOn =
+                AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
+            switchThemeButton.setImageResource(if (isNightModeOn) R.drawable.moon else R.drawable.sun)
+
+            switchThemeButton.setOnClickListener {
+                val newMode = if (isNightModeOn) {
+                    AppCompatDelegate.MODE_NIGHT_NO
+                } else {
+                    AppCompatDelegate.MODE_NIGHT_YES
+                }
+                AppCompatDelegate.setDefaultNightMode(newMode)
+                switchThemeButton.setImageResource(if (isNightModeOn) R.drawable.sun else R.drawable.moon)
+                isNightModeOn = !isNightModeOn
+                val toastText = if (isNightModeOn) "Night mode ON" else "Night mode OFF"
+                Toast.makeText(context, toastText, Toast.LENGTH_SHORT).show()
+            }
         }
+
     }
 
     private fun setUpLinks(recyclerView: RecyclerView) {
@@ -57,7 +81,11 @@ class ProfileInformationFragment : Fragment()  {
     private fun setUpRecyclerView(
         recyclerView: RecyclerView
     ) {
-        val manager = GridLayoutManager(context, 2)
+        val manager = object : GridLayoutManager(context, 2) {
+            override fun canScrollVertically(): Boolean {
+                return false
+            }
+        }
         manager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 return when (data[position]) {
@@ -66,12 +94,12 @@ class ProfileInformationFragment : Fragment()  {
                 }
             }
         }
-
         manager.orientation = RecyclerView.VERTICAL
         recyclerView.apply {
+            setHasFixedSize(true)
+            isNestedScrollingEnabled = false
             layoutManager = manager
             adapter = ProfileInformationChatsAdapter(data)
-            setHasFixedSize(true)
         }
     }
 

@@ -2,10 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/profile_item"
         android:icon="@drawable/ic_three_points"
         android:title="@null"
         app:showAsAction="ifRoom">
-        <menu>
+        <menu
+            android:id="@+id/profile_submenu"
+            >
             <item
                 android:id="@+id/edit"
                 android:icon="@drawable/ic_alter_profile_btn"

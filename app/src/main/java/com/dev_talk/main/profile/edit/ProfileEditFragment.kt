@@ -4,12 +4,14 @@ import android.view.View
 import android.view.ViewGroup
 import com.dev_talk.R
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.databinding.FragmentProfileEditBinding
 import com.dev_talk.main.profile.edit.EditProfileChatsAdapter
 import com.dev_talk.main.profile.edit.EditProfileLinkAdapter
+import com.dev_talk.main.profile.information.ProfileInformationChatsAdapter
 import com.dev_talk.main.structures.*
 
 class ProfileEditFragment : Fragment() {
@@ -30,11 +32,19 @@ class ProfileEditFragment : Fragment() {
             data = getProfileData()
             setUpChats(recyclerView = myChats)
             setUpLinks(socialNetwork)
+
+            saveAllBtn.setOnClickListener{
+                findNavController().navigate(R.id.action_profileEditFragment_to_profileInformationFragment)
+            }
         }
     }
 
     private fun setUpChats(recyclerView: RecyclerView) {
-        val manager = GridLayoutManager(context, 2)
+        val manager = object : GridLayoutManager(context, 2) {
+            override fun canScrollVertically(): Boolean {
+                return false
+            }
+        }
         manager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 return when (data[position]) {
@@ -43,12 +53,12 @@ class ProfileEditFragment : Fragment() {
                 }
             }
         }
-
         manager.orientation = RecyclerView.VERTICAL
         recyclerView.apply {
+            setHasFixedSize(true)
+            isNestedScrollingEnabled = false
             layoutManager = manager
             adapter = EditProfileChatsAdapter(data)
-            setHasFixedSize(true)
         }
     }
 
