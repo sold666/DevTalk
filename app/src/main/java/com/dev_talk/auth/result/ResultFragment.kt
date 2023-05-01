@@ -16,6 +16,11 @@ import com.dev_talk.auth.structures.Tag
 import com.dev_talk.databinding.FragmentResultBinding
 import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
 import com.dev_talk.utils.LIST_SELECTED_TAGS_KEY
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 
 class ResultFragment : Fragment() {
 
@@ -24,20 +29,24 @@ class ResultFragment : Fragment() {
     private lateinit var selectedProfessions: List<Profession>
     private lateinit var progressBar: ProgressBar
     private lateinit var progressText: TextView
+    private lateinit var auth: FirebaseAuth
+    private lateinit var db: DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        auth = Firebase.auth
+        db = FirebaseDatabase.getInstance().reference
         binding = FragmentResultBinding.inflate(inflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        progressBar = view.findViewById(R.id.progress_bar)
-        progressText = view.findViewById(R.id.progress_text)
+        progressBar = binding.progressBar
+        progressText = binding.progressText
         initListeners()
         with(binding) {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
@@ -68,6 +77,10 @@ class ResultFragment : Fragment() {
         binding.backButton.setOnClickListener { findNavController().popBackStack() }
 
         binding.nextButton.setOnClickListener {
+            addDataForUser(
+                selectedProfessions,
+                selectedTags
+            )
             progressBar.isVisible = true
             object : CountDownTimer(3000, 1000) {
                 override fun onTick(millisUntilFinished: Long) {
@@ -93,5 +106,17 @@ class ResultFragment : Fragment() {
             expandableListMap[profession.name] = tagsNamesList
         }
         return expandableListMap
+    }
+
+    private fun addDataForUser(
+        professions: List<Profession>,
+        tags: List<Tag>
+    ) {
+        val userInfo = HashMap<String, Any>()
+        userInfo["professions"] = professions
+        userInfo["tags"] = tags
+        db.child("users").child(auth.currentUser?.uid!!)
+            .child("user_info")
+            .setValue(userInfo)
     }
 }
