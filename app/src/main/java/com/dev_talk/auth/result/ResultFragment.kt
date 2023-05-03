@@ -14,6 +14,7 @@ import com.dev_talk.R
 import com.dev_talk.auth.structures.Profession
 import com.dev_talk.auth.structures.Tag
 import com.dev_talk.databinding.FragmentResultBinding
+import com.dev_talk.utils.DATABASE_URL
 import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
 import com.dev_talk.utils.LIST_SELECTED_TAGS_KEY
 import com.google.firebase.auth.FirebaseAuth
@@ -38,7 +39,7 @@ class ResultFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         auth = Firebase.auth
-        db = FirebaseDatabase.getInstance().reference
+        db = FirebaseDatabase.getInstance(DATABASE_URL).reference
         binding = FragmentResultBinding.inflate(inflater)
         return binding.root
     }
@@ -112,10 +113,15 @@ class ResultFragment : Fragment() {
         professions: List<Profession>,
         tags: List<Tag>
     ) {
-        val userInfo = HashMap<String, Any>()
-        userInfo["professions"] = professions
-        userInfo["tags"] = tags
-        db.child("users").child(auth.currentUser?.uid!!)
+        val professionNames = professions.map { it.name }
+        val tagNames = tags.map { it.name }
+        val userInfo = hashMapOf(
+            "professions" to professionNames,
+            "tags" to tagNames
+        )
+
+        db.child("users")
+            .child(auth.currentUser?.uid!!)
             .child("user_info")
             .setValue(userInfo)
     }

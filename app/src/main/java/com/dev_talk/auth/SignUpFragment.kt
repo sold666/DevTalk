@@ -10,9 +10,11 @@ import androidx.navigation.fragment.findNavController
 import com.dev_talk.R
 import com.dev_talk.databinding.FragmentSignUpBinding
 import com.dev_talk.dto.User
+import com.dev_talk.utils.DATABASE_URL
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
 class SignUpFragment : Fragment() {
@@ -26,6 +28,7 @@ class SignUpFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         auth = Firebase.auth
+        db = FirebaseDatabase.getInstance(DATABASE_URL).reference
         binding = FragmentSignUpBinding.inflate(inflater)
         return binding.root
     }

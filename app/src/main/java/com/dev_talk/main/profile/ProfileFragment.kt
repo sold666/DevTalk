@@ -4,11 +4,15 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,6 +20,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.R
 import com.dev_talk.databinding.FragmentProfileBinding
 import com.dev_talk.main.structures.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 private const val DEFAULT_LIST_PROFESSIONS_KEY = "professions"
 
@@ -23,12 +30,14 @@ class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     private lateinit var data: List<ProfileData>
     private var isNightModeOn: Boolean = false
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentProfileBinding.inflate(inflater)
+        auth = Firebase.auth
         return binding.root
     }
 
@@ -54,6 +63,34 @@ class ProfileFragment : Fragment() {
                 isNightModeOn = !isNightModeOn
                 val toastText = if (isNightModeOn) "Night mode ON" else "Night mode OFF"
                 Toast.makeText(context, toastText, Toast.LENGTH_SHORT).show()
+            }
+            listenMenuButtons()
+        }
+    }
+
+    private fun listenMenuButtons() {
+        val toolbar = binding.profileAppBar
+
+        if (toolbar.menu.size() == 0) {
+            toolbar.inflateMenu(R.menu.profile_app_bar)
+        }
+
+        toolbar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.edit -> {
+                    // todo обработчик для R.id.edit
+                    true
+                }
+
+                R.id.log_out -> {
+                    auth.signOut()
+                    findNavController().navigate(R.id.action_profile_fragment_container_to_authActivity)
+                    true
+                }
+
+                else -> {
+                    false
+                }
             }
         }
     }
