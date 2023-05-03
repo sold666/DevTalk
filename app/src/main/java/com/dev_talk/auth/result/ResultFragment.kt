@@ -22,6 +22,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
+import java.util.stream.Collectors
 
 class ResultFragment : Fragment() {
 
@@ -79,8 +80,7 @@ class ResultFragment : Fragment() {
 
         binding.nextButton.setOnClickListener {
             addDataForUser(
-                selectedProfessions,
-                selectedTags
+                selectedProfessions
             )
             progressBar.isVisible = true
             object : CountDownTimer(3000, 1000) {
@@ -111,14 +111,18 @@ class ResultFragment : Fragment() {
 
     private fun addDataForUser(
         professions: List<Profession>,
-        tags: List<Tag>
     ) {
-        val professionNames = professions.map { it.name }
-        val tagNames = tags.map { it.name }
-        val userInfo = hashMapOf(
-            "professions" to professionNames,
-            "tags" to tagNames
-        )
+        val map: MutableMap<String, List<String>> = mutableMapOf()
+
+        professions.forEach {
+            val selectedTags: List<String> =
+                it.tags.stream().filter { t -> t.isSelected }.map { it.name }.collect(
+                    Collectors.toList()
+                )
+            map.put(it.name, selectedTags)
+        }
+
+        val userInfo = map
 
         db.child("users")
             .child(auth.currentUser?.uid!!)

@@ -1,6 +1,8 @@
 package com.dev_talk.auth
 
 import android.os.Bundle
+import android.text.TextUtils
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,17 +48,26 @@ class SignInFragment : Fragment() {
     }
 
     private fun login(email: String, password: String) {
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    findNavController().navigate(R.id.action_signInFragment_to_mainActivity)
-                } else {
-                    Toast.makeText(
-                        context,
-                        "Authentication failed. User does not exist.",
-                        Toast.LENGTH_SHORT,
-                    ).show()
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            binding.email.error = "Invalid email format!!"
+        } else if (TextUtils.isEmpty(password)) {
+            binding.password.error = "Please, enter a password"
+        } else if (password.length < 6) {
+            binding.password.error = "Minimal length of your password - 6 characters!"
+        } else {
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        findNavController().navigate(R.id.action_signInFragment_to_mainActivity)
+                    } else {
+                        Toast.makeText(
+                            context,
+                            "Authentication failed. User does not exist.",
+                            Toast.LENGTH_SHORT,
+                        ).show()
+                    }
                 }
-            }
+        }
+
     }
 }
