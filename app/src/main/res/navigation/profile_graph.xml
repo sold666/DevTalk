@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileEditFragment"
-        android:name="ProfileEditFragment"
+        android:name="com.dev_talk.main.profile.edit.ProfileEditFragment"
         android:label="ProfileEditFragment" >
         <action
             android:id="@+id/action_profileEditFragment_to_profileInformationFragment"

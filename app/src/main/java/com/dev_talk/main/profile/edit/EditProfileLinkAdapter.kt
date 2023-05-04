@@ -57,7 +57,7 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
                 val userLink: EditText = dialog.findViewById(R.id.user_link)
                 val linkType: Spinner = dialog.findViewById(R.id.link_type)
                 val saveBtn: Button = dialog.findViewById(R.id.save_button)
-                var currentIcon: Int = R.drawable.ic_person
+                var currentIcon: Int = R.drawable.ic_leave
                 saveBtn.setOnClickListener {
                     val userLinkText = userLink.text.toString()
                     val linkTypeText = linkType.selectedItem.toString()
@@ -71,17 +71,15 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
                             else -> R.drawable.ic_leave
                         }
                         dialog.dismiss()
-                        data[0] = Link(currentIcon)
-                        adapter.notifyItemChanged(0)
                     }
-                }
-                if (adapter.itemCount < 4) {
-                    if (adapter.itemCount == 3) {
-                        data.removeAt(data.size - 1)
-                        adapter.notifyItemRemoved(data.size)
+                    if (adapter.itemCount < 4) {
+                        if (adapter.itemCount == 3) {
+                            data.removeAt(data.size - 1)
+                            adapter.notifyItemRemoved(data.size)
+                        }
+                        data.add(0, Link(currentIcon))
+                        adapter.notifyItemInserted(0)
                     }
-                    data.add(0, Link(currentIcon))
-                    adapter.notifyItemInserted(1)
                 }
             }
         }
