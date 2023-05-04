@@ -16,7 +16,7 @@ import com.dev_talk.main.structures.*
 
 class ProfileEditFragment : Fragment() {
     private lateinit var binding: FragmentProfileEditBinding
-    private lateinit var data: List<ProfileData>
+    private lateinit var data: MutableList<ProfileData>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
