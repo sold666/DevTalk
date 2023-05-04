@@ -44,4 +44,12 @@
     <string name="log_out_menu_item_text">Log out</string>
     <string name="edit_profile_menu_item_text">Edit</string>
     <string name="selected_amount">Selected %1$d out of %2$d</string>
+    <string name="add_link_title">Add Link</string>
+    <string name="paste_link">Paste link</string>
+    <string name="save_btn">Save</string>
+    <string-array name="links">
+        <item>Github</item>
+        <item>Gitlab</item>
+        <item>Linkedin</item>
+    </string-array>
 </resources>

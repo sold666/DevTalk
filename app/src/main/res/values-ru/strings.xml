@@ -44,4 +44,12 @@
     <string name="log_out_menu_item_text">Выйти</string>
     <string name="edit_profile_menu_item_text">Редактировать</string>
     <string name="selected_amount">Выбрано %1$d из %2$d</string>
+    <string name="add_link_title">Добавление ссылки</string>
+    <string name="paste_link">Вставьте ссылку</string>
+    <string name="save_btn">Сохранить</string>
+    <string-array name="links">
+        <item>Github</item>
+        <item>Gitlab</item>
+        <item>Linkedin</item>
+    </string-array>
 </resources>
