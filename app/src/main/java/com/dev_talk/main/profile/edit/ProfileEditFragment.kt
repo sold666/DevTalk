@@ -63,7 +63,11 @@ class ProfileEditFragment : Fragment() {
     }
 
     private fun setUpLinks(recyclerView: RecyclerView) {
-        val manager = LinearLayoutManager(context)
+        val manager = object : LinearLayoutManager(context) {
+            override fun canScrollHorizontally(): Boolean {
+                return false
+            }
+        }
         manager.orientation = RecyclerView.HORIZONTAL
         recyclerView.apply {
             layoutManager = manager
@@ -75,7 +79,7 @@ class ProfileEditFragment : Fragment() {
     private fun getLinks() : ArrayList<Link> {
         return arrayListOf(
             Link(R.drawable.ic_person),
-            Link(R.drawable.ic_person)
+            Link(R.drawable.ic_add_new_chat_btn)
         )
     }
 
