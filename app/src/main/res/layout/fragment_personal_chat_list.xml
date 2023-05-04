@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:context="com.dev_talk.main.my_chats.PersonalChatListFragment">
+
+    <TextView
+        android:id="@+id/no_chats_detected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:drawablePadding="4dp"
+        android:maxLines="3"
+        android:text="@string/nothing_was_found_query"
+        android:textColor="?attr/text_color"
+        android:textSize="18sp"
+        android:visibility="gone"
+        app:drawableEndCompat="@drawable/ic_search"
+        app:drawableTint="?attr/text_color"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/navigation_personal_chats" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_with_my_chats"
@@ -13,4 +32,4 @@
         android:overScrollMode="never"
         app:fastScrollEnabled="false" />
 
-</FrameLayout>
+</LinearLayout>

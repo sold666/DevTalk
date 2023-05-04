@@ -32,7 +32,7 @@
     <string name="profession_2">Profession №2</string>
     <string name="profession_3">Profession №3</string>
     <string name="chat_name">Chat name</string>
-    <string name="message_input">Text message...</string>
+    <string name="message_input">Text message…</string>
     <string name="send_a_message">Send a message</string>
     <string name="notifications">Notifications</string>
     <string name="members">Members: %1$d</string>
