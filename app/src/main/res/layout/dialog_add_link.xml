@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:paddingBottom="12dp"
+    android:paddingHorizontal="20dp"
+    android:orientation="vertical"
+    android:background="@android:color/holo_blue_light"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="28sp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:layout_margin="20dp"
+        android:text="@string/add_link_title"
+        />
+
+    <Spinner
+        android:id="@+id/link_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:entries="@array/links"
+        android:padding="12dp"
+        android:layout_marginBottom="12dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/paste_link"
+        android:background="#fff"
+        android:padding="12dp"
+        android:id="@+id/user_link"
+        android:layout_marginBottom="12dp"
+        android:inputType="textUri"
+        android:autofillHints="" />
+    
+    <Button
+        android:layout_marginTop="12dp"
+        android:id="@+id/save_button"
+        android:text="@string/save_btn"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
