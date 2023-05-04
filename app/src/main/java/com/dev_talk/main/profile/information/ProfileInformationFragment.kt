@@ -12,8 +12,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.R
-import com.dev_talk.databinding.FragmentProfileBinding
-import com.dev_talk.databinding.FragmentProfileEditBinding
 import com.dev_talk.databinding.FragmentProfileInformationBinding
 import com.dev_talk.main.structures.*
 
@@ -73,7 +71,6 @@ class ProfileInformationFragment : Fragment()  {
 
     private fun getLinks(): ArrayList<Link> {
         return arrayListOf(
-            Link(R.drawable.ic_person),
             Link(R.drawable.ic_person)
         )
     }
