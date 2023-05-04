@@ -106,17 +106,21 @@ class RecommendedChatsFragment : Fragment() {
 
                 private fun filterData(query: String?) {
                     adapterRV.filter.filter(query)
-                    if (adapterRV.itemCount == 0 && !query.equals("")) {
-                        binding.noChatsDetected.visibility = View.VISIBLE
-                    } else {
-                        binding.noChatsDetected.visibility = View.GONE
-                    }
                 }
             })
         }
     }
 
     private fun setUpRecyclerView(recyclerView: RecyclerView) {
+        adapterRV.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
+            override fun onChanged() {
+                if (adapterRV.itemCount == 0) {
+                    binding.noChatsDetected.visibility = View.VISIBLE
+                } else {
+                    binding.noChatsDetected.visibility = View.GONE
+                }
+            }
+        })
         recyclerView.apply {
             adapter = adapterRV
             layoutManager = LinearLayoutManager(context)

@@ -88,12 +88,6 @@ class PersonalChatsFragment : Fragment() {
                     val myAdapter =
                         binding.chatsWithCategory.findViewById<RecyclerView>(R.id.list_with_my_chats).adapter as PersonalChatsAdapter
                     myAdapter.filter.filter(query)
-                    if (myAdapter.itemCount == 0 && !query.equals("")) {
-                        binding.chatsWithCategory.findViewById<TextView>(R.id.no_chats_detected).visibility = View.VISIBLE
-                    }
-                    else {
-                        binding.chatsWithCategory.findViewById<TextView>(R.id.no_chats_detected).visibility = View.GONE
-                    }
                 }
             })
         }
