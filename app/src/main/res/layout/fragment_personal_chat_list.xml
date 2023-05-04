@@ -11,6 +11,7 @@
         android:id="@+id/no_chats_detected"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="50dp"
         android:drawablePadding="4dp"
         android:maxLines="3"
@@ -20,10 +21,7 @@
         android:visibility="gone"
         app:drawableEndCompat="@drawable/ic_search"
         app:drawableTint="?attr/text_color"
-        app:layout_constrainedWidth="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/navigation_personal_chats" />
+        app:layout_constrainedWidth="true" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_with_my_chats"
