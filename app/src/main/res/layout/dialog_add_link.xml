@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="350dp"
     android:layout_height="wrap_content"
-    android:background="@android:color/holo_blue_light"
+    android:background="@drawable/bg_dialog_add_link"
     android:orientation="vertical"
     android:paddingHorizontal="20dp"
     android:paddingBottom="12dp">
@@ -13,7 +13,7 @@
         android:layout_margin="20dp"
         android:gravity="center"
         android:text="@string/add_link_title"
-        android:textColor="#FFFFFF"
+        android:textColor="?attr/text_color"
         android:textSize="28sp"
         android:textStyle="bold" />
 
@@ -23,7 +23,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
         android:entries="@array/links"
+        android:textSize="28sp"
         android:minHeight="48dp"
+        android:background="@drawable/bg_spinner"
         android:padding="12dp" />
 
     <EditText
@@ -32,8 +34,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
         android:autofillHints=""
-        android:background="#fff"
+        android:background="@drawable/bg_paste_link"
         android:hint="@string/paste_link"
+        android:textColorHint="?attr/text_color"
         android:inputType="textUri"
         android:padding="12dp" />
 
