@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
@@ -74,6 +75,7 @@ class PersonalChatsFragment : Fragment() {
                     clearFocus()
                     searchBarMenu.findItem(R.id.menu_search)?.collapseActionView()
                     filterData("")
+                    binding.chatsWithCategory.findViewById<TextView>(R.id.no_chats_detected).visibility = View.GONE
                     return true
                 }
 
@@ -86,6 +88,12 @@ class PersonalChatsFragment : Fragment() {
                     val myAdapter =
                         binding.chatsWithCategory.findViewById<RecyclerView>(R.id.list_with_my_chats).adapter as PersonalChatsAdapter
                     myAdapter.filter.filter(query)
+                    if (myAdapter.itemCount == 0 && !query.equals("")) {
+                        binding.chatsWithCategory.findViewById<TextView>(R.id.no_chats_detected).visibility = View.VISIBLE
+                    }
+                    else {
+                        binding.chatsWithCategory.findViewById<TextView>(R.id.no_chats_detected).visibility = View.GONE
+                    }
                 }
             })
         }
