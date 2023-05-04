@@ -17,7 +17,6 @@ import kotlin.math.min
 
 class EditProfileLinkAdapter(val data: MutableList<Link>) :
     RecyclerView.Adapter<EditProfileLinkAdapter.LinkItemViewHolder>() {
-    private var isDeleted : Boolean = false
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         LinkItemViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_link_profile, parent, false),
@@ -27,7 +26,7 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
     override fun getItemCount() = min(data.size, 3)
 
     override fun onBindViewHolder(holder: LinkItemViewHolder, position: Int) {
-        if (position == data.size - 1 && !isDeleted) {
+        if (position == data.size - 1) {
             holder.bindInsertButton(data, this)
             return
         }
@@ -59,13 +58,13 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
                 val linkType: Spinner = dialog.findViewById(R.id.link_type)
                 val saveBtn: Button = dialog.findViewById(R.id.save_button)
                 var currentIcon: Int = R.drawable.ic_person
-                saveBtn.setOnClickListener{
+                saveBtn.setOnClickListener {
                     val userLinkText = userLink.text.toString()
                     val linkTypeText = linkType.selectedItem.toString()
                     if (!isLinkValid(userLinkText) || !isLinkTypeValid(linkTypeText)) {
                         Toast.makeText(context, "Please, enter the data", Toast.LENGTH_SHORT).show()
                     } else {
-                        currentIcon = when(linkTypeText) {
+                        currentIcon = when (linkTypeText) {
                             "Github" -> R.drawable.ic_person
                             "Gitlab" -> R.drawable.ic_my_chats
                             "Linkedin" -> R.drawable.ic_notification

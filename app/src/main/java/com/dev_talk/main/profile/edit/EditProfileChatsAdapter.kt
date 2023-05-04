@@ -21,7 +21,8 @@ class EditProfileChatsAdapter(
                 LayoutInflater.from(parent.context).inflate(R.layout.item_profile_chat_parent, null)
             )
             else -> ItemViewHolder(
-                LayoutInflater.from(parent.context).inflate(R.layout.item_edit_profile_chat_child, null)
+                LayoutInflater.from(parent.context)
+                    .inflate(R.layout.item_edit_profile_chat_child, null)
             )
         }
     }

@@ -2,48 +2,47 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="350dp"
     android:layout_height="wrap_content"
-    android:paddingBottom="12dp"
-    android:paddingHorizontal="20dp"
-    android:orientation="vertical"
     android:background="@android:color/holo_blue_light"
-    >
+    android:orientation="vertical"
+    android:paddingHorizontal="20dp"
+    android:paddingBottom="12dp">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="28sp"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
         android:layout_margin="20dp"
+        android:gravity="center"
         android:text="@string/add_link_title"
-        />
+        android:textColor="#FFFFFF"
+        android:textSize="28sp"
+        android:textStyle="bold" />
 
     <Spinner
         android:id="@+id/link_type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="48dp"
+        android:layout_marginBottom="12dp"
         android:entries="@array/links"
-        android:padding="12dp"
-        android:layout_marginBottom="12dp"/>
+        android:minHeight="48dp"
+        android:padding="12dp" />
 
     <EditText
+        android:id="@+id/user_link"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/paste_link"
-        android:background="#fff"
-        android:padding="12dp"
-        android:id="@+id/user_link"
         android:layout_marginBottom="12dp"
+        android:autofillHints=""
+        android:background="#fff"
+        android:hint="@string/paste_link"
         android:inputType="textUri"
-        android:autofillHints="" />
-    
+        android:padding="12dp" />
+
     <Button
-        android:layout_marginTop="12dp"
         android:id="@+id/save_button"
-        android:text="@string/save_btn"
-        android:textAllCaps="false"
-        android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:text="@string/save_btn"
+        android:textAllCaps="false" />
 </LinearLayout>

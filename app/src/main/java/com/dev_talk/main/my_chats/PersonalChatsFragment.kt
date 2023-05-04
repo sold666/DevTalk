@@ -16,7 +16,6 @@ import com.dev_talk.main.structures.Chat
 import com.dev_talk.main.structures.Profession
 import com.google.android.material.tabs.TabLayout
 
-
 class PersonalChatsFragment : Fragment() {
     private lateinit var binding: FragmentPersonalChatsBinding
 

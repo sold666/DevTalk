@@ -15,7 +15,7 @@ import com.dev_talk.R
 import com.dev_talk.databinding.FragmentProfileInformationBinding
 import com.dev_talk.main.structures.*
 
-class ProfileInformationFragment : Fragment()  {
+class ProfileInformationFragment : Fragment() {
     private lateinit var binding: FragmentProfileInformationBinding
     private lateinit var data: List<ProfileData>
     private var isNightModeOn: Boolean = false

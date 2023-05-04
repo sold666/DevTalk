@@ -1,3 +1,5 @@
+package com.dev_talk.main.profile.edit
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,9 +11,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.databinding.FragmentProfileEditBinding
-import com.dev_talk.main.profile.edit.EditProfileChatsAdapter
-import com.dev_talk.main.profile.edit.EditProfileLinkAdapter
-import com.dev_talk.main.profile.information.ProfileInformationChatsAdapter
 import com.dev_talk.main.structures.*
 
 class ProfileEditFragment : Fragment() {
@@ -33,7 +32,7 @@ class ProfileEditFragment : Fragment() {
             setUpChats(recyclerView = myChats)
             setUpLinks(socialNetwork)
 
-            saveAllBtn.setOnClickListener{
+            saveAllBtn.setOnClickListener {
                 findNavController().navigate(R.id.action_profileEditFragment_to_profileInformationFragment)
             }
         }
@@ -76,7 +75,7 @@ class ProfileEditFragment : Fragment() {
         }
     }
 
-    private fun getLinks() : ArrayList<Link> {
+    private fun getLinks(): ArrayList<Link> {
         return arrayListOf(
             Link(R.drawable.ic_person),
             Link(R.drawable.ic_add_new_chat_btn)
