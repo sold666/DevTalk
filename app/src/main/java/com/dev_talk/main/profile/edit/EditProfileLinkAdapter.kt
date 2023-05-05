@@ -2,6 +2,8 @@ package com.dev_talk.main.profile.edit
 
 import android.app.Dialog
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -53,6 +55,7 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
             icon.setOnClickListener {
                 val dialog = Dialog(context)
                 dialog.setContentView(R.layout.dialog_add_link)
+                dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                 dialog.show()
                 val userLink: EditText = dialog.findViewById(R.id.user_link)
                 val linkType: Spinner = dialog.findViewById(R.id.link_type)

@@ -33,7 +33,6 @@
     <string name="profession_3">Профессия №3</string>
     <string name="chat_name">Имя чата</string>
     <string name="message_input">Введите сообщение…</string>
-    <string name="save_all_btn_text">Сохранить</string>
     <string name="send_a_message">Отправить сообщение</string>
     <string name="notifications">Уведомления</string>
     <string name="members">Участники: %1$d</string>
@@ -47,6 +46,7 @@
     <string name="add_link_title">Добавление ссылки</string>
     <string name="paste_link">Вставьте ссылку</string>
     <string name="save_btn">Сохранить</string>
+    <string name="recommendations">Рекомендации</string>
     <string name="is_ready_text">DevTalk готов</string>
     <string name="processing_data">Обработка данных</string>
     <string-array name="links">

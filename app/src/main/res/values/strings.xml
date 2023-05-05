@@ -33,7 +33,6 @@
     <string name="profession_3">Profession №3</string>
     <string name="chat_name">Chat name</string>
     <string name="message_input">Text message…</string>
-    <string name="save_all_btn_text">Save</string>
     <string name="send_a_message">Send a message</string>
     <string name="notifications">Notifications</string>
     <string name="members">Members: %1$d</string>
@@ -47,6 +46,7 @@
     <string name="add_link_title">Add Link</string>
     <string name="paste_link">Paste link</string>
     <string name="save_btn">Save</string>
+    <string name="recommendations">Recommendations</string>
     <string name="is_ready_text">DevTalk is ready</string>
     <string name="processing_data">Processing data</string>
     <string-array name="links">

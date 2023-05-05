@@ -5,11 +5,12 @@
             <item>
                 <shape android:shape="rectangle">
                     <solid android:color="@color/green_third" />
-                    <padding android:right="12dp" />
+                    <padding android:left="12dp" android:right="12dp" />
                     <corners android:radius="10dp" />
                 </shape>
+
             </item>
-            <item android:drawable="@drawable/ic_arrow_down" android:gravity="end" android:width="32dp" />
+            <item android:drawable="@drawable/ic_arrow_up" android:gravity="end" />
         </layer-list>
     </item>
 </selector>
