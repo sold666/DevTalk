@@ -50,6 +50,7 @@
     <string name="recommendations">Recommendations</string>
     <string name="is_ready_text">DevTalk is ready</string>
     <string name="processing_data">Processing data</string>
+    <string name="data_is_not_correct">The entered data is not correct</string>
     <string-array name="links">
         <item>Github</item>
         <item>Gitlab</item>

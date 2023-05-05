@@ -50,6 +50,7 @@
     <string name="is_ready_text">DevTalk готов</string>
     <string name="processing_data">Обработка данных</string>
     <string name="edit_profile">Редактирование</string>
+    <string name="data_is_not_correct">Введённые данные не корректны</string>
     <string-array name="links">
         <item>Github</item>
         <item>Gitlab</item>
