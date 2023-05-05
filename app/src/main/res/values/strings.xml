@@ -23,6 +23,7 @@
     <string name="recommended_chats">Chats</string>
     <string name="personal_chats">My chats</string>
     <string name="profile">Profile</string>
+    <string name="edit_profile">Edit Profile</string>
     <string name="create_chat">Create chat</string>
     <string name="default_username">Username</string>
     <string name="default_query_hint">Search…</string>

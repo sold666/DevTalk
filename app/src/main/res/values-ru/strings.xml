@@ -49,6 +49,7 @@
     <string name="recommendations">Рекомендации</string>
     <string name="is_ready_text">DevTalk готов</string>
     <string name="processing_data">Обработка данных</string>
+    <string name="edit_profile">Редактирование</string>
     <string-array name="links">
         <item>Github</item>
         <item>Gitlab</item>

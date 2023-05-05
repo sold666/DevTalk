@@ -16,25 +16,14 @@
             android:id="@+id/profile_app_bar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:theme="@style/ProfileIconsColor"
-            app:menu="@menu/profile_app_bar">
-
-            <ImageButton
-                android:id="@+id/switch_theme_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:contentDescription="@null"
-                android:padding="12dp"
-                android:src="@drawable/sun"
-                android:theme="@style/ProfileIconsColor" />
+            android:theme="@style/ProfileIconsColor">
 
             <TextView
                 android:id="@+id/toolbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/profile"
+                android:text="@string/edit_profile"
                 android:textColor="?attr/text_color"
                 android:textSize="22sp" />
 
@@ -45,6 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:overScrollMode="never"
+        android:scrollbars="none"
         app:layout_constrainedHeight="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profile_bar">
