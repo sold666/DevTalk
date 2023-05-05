@@ -82,16 +82,21 @@ class ResultFragment : Fragment() {
             addDataForUser(
                 selectedProfessions
             )
+            binding.resultList.visibility = View.GONE
+            binding.backButton.visibility = View.GONE
+            binding.nextButton.visibility = View.GONE
+            binding.resultText.visibility = View.GONE
+            binding.text.visibility = View.GONE
             progressBar.isVisible = true
             object : CountDownTimer(3000, 1000) {
                 override fun onTick(millisUntilFinished: Long) {
                     val progress = ((5000 - millisUntilFinished) / 50).toInt()
                     progressBar.progress = progress
-                    progressText.text = "Processing data"
+                    progressText.text = context?.getString(R.string.processing_data)
                 }
 
                 override fun onFinish() {
-                    progressText.text = "DevTalk is ready"
+                    progressText.text = context?.getString(R.string.is_ready_text)
                     progressBar.isVisible = false
                     findNavController().navigate(R.id.action_resultFragment_to_mainActivity)
                     activity?.finish()

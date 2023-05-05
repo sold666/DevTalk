@@ -36,10 +36,12 @@ class RecommendedChatsAdapter(
     class ChatItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val icon: ImageView = itemView.findViewById(R.id.chat_icon)
         private val chat: TextView = itemView.findViewById(R.id.chat_name)
+        private val membersAmount: TextView = itemView.findViewById(R.id.last_message)
 
         fun bind(src: Chat) {
             icon.setImageResource(src.icon)
             chat.text = src.tags
+            membersAmount.text = src.memberCount
         }
     }
 
