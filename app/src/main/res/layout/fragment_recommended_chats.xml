@@ -19,7 +19,18 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:theme="@style/CustomSearchView"
-            app:menu="@menu/menu_search_bar" />
+            app:menu="@menu/menu_search_bar">
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/recommendations"
+                android:textColor="?attr/text_color"
+                android:textSize="22sp" />
+
+        </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/profile_graph"
+    app:startDestination="@id/profileInformationFragment">
+
+    <fragment
+        android:id="@+id/profileInformationFragment"
+        android:name="com.dev_talk.main.profile.information.ProfileInformationFragment"
+        android:label="ProfileInformationFragment">
+        <action
+            android:id="@+id/action_profileInformationFragment_to_profileEditFragment"
+            app:destination="@id/profileEditFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileEditFragment"
+        android:name="com.dev_talk.main.profile.edit.ProfileEditFragment"
+        android:label="ProfileEditFragment">
+        <action
+            android:id="@+id/action_profileEditFragment_to_profileInformationFragment"
+            app:destination="@id/profileInformationFragment" />
+    </fragment>
+</navigation>

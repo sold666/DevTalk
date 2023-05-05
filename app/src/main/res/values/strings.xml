@@ -23,6 +23,7 @@
     <string name="recommended_chats">Chats</string>
     <string name="personal_chats">My chats</string>
     <string name="profile">Profile</string>
+    <string name="edit_profile">Edit Profile</string>
     <string name="create_chat">Create chat</string>
     <string name="default_username">Username</string>
     <string name="default_query_hint">Search…</string>
@@ -43,4 +44,16 @@
     <string name="log_out_menu_item_text">Log out</string>
     <string name="edit_profile_menu_item_text">Edit</string>
     <string name="selected_amount">Selected %1$d out of %2$d</string>
+    <string name="add_link_title">Add Link</string>
+    <string name="paste_link">Paste link</string>
+    <string name="save_btn">Save</string>
+    <string name="recommendations">Recommendations</string>
+    <string name="is_ready_text">DevTalk is ready</string>
+    <string name="processing_data">Processing data</string>
+    <string name="data_is_not_correct">The entered data is not correct</string>
+    <string-array name="links">
+        <item>Github</item>
+        <item>Gitlab</item>
+        <item>Linkedin</item>
+    </string-array>
 </resources>

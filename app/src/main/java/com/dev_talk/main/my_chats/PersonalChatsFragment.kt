@@ -17,7 +17,6 @@ import com.dev_talk.main.structures.Chat
 import com.dev_talk.main.structures.Profession
 import com.google.android.material.tabs.TabLayout
 
-
 class PersonalChatsFragment : Fragment() {
     private lateinit var binding: FragmentPersonalChatsBinding
 
@@ -76,7 +75,8 @@ class PersonalChatsFragment : Fragment() {
                     clearFocus()
                     searchBarMenu.findItem(R.id.menu_search)?.collapseActionView()
                     filterData("")
-                    binding.chatsWithCategory.findViewById<TextView>(R.id.no_chats_detected).visibility = View.GONE
+                    binding.chatsWithCategory.findViewById<TextView>(R.id.no_chats_detected).visibility =
+                        View.GONE
                     return true
                 }
 
@@ -89,12 +89,6 @@ class PersonalChatsFragment : Fragment() {
                     val myAdapter =
                         binding.chatsWithCategory.findViewById<RecyclerView>(R.id.list_with_my_chats).adapter as PersonalChatsAdapter
                     myAdapter.filter.filter(query)
-                    if (myAdapter.itemCount == 0 && !query.equals("")) {
-                        binding.chatsWithCategory.findViewById<TextView>(R.id.no_chats_detected).visibility = View.VISIBLE
-                    }
-                    else {
-                        binding.chatsWithCategory.findViewById<TextView>(R.id.no_chats_detected).visibility = View.GONE
-                    }
                 }
             })
         }

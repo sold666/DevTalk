@@ -14,6 +14,7 @@
         <item name="secondary_button_color">@color/white</item>
         <item name="recycler_button_color">@color/white</item>
         <item name="recycler_stroke_and_text_button_color">@color/green</item>
+        <item name="actionOverflowMenuStyle">@style/PopupOverflowMenu</item>
 
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:statusBarColor">@color/black</item>
@@ -21,11 +22,6 @@
 
     <style name="SplashScreenTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:background">@color/white</item>
-    </style>
-
-    <style name="Transition">
-        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
-        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 
     <style name="CustomSwitchButton" parent="Widget.AppCompat.CompoundButton.Switch">
@@ -51,6 +47,10 @@
 
     <style name="ToolbarButtonNavigationTint" parent="Widget.AppCompat.Toolbar.Button.Navigation">
         <item name="tint">@color/dark</item>
+    </style>
+
+    <style name="PopupOverflowMenu" parent="@style/Widget.MaterialComponents.PopupMenu.Overflow">
+        <item name="android:popupBackground">@drawable/bg_menu_dropdown</item>
     </style>
 
     <style name="CustomTabLayout" parent="Widget.Design.TabLayout">

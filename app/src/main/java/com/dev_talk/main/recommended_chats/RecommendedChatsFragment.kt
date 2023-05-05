@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.widget.SearchView
-import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -43,39 +42,48 @@ class RecommendedChatsFragment : Fragment() {
         return arrayListOf(
             Chat(
                 R.drawable.ic_person,
-                "Python"
+                "Python",
+                memberCount = "Members count: 20k"
             ),
             Chat(
                 R.drawable.ic_person,
-                "Java Script"
+                "Java Script",
+                memberCount = "Members count: 22k"
             ),
             Chat(
                 R.drawable.ic_person,
-                "Lua"
+                "Lua",
+                memberCount = "Members count: 2k"
             ),
             Chat(
                 R.drawable.ic_person,
-                "Lisp"
+                "Lisp",
+                memberCount = "Members count: 5k"
             ),
             Chat(
                 R.drawable.ic_person,
-                "Fortran"
+                "Fortran",
+                memberCount = "Members count: 20"
             ),
             Chat(
                 R.drawable.ic_person,
-                "MatLab"
+                "MatLab",
+                memberCount = "Members count: 5.5k"
             ),
             Chat(
                 R.drawable.ic_person,
-                "F"
+                "F",
+                memberCount = "Members count: 50k"
             ),
             Chat(
                 R.drawable.ic_person,
-                "C++"
+                "C++",
+                memberCount = "Members count: 50k"
             ),
             Chat(
                 R.drawable.ic_person,
-                "Assembler"
+                "Assembler",
+                memberCount = "Members count: 2"
             )
         )
     }
@@ -106,17 +114,21 @@ class RecommendedChatsFragment : Fragment() {
 
                 private fun filterData(query: String?) {
                     adapterRV.filter.filter(query)
-                    if (adapterRV.itemCount == 0 && !query.equals("")) {
-                        binding.noChatsDetected.visibility = View.VISIBLE
-                    } else {
-                        binding.noChatsDetected.visibility = View.GONE
-                    }
                 }
             })
         }
     }
 
     private fun setUpRecyclerView(recyclerView: RecyclerView) {
+        adapterRV.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
+            override fun onChanged() {
+                if (adapterRV.itemCount == 0) {
+                    binding.noChatsDetected.visibility = View.VISIBLE
+                } else {
+                    binding.noChatsDetected.visibility = View.GONE
+                }
+            }
+        })
         recyclerView.apply {
             adapter = adapterRV
             layoutManager = LinearLayoutManager(context)

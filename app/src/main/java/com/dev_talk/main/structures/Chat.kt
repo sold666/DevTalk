@@ -9,5 +9,6 @@ data class Chat(
     @DrawableRes
     val icon: Int = 0,
     val tags: String = "",
-    val lastMessage: String = ""
+    val lastMessage: String = "",
+    val memberCount: String = ""
 ) : Parcelable

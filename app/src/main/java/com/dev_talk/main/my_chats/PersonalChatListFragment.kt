@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.chat.ChatActivity
 import com.dev_talk.databinding.FragmentPersonalChatListBinding
 import com.dev_talk.main.common.Divider.Companion.getRecyclerViewDivider
@@ -18,6 +19,7 @@ private const val PROFESSION_KEY = "Current profession"
 class PersonalChatListFragment : Fragment() {
     private lateinit var binding: FragmentPersonalChatListBinding
     private lateinit var onChatClickListener: (chat: Chat, adapterPosition: Int) -> Unit
+    private lateinit var adapterRV: PersonalChatsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,14 +32,25 @@ class PersonalChatListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListeners()
-        with(binding.listWithMyChats) {
-            val data =
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
-                    arguments?.getParcelable(PROFESSION_KEY, Profession::class.java)!!
+        val data =
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+                arguments?.getParcelable(PROFESSION_KEY, Profession::class.java)!!
+            } else {
+                arguments?.getParcelable(PROFESSION_KEY)!!
+            }
+        adapterRV = PersonalChatsAdapter(data.chats, onChatClickListener)
+        adapterRV.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
+            override fun onChanged() {
+                if (adapterRV.itemCount == 0) {
+                    binding.noChatsDetected.visibility = View.VISIBLE
                 } else {
-                    arguments?.getParcelable(PROFESSION_KEY)!!
+                    binding.noChatsDetected.visibility = View.GONE
                 }
-            adapter = PersonalChatsAdapter(data.chats, onChatClickListener)
+            }
+        })
+
+        with(binding.listWithMyChats) {
+            adapter = adapterRV
             layoutManager = LinearLayoutManager(context)
             addItemDecoration(getRecyclerViewDivider(context))
         }
