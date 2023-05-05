@@ -81,7 +81,11 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
                 val userLinkText = userLink.text.toString()
                 val linkTypeText = linkType.selectedItem.toString()
                 if (!isLinkValid(userLinkText) || !isLinkTypeValid(linkTypeText)) {
-                    Toast.makeText(context, context.getText(R.string.data_is_not_correct), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        context,
+                        context.getText(R.string.data_is_not_correct),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 } else {
                     currentIcon = links.getOrDefault(linkTypeText, R.drawable.ic_leave)
                     dialog.dismiss()

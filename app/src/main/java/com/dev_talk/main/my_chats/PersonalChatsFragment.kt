@@ -75,7 +75,8 @@ class PersonalChatsFragment : Fragment() {
                     clearFocus()
                     searchBarMenu.findItem(R.id.menu_search)?.collapseActionView()
                     filterData("")
-                    binding.chatsWithCategory.findViewById<TextView>(R.id.no_chats_detected).visibility = View.GONE
+                    binding.chatsWithCategory.findViewById<TextView>(R.id.no_chats_detected).visibility =
+                        View.GONE
                     return true
                 }
 
