@@ -47,6 +47,8 @@
     <string name="add_link_title">Добавление ссылки</string>
     <string name="paste_link">Вставьте ссылку</string>
     <string name="save_btn">Сохранить</string>
+    <string name="is_ready_text">DevTalk готов</string>
+    <string name="processing_data">Обработка данных</string>
     <string-array name="links">
         <item>Github</item>
         <item>Gitlab</item>

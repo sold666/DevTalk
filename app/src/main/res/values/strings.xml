@@ -47,6 +47,8 @@
     <string name="add_link_title">Add Link</string>
     <string name="paste_link">Paste link</string>
     <string name="save_btn">Save</string>
+    <string name="is_ready_text">DevTalk is ready</string>
+    <string name="processing_data">Processing data</string>
     <string-array name="links">
         <item>Github</item>
         <item>Gitlab</item>
