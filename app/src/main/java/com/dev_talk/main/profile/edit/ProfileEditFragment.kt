@@ -44,15 +44,17 @@ class ProfileEditFragment : Fragment() {
                 return false
             }
         }
-        manager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-            override fun getSpanSize(position: Int): Int {
-                return when (data[position]) {
-                    is Header -> 2
-                    is Item -> 1
+        manager.apply {
+            spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                override fun getSpanSize(position: Int): Int {
+                    return when (data[position]) {
+                        is Header -> 2
+                        is Item -> 1
+                    }
                 }
             }
+            orientation = RecyclerView.VERTICAL
         }
-        manager.orientation = RecyclerView.VERTICAL
         recyclerView.apply {
             setHasFixedSize(true)
             isNestedScrollingEnabled = false
