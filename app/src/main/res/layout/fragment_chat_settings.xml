@@ -95,14 +95,14 @@
                     android:id="@+id/notifications"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableEnd="@drawable/ic_notification"
                     android:drawablePadding="4dp"
-                    android:drawableTint="?attr/text_color"
                     android:text="@string/notifications"
                     android:textColor="?attr/text_color"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:drawableEndCompat="@drawable/ic_notification"
+                    app:drawableTint="?attr/text_color" />
 
                 <TextView
                     android:id="@+id/mode"
