@@ -11,8 +11,8 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.dev_talk.R
-import com.dev_talk.auth.structures.Profession
-import com.dev_talk.auth.structures.Tag
+import com.dev_talk.common.structures.ProfessionDto
+import com.dev_talk.common.structures.TagDto
 import com.dev_talk.databinding.FragmentResultBinding
 import com.dev_talk.utils.DATABASE_URL
 import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
@@ -27,8 +27,8 @@ import java.util.stream.Collectors
 class ResultFragment : Fragment() {
 
     private lateinit var binding: FragmentResultBinding
-    private lateinit var selectedTags: List<Tag>
-    private lateinit var selectedProfessions: List<Profession>
+    private lateinit var selectedTags: List<TagDto>
+    private lateinit var selectedProfessions: List<ProfessionDto>
     private lateinit var progressBar: ProgressBar
     private lateinit var progressText: TextView
     private lateinit var auth: FirebaseAuth
@@ -54,11 +54,11 @@ class ResultFragment : Fragment() {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
                 selectedTags = arguments?.getParcelableArrayList(
                     LIST_SELECTED_TAGS_KEY,
-                    Tag::class.java
+                    TagDto::class.java
                 )!!
                 selectedProfessions = arguments?.getParcelableArrayList(
                     LIST_SELECTED_PROFESSIONS_KEY,
-                    Profession::class.java
+                    ProfessionDto::class.java
                 )!!
             } else {
                 selectedTags = arguments?.getParcelableArrayList(LIST_SELECTED_TAGS_KEY)!!

@@ -7,24 +7,24 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.R
-import com.dev_talk.auth.structures.Profession
+import com.dev_talk.common.structures.ProfessionDto
 import com.dev_talk.utils.getThemeColorRes
 import com.google.android.material.card.MaterialCardView
 
 class ProfessionAdapter(
 
-    private val onProfessionsClickListener: (profession: Profession, adapterPosition: Int) -> Unit
+    private val onProfessionsClickListener: (profession: ProfessionDto, adapterPosition: Int) -> Unit
 ) : RecyclerView.Adapter<ProfessionAdapter.ProfessionViewHolder>() {
 
-    private var professions = arrayListOf<Profession>()
+    private var professions = arrayListOf<ProfessionDto>()
 
-    fun setData(data: List<Profession>) {
+    fun setData(data: List<ProfessionDto>) {
         professions.clear()
         professions.addAll(data)
         notifyDataSetChanged()
     }
 
-    fun setData(data: List<Profession>, position: Int) {
+    fun setData(data: List<ProfessionDto>, position: Int) {
         professions.clear()
         professions.addAll(data)
         notifyItemChanged(position)
@@ -52,8 +52,8 @@ class ProfessionAdapter(
             itemView.context.getThemeColorRes(R.attr.text_color)
 
         fun bind(
-            profession: Profession,
-            listener: (profession: Profession, adapterPosition: Int) -> Unit
+            profession: ProfessionDto,
+            listener: (profession: ProfessionDto, adapterPosition: Int) -> Unit
         ) {
             professionName.text = profession.name
             val textColor = if (profession.isSelected) {

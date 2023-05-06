@@ -1,12 +1,11 @@
-package com.dev_talk.auth.structures
+package com.dev_talk.common.structures;
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Profession (
+data class TagDto (
     val id: Long,
     val name: String,
-    val tags: List<Tag>,
     var isSelected: Boolean
 ) : Parcelable

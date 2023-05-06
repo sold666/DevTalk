@@ -8,23 +8,23 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.R
-import com.dev_talk.auth.structures.Tag
+import com.dev_talk.common.structures.TagDto
 import com.dev_talk.utils.getThemeColorRes
 
 class TagAdapter(
 
-    private val onTagsClickListener: (tag: Tag, adapterPosition: Int) -> Unit
+    private val onTagsClickListener: (tag: TagDto, adapterPosition: Int) -> Unit
 ) : RecyclerView.Adapter<TagAdapter.TagViewHolder>() {
 
-    private var tags = arrayListOf<Tag>()
+    private var tags = arrayListOf<TagDto>()
 
-    fun setData(data: List<Tag>) {
+    fun setData(data: List<TagDto>) {
         tags.clear()
         tags.addAll(data)
         notifyDataSetChanged()
     }
 
-    fun setData(data: List<Tag>, position: Int) {
+    fun setData(data: List<TagDto>, position: Int) {
         tags.clear()
         tags.addAll(data)
         notifyItemChanged(position)
@@ -52,8 +52,8 @@ class TagAdapter(
             itemView.context.getThemeColorRes(R.attr.text_color)
 
         fun bind(
-            tag: Tag,
-            listener: (tag: Tag, adapterPosition: Int) -> Unit
+            tag: TagDto,
+            listener: (tag: TagDto, adapterPosition: Int) -> Unit
         ) {
             tagName.text = tag.name
             val textColor = if (tag.isSelected) {
