@@ -115,7 +115,7 @@ class ResultFragment : Fragment() {
     }
 
     private fun addDataForUser(
-        professions: List<Profession>,
+        professions: List<ProfessionDto>,
     ) {
         val map: MutableMap<String, List<String>> = mutableMapOf()
 
