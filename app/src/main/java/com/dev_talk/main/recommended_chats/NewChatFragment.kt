@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -69,8 +68,7 @@ class NewChatFragment : Fragment() {
     }
 
     private fun handleTagChoice(newTest: String) {
-        // TODO to strings
-        val buttonText = "Chat tag: $newTest"
+        val buttonText = (context?.getString(R.string.chosen_chat_tag) ?: "") + ": " + newTest
         binding.chooseTagButton.text = buttonText
         isTagValid = true
         updateDoneButtonStatus()

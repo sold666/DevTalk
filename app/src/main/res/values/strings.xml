@@ -51,6 +51,9 @@
     <string name="is_ready_text">DevTalk is ready</string>
     <string name="processing_data">Processing data</string>
     <string name="data_is_not_correct">The entered data is not correct</string>
+    <string name="done_chat_creation">Done</string>
+    <string name="choose_chat_tag">Choose chat tag</string>
+    <string name="chosen_chat_tag">Chat tag</string>
     <string-array name="links">
         <item>Github</item>
         <item>Gitlab</item>

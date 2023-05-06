@@ -51,6 +51,9 @@
     <string name="processing_data">Обработка данных</string>
     <string name="edit_profile">Редактирование</string>
     <string name="data_is_not_correct">Введённые данные не корректны</string>
+    <string name="done_chat_creation">Готово</string>
+    <string name="choose_chat_tag">Выберите тэг чата</string>
+    <string name="chosen_chat_tag">Тэг чата</string>
     <string-array name="links">
         <item>Github</item>
         <item>Gitlab</item>

@@ -7,14 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.dev_talk.common.structures.ProfessionDto
-import com.dev_talk.databinding.FragmentNewChatBinding
 import com.dev_talk.databinding.FragmentNewChatTagChoiceBinding
 import com.dev_talk.utils.getProfessions
 
 class TagChoiceFragment : Fragment() {
     private lateinit var binding: FragmentNewChatTagChoiceBinding
     private lateinit var tagChoiceAdapter: TagChoiceAdapter
-    private lateinit var chosenTag: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
