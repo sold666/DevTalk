@@ -1,6 +1,7 @@
 package com.dev_talk.main.profile.information
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,31 +15,37 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.R
 import com.dev_talk.databinding.FragmentProfileInformationBinding
 import com.dev_talk.main.structures.*
+import com.dev_talk.utils.DATABASE_URL
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.getValue
+import com.google.firebase.ktx.Firebase
 
 class ProfileInformationFragment : Fragment() {
     private lateinit var binding: FragmentProfileInformationBinding
-    private lateinit var data: List<ProfileData>
     private var isNightModeOn: Boolean = false
+    private lateinit var auth: FirebaseAuth
+    private lateinit var db: DatabaseReference
+    private lateinit var listProfileData: ArrayList<ProfileData>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentProfileInformationBinding.inflate(inflater)
+        auth = Firebase.auth
+        db = FirebaseDatabase.getInstance(DATABASE_URL).reference
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        listenMenuButtons()
         with(binding) {
-            data = getProfileData()
-            setUpRecyclerView(recyclerView = myChats)
+            setDataFromDatabase()
             setUpLinks(socialNetwork)
-
-            profileAppBar.menu.getItem(0).subMenu?.getItem(0)?.setOnMenuItemClickListener {
-                findNavController().navigate(R.id.action_profileInformationFragment_to_profileEditFragment)
-                true
-            }
             isNightModeOn =
                 AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
             switchThemeButton.setImageResource(if (isNightModeOn) R.drawable.moon else R.drawable.sun)
@@ -56,7 +63,35 @@ class ProfileInformationFragment : Fragment() {
                 Toast.makeText(context, toastText, Toast.LENGTH_SHORT).show()
             }
         }
+    }
 
+    private fun listenMenuButtons() {
+        val toolbar = binding.profileAppBar
+        if (toolbar.menu.size() == 0) {
+            toolbar.inflateMenu(R.menu.profile_app_bar)
+        }
+        toolbar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.edit -> {
+                    val action =
+                        ProfileInformationFragmentDirections.actionProfileInformationFragmentToProfileEditFragment(
+                            listProfileData.toTypedArray()
+                        )
+                    findNavController().navigate(action)
+                    true
+                }
+
+                R.id.log_out -> {
+                    auth.signOut()
+                    findNavController().navigate(R.id.action_profile_fragment_container_to_authActivity)
+                    true
+                }
+
+                else -> {
+                    false
+                }
+            }
+        }
     }
 
     private fun setUpLinks(recyclerView: RecyclerView) {
@@ -76,7 +111,8 @@ class ProfileInformationFragment : Fragment() {
     }
 
     private fun setUpRecyclerView(
-        recyclerView: RecyclerView
+        recyclerView: RecyclerView,
+        data: ArrayList<ProfileData>
     ) {
         val manager = object : GridLayoutManager(context, 2) {
             override fun canScrollVertically(): Boolean {
@@ -103,84 +139,31 @@ class ProfileInformationFragment : Fragment() {
         }
     }
 
-    private fun getProfileData(): ArrayList<ProfileData> {
-        return arrayListOf(
-            Header("Profession №1"),
-            Item(
-                Chat(
-                    R.drawable.ic_person,
-                    "C++"
-                )
-            ),
-            Item(
-                Chat(
-                    R.drawable.ic_person,
-                    "Java"
-                )
-            ),
-            Item(
-                Chat(
-                    R.drawable.ic_person,
-                    "C"
-                )
-            ),
-            Item(
-                Chat(
-                    R.drawable.ic_person,
-                    "Kotlin"
-                )
-            ),
-            Item(
-                Chat(
-                    R.drawable.ic_person,
-                    "F"
-                )
-            ),
-            Item(
-                Chat(
-                    R.drawable.ic_person,
-                    "Ruby"
-                )
-            ),
-            Item(
-                Chat(
-                    R.drawable.ic_person,
-                    "Go"
-                )
-            ),
-            Header("Profession №2"),
-            Item(
-                Chat(
-                    R.drawable.ic_person,
-                    "Css"
-                )
-            ),
-            Item(
-                Chat(
-                    R.drawable.ic_person,
-                    "Html"
-                )
-            ),
-            Header("Profession №3"),
-            Item(
-                Chat(
-                    R.drawable.ic_person,
-                    "Selenide"
-                )
-            ),
-            Item(
-                Chat(
-                    R.drawable.ic_person,
-                    "Selenium"
-                )
-            ),
-            Item(
-                Chat(
-                    R.drawable.ic_person,
-                    "Java"
-                )
-            )
-        )
+    private fun setDataFromDatabase() {
+        db.child("users").child(auth.currentUser?.uid!!).get().addOnSuccessListener {
+            if (it.exists()) {
+                listProfileData = arrayListOf()
+                val username = it.child("name").value.toString() + " " + it.child("surname").value
+                val professions = it.child("user_info")
+                professions.children.forEach {
+                    val header: String = it.key!!
+                    val tags: List<String> = it.getValue<List<String>>()!!
+                    listProfileData.add(Header(header))
+                    val items = arrayListOf<Item>()
+                    tags.forEach {
+                        items.add(Item(Chat(R.drawable.ic_person, it)))
+                    }
+                    listProfileData.addAll(items)
+                }
+                with(binding) {
+                    name.text = username
+                }
+                setUpRecyclerView(recyclerView = binding.myChats, listProfileData)
+            } else {
+                Log.d("userData", "Error!")
+            }
+        }.addOnFailureListener { e ->
+            Log.d("userData", e.message.toString())
+        }
     }
 }
-

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import com.dev_talk.R
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,7 +29,8 @@ class ProfileEditFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            data = getProfileData()
+            val args: ProfileEditFragmentArgs by navArgs()
+            data = args.listProfileData.toMutableList()
             setUpChats(recyclerView = myChats)
             setUpLinks(socialNetwork)
 
@@ -81,86 +83,6 @@ class ProfileEditFragment : Fragment() {
         return arrayListOf(
             Link(R.drawable.ic_person),
             Link(R.drawable.ic_add_new_chat_btn)
-        )
-    }
-
-    private fun getProfileData(): ArrayList<ProfileData> {
-        return arrayListOf(
-            Header("Profession №1"),
-            Item(
-                Chat(
-                    R.drawable.ic_person,
-                    "C++"
-                )
-            ),
-            Item(
-                Chat(
-                    R.drawable.ic_person,
-                    "Java"
-                )
-            ),
-            Item(
-                Chat(
-                    R.drawable.ic_person,
-                    "C"
-                )
-            ),
-            Item(
-                Chat(
-                    R.drawable.ic_person,
-                    "Kotlin"
-                )
-            ),
-            Item(
-                Chat(
-                    R.drawable.ic_person,
-                    "F"
-                )
-            ),
-            Item(
-                Chat(
-                    R.drawable.ic_person,
-                    "Ruby"
-                )
-            ),
-            Item(
-                Chat(
-                    R.drawable.ic_person,
-                    "Go"
-                )
-            ),
-            Header("Profession №2"),
-            Item(
-                Chat(
-                    R.drawable.ic_person,
-                    "Css"
-                )
-            ),
-            Item(
-                Chat(
-                    R.drawable.ic_person,
-                    "Html"
-                )
-            ),
-            Header("Profession №3"),
-            Item(
-                Chat(
-                    R.drawable.ic_person,
-                    "Selenide"
-                )
-            ),
-            Item(
-                Chat(
-                    R.drawable.ic_person,
-                    "Selenium"
-                )
-            ),
-            Item(
-                Chat(
-                    R.drawable.ic_person,
-                    "Java"
-                )
-            )
         )
     }
 }
