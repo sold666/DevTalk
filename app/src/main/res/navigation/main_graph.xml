@@ -13,18 +13,10 @@
         android:id="@+id/profile_fragment_container"
         android:name="com.dev_talk.main.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
-        <action
-            android:id="@+id/action_profile_fragment_container_to_authActivity"
-            app:destination="@id/authActivity" />
-    </fragment>
+        tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/personal_chats_fragment_container"
         android:name="com.dev_talk.main.my_chats.PersonalChatsFragment"
         android:label="PersonalChatsFragment"
         tools:layout="@layout/fragment_personal_chats" />
-    <activity
-        android:id="@+id/authActivity"
-        android:name="com.dev_talk.auth.AuthActivity"
-        android:label="AuthActivity" />
 </navigation>

@@ -17,6 +17,11 @@
                 android:icon="@drawable/ic_leave"
                 android:title="@string/log_out_menu_item_text"
                 app:showAsAction="never" />
+            <item
+                android:id="@+id/delete_profile"
+                android:icon="@drawable/ic_profile_delete"
+                android:title="@string/delete_profile"
+                app:showAsAction="never" />
         </menu>
     </item>
 </menu>

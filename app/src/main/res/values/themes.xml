@@ -22,6 +22,7 @@
 
     <style name="SplashScreenTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:background">@color/white</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 
     <style name="CustomSwitchButton" parent="Widget.AppCompat.CompoundButton.Switch">

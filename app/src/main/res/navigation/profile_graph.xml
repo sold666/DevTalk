@@ -12,6 +12,9 @@
             android:id="@+id/action_profileInformationFragment_to_profileEditFragment"
             app:destination="@id/profileEditFragment"
             app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_profileInformationFragment_to_authActivity"
+            app:destination="@id/authActivity" />
     </fragment>
     <fragment
         android:id="@+id/profileEditFragment"
@@ -25,4 +28,8 @@
             android:name="listProfileData"
             app:argType="com.dev_talk.main.structures.ProfileData[]" />
     </fragment>
+    <activity
+        android:id="@+id/authActivity"
+        android:name="com.dev_talk.auth.AuthActivity"
+        android:label="AuthActivity" />
 </navigation>
