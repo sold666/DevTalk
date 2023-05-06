@@ -23,13 +23,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:ellipsize="end"
+        android:ellipsize="marquee"
+        android:maxWidth="300dp"
         android:maxLines="1"
-        android:text="Participant name"
         android:textColor="?attr/text_color"
         android:textSize="20sp"
+        app:layout_constrainedWidth="true"
         app:layout_constraintStart_toEndOf="@id/icon_participant"
-        app:layout_constraintTop_toTopOf="@id/icon_participant" />
+        app:layout_constraintTop_toTopOf="@id/icon_participant"
+        tools:text="Participant name" />
 
     <TextView
         android:id="@+id/status_participant"

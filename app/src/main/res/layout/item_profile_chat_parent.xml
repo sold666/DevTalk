@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardCornerRadius="16dp"
+    app:cardCornerRadius="12dp"
     app:cardUseCompatPadding="true">
 
     <LinearLayout
@@ -17,7 +17,7 @@
             android:id="@+id/profession"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
+            android:ellipsize="marquee"
             android:maxLines="1"
             android:padding="8dp"
             android:textColor="?attr/text_color"

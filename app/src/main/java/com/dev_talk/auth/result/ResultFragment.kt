@@ -14,8 +14,15 @@ import com.dev_talk.R
 import com.dev_talk.auth.structures.Profession
 import com.dev_talk.auth.structures.Tag
 import com.dev_talk.databinding.FragmentResultBinding
+import com.dev_talk.utils.DATABASE_URL
 import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
 import com.dev_talk.utils.LIST_SELECTED_TAGS_KEY
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
+import java.util.stream.Collectors
 
 class ResultFragment : Fragment() {
 
@@ -24,12 +31,16 @@ class ResultFragment : Fragment() {
     private lateinit var selectedProfessions: List<Profession>
     private lateinit var progressBar: ProgressBar
     private lateinit var progressText: TextView
+    private lateinit var auth: FirebaseAuth
+    private lateinit var db: DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        auth = Firebase.auth
+        db = FirebaseDatabase.getInstance(DATABASE_URL).reference
         binding = FragmentResultBinding.inflate(inflater)
         return binding.root
     }
@@ -68,6 +79,9 @@ class ResultFragment : Fragment() {
         binding.backButton.setOnClickListener { findNavController().popBackStack() }
 
         binding.nextButton.setOnClickListener {
+            addDataForUser(
+                selectedProfessions
+            )
             binding.resultList.visibility = View.GONE
             binding.backButton.visibility = View.GONE
             binding.nextButton.visibility = View.GONE
@@ -98,5 +112,26 @@ class ResultFragment : Fragment() {
             expandableListMap[profession.name] = tagsNamesList
         }
         return expandableListMap
+    }
+
+    private fun addDataForUser(
+        professions: List<Profession>,
+    ) {
+        val map: MutableMap<String, List<String>> = mutableMapOf()
+
+        professions.forEach {
+            val selectedTags: List<String> =
+                it.tags.stream().filter { t -> t.isSelected }.map { it.name }.collect(
+                    Collectors.toList()
+                )
+            map.put(it.name, selectedTags)
+        }
+
+        val userInfo = map
+
+        db.child("users")
+            .child(auth.currentUser?.uid!!)
+            .child("user_info")
+            .setValue(userInfo)
     }
 }
