@@ -185,13 +185,15 @@ class ProfileInformationFragment : Fragment() {
                 listProfileData = arrayListOf()
                 val username = it.child("name").value.toString() + " " + it.child("surname").value
                 val professions = it.child("user_info")
-                professions.children.forEach {
-                    val header: String = it.key!!
-                    val tags: List<String> = it.getValue<List<String>>()!!
+                professions.children.forEach { profession ->
+                    val header: String = profession.key!!
+                    val tags: List<String> = profession.getValue<List<String>>()!!
                     listProfileData.add(Header(header))
                     val items = arrayListOf<Item>()
-                    tags.forEach {
-                        items.add(Item(Chat(R.drawable.ic_person, it)))
+                    tags.forEach { tag ->
+                        if (tag != "") {
+                            items.add(Item(Chat(R.drawable.ic_person, tag)))
+                        }
                     }
                     listProfileData.addAll(items)
                 }
