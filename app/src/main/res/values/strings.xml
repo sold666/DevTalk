@@ -56,6 +56,19 @@
     <string name="alert_message_for_delete_profile">Deleting this account will result in completely removing your account from the system and you won\'t be able to access the app.</string>
     <string name="alert_positive_button_for_delete_profile">Delete</string>
     <string name="alert_negative_button_for_delete_profile">Cancel</string>
+    <string name="night_mode_on">Night mode ON</string>
+    <string name="night_mode_off">Night mode OFF</string>
+    <string name="avatar_message_true">Image uploaded</string>
+    <string name="avatar_message_false">Failed to upload image</string>
+    <string name="account_delete_message">Your account deleted</string>
+    <string name="something_wrong">Something went wrong</string>
+    <string name="auth_failed_message">Authentication failed. User does not exist</string>
+    <string name="validation_email_message">Invalid email format!</string>
+    <string name="validation_password_message">Please, enter a password!</string>
+    <string name="validation_password_message_two">Minimal length of password 6 characters!</string>
+    <string name="validation_username_message">Please, enter your name</string>
+    <string name="validation_username_message_two">Please, enter your surname</string>
+    <string name="auth_exists_message">User with such an email already exists!</string>
     <string-array name="links">
         <item>Github</item>
         <item>Gitlab</item>

@@ -158,7 +158,7 @@ fun getProfessions(): List<Profession> {
                 ),
                 Tag(
                     22,
-                    "Ethical Hacking",
+                    "Cryptography",
                     false
                 ),
                 Tag(
@@ -212,7 +212,7 @@ fun getProfessions(): List<Profession> {
                 ),
                 Tag(
                     30,
-                    "Ethereum",
+                    "Networks",
                     false
                 ),
                 Tag(

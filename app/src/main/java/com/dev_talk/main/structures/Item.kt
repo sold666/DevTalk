@@ -5,5 +5,5 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Item(
-    val chat: Chat
+    val userTags: UserTags
 ) : ProfileData(), Parcelable

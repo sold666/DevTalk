@@ -49,11 +49,11 @@ class SignInFragment : Fragment() {
 
     private fun login(email: String, password: String) {
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            binding.email.error = "Invalid email format!!"
+            binding.email.error = context?.getString(R.string.validation_email_message)
         } else if (TextUtils.isEmpty(password)) {
-            binding.password.error = "Please, enter a password"
+            binding.password.error = context?.getString(R.string.validation_password_message)
         } else if (password.length < 6) {
-            binding.password.error = "Minimal length of your password - 6 characters!"
+            binding.password.error = context?.getString(R.string.validation_password_message_two)
         } else {
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
@@ -62,8 +62,8 @@ class SignInFragment : Fragment() {
                     } else {
                         Toast.makeText(
                             context,
-                            "Authentication failed. User does not exist.",
-                            Toast.LENGTH_SHORT,
+                            context?.getString(R.string.auth_failed_message),
+                            Toast.LENGTH_LONG,
                         ).show()
                     }
                 }
