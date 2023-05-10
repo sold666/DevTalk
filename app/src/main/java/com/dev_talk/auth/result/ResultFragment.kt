@@ -121,17 +121,19 @@ class ResultFragment : Fragment() {
 
         professions.forEach {
             val selectedTags: List<String> =
-                it.tags.stream().filter { t -> t.isSelected }.map { it.name }.collect(
-                    Collectors.toList()
-                )
-            map.put(it.name, selectedTags)
+                if (it.tags.any { t -> t.isSelected }) {
+                    it.tags.stream().filter { t -> t.isSelected }.map { it.name }.collect(
+                        Collectors.toList()
+                    )
+                } else {
+                    listOf("")
+                }
+            map[it.name] = selectedTags
         }
-
-        val userInfo = map
 
         db.child("users")
             .child(auth.currentUser?.uid!!)
             .child("user_info")
-            .setValue(userInfo)
+            .setValue(map)
     }
 }

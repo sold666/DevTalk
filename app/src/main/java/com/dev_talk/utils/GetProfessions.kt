@@ -117,7 +117,7 @@ fun getProfessions(): List<ProfessionDto> {
         ),
         ProfessionDto(
             6,
-            "UI/UX Designer",
+            "UI UX Designer",
             listOf(
                 TagDto(
                     16,
@@ -195,7 +195,7 @@ fun getProfessions(): List<ProfessionDto> {
                 ),
                 TagDto(
                     28,
-                    "CI/CD",
+                    "CI CD",
                     false
                 )
             ),

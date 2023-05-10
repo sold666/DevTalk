@@ -54,6 +54,11 @@
     <string name="done_chat_creation">Готово</string>
     <string name="choose_chat_tag">Выберите тэг чата</string>
     <string name="chosen_chat_tag">Тэг чата</string>
+    <string name="delete_profile">Удалить аккаунт</string>
+    <string name="alert_title_for_delete_profile">Вы уверены?</string>
+    <string name="alert_message_for_delete_profile">Удаление этого аккаунта приведет к полному удалению вашей учетной записи из системы, и вы не сможете получить доступ к приложению.</string>
+    <string name="alert_positive_button_for_delete_profile">Удалить</string>
+    <string name="alert_negative_button_for_delete_profile">Отмена</string>
     <string-array name="links">
         <item>Github</item>
         <item>Gitlab</item>

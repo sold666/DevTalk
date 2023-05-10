@@ -1,11 +1,13 @@
 package com.dev_talk.main.profile.information
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -83,7 +85,45 @@ class ProfileInformationFragment : Fragment() {
 
                 R.id.log_out -> {
                     auth.signOut()
-                    findNavController().navigate(R.id.action_profile_fragment_container_to_authActivity)
+                    findNavController().navigate(R.id.action_profileInformationFragment_to_authActivity)
+                    true
+                }
+
+                R.id.delete_profile -> {
+                    val user = Firebase.auth.currentUser!!
+                    val alertDialog = context?.let { AlertDialog.Builder(it) }
+                    alertDialog!!.setTitle(context?.getString(R.string.alert_title_for_delete_profile))
+                    alertDialog.setMessage(context?.getString(R.string.alert_message_for_delete_profile))
+                    alertDialog.setPositiveButton(
+                        context?.getString(R.string.alert_positive_button_for_delete_profile),
+                        DialogInterface.OnClickListener { dialog, _ ->
+                            db.child("users").child(user.uid).removeValue().addOnCompleteListener {
+                                user.delete()
+                                    .addOnCompleteListener { task ->
+                                        if (task.isSuccessful) {
+                                            Toast.makeText(
+                                                context,
+                                                "User account deleted.",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                            findNavController().navigate(R.id.action_profileInformationFragment_to_authActivity)
+                                        } else {
+                                            Toast.makeText(
+                                                context,
+                                                task.exception?.message.toString(),
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                        }
+                                    }
+                            }
+                        })
+                    alertDialog.setNegativeButton(
+                        (R.string.alert_negative_button_for_delete_profile),
+                        DialogInterface.OnClickListener { dialog, _ ->
+                            dialog.dismiss()
+                        })
+                    alertDialog.create()
+                    alertDialog.show()
                     true
                 }
 
@@ -145,13 +185,15 @@ class ProfileInformationFragment : Fragment() {
                 listProfileData = arrayListOf()
                 val username = it.child("name").value.toString() + " " + it.child("surname").value
                 val professions = it.child("user_info")
-                professions.children.forEach {
-                    val header: String = it.key!!
-                    val tags: List<String> = it.getValue<List<String>>()!!
+                professions.children.forEach { profession ->
+                    val header: String = profession.key!!
+                    val tags: List<String> = profession.getValue<List<String>>()!!
                     listProfileData.add(Header(header))
                     val items = arrayListOf<Item>()
-                    tags.forEach {
-                        items.add(Item(Chat(R.drawable.ic_person, it)))
+                    tags.forEach { tag ->
+                        if (tag != "") {
+                            items.add(Item(Chat(R.drawable.ic_person, tag)))
+                        }
                     }
                     listProfileData.addAll(items)
                 }

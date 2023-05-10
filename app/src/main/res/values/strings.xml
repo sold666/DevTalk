@@ -54,6 +54,11 @@
     <string name="done_chat_creation">Done</string>
     <string name="choose_chat_tag">Choose chat tag</string>
     <string name="chosen_chat_tag">Chat tag</string>
+    <string name="delete_profile">Delete profile</string>
+    <string name="alert_title_for_delete_profile">Are you sure?</string>
+    <string name="alert_message_for_delete_profile">Deleting this account will result in completely removing your account from the system and you won\'t be able to access the app.</string>
+    <string name="alert_positive_button_for_delete_profile">Delete</string>
+    <string name="alert_negative_button_for_delete_profile">Cancel</string>
     <string-array name="links">
         <item>Github</item>
         <item>Gitlab</item>
