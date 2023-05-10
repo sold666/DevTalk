@@ -1,25 +1,25 @@
 package com.dev_talk.utils
 
-import com.dev_talk.auth.structures.Profession
-import com.dev_talk.auth.structures.Tag
+import com.dev_talk.common.structures.ProfessionDto
+import com.dev_talk.common.structures.TagDto
 
-fun getProfessions(): List<Profession> {
+fun getProfessions(): List<ProfessionDto> {
     return listOf(
-        Profession(
+        ProfessionDto(
             1,
             "Backend Developer",
             listOf(
-                Tag(
+                TagDto(
                     1,
                     "Spring Boot",
                     false
                 ),
-                Tag(
+                TagDto(
                     2,
                     "Django",
                     false
                 ),
-                Tag(
+                TagDto(
                     3,
                     "Flask",
                     false
@@ -27,21 +27,21 @@ fun getProfessions(): List<Profession> {
             ),
             false
         ),
-        Profession(
+        ProfessionDto(
             2,
             "Frontend Developer",
             listOf(
-                Tag(
+                TagDto(
                     4,
                     "Angular",
                     false
                 ),
-                Tag(
+                TagDto(
                     5,
                     "React",
                     false
                 ),
-                Tag(
+                TagDto(
                     6,
                     "Vue.js",
                     false
@@ -49,21 +49,21 @@ fun getProfessions(): List<Profession> {
             ),
             false
         ),
-        Profession(
+        ProfessionDto(
             3,
             "Game Developer",
             listOf(
-                Tag(
+                TagDto(
                     7,
                     "Unity",
                     false
                 ),
-                Tag(
+                TagDto(
                     8,
                     "Unreal Engine",
                     false
                 ),
-                Tag(
+                TagDto(
                     9,
                     "Godot",
                     false
@@ -71,21 +71,21 @@ fun getProfessions(): List<Profession> {
             ),
             false
         ),
-        Profession(
+        ProfessionDto(
             4,
             "Data Scientist",
             listOf(
-                Tag(
+                TagDto(
                     10,
                     "Machine Learning",
                     false
                 ),
-                Tag(
+                TagDto(
                     11,
                     "Data Mining",
                     false
                 ),
-                Tag(
+                TagDto(
                     12,
                     "Data Analysis",
                     false
@@ -93,21 +93,21 @@ fun getProfessions(): List<Profession> {
             ),
             false
         ),
-        Profession(
+        ProfessionDto(
             5,
             "Android Developer",
             listOf(
-                Tag(
+                TagDto(
                     13,
                     "Android SDK",
                     false
                 ),
-                Tag(
+                TagDto(
                     14,
                     "Flutter",
                     false
                 ),
-                Tag(
+                TagDto(
                     15,
                     "React Native",
                     false
@@ -115,26 +115,26 @@ fun getProfessions(): List<Profession> {
             ),
             false
         ),
-        Profession(
+        ProfessionDto(
             6,
             "UI UX Designer",
             listOf(
-                Tag(
+                TagDto(
                     16,
                     "Adobe XD",
                     false
                 ),
-                Tag(
+                TagDto(
                     17,
                     "Figma",
                     false
                 ),
-                Tag(
+                TagDto(
                     18,
                     "Sketch",
                     false
                 ),
-                Tag(
+                TagDto(
                     19,
                     "InVision",
                     false
@@ -142,26 +142,26 @@ fun getProfessions(): List<Profession> {
             ),
             false
         ),
-        Profession(
+        ProfessionDto(
             7,
             "Cybersecurity Analyst",
             listOf(
-                Tag(
+                TagDto(
                     20,
                     "Penetration testing",
                     false
                 ),
-                Tag(
+                TagDto(
                     21,
                     "Network Security",
                     false
                 ),
-                Tag(
+                TagDto(
                     22,
                     "Ethical Hacking",
                     false
                 ),
-                Tag(
+                TagDto(
                     23,
                     "Vulnerability Assessment",
                     false
@@ -169,31 +169,31 @@ fun getProfessions(): List<Profession> {
             ),
             false
         ),
-        Profession(
+        ProfessionDto(
             8,
             "DevOps Engineer",
             listOf(
-                Tag(
+                TagDto(
                     24,
                     "Docker",
                     false
                 ),
-                Tag(
+                TagDto(
                     25,
                     "Kubernetes",
                     false
                 ),
-                Tag(
+                TagDto(
                     26,
                     "AWS",
                     false
                 ),
-                Tag(
+                TagDto(
                     27,
                     "Jenkins",
                     false
                 ),
-                Tag(
+                TagDto(
                     28,
                     "CI CD",
                     false
@@ -201,31 +201,31 @@ fun getProfessions(): List<Profession> {
             ),
             false
         ),
-        Profession(
+        ProfessionDto(
             9,
             "Blockchain Developer",
             listOf(
-                Tag(
+                TagDto(
                     29,
                     "Solidity",
                     false
                 ),
-                Tag(
+                TagDto(
                     30,
                     "Ethereum",
                     false
                 ),
-                Tag(
+                TagDto(
                     31,
                     "Hyperledger Fabric",
                     false
                 ),
-                Tag(
+                TagDto(
                     32,
                     "Smart Contracts",
                     false
                 ),
-                Tag(
+                TagDto(
                     33,
                     "Decentralized Applications (dApps)",
                     false

@@ -10,8 +10,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev_talk.R
 import com.dev_talk.auth.SelectionViewModel
-import com.dev_talk.auth.structures.Profession
-import com.dev_talk.auth.structures.Tag
+import com.dev_talk.common.structures.ProfessionDto
+import com.dev_talk.common.structures.TagDto
 import com.dev_talk.databinding.FragmentTagBinding
 import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
 import com.dev_talk.utils.LIST_SELECTED_TAGS_KEY
@@ -20,9 +20,9 @@ class TagFragment : Fragment() {
 
     private lateinit var binding: FragmentTagBinding
     private lateinit var tagAdapter: TagAdapter
-    private lateinit var onTagsClickListener: (tag: Tag, adapterPosition: Int) -> Unit
-    private lateinit var tags: List<Tag>
-    private lateinit var selectedProfessions: List<Profession>
+    private lateinit var onTagsClickListener: (tag: TagDto, adapterPosition: Int) -> Unit
+    private lateinit var tags: List<TagDto>
+    private lateinit var selectedProfessions: List<ProfessionDto>
     private val viewModel: SelectionViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -42,12 +42,12 @@ class TagFragment : Fragment() {
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
                     arguments?.getParcelableArrayList(
                         LIST_SELECTED_PROFESSIONS_KEY,
-                        Profession::class.java
+                        ProfessionDto::class.java
                     )!!
                 } else {
                     arguments?.getParcelableArrayList(LIST_SELECTED_PROFESSIONS_KEY)!!
                 }
-            tags = ArrayList(selectedProfessions.flatMap(Profession::tags))
+            tags = ArrayList(selectedProfessions.flatMap(ProfessionDto::tags))
             nextButton.isEnabled = false
             tagAdapter = TagAdapter(onTagsClickListener)
             tagList.adapter = tagAdapter

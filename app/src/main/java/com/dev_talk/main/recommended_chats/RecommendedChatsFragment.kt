@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.R
@@ -30,6 +31,7 @@ class RecommendedChatsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initListeners()
         with(binding) {
             dataRV = getRecommendedChats()
             adapterRV = RecommendedChatsAdapter(dataRV)
@@ -133,6 +135,12 @@ class RecommendedChatsFragment : Fragment() {
             adapter = adapterRV
             layoutManager = LinearLayoutManager(context)
             addItemDecoration(getRecyclerViewDivider(context))
+        }
+    }
+
+    private fun initListeners() {
+        binding.addChatButton.setOnClickListener {
+            findNavController().navigate(R.id.action_recommendedChatsFragment_to_newChatFragment)
         }
     }
 }

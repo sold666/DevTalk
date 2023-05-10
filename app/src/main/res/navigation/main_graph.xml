@@ -8,7 +8,25 @@
         android:id="@+id/recommended_chats_fragment_container"
         android:name="com.dev_talk.main.recommended_chats.RecommendedChatsFragment"
         android:label="RecommendedChatsFragment"
-        tools:layout="@layout/fragment_recommended_chats" />
+        tools:layout="@layout/fragment_recommended_chats">
+        <action
+            android:id="@+id/action_recommendedChatsFragment_to_newChatFragment"
+            app:destination="@id/new_chat_fragment_container" />
+    </fragment>
+    <fragment
+        android:id="@+id/new_chat_fragment_container"
+        android:name="com.dev_talk.main.recommended_chats.NewChatFragment"
+        android:label="NewChatFragment"
+        tools:layout="@layout/fragment_new_chat">
+        <action
+            android:id="@+id/action_newChatFragment_to_tagChoiceFragment"
+            app:destination="@id/new_chat_tag_choice_fragment_container" />
+    </fragment>
+    <fragment
+        android:id="@+id/new_chat_tag_choice_fragment_container"
+        android:name="com.dev_talk.main.recommended_chats.TagChoiceFragment"
+        android:label="TagChoiceFragment"
+        tools:layout="@layout/fragment_new_chat_tag_choice" />
     <fragment
         android:id="@+id/profile_fragment_container"
         android:name="com.dev_talk.main.profile.ProfileFragment"

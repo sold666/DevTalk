@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev_talk.R
 import com.dev_talk.auth.AuthActivity
 import com.dev_talk.auth.SelectionViewModel
-import com.dev_talk.auth.structures.Profession
+import com.dev_talk.common.structures.ProfessionDto
 import com.dev_talk.databinding.FragmentProfessionBinding
 import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
 import com.dev_talk.utils.getProfessions
@@ -22,8 +22,8 @@ class ProfessionFragment : Fragment() {
 
     private lateinit var binding: FragmentProfessionBinding
     private lateinit var professionAdapter: ProfessionAdapter
-    private lateinit var onProfessionsClickListener: (profession: Profession, adapterPosition: Int) -> Unit
-    private var professions: List<Profession> = getProfessions()
+    private lateinit var onProfessionsClickListener: (profession: ProfessionDto, adapterPosition: Int) -> Unit
+    private var professions: List<ProfessionDto> = getProfessions()
     private val viewModel: SelectionViewModel by activityViewModels()
 
     override fun onCreateView(
