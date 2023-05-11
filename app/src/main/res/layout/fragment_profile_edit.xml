@@ -96,7 +96,6 @@
                             android:ellipsize="end"
                             android:ems="15"
                             android:hint="@string/default_username"
-                            android:textColorHint="?attr/text_color_secondary"
                             android:inputType="textPersonName"
                             android:maxLines="1"
                             android:textColor="?attr/text_color"

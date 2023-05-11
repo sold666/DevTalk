@@ -23,7 +23,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_person" />
+            tools:src="@drawable/spring_boot" />
 
         <TextView
             android:id="@+id/tag"

@@ -52,8 +52,8 @@
     <string name="edit_profile">Редактирование</string>
     <string name="data_is_not_correct">Введённые данные не корректны</string>
     <string name="done_chat_creation">Готово</string>
-    <string name="choose_chat_tag">Выберите тэг чата</string>
-    <string name="chosen_chat_tag">Тэг чата</string>
+    <string name="choose_chat_tag">Выберите тег чата</string>
+    <string name="chosen_chat_tag">Тег чата</string>
     <string name="delete_profile">Удалить аккаунт</string>
     <string name="alert_title_for_delete_profile">Вы уверены?</string>
     <string name="alert_message_for_delete_profile">Удаление этого аккаунта приведет к полному удалению вашей учетной записи из системы, и вы не сможете получить доступ к приложению.</string>

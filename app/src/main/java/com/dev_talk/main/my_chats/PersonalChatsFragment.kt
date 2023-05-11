@@ -120,37 +120,37 @@ class PersonalChatsFragment : Fragment() {
                 "Profession №1",
                 arrayListOf(
                     Chat(
-                        R.drawable.ic_person,
+                        R.drawable.default_avatar_chat,
                         "C++",
                         "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
-                        R.drawable.ic_person,
+                        R.drawable.default_avatar_chat,
                         "Java",
                         "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
-                        R.drawable.ic_person,
+                        R.drawable.default_avatar_chat,
                         "C",
                         "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
-                        R.drawable.ic_person,
+                        R.drawable.default_avatar_chat,
                         "Kotlin",
                         "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
-                        R.drawable.ic_person,
+                        R.drawable.default_avatar_chat,
                         "F",
                         "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
-                        R.drawable.ic_person,
+                        R.drawable.default_avatar_chat,
                         "Ruby",
                         "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
-                        R.drawable.ic_person,
+                        R.drawable.default_avatar_chat,
                         "Go",
                         "text text text text text text text text text text text text text text text"
                     ),
@@ -160,12 +160,12 @@ class PersonalChatsFragment : Fragment() {
                 "Profession №2",
                 arrayListOf(
                     Chat(
-                        R.drawable.ic_person,
+                        R.drawable.default_avatar_chat,
                         "Css",
                         "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
-                        R.drawable.ic_person,
+                        R.drawable.default_avatar_chat,
                         "Html",
                         "text text text text text text text text text text text text text text text"
                     )
@@ -175,17 +175,17 @@ class PersonalChatsFragment : Fragment() {
                 "Profession №3",
                 arrayListOf(
                     Chat(
-                        R.drawable.ic_person,
+                        R.drawable.default_avatar_chat,
                         "Selenide",
                         "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
-                        R.drawable.ic_person,
+                        R.drawable.default_avatar_chat,
                         "Selenium",
                         "text text text text text text text text text text text text text text text"
                     ),
                     Chat(
-                        R.drawable.ic_person,
+                        R.drawable.default_avatar_chat,
                         "Java",
                         "text text text text text text text text text text text text text text text"
                     )

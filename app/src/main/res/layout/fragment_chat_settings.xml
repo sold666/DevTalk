@@ -49,11 +49,14 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/icon_chat"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_marginTop="100dp"
                 android:contentDescription="@null"
                 android:scaleType="centerCrop"
+                android:src="@drawable/default_avatar_chat"
+                app:civ_border_color="@color/green_second"
+                app:civ_border_width="2dp"
                 app:layout_constraintBottom_toTopOf="@+id/amount_chat_participants"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

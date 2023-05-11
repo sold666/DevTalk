@@ -68,7 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/check_if_you_have_chosen_everything_correctly"
-        android:textColor="?attr/text_color"
+        android:textColor="?attr/text_color_secondary"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
