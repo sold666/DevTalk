@@ -59,6 +59,7 @@ class SignInFragment : Fragment() {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         findNavController().navigate(R.id.action_signInFragment_to_mainActivity)
+                        activity?.finish()
                     } else {
                         Toast.makeText(
                             context,

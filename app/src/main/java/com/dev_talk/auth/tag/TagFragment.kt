@@ -13,8 +13,10 @@ import com.dev_talk.auth.SelectionViewModel
 import com.dev_talk.common.structures.ProfessionDto
 import com.dev_talk.common.structures.TagDto
 import com.dev_talk.databinding.FragmentTagBinding
+import com.dev_talk.dto.User
 import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
 import com.dev_talk.utils.LIST_SELECTED_TAGS_KEY
+import com.dev_talk.utils.USER_KEY
 
 class TagFragment : Fragment() {
 
@@ -23,6 +25,7 @@ class TagFragment : Fragment() {
     private lateinit var onTagsClickListener: (tag: TagDto, adapterPosition: Int) -> Unit
     private lateinit var tags: List<TagDto>
     private lateinit var selectedProfessions: List<ProfessionDto>
+    private lateinit var user: User
     private val viewModel: SelectionViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -38,15 +41,19 @@ class TagFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initListeners()
         with(binding) {
-            selectedProfessions =
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
-                    arguments?.getParcelableArrayList(
-                        LIST_SELECTED_PROFESSIONS_KEY,
-                        ProfessionDto::class.java
-                    )!!
-                } else {
-                    arguments?.getParcelableArrayList(LIST_SELECTED_PROFESSIONS_KEY)!!
-                }
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+                selectedProfessions = arguments?.getParcelableArrayList(
+                    LIST_SELECTED_PROFESSIONS_KEY,
+                    ProfessionDto::class.java
+                )!!
+                user = arguments?.getParcelable(
+                    USER_KEY,
+                    User::class.java
+                )!!
+            } else {
+                selectedProfessions = arguments?.getParcelableArrayList(LIST_SELECTED_PROFESSIONS_KEY)!!
+                user = arguments?.getParcelable(USER_KEY)!!
+            }
             tags = ArrayList(selectedProfessions.flatMap(ProfessionDto::tags))
             nextButton.isEnabled = false
             tagAdapter = TagAdapter(onTagsClickListener)
@@ -75,6 +82,10 @@ class TagFragment : Fragment() {
                 putParcelableArrayList(
                     LIST_SELECTED_PROFESSIONS_KEY,
                     ArrayList(selectedProfessions)
+                )
+                putParcelable(
+                    USER_KEY,
+                    user
                 )
             }
             findNavController().navigate(R.id.action_tagsFragment_to_resultFragment, bundle)

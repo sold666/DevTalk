@@ -90,6 +90,7 @@ class ProfileInformationFragment : Fragment() {
                 R.id.log_out -> {
                     auth.signOut()
                     findNavController().navigate(R.id.action_profileInformationFragment_to_authActivity)
+                    activity?.finish()
                     true
                 }
 

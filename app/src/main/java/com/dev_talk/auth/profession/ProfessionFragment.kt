@@ -15,7 +15,10 @@ import com.dev_talk.auth.AuthActivity
 import com.dev_talk.auth.SelectionViewModel
 import com.dev_talk.common.structures.ProfessionDto
 import com.dev_talk.databinding.FragmentProfessionBinding
+import com.dev_talk.dto.User
 import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
+import com.dev_talk.utils.PROFESSIONS_LIMIT
+import com.dev_talk.utils.USER_KEY
 import com.dev_talk.utils.getProfessions
 
 class ProfessionFragment : Fragment() {
@@ -23,6 +26,7 @@ class ProfessionFragment : Fragment() {
     private lateinit var binding: FragmentProfessionBinding
     private lateinit var professionAdapter: ProfessionAdapter
     private lateinit var onProfessionsClickListener: (profession: ProfessionDto, adapterPosition: Int) -> Unit
+    private lateinit var user: User
     private var professions: List<ProfessionDto> = getProfessions()
     private val viewModel: SelectionViewModel by activityViewModels()
 
@@ -48,6 +52,15 @@ class ProfessionFragment : Fragment() {
         }
         initListeners()
         with(binding) {
+            user =
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+                    arguments?.getParcelable(
+                        USER_KEY,
+                        User::class.java
+                    )!!
+                } else {
+                    arguments?.getParcelable(USER_KEY)!!
+                }
             nextButton.isEnabled = false
             professionAdapter = ProfessionAdapter(onProfessionsClickListener)
             professionList.adapter = professionAdapter
@@ -78,6 +91,10 @@ class ProfessionFragment : Fragment() {
                     LIST_SELECTED_PROFESSIONS_KEY,
                     ArrayList(selectedProfessions)
                 )
+                putParcelable(
+                    USER_KEY,
+                    user
+                )
             }
             findNavController().navigate(R.id.action_professionFragment_to_tagsFragment, bundle)
         }
@@ -107,7 +124,7 @@ class ProfessionFragment : Fragment() {
             binding.amountProfessions.text = String.format(
                 getString(R.string.selected_amount),
                 count,
-                professions.size
+                PROFESSIONS_LIMIT
             )
             binding.nextButton.isEnabled = count > 0
         }

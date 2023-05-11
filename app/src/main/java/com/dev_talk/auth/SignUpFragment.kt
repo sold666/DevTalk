@@ -14,11 +14,13 @@ import com.dev_talk.R
 import com.dev_talk.databinding.FragmentSignUpBinding
 import com.dev_talk.dto.User
 import com.dev_talk.utils.DATABASE_URL
+import com.dev_talk.utils.LIST_SELECTED_TAGS_KEY
+import com.dev_talk.utils.USER_KEY
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
+import com.google.firebase.database.ktx.snapshots
 import com.google.firebase.ktx.Firebase
 
 class SignUpFragment : Fragment() {
@@ -88,13 +90,14 @@ class SignUpFragment : Fragment() {
         if (!validateData(name, surname, email, password)) return
         auth.createUserWithEmailAndPassword(email, password)
             .addOnSuccessListener {
-                addNewUser(
-                    name,
-                    surname,
-                    email,
-                    password
-                )
-                findNavController().navigate(R.id.action_signUpFragment_to_professionFragment)
+                val user = User(name, surname, email, password, emptyList(), emptyList())
+                val bundle = Bundle().apply {
+                    putParcelable(
+                        USER_KEY,
+                        user
+                    )
+                }
+                findNavController().navigate(R.id.action_signUpFragment_to_professionFragment, bundle)
             }
             .addOnFailureListener { e ->
                 Log.d("UserCreationError", e.toString())
@@ -108,16 +111,6 @@ class SignUpFragment : Fragment() {
                     Toast.LENGTH_SHORT,
                 ).show()
             }
-    }
-
-    private fun addNewUser(
-        name: String,
-        surname: String,
-        email: String,
-        password: String,
-    ) {
-        db.child("users").child(auth.currentUser?.uid!!)
-            .setValue(User(name, surname, email, password, emptyList(), emptyList()))
     }
 }
 

@@ -14,9 +14,11 @@ import com.dev_talk.R
 import com.dev_talk.common.structures.ProfessionDto
 import com.dev_talk.common.structures.TagDto
 import com.dev_talk.databinding.FragmentResultBinding
+import com.dev_talk.dto.User
 import com.dev_talk.utils.DATABASE_URL
 import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
 import com.dev_talk.utils.LIST_SELECTED_TAGS_KEY
+import com.dev_talk.utils.USER_KEY
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
@@ -33,6 +35,7 @@ class ResultFragment : Fragment() {
     private lateinit var progressText: TextView
     private lateinit var auth: FirebaseAuth
     private lateinit var db: DatabaseReference
+    private lateinit var user: User
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,10 +63,15 @@ class ResultFragment : Fragment() {
                     LIST_SELECTED_PROFESSIONS_KEY,
                     ProfessionDto::class.java
                 )!!
+                user = arguments?.getParcelable(
+                    USER_KEY,
+                    User::class.java
+                )!!
             } else {
                 selectedTags = arguments?.getParcelableArrayList(LIST_SELECTED_TAGS_KEY)!!
                 selectedProfessions =
                     arguments?.getParcelableArrayList(LIST_SELECTED_PROFESSIONS_KEY)!!
+                user = arguments?.getParcelable(USER_KEY)!!
             }
             val listData = generateMapFromArrays()
             val titleList = selectedProfessions.map { it.name }
@@ -130,7 +138,7 @@ class ResultFragment : Fragment() {
                 }
             map[it.name] = selectedTags
         }
-
+        db.child("users").child(auth.currentUser?.uid!!).setValue(user)
         db.child("users")
             .child(auth.currentUser?.uid!!)
             .child("user_info")
