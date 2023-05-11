@@ -72,6 +72,7 @@
     <string name="validation_username_message">Please, enter your name</string>
     <string name="validation_username_message_two">Please, enter your surname</string>
     <string name="auth_exists_message">User with such an email already exists!</string>
+    <string name="professions_limit_message">You can choose up to 3 professions</string>
     <string-array name="links">
         <item>Github</item>
         <item>Gitlab</item>

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -99,12 +100,20 @@ class ProfessionFragment : Fragment() {
             findNavController().navigate(R.id.action_professionFragment_to_tagsFragment, bundle)
         }
 
-        onProfessionsClickListener = { profession, position ->
+        onProfessionsClickListener = onProfessionsClickListener@{ profession, position ->
             if (profession.isSelected) {
                 if (viewModel.selectedProfessionsCount.value!! > 0) {
                     viewModel.setSelectedProfessionsCount(viewModel.selectedProfessionsCount.value!! - 1)
                 }
             } else {
+                if (viewModel.selectedProfessionsCount.value!! == 3) {
+                    Toast.makeText(
+                        context,
+                        context?.getString(R.string.professions_limit_message),
+                        Toast.LENGTH_LONG,
+                    ).show()
+                    return@onProfessionsClickListener
+                }
                 viewModel.setSelectedProfessionsCount(viewModel.selectedProfessionsCount.value!! + 1)
             }
             professions.forEach {
