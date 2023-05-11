@@ -1,6 +1,7 @@
 package com.dev_talk.main.my_chats
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,24 +14,36 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.dev_talk.R
 import com.dev_talk.databinding.FragmentPersonalChatsBinding
+import com.dev_talk.dto.ChatDto
 import com.dev_talk.main.structures.Chat
 import com.dev_talk.main.structures.Profession
+import com.dev_talk.utils.DATABASE_URL
 import com.google.android.material.tabs.TabLayout
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.*
+import com.google.firebase.database.ktx.getValue
+import com.google.firebase.ktx.Firebase
 
 class PersonalChatsFragment : Fragment() {
     private lateinit var binding: FragmentPersonalChatsBinding
+    private lateinit var db: DatabaseReference
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentPersonalChatsBinding.inflate(inflater)
+        auth = Firebase.auth
+        db = FirebaseDatabase.getInstance(DATABASE_URL).reference
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
+            setUpChats()
             val data = getProfessions()
             setUpViewPager2(viewPager = chatsWithCategory, tabLayout = professions, data = data)
             for ((index, currentProfession) in data.withIndex()) {
@@ -47,6 +60,28 @@ class PersonalChatsFragment : Fragment() {
             })
             setUpSearchView()
         }
+    }
+
+    private fun setUpChats() {
+        val chats = db.child("chats")
+        val chatsListener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                Log.d("chats count", snapshot.childrenCount.toString())
+                snapshot.children.forEach {
+                    if (it.child("participants").child(auth.currentUser?.uid.toString()).exists()) {
+                        val id: String = it.key!!
+                        val chat  = it.getValue<ChatDto>()
+                        Log.d("id", chat!!.name + chat.tag)
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        }
+        chats.addValueEventListener(chatsListener)
     }
 
     private fun getProfessionsNames(): List<String> {

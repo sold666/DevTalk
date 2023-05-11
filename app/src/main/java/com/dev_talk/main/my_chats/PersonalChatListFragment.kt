@@ -54,6 +54,8 @@ class PersonalChatListFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
             addItemDecoration(getRecyclerViewDivider(context))
         }
+
+
     }
 
     private fun initListeners() {
