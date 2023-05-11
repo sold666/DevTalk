@@ -73,10 +73,10 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/avatar"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="116dp"
+                        android:layout_height="116dp"
                         android:layout_marginStart="20dp"
-                        android:src="@drawable/ic_person"
+                        android:src="@drawable/default_avatar"
                         app:layout_constraintBottom_toBottomOf="@id/labels_container"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@id/labels_container" />
@@ -105,7 +105,7 @@
                             android:maxLines="3"
                             android:text="@string/default_username"
                             android:textColor="?attr/text_color"
-                            android:textSize="28sp"
+                            android:textSize="26sp"
                             app:layout_constrainedWidth="true" />
 
                         <androidx.recyclerview.widget.RecyclerView
@@ -120,7 +120,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/my_chats"
+                android:id="@+id/user_info_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"

@@ -64,20 +64,20 @@ class SignUpFragment : Fragment() {
         email: String,
         password: String
     ): Boolean {
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            binding.email.error = "Invalid email format!!"
-            return false
-        } else if (TextUtils.isEmpty(password)) {
-            binding.password.error = "Please, enter a password."
-            return false
-        } else if (password.length < 6) {
-            binding.password.error = "Minimal length of your password - 6 characters!"
-            return false
-        } else if (TextUtils.isEmpty(name)) {
-            binding.name.error = "Please, enter your name."
+        if (TextUtils.isEmpty(name)) {
+            binding.name.error = context?.getString(R.string.validation_username_message)
             return false
         } else if (TextUtils.isEmpty(surname)) {
-            binding.surname.error = "Please, enter your surname."
+            binding.surname.error = context?.getString(R.string.validation_username_message_two)
+            return false
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            binding.email.error = context?.getString(R.string.validation_email_message)
+            return false
+        } else if (TextUtils.isEmpty(password)) {
+            binding.password.error = context?.getString(R.string.validation_password_message)
+            return false
+        } else if (password.length < 6) {
+            binding.password.error = context?.getString(R.string.validation_password_message_two)
             return false
         } else {
             return true
@@ -100,7 +100,7 @@ class SignUpFragment : Fragment() {
                 Log.d("UserCreationError", e.toString())
                 var errorMessage: String = e.message!!
                 if (e is FirebaseAuthUserCollisionException) {
-                    errorMessage = "User with email $email already exists!"
+                    errorMessage = context?.getString(R.string.auth_exists_message).toString()
                 }
                 Toast.makeText(
                     context,

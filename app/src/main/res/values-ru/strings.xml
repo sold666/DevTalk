@@ -59,6 +59,19 @@
     <string name="alert_message_for_delete_profile">Удаление этого аккаунта приведет к полному удалению вашей учетной записи из системы, и вы не сможете получить доступ к приложению.</string>
     <string name="alert_positive_button_for_delete_profile">Удалить</string>
     <string name="alert_negative_button_for_delete_profile">Отмена</string>
+    <string name="night_mode_on">Ночной режим включен</string>
+    <string name="night_mode_off">Ночной режим выключен</string>
+    <string name="avatar_message_true">Аватар обновлён</string>
+    <string name="avatar_message_false">Не удалось загрузить аватар</string>
+    <string name="account_delete_message">Ваш аккаунт удален</string>
+    <string name="something_wrong">Что-то пошло не так</string>
+    <string name="auth_failed_message">Пользователь с такой почтой не существует</string>
+    <string name="validation_email_message">Неправильный формат почты!</string>
+    <string name="validation_password_message">Пожалуйста, заполните форму пароля!</string>
+    <string name="validation_password_message_two">Минимальная длина пароля 6 символов!</string>
+    <string name="validation_username_message">Пожалуйста, введите имя</string>
+    <string name="validation_username_message_two">Пожалуйста, введите фамилию</string>
+    <string name="auth_exists_message">Пользователь с такой почтой уже существует!</string>
     <string-array name="links">
         <item>Github</item>
         <item>Gitlab</item>

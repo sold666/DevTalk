@@ -62,10 +62,10 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/avatar"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="116dp"
+                        android:layout_height="116dp"
                         android:layout_marginStart="20dp"
-                        android:src="@drawable/ic_person"
+                        android:src="@drawable/default_avatar_edit"
                         app:layout_constraintBottom_toBottomOf="@id/labels_container"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@id/labels_container" />
@@ -91,15 +91,16 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="20dp"
                             android:autofillHints=""
-                            android:padding="10dp"
+                            android:padding="8dp"
                             android:background="@drawable/bg_edit_username"
                             android:ellipsize="end"
                             android:ems="15"
                             android:hint="@string/default_username"
+                            android:textColorHint="?attr/text_color_secondary"
                             android:inputType="textPersonName"
                             android:maxLines="1"
                             android:textColor="?attr/text_color"
-                            android:textSize="28sp" />
+                            android:textSize="20sp" />
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/social_network"
@@ -113,7 +114,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/my_chats"
+                android:id="@+id/user_info_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -139,7 +140,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/my_chats" />
+                app:layout_constraintTop_toBottomOf="@id/user_info_list" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
