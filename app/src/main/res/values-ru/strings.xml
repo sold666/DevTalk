@@ -45,7 +45,7 @@
     <string name="edit_profile_menu_item_text">Редактировать</string>
     <string name="selected_amount">Выбрано %1$d из %2$d</string>
     <string name="add_link_title">Добавление ссылки</string>
-    <string name="paste_link">Вставьте ссылку</string>
+    <string name="paste_link">Вставьте имя пользователя</string>
     <string name="save_btn">Сохранить</string>
     <string name="delete_btn">Удалить</string>
     <string name="recommendations">Рекомендации</string>
@@ -77,11 +77,6 @@
     <string name="validation_username_message">Пожалуйста, введите имя</string>
     <string name="validation_username_message_two">Пожалуйста, введите фамилию</string>
     <string name="auth_exists_message">Пользователь с такой почтой уже существует!</string>
-    <string name="current_link">Текущая ссылка</string>
+    <string name="current_link">Текущее имя пользователя</string>
     <string name="professions_limit_message">Можно выбрать не более 3 профессий</string>
-    <string-array name="links">
-        <item>Github</item>
-        <item>Gitlab</item>
-        <item>Linkedin</item>
-    </string-array>
 </resources>
