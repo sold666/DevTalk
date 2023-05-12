@@ -26,12 +26,15 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.squareup.picasso.Picasso
 
 class ProfileInformationFragment : Fragment() {
     private lateinit var binding: FragmentProfileInformationBinding
     private var isNightModeOn: Boolean = false
     private lateinit var auth: FirebaseAuth
     private lateinit var db: DatabaseReference
+    private lateinit var storage: FirebaseStorage
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,6 +43,7 @@ class ProfileInformationFragment : Fragment() {
         binding = FragmentProfileInformationBinding.inflate(inflater)
         auth = Firebase.auth
         db = FirebaseDatabase.getInstance(DATABASE_URL).reference
+        storage = FirebaseStorage.getInstance()
         return binding.root
     }
 
@@ -49,6 +53,10 @@ class ProfileInformationFragment : Fragment() {
         with(binding) {
             name.text = ProfileCache.name
             setUpRecyclerView(recyclerView = binding.userInfoList, ProfileCache.profileData)
+
+            if (ProfileCache.avatar != null) {
+                Picasso.get().load(ProfileCache.avatar).into(avatar)
+            }
 
             setUpLinks(socialNetwork)
             isNightModeOn =
@@ -78,11 +86,7 @@ class ProfileInformationFragment : Fragment() {
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.edit -> {
-                    val action =
-                        ProfileInformationFragmentDirections.actionProfileInformationFragmentToProfileEditFragment(
-                            ProfileCache
-                        )
-                    findNavController().navigate(action)
+                    findNavController().navigate(R.id.action_profileInformationFragment_to_profileEditFragment)
                     true
                 }
 

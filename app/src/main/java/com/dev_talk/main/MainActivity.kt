@@ -19,18 +19,23 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.squareup.picasso.Picasso
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mainBinding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var db: DatabaseReference
+    private lateinit var storage: FirebaseStorage
+
     private lateinit var listProfileData: ArrayList<ProfileData>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = Firebase.auth
         db = FirebaseDatabase.getInstance(DATABASE_URL).reference
+        storage = FirebaseStorage.getInstance()
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)
         setUpNavigationView()
@@ -64,10 +69,17 @@ class MainActivity : AppCompatActivity() {
                 }
                 ProfileCache.name = username
                 ProfileCache.profileData = listProfileData
+                storage.reference
+                    .child("users/" + auth.currentUser?.uid.toString() + "/profile_avatar.jpg")
+                    .downloadUrl
+                    .addOnSuccessListener {
+                        ProfileCache.avatar = it
+                    }
             } else {
                 Log.d("userData", "Error!")
             }
         }.addOnFailureListener { e ->
+            println(e.message.toString())
             Log.d("userData", e.message.toString())
         }
     }

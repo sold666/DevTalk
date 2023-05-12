@@ -78,5 +78,6 @@
     <string name="validation_username_message_two">Пожалуйста, введите фамилию</string>
     <string name="auth_exists_message">Пользователь с такой почтой уже существует!</string>
     <string name="current_link">Текущее имя пользователя</string>
+    <string name="invalid_username">Введите имя и фамилию через пробел</string>
     <string name="professions_limit_message">Можно выбрать не более 3 профессий</string>
 </resources>
