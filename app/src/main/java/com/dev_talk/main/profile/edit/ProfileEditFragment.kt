@@ -85,9 +85,17 @@ class ProfileEditFragment : Fragment() {
             storage.reference.child("users/" + auth.currentUser?.uid.toString() + "/profile_avatar.jpg")
         uploadTask.putFile(imageUri).addOnSuccessListener {
             Picasso.get().load(imageUri).into(userAvatar)
-            Toast.makeText(context, context?.getString(R.string.avatar_message_true), Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                context,
+                context?.getString(R.string.avatar_message_true),
+                Toast.LENGTH_SHORT
+            ).show()
         }.addOnFailureListener {
-            Toast.makeText(context, context?.getString(R.string.avatar_message_false), Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                context,
+                context?.getString(R.string.avatar_message_false),
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 

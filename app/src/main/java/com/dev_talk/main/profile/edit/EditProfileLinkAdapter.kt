@@ -19,9 +19,9 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
 
     companion object {
         val links: Map<String, Int> = mapOf(
-            "Github" to R.drawable.ic_person,
-            "Gitlab" to R.drawable.ic_my_chats,
-            "Linkedin" to R.drawable.ic_notification
+            "Github" to R.drawable.ic_github,
+            "Gitlab" to R.drawable.ic_gitlab,
+            "Linkedin" to R.drawable.ic_linked
         )
     }
 
@@ -29,7 +29,8 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         LinkItemViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_link_profile_edit, parent, false),
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_link_profile_edit, parent, false),
             parent.context
         )
 

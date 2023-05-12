@@ -16,12 +16,12 @@
 
     <ImageView
         android:id="@+id/edit_btn"
-        android:background="@null"
-        app:tint="?attr/text_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:background="@null"
         android:src="@drawable/ic_alter_profile_btn"
         app:layout_constraintBottom_toBottomOf="@id/links"
         app:layout_constraintEnd_toEndOf="@id/links"
-        />
+        app:tint="?attr/text_color" />
 </androidx.constraintlayout.widget.ConstraintLayout>
