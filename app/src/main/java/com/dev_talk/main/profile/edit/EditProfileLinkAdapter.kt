@@ -1,5 +1,6 @@
 package com.dev_talk.main.profile.edit
 
+import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
@@ -13,6 +14,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.R
 import com.dev_talk.main.structures.*
 import de.hdodenhof.circleimageview.CircleImageView
+import kotlinx.coroutines.*
+import retrofit2.Retrofit
+import retrofit2.converter.scalars.ScalarsConverterFactory
+import java.net.HttpURLConnection
+import java.net.URL
 import kotlin.math.min
 
 class EditProfileLinkAdapter(val data: MutableList<Link>) :
@@ -29,8 +35,13 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
             "Gitlab" to LinkType.GITLAB,
             "Linkedin" to LinkType.LINKEDIN
         )
+        val baseUrl: Map<LinkType, String> = mapOf(
+            LinkType.GITHUB to "https://github.com/",
+            LinkType.GITLAB to "https://gitlab.com/",
+            LinkType.LINKEDIN to "https://www.linkedin.com/in/"
+        )
 
-        private fun findType(type: LinkType) : String {
+        private fun findType(type: LinkType): String {
             for ((key, value) in types) {
                 if (value == type) {
                     return key
@@ -74,7 +85,12 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
             }
         }
 
-        private fun setUpEditDialog(data: MutableList<Link>, position: Int, adapter: EditProfileLinkAdapter) {
+        @OptIn(DelicateCoroutinesApi::class)
+        private fun setUpEditDialog(
+            data: MutableList<Link>,
+            position: Int,
+            adapter: EditProfileLinkAdapter
+        ) {
             val dialog = Dialog(context)
             dialog.apply {
                 setContentView(R.layout.dialog_edit_link)
@@ -86,38 +102,49 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
             val deleteBtn: Button = dialog.findViewById(R.id.delete_button)
             saveBtn.setOnClickListener {
                 val userLinkText = userLink.text.toString()
-                if (!isLinkValid(userLinkText)) {
-                    Toast.makeText(
-                        context,
-                        context.getText(R.string.data_is_not_correct),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                } else {
-                    data[position].url = userLink.text.toString()
-                    dialog.dismiss()
+                GlobalScope.launch {
+                    val currentLinkUrl =
+                        baseUrl.getOrDefault(data[position].type, "https://github.com/")
+                    val linkIsValid = isLinkValid(userLinkText, currentLinkUrl)
+                    if (!linkIsValid) {
+                        Toast.makeText(
+                            context,
+                            context.getText(R.string.data_is_not_correct),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else {
+                        data[position].url = currentLinkUrl + userLinkText
+                        dialog.dismiss()
+                    }
                 }
+
             }
 
             deleteBtn.setOnClickListener {
+                linkTypes.add(findType(data[position].type))
                 data.removeAt(position)
                 if (!adapter.isShownAddBtn) {
                     data.add(Link(R.drawable.ic_add_new_chat_btn))
                     adapter.isShownAddBtn = true
                 }
                 adapter.notifyDataSetChanged()
-                linkTypes.add(findType(data[position].type))
                 dialog.dismiss()
             }
         }
 
+        private suspend fun isLinkValid(username: String, baseUrl: String) =
+            withContext(Dispatchers.IO) {
+                val retrofit = Retrofit.Builder()
+                    .baseUrl(baseUrl)
+                    .addConverterFactory(ScalarsConverterFactory.create())
+                    .build()
 
-        private fun isLinkValid(url: String): Boolean {
-//            val connection = URL(url).openConnection() as HttpURLConnection
-//            connection.requestMethod = "HEAD"
-//            val responseCode = connection.responseCode
-//            return responseCode == HttpURLConnection.HTTP_OK
-            return URLUtil.isValidUrl(url) && (url.contains("github") || url.contains("gitlab") || url.contains("linkedin"))
-        }
+                val service = retrofit.create(LinkValidation::class.java)
+                val call = service.getData(username)
+
+                val response = call.execute()
+                return@withContext response.isSuccessful
+            }
 
         fun bindInsertButton(data: MutableList<Link>, adapter: EditProfileLinkAdapter) {
             icon.setImageResource(data[data.size - 1].icon)
@@ -127,6 +154,7 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
             editBtn.visibility = View.GONE
         }
 
+        @OptIn(DelicateCoroutinesApi::class)
         private fun setUpAddLinkDialog(data: MutableList<Link>, adapter: EditProfileLinkAdapter) {
             val dialog = Dialog(context)
             dialog.apply {
@@ -141,23 +169,40 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
             saveBtn.setOnClickListener {
                 val userLinkText = userLink.text.toString()
                 val linkTypeText = linkType.selectedItem.toString()
-                if (!isLinkValid(userLinkText)) {
-                    Toast.makeText(
-                        context,
-                        context.getText(R.string.data_is_not_correct),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                } else {
-                    val currentIcon = links.getOrDefault(linkTypeText, R.drawable.ic_leave)
-                    linkTypes.remove(linkTypeText)
-                    dialog.dismiss()
-                    if (adapter.itemCount < 4) {
-                        if (adapter.itemCount == 3 && adapter.isShownAddBtn) {
-                            data.removeAt(data.size - 1)
-                            adapter.isShownAddBtn = false
+                val activity = itemView.context as Activity
+
+                GlobalScope.launch {
+                    val linkIsValid = isLinkValid(
+                        userLinkText,
+                        baseUrl.getOrDefault(types[linkTypeText], "https://github.com/")
+                    )
+                    if (!linkIsValid) {
+                        Toast.makeText(
+                            context,
+                            context.getText(R.string.data_is_not_correct),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else {
+                        val currentIcon = links.getOrDefault(linkTypeText, R.drawable.ic_leave)
+                        linkTypes.remove(linkTypeText)
+                        dialog.dismiss()
+                        if (adapter.itemCount < 4) {
+                            if (adapter.itemCount == 3 && adapter.isShownAddBtn) {
+                                data.removeAt(data.size - 1)
+                                adapter.isShownAddBtn = false
+                            }
+                            data.add(
+                                0,
+                                Link(
+                                    currentIcon,
+                                    userLinkText,
+                                    types.getOrDefault(linkTypeText, LinkType.GITHUB)
+                                )
+                            )
+                            activity.runOnUiThread {
+                                adapter.notifyDataSetChanged()
+                            }
                         }
-                        data.add(0, Link(currentIcon, userLinkText, types.getOrDefault(linkTypeText, LinkType.GITHUB)))
-                        adapter.notifyDataSetChanged()
                     }
                 }
 
@@ -166,7 +211,11 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
 
         private fun setupSpinner(spinner: Spinner) {
             val spinnerAdapter: ArrayAdapter<String> =
-                ArrayAdapter(context, android.R.layout.simple_spinner_item, linkTypes.toMutableList())
+                ArrayAdapter(
+                    context,
+                    android.R.layout.simple_spinner_item,
+                    linkTypes.toMutableList()
+                )
             spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = spinnerAdapter
         }
