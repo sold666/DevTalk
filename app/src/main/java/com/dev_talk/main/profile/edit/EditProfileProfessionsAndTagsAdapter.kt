@@ -7,13 +7,15 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.R
+import com.dev_talk.common.structures.TagDto
 import com.dev_talk.main.structures.Header
 import com.dev_talk.main.structures.Item
 import com.dev_talk.main.structures.ProfileData
 import de.hdodenhof.circleimageview.CircleImageView
 
 class EditProfileProfessionsAndTagsAdapter(
-    private val data: MutableList<ProfileData>
+    private val data: MutableList<ProfileData>,
+    private val onDeleteBtnClickListener: (data: MutableList<ProfileData>, position: Int) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
@@ -44,7 +46,7 @@ class EditProfileProfessionsAndTagsAdapter(
             }
             else -> {
                 val currentHolder = holder as ItemViewHolder
-                currentHolder.bind(data, position, this)
+                currentHolder.bind(data, position, this, onDeleteBtnClickListener)
             }
         }
     }
@@ -54,9 +56,11 @@ class EditProfileProfessionsAndTagsAdapter(
         private val tags: TextView = itemView.findViewById(R.id.tag)
         private val deleteBtn: ImageButton = itemView.findViewById(R.id.delete_btn)
 
-        fun bind(data: MutableList<ProfileData>, position: Int, adapter: EditProfileProfessionsAndTagsAdapter) {
+        fun bind(data: MutableList<ProfileData>, position: Int,
+                 adapter: EditProfileProfessionsAndTagsAdapter,
+                 listener: (data: MutableList<ProfileData>, position: Int) -> Unit) {
             deleteBtn.setOnClickListener {
-                data.removeAt(position)
+                listener.invoke(data, position)
                 //adapter.notifyItemRemoved(position)
                 //TODO("Replace adapter.notifyDataSetChanged() with adapter.notifyItemRemoved(position)")
                 adapter.notifyDataSetChanged()

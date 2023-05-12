@@ -24,9 +24,9 @@
             android:id="@+id/action_profileEditFragment_to_profileInformationFragment"
             app:destination="@id/profileInformationFragment"
             app:enterAnim="@anim/nav_default_enter_anim" />
-        <argument
-            android:name="listProfileData"
-            app:argType="com.dev_talk.main.structures.ProfileData[]" />
+<!--        <argument
+            android:name="profileCache"
+            app:argType="com.dev_talk.main.profile.ProfileCache" />-->
     </fragment>
     <activity
         android:id="@+id/authActivity"

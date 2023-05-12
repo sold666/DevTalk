@@ -79,4 +79,5 @@
     <string name="auth_exists_message">User with such an email already exists!</string>
     <string name="current_link">Current username</string>
     <string name="professions_limit_message">You can choose up to 3 professions</string>
+    <string name="invalid_username">Enter your first and last name separated by a space</string>
 </resources>
