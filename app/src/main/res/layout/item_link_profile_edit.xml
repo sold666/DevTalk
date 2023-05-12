@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="12dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/links"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:civ_border_color="@color/dark"
+        app:civ_border_width="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/edit_btn"
+        android:background="@null"
+        app:tint="?attr/text_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_alter_profile_btn"
+        app:layout_constraintBottom_toBottomOf="@id/links"
+        app:layout_constraintEnd_toEndOf="@id/links"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -132,7 +132,6 @@ class ProfileEditFragment : Fragment() {
 
     private fun getLinks(): ArrayList<Link> {
         return arrayListOf(
-            Link(R.drawable.ic_person),
             Link(R.drawable.ic_add_new_chat_btn)
         )
     }

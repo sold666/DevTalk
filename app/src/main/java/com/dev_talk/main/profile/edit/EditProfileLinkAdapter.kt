@@ -7,10 +7,7 @@ import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.R
 import com.dev_talk.main.structures.*
@@ -28,27 +25,66 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
         )
     }
 
+    private var isShownAddBtn = true
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         LinkItemViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_link_profile, parent, false),
+            LayoutInflater.from(parent.context).inflate(R.layout.item_link_profile_edit, parent, false),
             parent.context
         )
 
     override fun getItemCount() = min(data.size, 3)
 
     override fun onBindViewHolder(holder: LinkItemViewHolder, position: Int) {
-        if (position == data.size - 1) {
+        if (position == data.size - 1 && isShownAddBtn) {
             holder.bindInsertButton(data, this)
             return
         }
-        holder.bind(data[position])
+        holder.bind(data, position, this)
     }
 
     class LinkItemViewHolder(val view: View, val context: Context) : RecyclerView.ViewHolder(view) {
         private val icon = view.findViewById<CircleImageView>(R.id.links)
+        private val editBtn = view.findViewById<ImageView>(R.id.edit_btn)
 
-        fun bind(link: Link) {
+        fun bind(data: MutableList<Link>, position: Int, adapter: EditProfileLinkAdapter) {
+            val link: Link = data[position]
+            editBtn.visibility = View.VISIBLE
             icon.setImageResource(link.icon)
+            icon.setOnClickListener {
+                val dialog = Dialog(context)
+                dialog.apply {
+                    setContentView(R.layout.dialog_edit_link)
+                    window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                    show()
+                }
+                val userLink: EditText = dialog.findViewById(R.id.user_link)
+                val saveBtn: Button = dialog.findViewById(R.id.save_button)
+                val deleteBtn: Button = dialog.findViewById(R.id.delete_button)
+                saveBtn.setOnClickListener {
+                    val userLinkText = userLink.text.toString()
+                    if (!isLinkValid(userLinkText)) {
+                        Toast.makeText(
+                            context,
+                            context.getText(R.string.data_is_not_correct),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else {
+                        link.url = userLink.text.toString()
+                        dialog.dismiss()
+                    }
+                }
+
+                deleteBtn.setOnClickListener {
+                    data.removeAt(position)
+                    if (!adapter.isShownAddBtn) {
+                        data.add(Link(R.drawable.ic_add_new_chat_btn))
+                        adapter.isShownAddBtn = true
+                    }
+                    adapter.notifyDataSetChanged()
+                    dialog.dismiss()
+                }
+            }
         }
 
         private fun isLinkValid(url: String): Boolean {
@@ -64,6 +100,7 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
             icon.setOnClickListener {
                 setUpAddLinkDialog(data, adapter)
             }
+            editBtn.visibility = View.GONE
         }
 
         private fun setUpAddLinkDialog(data: MutableList<Link>, adapter: EditProfileLinkAdapter) {
@@ -91,12 +128,13 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
                     dialog.dismiss()
                 }
                 if (adapter.itemCount < 4) {
-                    if (adapter.itemCount == 3) {
-                        data.removeAt(data.size - 1)
-                        adapter.notifyItemRemoved(data.size)
+                    if (adapter.itemCount == 3 && adapter.isShownAddBtn) {
+                        val pos = data.size - 1
+                        data.removeAt(pos)
+                        adapter.isShownAddBtn = false
                     }
                     data.add(0, Link(currentIcon))
-                    adapter.notifyItemInserted(0)
+                    adapter.notifyDataSetChanged()
                 }
             }
         }
