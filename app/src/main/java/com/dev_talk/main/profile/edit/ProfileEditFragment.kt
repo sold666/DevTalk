@@ -52,7 +52,7 @@ class ProfileEditFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
             val args: ProfileEditFragmentArgs by navArgs()
-            data = args.listProfileData.toMutableList()
+            data = args.profileCache.profileData.toMutableList()
             userAvatar = avatar
             setUpUserProfessionsAndTags(recyclerView = userInfoList)
             setUpLinks(socialNetwork)
