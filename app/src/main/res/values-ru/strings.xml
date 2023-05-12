@@ -11,6 +11,7 @@
     <string name="name">Имя</string>
     <string name="sign_in">Вход</string>
     <string name="back">Назад</string>
+    <string name="edit_link_title">Редактирование ссылки</string>
     <string name="who_do_you_work_for">Кем вы работаете?</string>
     <string name="welcome">Добро пожаловать!</string>
     <string name="use_our_messenger_and_everything_will_be_fine">Пользуйтесь нашим мессенджером и всё будет супер!</string>
@@ -46,6 +47,7 @@
     <string name="add_link_title">Добавление ссылки</string>
     <string name="paste_link">Вставьте ссылку</string>
     <string name="save_btn">Сохранить</string>
+    <string name="delete_btn">Удалить</string>
     <string name="recommendations">Рекомендации</string>
     <string name="is_ready_text">DevTalk готов</string>
     <string name="processing_data">Обработка данных</string>
@@ -72,6 +74,7 @@
     <string name="validation_username_message">Пожалуйста, введите имя</string>
     <string name="validation_username_message_two">Пожалуйста, введите фамилию</string>
     <string name="auth_exists_message">Пользователь с такой почтой уже существует!</string>
+    <string name="current_link">Текущая ссылка</string>
     <string name="professions_limit_message">Можно выбрать не более 3 профессий</string>
     <string-array name="links">
         <item>Github</item>

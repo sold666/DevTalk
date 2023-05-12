@@ -45,8 +45,10 @@
     <string name="edit_profile_menu_item_text">Edit</string>
     <string name="selected_amount">Selected %1$d out of %2$d</string>
     <string name="add_link_title">Add Link</string>
+    <string name="edit_link_title">Edit Link</string>
     <string name="paste_link">Paste link</string>
     <string name="save_btn">Save</string>
+    <string name="delete_btn">Delete</string>
     <string name="recommendations">Recommendations</string>
     <string name="is_ready_text">DevTalk is ready</string>
     <string name="processing_data">Processing data</string>
@@ -72,6 +74,7 @@
     <string name="validation_username_message">Please, enter your name</string>
     <string name="validation_username_message_two">Please, enter your surname</string>
     <string name="auth_exists_message">User with such an email already exists!</string>
+    <string name="current_link">Current link</string>
     <string name="professions_limit_message">You can choose up to 3 professions</string>
     <string-array name="links">
         <item>Github</item>
