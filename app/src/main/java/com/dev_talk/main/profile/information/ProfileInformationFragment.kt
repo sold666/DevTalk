@@ -151,7 +151,7 @@ class ProfileInformationFragment : Fragment() {
 
     private fun getLinks(): ArrayList<Link> {
         return arrayListOf(
-            Link(R.drawable.ic_person)
+            Link(R.drawable.ic_links)
         )
     }
 
