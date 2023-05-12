@@ -61,6 +61,9 @@
     <string name="alert_message_for_delete_profile">Удаление этого аккаунта приведет к полному удалению вашей учетной записи из системы, и вы не сможете получить доступ к приложению.</string>
     <string name="alert_positive_button_for_delete_profile">Удалить</string>
     <string name="alert_negative_button_for_delete_profile">Отмена</string>
+    <string name="alert_title_for_check_internet">Отсутствует подключение к интернету</string>
+    <string name="alert_message_for_check_internet">Для работы приложения требуется активное интернет-соединение.</string>
+    <string name="alert_positive_button_for_check_internet">Подключиться</string>
     <string name="night_mode_on">Ночной режим включен</string>
     <string name="night_mode_off">Ночной режим выключен</string>
     <string name="avatar_message_true">Аватар обновлён</string>

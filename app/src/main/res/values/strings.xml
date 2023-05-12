@@ -61,6 +61,9 @@
     <string name="alert_message_for_delete_profile">Deleting this account will result in completely removing your account from the system and you won\'t be able to access the app.</string>
     <string name="alert_positive_button_for_delete_profile">Delete</string>
     <string name="alert_negative_button_for_delete_profile">Cancel</string>
+    <string name="alert_title_for_check_internet">No internet connection</string>
+    <string name="alert_message_for_check_internet">An active internet connection is required for the application to work.</string>
+    <string name="alert_positive_button_for_check_internet">Connect</string>
     <string name="night_mode_on">Night mode ON</string>
     <string name="night_mode_off">Night mode OFF</string>
     <string name="avatar_message_true">Image uploaded</string>
