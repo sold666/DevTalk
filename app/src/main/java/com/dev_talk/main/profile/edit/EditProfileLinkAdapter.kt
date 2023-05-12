@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.URLUtil
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.R
@@ -23,6 +24,22 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
             "Gitlab" to R.drawable.ic_gitlab,
             "Linkedin" to R.drawable.ic_linked
         )
+        val types: Map<String, LinkType> = mapOf(
+            "Github" to LinkType.GITHUB,
+            "Gitlab" to LinkType.GITLAB,
+            "Linkedin" to LinkType.LINKEDIN
+        )
+
+        private fun findType(type: LinkType) : String {
+            for ((key, value) in types) {
+                if (value == type) {
+                    return key
+                }
+            }
+            return "Github"
+        }
+
+        private val linkTypes: MutableSet<String> = types.keys.toMutableSet()
     }
 
     private var isShownAddBtn = true
@@ -53,47 +70,53 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
             editBtn.visibility = View.VISIBLE
             icon.setImageResource(link.icon)
             icon.setOnClickListener {
-                val dialog = Dialog(context)
-                dialog.apply {
-                    setContentView(R.layout.dialog_edit_link)
-                    window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-                    show()
-                }
-                val userLink: EditText = dialog.findViewById(R.id.user_link)
-                val saveBtn: Button = dialog.findViewById(R.id.save_button)
-                val deleteBtn: Button = dialog.findViewById(R.id.delete_button)
-                saveBtn.setOnClickListener {
-                    val userLinkText = userLink.text.toString()
-                    if (!isLinkValid(userLinkText)) {
-                        Toast.makeText(
-                            context,
-                            context.getText(R.string.data_is_not_correct),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    } else {
-                        link.url = userLink.text.toString()
-                        dialog.dismiss()
-                    }
-                }
-
-                deleteBtn.setOnClickListener {
-                    data.removeAt(position)
-                    if (!adapter.isShownAddBtn) {
-                        data.add(Link(R.drawable.ic_add_new_chat_btn))
-                        adapter.isShownAddBtn = true
-                    }
-                    adapter.notifyDataSetChanged()
-                    dialog.dismiss()
-                }
+                setUpEditDialog(data, position, adapter)
             }
         }
 
-        private fun isLinkValid(url: String): Boolean {
-            return true
+        private fun setUpEditDialog(data: MutableList<Link>, position: Int, adapter: EditProfileLinkAdapter) {
+            val dialog = Dialog(context)
+            dialog.apply {
+                setContentView(R.layout.dialog_edit_link)
+                window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                show()
+            }
+            val userLink: EditText = dialog.findViewById(R.id.user_link)
+            val saveBtn: Button = dialog.findViewById(R.id.save_button)
+            val deleteBtn: Button = dialog.findViewById(R.id.delete_button)
+            saveBtn.setOnClickListener {
+                val userLinkText = userLink.text.toString()
+                if (!isLinkValid(userLinkText)) {
+                    Toast.makeText(
+                        context,
+                        context.getText(R.string.data_is_not_correct),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    data[position].url = userLink.text.toString()
+                    dialog.dismiss()
+                }
+            }
+
+            deleteBtn.setOnClickListener {
+                data.removeAt(position)
+                if (!adapter.isShownAddBtn) {
+                    data.add(Link(R.drawable.ic_add_new_chat_btn))
+                    adapter.isShownAddBtn = true
+                }
+                adapter.notifyDataSetChanged()
+                linkTypes.add(findType(data[position].type))
+                dialog.dismiss()
+            }
         }
 
-        private fun isLinkTypeValid(linkType: String): Boolean {
-            return true
+
+        private fun isLinkValid(url: String): Boolean {
+//            val connection = URL(url).openConnection() as HttpURLConnection
+//            connection.requestMethod = "HEAD"
+//            val responseCode = connection.responseCode
+//            return responseCode == HttpURLConnection.HTTP_OK
+            return URLUtil.isValidUrl(url) && (url.contains("github") || url.contains("gitlab") || url.contains("linkedin"))
         }
 
         fun bindInsertButton(data: MutableList<Link>, adapter: EditProfileLinkAdapter) {
@@ -113,31 +136,39 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
             }
             val userLink: EditText = dialog.findViewById(R.id.user_link)
             val linkType: Spinner = dialog.findViewById(R.id.link_type)
+            setupSpinner(linkType)
             val saveBtn: Button = dialog.findViewById(R.id.save_button)
-            var currentIcon: Int = R.drawable.ic_leave
             saveBtn.setOnClickListener {
                 val userLinkText = userLink.text.toString()
                 val linkTypeText = linkType.selectedItem.toString()
-                if (!isLinkValid(userLinkText) || !isLinkTypeValid(linkTypeText)) {
+                if (!isLinkValid(userLinkText)) {
                     Toast.makeText(
                         context,
                         context.getText(R.string.data_is_not_correct),
                         Toast.LENGTH_SHORT
                     ).show()
                 } else {
-                    currentIcon = links.getOrDefault(linkTypeText, R.drawable.ic_leave)
+                    val currentIcon = links.getOrDefault(linkTypeText, R.drawable.ic_leave)
+                    linkTypes.remove(linkTypeText)
                     dialog.dismiss()
-                }
-                if (adapter.itemCount < 4) {
-                    if (adapter.itemCount == 3 && adapter.isShownAddBtn) {
-                        val pos = data.size - 1
-                        data.removeAt(pos)
-                        adapter.isShownAddBtn = false
+                    if (adapter.itemCount < 4) {
+                        if (adapter.itemCount == 3 && adapter.isShownAddBtn) {
+                            data.removeAt(data.size - 1)
+                            adapter.isShownAddBtn = false
+                        }
+                        data.add(0, Link(currentIcon, userLinkText, types.getOrDefault(linkTypeText, LinkType.GITHUB)))
+                        adapter.notifyDataSetChanged()
                     }
-                    data.add(0, Link(currentIcon))
-                    adapter.notifyDataSetChanged()
                 }
+
             }
+        }
+
+        private fun setupSpinner(spinner: Spinner) {
+            val spinnerAdapter: ArrayAdapter<String> =
+                ArrayAdapter(context, android.R.layout.simple_spinner_item, linkTypes.toMutableList())
+            spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = spinnerAdapter
         }
     }
 }
