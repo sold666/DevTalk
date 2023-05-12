@@ -48,7 +48,7 @@ class PersonalChatsAdapter(
             listener: (chat: Chat, adapterPosition: Int) -> Unit
         ) {
             icon.setImageResource(chat.icon)
-            this.chat.text = chat.tags
+            this.chat.text = chat.name
             lastMessage.text = chat.lastMessage
 
             container.setOnClickListener { listener.invoke(chat, adapterPosition) }
@@ -64,7 +64,7 @@ class PersonalChatsAdapter(
                 } else {
                     val resultList = ArrayList<Chat>()
                     for (chat in chats) {
-                        if (chat.tags.lowercase(Locale.ROOT)
+                        if (chat.name.lowercase(Locale.ROOT)
                                 .contains(query.lowercase(Locale.ROOT))
                         ) {
                             resultList.add(chat)

@@ -40,7 +40,7 @@ class RecommendedChatsAdapter(
 
         fun bind(src: Chat) {
             icon.setImageResource(src.icon)
-            chat.text = src.tags
+            chat.text = src.name
             membersAmount.text = src.memberCount
         }
     }
@@ -54,7 +54,7 @@ class RecommendedChatsAdapter(
                 } else {
                     val resultList = ArrayList<Chat>()
                     for (chat in chats) {
-                        if (chat.tags.lowercase(Locale.ROOT)
+                        if (chat.name.lowercase(Locale.ROOT)
                                 .contains(query.lowercase(Locale.ROOT))
                         ) {
                             resultList.add(chat)

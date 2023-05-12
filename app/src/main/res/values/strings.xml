@@ -29,8 +29,8 @@
     <string name="default_query_hint">Search…</string>
     <string name="alter_profile">Alter profile</string>
     <string name="my_chats_title">My chats</string>
-    <string name="profession_1">Profession №1</string>
-    <string name="profession_2">Profession №2</string>
+    <string name="profession_1">Backend Developer</string>
+    <string name="profession_2">Frontend Developer</string>
     <string name="profession_3">Profession №3</string>
     <string name="chat_name">Chat name</string>
     <string name="message_input">Text message…</string>
@@ -45,10 +45,8 @@
     <string name="edit_profile_menu_item_text">Edit</string>
     <string name="selected_amount">Selected %1$d out of %2$d</string>
     <string name="add_link_title">Add Link</string>
-    <string name="edit_link_title">Edit Link</string>
-    <string name="paste_link">Paste username</string>
+    <string name="paste_link">Paste link</string>
     <string name="save_btn">Save</string>
-    <string name="delete_btn">Delete</string>
     <string name="recommendations">Recommendations</string>
     <string name="is_ready_text">DevTalk is ready</string>
     <string name="processing_data">Processing data</string>
@@ -61,9 +59,6 @@
     <string name="alert_message_for_delete_profile">Deleting this account will result in completely removing your account from the system and you won\'t be able to access the app.</string>
     <string name="alert_positive_button_for_delete_profile">Delete</string>
     <string name="alert_negative_button_for_delete_profile">Cancel</string>
-    <string name="alert_title_for_check_internet">No internet connection</string>
-    <string name="alert_message_for_check_internet">An active internet connection is required for the application to work.</string>
-    <string name="alert_positive_button_for_check_internet">Connect</string>
     <string name="night_mode_on">Night mode ON</string>
     <string name="night_mode_off">Night mode OFF</string>
     <string name="avatar_message_true">Image uploaded</string>
@@ -77,7 +72,10 @@
     <string name="validation_username_message">Please, enter your name</string>
     <string name="validation_username_message_two">Please, enter your surname</string>
     <string name="auth_exists_message">User with such an email already exists!</string>
-    <string name="current_link">Current username</string>
     <string name="professions_limit_message">You can choose up to 3 professions</string>
-    <string name="invalid_username">Enter your first and last name separated by a space</string>
+    <string-array name="links">
+        <item>Github</item>
+        <item>Gitlab</item>
+        <item>Linkedin</item>
+    </string-array>
 </resources>

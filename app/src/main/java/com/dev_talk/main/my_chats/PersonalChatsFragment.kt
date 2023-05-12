@@ -13,12 +13,15 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.dev_talk.R
+import com.dev_talk.common.structures.ProfessionDto
 import com.dev_talk.databinding.FragmentPersonalChatsBinding
 import com.dev_talk.dto.ChatDto
 import com.dev_talk.main.structures.Chat
 import com.dev_talk.main.structures.Profession
 import com.dev_talk.utils.DATABASE_URL
+import com.dev_talk.utils.getProfessions
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.Tab
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
@@ -44,13 +47,8 @@ class PersonalChatsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
             setUpChats()
-            val data = getProfessions()
-            setUpViewPager2(viewPager = chatsWithCategory, tabLayout = professions, data = data)
-            for ((index, currentProfession) in data.withIndex()) {
-                if (index < 3) {
-                    professions.getTabAt(index)?.text = currentProfession.profession
-                }
-            }
+            //val data = getProfessions()
+
             professions.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabReselected(tab: TabLayout.Tab?) {}
                 override fun onTabUnselected(tab: TabLayout.Tab?) {}
@@ -62,18 +60,70 @@ class PersonalChatsFragment : Fragment() {
         }
     }
 
+    private fun setUpData(data: List<Profession>) {
+        setUpViewPager2(
+            viewPager = binding.chatsWithCategory,
+            tabLayout = binding.professions,
+            data = data
+        )
+        for ((index, currentProfession) in data.withIndex()) {
+            if (index < 3) {
+                binding.professions.getTabAt(index)?.text = currentProfession.profession
+            }
+        }
+    }
+
+    private fun addTabs() {
+        db.child("users").child(auth.currentUser?.uid!!).child("user_info").get()
+            .addOnSuccessListener {
+                it.children.forEach {
+                    val tabName : String = it.key!!
+                    Log.d("profession", tabName)
+
+                    binding.professions.addTab(binding.professions.newTab()
+                        .setText(tabName))
+                }
+            }
+            .addOnFailureListener {
+                Log.d("chats", it.message.toString())
+            }
+    }
+
     private fun setUpChats() {
         val chats = db.child("chats")
         val chatsListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                //addTabs()
                 Log.d("chats count", snapshot.childrenCount.toString())
+                val chatProfessions: MutableList<Profession> = mutableListOf()
                 snapshot.children.forEach {
+                    val professions = getProfessions()
                     if (it.child("participants").child(auth.currentUser?.uid.toString()).exists()) {
                         val id: String = it.key!!
-                        val chat  = it.getValue<ChatDto>()
+                        val chat = it.getValue<ChatDto>()
                         Log.d("id", chat!!.name + chat.tag)
+                        val prof = professions.firstOrNull { p ->
+                            p.tags.find { t -> t.name == chat.tag } != null
+                        }
+                        if (prof != null) {
+                            val alreadyExistedProfession =
+                                chatProfessions.find { p -> p.profession == prof.name }
+                            val newChat = Chat(
+                                R.drawable.default_avatar_chat,
+                                chat.name!!,
+                                "last message"
+                            )
+                            if (alreadyExistedProfession != null) {
+                                alreadyExistedProfession.chats.add(newChat)
+                            } else {
+                                chatProfessions.add(Profession(prof.name, mutableListOf(newChat)))
+                            }
+
+                        }
+
                     }
                 }
+                setUpData(chatProfessions.toList())
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -135,11 +185,12 @@ class PersonalChatsFragment : Fragment() {
         data: List<Profession>
     ) {
         viewPager.apply {
+            val tabs = getProfessionsNames()
             adapter = PersonalChatsAdapterViewPager(
                 activity = requireActivity(),
                 itemCount = tabLayout.tabCount,
                 data = data,
-                tabNames = getProfessionsNames()
+                tabNames = tabs
             )
             registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
@@ -147,85 +198,5 @@ class PersonalChatsFragment : Fragment() {
                 }
             })
         }
-    }
-
-    private fun getProfessions(): List<Profession> {
-        return arrayListOf(
-            Profession(
-                "Profession №1",
-                arrayListOf(
-                    Chat(
-                        R.drawable.default_avatar_chat,
-                        "C++",
-                        "text text text text text text text text text text text text text text text"
-                    ),
-                    Chat(
-                        R.drawable.default_avatar_chat,
-                        "Java",
-                        "text text text text text text text text text text text text text text text"
-                    ),
-                    Chat(
-                        R.drawable.default_avatar_chat,
-                        "C",
-                        "text text text text text text text text text text text text text text text"
-                    ),
-                    Chat(
-                        R.drawable.default_avatar_chat,
-                        "Kotlin",
-                        "text text text text text text text text text text text text text text text"
-                    ),
-                    Chat(
-                        R.drawable.default_avatar_chat,
-                        "F",
-                        "text text text text text text text text text text text text text text text"
-                    ),
-                    Chat(
-                        R.drawable.default_avatar_chat,
-                        "Ruby",
-                        "text text text text text text text text text text text text text text text"
-                    ),
-                    Chat(
-                        R.drawable.default_avatar_chat,
-                        "Go",
-                        "text text text text text text text text text text text text text text text"
-                    ),
-                )
-            ),
-            Profession(
-                "Profession №2",
-                arrayListOf(
-                    Chat(
-                        R.drawable.default_avatar_chat,
-                        "Css",
-                        "text text text text text text text text text text text text text text text"
-                    ),
-                    Chat(
-                        R.drawable.default_avatar_chat,
-                        "Html",
-                        "text text text text text text text text text text text text text text text"
-                    )
-                )
-            ),
-            Profession(
-                "Profession №3",
-                arrayListOf(
-                    Chat(
-                        R.drawable.default_avatar_chat,
-                        "Selenide",
-                        "text text text text text text text text text text text text text text text"
-                    ),
-                    Chat(
-                        R.drawable.default_avatar_chat,
-                        "Selenium",
-                        "text text text text text text text text text text text text text text text"
-                    ),
-                    Chat(
-                        R.drawable.default_avatar_chat,
-                        "Java",
-                        "text text text text text text text text text text text text text text text"
-                    )
-                )
-            )
-        )
     }
 }

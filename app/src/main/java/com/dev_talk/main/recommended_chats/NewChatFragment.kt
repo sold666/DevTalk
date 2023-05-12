@@ -155,7 +155,7 @@ class NewChatFragment : Fragment() {
         val uploadTask =
             storage.reference.child("chats/" + chatId + "/chat_avatar.jpg")
         uploadTask.putFile(imageUri).addOnSuccessListener {
-            Toast.makeText(context, context?.getString(R.string.avatar_message_true), Toast.LENGTH_SHORT).show()
+           // Toast.makeText(context, context?.getString(R.string.avatar_message_true), Toast.LENGTH_SHORT).show()
         }.addOnFailureListener {
             Toast.makeText(context, context?.getString(R.string.avatar_message_false), Toast.LENGTH_SHORT).show()
         }
