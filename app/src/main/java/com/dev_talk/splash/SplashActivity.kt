@@ -21,7 +21,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
         window.decorView.postDelayed({
-            var user = FirebaseAuth.getInstance().currentUser
+            val user = FirebaseAuth.getInstance().currentUser
             val uid = user?.uid
             val db = FirebaseDatabase.getInstance(DATABASE_URL).reference
             if (uid != null) {
@@ -30,7 +30,7 @@ class SplashActivity : AppCompatActivity() {
                         if (snapshot.exists()) {
                             startMain()
                         } else {
-                            user?.delete()
+                            user.delete()
                             startAuth()
                         }
                     }
@@ -46,11 +46,11 @@ class SplashActivity : AppCompatActivity() {
         }, SPLASH_DELAY_TIME)
     }
 
-    fun startMain() {
+    private fun startMain() {
         startActivity(Intent(this, MainActivity::class.java))
     }
 
-    fun startAuth() {
+    private fun startAuth() {
         startActivity(Intent(this, AuthActivity::class.java))
     }
 
