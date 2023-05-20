@@ -1,5 +1,7 @@
 package com.dev_talk.main.my_chats
 
+import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +22,7 @@ import com.dev_talk.dto.ChatDto
 import com.dev_talk.main.structures.Chat
 import com.dev_talk.main.structures.Profession
 import com.dev_talk.utils.DATABASE_URL
+import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
 import com.dev_talk.utils.getProfessions
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.Tab
@@ -32,6 +36,8 @@ class PersonalChatsFragment : Fragment() {
     private lateinit var binding: FragmentPersonalChatsBinding
     private lateinit var db: DatabaseReference
     private lateinit var auth: FirebaseAuth
+    private lateinit var chatProfessions: ArrayList<Profession>
+    private val professions = getProfessions()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,15 +46,20 @@ class PersonalChatsFragment : Fragment() {
         binding = FragmentPersonalChatsBinding.inflate(inflater)
         auth = Firebase.auth
         db = FirebaseDatabase.getInstance(DATABASE_URL).reference
+        chatProfessions = arrayListOf()
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            setUpChats()
-            //val data = getProfessions()
-
+            addTabs()
+            setUpViewPager2(
+                viewPager = binding.chatsWithCategory,
+                tabLayout = binding.professions,
+                data = chatProfessions
+            )
             professions.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabReselected(tab: TabLayout.Tab?) {}
                 override fun onTabUnselected(tab: TabLayout.Tab?) {}
@@ -57,81 +68,71 @@ class PersonalChatsFragment : Fragment() {
                 }
             })
             setUpSearchView()
+            getDataFromDatabase()
         }
     }
 
-    private fun setUpData(data: List<Profession>) {
-        setUpViewPager2(
-            viewPager = binding.chatsWithCategory,
-            tabLayout = binding.professions,
-            data = data
-        )
-        for ((index, currentProfession) in data.withIndex()) {
-            if (index < 3) {
-                binding.professions.getTabAt(index)?.text = currentProfession.profession
-            }
-        }
-    }
-
-    private fun addTabs() {
-        db.child("users").child(auth.currentUser?.uid!!).child("user_info").get()
-            .addOnSuccessListener {
-                it.children.forEach {
-                    val tabName : String = it.key!!
-                    Log.d("profession", tabName)
-
-                    binding.professions.addTab(binding.professions.newTab()
-                        .setText(tabName))
-                }
-            }
-            .addOnFailureListener {
-                Log.d("chats", it.message.toString())
-            }
-    }
-
-    private fun setUpChats() {
-        val chats = db.child("chats")
-        val chatsListener = object : ValueEventListener {
+    private fun getDataFromDatabase() {
+        val ref = db.child("chats")
+        val chatListener = object : ValueEventListener {
+            @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
-                //addTabs()
-                Log.d("chats count", snapshot.childrenCount.toString())
-                val chatProfessions: MutableList<Profession> = mutableListOf()
-                snapshot.children.forEach {
-                    val professions = getProfessions()
+                for (it in snapshot.children) {
                     if (it.child("participants").child(auth.currentUser?.uid.toString()).exists()) {
-                        val id: String = it.key!!
                         val chat = it.getValue<ChatDto>()
-                        Log.d("id", chat!!.name + chat.tag)
+
                         val prof = professions.firstOrNull { p ->
-                            p.tags.find { t -> t.name == chat.tag } != null
+                            p.tags.find { t -> t.name == chat?.tag } != null
                         }
                         if (prof != null) {
                             val alreadyExistedProfession =
                                 chatProfessions.find { p -> p.profession == prof.name }
                             val newChat = Chat(
                                 R.drawable.default_avatar_chat,
-                                chat.name!!,
+                                chat?.name!!,
                                 "last message"
                             )
                             if (alreadyExistedProfession != null) {
-                                alreadyExistedProfession.chats.add(newChat)
+                                if (alreadyExistedProfession.chats.find { c -> c.name == newChat.name } == null) {
+                                    alreadyExistedProfession.chats.add(newChat)
+                                }
                             } else {
                                 chatProfessions.add(Profession(prof.name, mutableListOf(newChat)))
                             }
 
                         }
-
                     }
                 }
-                setUpData(chatProfessions.toList())
             }
 
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
-
         }
-        chats.addValueEventListener(chatsListener)
+        ref.addValueEventListener(chatListener)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private fun addTabs() {
+
+        val selectedProfessions = arguments?.getStringArrayList("professionList")
+
+        selectedProfessions!!.forEach { it ->
+            binding.professions.addTab(
+                binding.professions.newTab()
+                    .setText(it)
+            )
+        }
+
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        val tabList: ArrayList<String> = arrayListOf()
+        for (i in 0 until binding.professions.tabCount) {
+            tabList.add(binding.professions.getTabAt(i)?.text.toString())
+        }
+        outState.putStringArrayList("tabNames", tabList)
     }
 
     private fun getProfessionsNames(): List<String> {
@@ -184,14 +185,17 @@ class PersonalChatsFragment : Fragment() {
         tabLayout: TabLayout,
         data: List<Profession>
     ) {
+        val tabs = getProfessionsNames()
+        val adapter = PersonalChatsAdapterViewPager(
+            activity = requireActivity(),
+            itemCount = tabLayout.tabCount,
+            data = data,
+            tabNames = tabs
+        )
+
+        viewPager.adapter = adapter
+
         viewPager.apply {
-            val tabs = getProfessionsNames()
-            adapter = PersonalChatsAdapterViewPager(
-                activity = requireActivity(),
-                itemCount = tabLayout.tabCount,
-                data = data,
-                tabNames = tabs
-            )
             registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     tabLayout.selectTab(tabLayout.getTabAt(position))

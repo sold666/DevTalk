@@ -15,6 +15,7 @@ import com.dev_talk.common.structures.ProfessionDto
 import com.dev_talk.common.structures.TagDto
 import com.dev_talk.databinding.FragmentResultBinding
 import com.dev_talk.dto.User
+import com.dev_talk.main.profile.information.ProfileInformationFragmentDirections
 import com.dev_talk.utils.DATABASE_URL
 import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
 import com.dev_talk.utils.LIST_SELECTED_TAGS_KEY
@@ -81,6 +82,8 @@ class ResultFragment : Fragment() {
                 resultList.expandGroup(i)
             }
         }
+
+
     }
 
     private fun initListeners() {
@@ -106,7 +109,6 @@ class ResultFragment : Fragment() {
                 override fun onFinish() {
                     progressText.text = context?.getString(R.string.is_ready_text)
                     progressBar.isVisible = false
-                    findNavController().navigate(R.id.action_resultFragment_to_mainActivity)
                     activity?.finish()
                 }
             }.start()
