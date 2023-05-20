@@ -23,6 +23,10 @@ class ProfileLinkAdapter(val data: List<Link>) :
     override fun getItemCount() = data.size
 
     override fun onBindViewHolder(holder: LinkItemViewHolder, position: Int) {
+        if (position == data.size - 1 && data.size == 1 && data[position].icon == getInfoLinkImage()) {
+            holder.bindInfoButton(data[position])
+            return
+        }
         holder.bind(data[position])
     }
 
@@ -38,5 +42,11 @@ class ProfileLinkAdapter(val data: List<Link>) :
                 context.startActivity(i)
             }
         }
+
+        fun bindInfoButton(link: Link) {
+            icon.setImageResource(link.icon)
+        }
     }
+
+    private fun getInfoLinkImage() = R.drawable.ic_links
 }
