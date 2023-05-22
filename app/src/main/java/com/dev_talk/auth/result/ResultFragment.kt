@@ -168,5 +168,8 @@ class ResultFragment : Fragment() {
             .child(auth.currentUser?.uid!!)
             .child("user_info")
             .setValue(map)
+
+        ProfileCache.name = user.name + " " + user.surname
+        ProfileCache.profileData = listProfileData
     }
 }
