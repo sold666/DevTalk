@@ -33,61 +33,11 @@ class RecommendedChatsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initListeners()
         with(binding) {
-            dataRV = getRecommendedChats()
+            dataRV = emptyList()
             adapterRV = RecommendedChatsAdapter(dataRV)
             setUpRecyclerView(recommendedChats)
             setUpSearchView()
         }
-    }
-
-    private fun getRecommendedChats(): ArrayList<Chat> {
-        return arrayListOf(
-            Chat(
-                R.drawable.default_avatar_chat,
-                "Python",
-                memberCount = "Members count: 20k"
-            ),
-            Chat(
-                R.drawable.default_avatar_chat,
-                "Java Script",
-                memberCount = "Members count: 22k"
-            ),
-            Chat(
-                R.drawable.default_avatar_chat,
-                "Lua",
-                memberCount = "Members count: 2k"
-            ),
-            Chat(
-                R.drawable.default_avatar_chat,
-                "Lisp",
-                memberCount = "Members count: 5k"
-            ),
-            Chat(
-                R.drawable.default_avatar_chat,
-                "Fortran",
-                memberCount = "Members count: 20"
-            ),
-            Chat(
-                R.drawable.default_avatar_chat,
-                "MatLab",
-                memberCount = "Members count: 5.5k"
-            ),
-            Chat(
-                R.drawable.default_avatar_chat,
-                "F",
-                memberCount = "Members count: 50k"
-            ),
-            Chat(
-                R.drawable.default_avatar_chat,
-                "C++",
-                memberCount = "Members count: 50k"
-            ),
-            Chat(
-                R.drawable.default_avatar_chat,
-                "Assembler",
-                memberCount = "Members count: 2"
-            )
-        )
     }
 
     private fun setUpSearchView() {

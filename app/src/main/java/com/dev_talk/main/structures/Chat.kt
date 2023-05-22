@@ -6,6 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Chat(
+    val id: String = "",
     @DrawableRes
     val icon: Int = 0,
     val name: String = "",

@@ -19,7 +19,9 @@ import com.dev_talk.R
 import com.dev_talk.common.structures.ProfessionDto
 import com.dev_talk.databinding.FragmentPersonalChatsBinding
 import com.dev_talk.dto.ChatDto
+import com.dev_talk.main.profile.ProfileCache
 import com.dev_talk.main.structures.Chat
+import com.dev_talk.main.structures.Header
 import com.dev_talk.main.structures.Profession
 import com.dev_talk.utils.DATABASE_URL
 import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
@@ -88,6 +90,7 @@ class PersonalChatsFragment : Fragment() {
                             val alreadyExistedProfession =
                                 chatProfessions.find { p -> p.profession == prof.name }
                             val newChat = Chat(
+                                it.key!!,
                                 R.drawable.default_avatar_chat,
                                 chat?.name!!,
                                 "last message"
@@ -103,10 +106,11 @@ class PersonalChatsFragment : Fragment() {
                         }
                     }
                 }
+                ChatDataRepository.updateChatData(chatProfessions)
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                Log.d("error", error.message)
             }
         }
         ref.addValueEventListener(chatListener)
@@ -114,16 +118,18 @@ class PersonalChatsFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private fun addTabs() {
-
-        val selectedProfessions = arguments?.getStringArrayList("professionList")
-
-        selectedProfessions!!.forEach { it ->
-            binding.professions.addTab(
-                binding.professions.newTab()
-                    .setText(it)
-            )
+        Log.d("cache", ProfileCache.profileData.size.toString())
+        ProfileCache.profileData.forEach { it ->
+            run {
+                if (it is Header) {
+                    val head = it
+                    binding.professions.addTab(
+                        binding.professions.newTab()
+                            .setText(head.title)
+                    )
+                }
+            }
         }
-
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

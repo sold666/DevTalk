@@ -16,7 +16,7 @@ import java.util.*
 
 class PersonalChatsAdapter(
 
-    private val chats: List<Chat>,
+    private var chats: List<Chat>,
     private val onChatClickListener: (chat: Chat, adapterPosition: Int) -> Unit
 ) : RecyclerView.Adapter<PersonalChatsAdapter.ChatItemViewHolder>(), Filterable {
 
@@ -85,4 +85,5 @@ class PersonalChatsAdapter(
 
         }
     }
+
 }
