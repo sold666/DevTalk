@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,8 +22,12 @@ import java.net.HttpURLConnection
 import java.net.URL
 import kotlin.math.min
 
-class EditProfileLinkAdapter(val data: MutableList<Link>) :
-    RecyclerView.Adapter<EditProfileLinkAdapter.LinkItemViewHolder>() {
+class EditProfileLinkAdapter(
+    val data: MutableList<Link>,
+    val onLinkAddListener: (link: Link) -> Unit,
+    val onLinkDeleteListener: (position: Int) -> Unit,
+    val onLinkSaveListener: (url: String, position: Int) -> Unit
+) : RecyclerView.Adapter<EditProfileLinkAdapter.LinkItemViewHolder>() {
 
     companion object {
         val links: Map<String, Int> = mapOf(
@@ -66,22 +71,25 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
 
     override fun onBindViewHolder(holder: LinkItemViewHolder, position: Int) {
         if (position == data.size - 1 && isShownAddBtn) {
-            holder.bindInsertButton(data, this)
+            holder.bindInsertButton(data, this, onLinkAddListener)
             return
         }
-        holder.bind(data, position, this)
+        holder.bind(data, position, this, onLinkDeleteListener, onLinkSaveListener)
     }
 
     class LinkItemViewHolder(val view: View, val context: Context) : RecyclerView.ViewHolder(view) {
         private val icon = view.findViewById<CircleImageView>(R.id.links)
         private val editBtn = view.findViewById<ImageView>(R.id.edit_btn)
 
-        fun bind(data: MutableList<Link>, position: Int, adapter: EditProfileLinkAdapter) {
+        fun bind(data: MutableList<Link>, position: Int, adapter: EditProfileLinkAdapter,
+                 onLinkDeleteListener: (position: Int) -> Unit,
+                 onLinkSaveListener: (url: String, position: Int) -> Unit
+        ) {
             val link: Link = data[position]
             editBtn.visibility = View.VISIBLE
             icon.setImageResource(link.icon)
             icon.setOnClickListener {
-                setUpEditDialog(data, position, adapter)
+                setUpEditDialog(data, position, adapter, onLinkDeleteListener, onLinkSaveListener)
             }
         }
 
@@ -89,7 +97,9 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
         private fun setUpEditDialog(
             data: MutableList<Link>,
             position: Int,
-            adapter: EditProfileLinkAdapter
+            adapter: EditProfileLinkAdapter,
+            onLinkDeleteListener: (position: Int) -> Unit,
+            onLinkSaveListener: (url: String, position: Int) -> Unit
         ) {
             val dialog = Dialog(context)
             dialog.apply {
@@ -107,13 +117,18 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
                         baseUrl.getOrDefault(data[position].type, "https://github.com/")
                     val linkIsValid = isLinkValid(userLinkText, currentLinkUrl)
                     if (!linkIsValid) {
-                        Toast.makeText(
-                            context,
-                            context.getText(R.string.data_is_not_correct),
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        val activity = itemView.context as Activity
+                        activity.runOnUiThread {
+                            Toast.makeText(
+                                context,
+                                context.getText(R.string.data_is_not_correct),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     } else {
                         data[position].url = currentLinkUrl + userLinkText
+                        val url = currentLinkUrl + userLinkText
+                        onLinkSaveListener.invoke(url, position)
                         dialog.dismiss()
                     }
                 }
@@ -127,6 +142,7 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
                     data.add(Link(R.drawable.ic_add_new_chat_btn))
                     adapter.isShownAddBtn = true
                 }
+                onLinkDeleteListener.invoke(position)
                 adapter.notifyDataSetChanged()
                 dialog.dismiss()
             }
@@ -146,16 +162,24 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
                 return@withContext response.isSuccessful
             }
 
-        fun bindInsertButton(data: MutableList<Link>, adapter: EditProfileLinkAdapter) {
+        fun bindInsertButton(
+            data: MutableList<Link>,
+            adapter: EditProfileLinkAdapter,
+            listener: (link: Link) -> Unit
+        ) {
             icon.setImageResource(data[data.size - 1].icon)
             icon.setOnClickListener {
-                setUpAddLinkDialog(data, adapter)
+                setUpAddLinkDialog(data, adapter, listener)
             }
             editBtn.visibility = View.GONE
         }
 
         @OptIn(DelicateCoroutinesApi::class)
-        private fun setUpAddLinkDialog(data: MutableList<Link>, adapter: EditProfileLinkAdapter) {
+        private fun setUpAddLinkDialog(
+            data: MutableList<Link>,
+            adapter: EditProfileLinkAdapter,
+            listener: (link: Link) -> Unit
+        ) {
             val dialog = Dialog(context)
             dialog.apply {
                 setContentView(R.layout.dialog_add_link)
@@ -177,11 +201,13 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
                         baseUrl.getOrDefault(types[linkTypeText], "https://github.com/")
                     )
                     if (!linkIsValid) {
-                        Toast.makeText(
-                            context,
-                            context.getText(R.string.data_is_not_correct),
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        activity.runOnUiThread {
+                            Toast.makeText(
+                                context,
+                                context.getText(R.string.data_is_not_correct),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     } else {
                         val currentIcon = links.getOrDefault(linkTypeText, R.drawable.ic_leave)
                         linkTypes.remove(linkTypeText)
@@ -189,19 +215,22 @@ class EditProfileLinkAdapter(val data: MutableList<Link>) :
                         if (adapter.itemCount < 4) {
                             if (adapter.itemCount == 3 && adapter.isShownAddBtn) {
                                 data.removeAt(data.size - 1)
+
+
                                 adapter.isShownAddBtn = false
                             }
-                            data.add(
-                                0,
-                                Link(
-                                    currentIcon,
-                                    userLinkText,
-                                    types.getOrDefault(linkTypeText, LinkType.GITHUB)
-                                )
+                            val currentLinkUrl =
+                                baseUrl.getOrDefault(types[linkTypeText], "https://github.com/")
+                            val link = Link(
+                                currentIcon,
+                                currentLinkUrl + userLinkText,
+                                types.getOrDefault(linkTypeText, LinkType.GITHUB)
                             )
+                            data.add(0, link)
                             activity.runOnUiThread {
                                 adapter.notifyDataSetChanged()
                             }
+                            listener.invoke(link)
                         }
                     }
                 }
