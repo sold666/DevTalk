@@ -7,10 +7,14 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.dev_talk.R
 import com.dev_talk.auth.AuthActivity
+import com.dev_talk.common.structures.LinkTypeConverter
 import com.dev_talk.main.MainActivity
 import com.dev_talk.main.profile.ProfileCache
+import com.dev_talk.main.profile.edit.EditProfileLinkAdapter
 import com.dev_talk.main.structures.Header
 import com.dev_talk.main.structures.Item
+import com.dev_talk.main.structures.Link
+import com.dev_talk.main.structures.LinkType
 import com.dev_talk.main.structures.ProfileData
 import com.dev_talk.main.structures.UserTags
 import com.dev_talk.utils.DATABASE_URL
@@ -82,8 +86,21 @@ class SplashActivity : AppCompatActivity() {
                     }
                     listProfileData.addAll(items)
                 }
+                val linksData = arrayListOf<Link>()
+                it.child("user_links")
+                    .children.forEach { link ->
+                        val type = LinkTypeConverter.types.getOrDefault(link.key, LinkType.GITHUB)
+                        val string = LinkTypeConverter.strings.getOrDefault(type, "Github")
+                        val current = Link(
+                            LinkTypeConverter.links.getOrDefault(string, R.drawable.ic_leave),
+                            link.value as String,
+                            type
+                        )
+                        linksData.add(current)
+                    }
                 ProfileCache.name = username
                 ProfileCache.profileData = listProfileData
+                ProfileCache.links = linksData
                 storage.reference
                     .child("users/" + auth.currentUser?.uid.toString() + "/profile_avatar.jpg")
                     .downloadUrl

@@ -15,10 +15,13 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.dev_talk.R
+import com.dev_talk.common.structures.LinkTypeConverter
 import com.dev_talk.databinding.FragmentSignInBinding
 import com.dev_talk.main.profile.ProfileCache
 import com.dev_talk.main.structures.Header
 import com.dev_talk.main.structures.Item
+import com.dev_talk.main.structures.Link
+import com.dev_talk.main.structures.LinkType
 import com.dev_talk.main.structures.ProfileData
 import com.dev_talk.main.structures.UserTags
 import com.dev_talk.utils.DATABASE_URL
@@ -136,8 +139,21 @@ class SignInFragment : Fragment() {
                     }
                     listProfileData.addAll(items)
                 }
+                val linksData = arrayListOf<Link>()
+                it.child("user_links")
+                    .children.forEach { link ->
+                        val type = LinkTypeConverter.types.getOrDefault(link.key, LinkType.GITHUB)
+                        val string = LinkTypeConverter.strings.getOrDefault(type, "Github")
+                        val current = Link(
+                            LinkTypeConverter.links.getOrDefault(string, R.drawable.ic_leave),
+                            link.value as String,
+                            type
+                        )
+                        linksData.add(current)
+                    }
                 ProfileCache.name = username
                 ProfileCache.profileData = listProfileData
+                ProfileCache.links = linksData
 //                storage.reference
 //                    .child("users/" + auth.currentUser?.uid.toString() + "/profile_avatar.jpg")
 //                    .downloadUrl

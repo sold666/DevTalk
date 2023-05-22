@@ -162,9 +162,10 @@ class ProfileInformationFragment : Fragment() {
     }
 
     private fun getLinks(): ArrayList<Link> {
-        return arrayListOf(
-            Link(R.drawable.ic_links)
-        )
+        if (ProfileCache.links.size == 0) {
+            return arrayListOf(Link(R.drawable.ic_links))
+        }
+        return ProfileCache.links
     }
 
     private fun setUpRecyclerView(
