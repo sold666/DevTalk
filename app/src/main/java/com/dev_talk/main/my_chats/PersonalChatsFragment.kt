@@ -16,7 +16,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.dev_talk.R
-import com.dev_talk.common.structures.ProfessionDto
 import com.dev_talk.databinding.FragmentPersonalChatsBinding
 import com.dev_talk.dto.ChatDto
 import com.dev_talk.main.profile.ProfileCache
@@ -24,10 +23,8 @@ import com.dev_talk.main.structures.Chat
 import com.dev_talk.main.structures.Header
 import com.dev_talk.main.structures.Profession
 import com.dev_talk.utils.DATABASE_URL
-import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
 import com.dev_talk.utils.getProfessions
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayout.Tab
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
@@ -35,7 +32,9 @@ import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 
 class PersonalChatsFragment : Fragment() {
-    private lateinit var binding: FragmentPersonalChatsBinding
+    private val binding: FragmentPersonalChatsBinding by lazy {
+        FragmentPersonalChatsBinding.inflate(layoutInflater)
+    }
     private lateinit var db: DatabaseReference
     private lateinit var auth: FirebaseAuth
     private lateinit var chatProfessions: ArrayList<Profession>
@@ -45,7 +44,7 @@ class PersonalChatsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentPersonalChatsBinding.inflate(inflater)
+        //binding = FragmentPersonalChatsBinding.inflate(inflater)
         auth = Firebase.auth
         db = FirebaseDatabase.getInstance(DATABASE_URL).reference
         chatProfessions = arrayListOf()
