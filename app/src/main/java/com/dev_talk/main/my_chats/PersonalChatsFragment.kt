@@ -32,9 +32,7 @@ import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 
 class PersonalChatsFragment : Fragment() {
-    private val binding: FragmentPersonalChatsBinding by lazy {
-        FragmentPersonalChatsBinding.inflate(layoutInflater)
-    }
+    private lateinit var binding: FragmentPersonalChatsBinding
     private lateinit var db: DatabaseReference
     private lateinit var auth: FirebaseAuth
     private lateinit var chatProfessions: ArrayList<Profession>
@@ -44,7 +42,7 @@ class PersonalChatsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        //binding = FragmentPersonalChatsBinding.inflate(inflater)
+        binding = FragmentPersonalChatsBinding.inflate(inflater)
         auth = Firebase.auth
         db = FirebaseDatabase.getInstance(DATABASE_URL).reference
         chatProfessions = arrayListOf()
@@ -54,8 +52,8 @@ class PersonalChatsFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        addTabs()
         with(binding) {
-            addTabs()
             setUpViewPager2(
                 viewPager = binding.chatsWithCategory,
                 tabLayout = binding.professions,
@@ -129,15 +127,6 @@ class PersonalChatsFragment : Fragment() {
                 }
             }
         }
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        val tabList: ArrayList<String> = arrayListOf()
-        for (i in 0 until binding.professions.tabCount) {
-            tabList.add(binding.professions.getTabAt(i)?.text.toString())
-        }
-        outState.putStringArrayList("tabNames", tabList)
     }
 
     private fun getProfessionsNames(): List<String> {

@@ -134,12 +134,7 @@ class NewChatFragment : Fragment() {
                 ref.child(id)
                     .child("participants")
                     .child(auth.currentUser?.uid!!).setValue(userData)
-//                if (imageURI == null) {
-//                    uploadImageToFirebaseStorage(id, )
-//                } else {
                     uploadImageToFirebaseStorage(id, imageURI!!)
-                //}
-
             }
             .addOnFailureListener { e ->
                 Log.d("chat creation" , e.message.toString())

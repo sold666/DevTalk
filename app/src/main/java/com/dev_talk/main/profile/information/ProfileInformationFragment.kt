@@ -77,7 +77,10 @@ class ProfileInformationFragment : Fragment() {
                 AppCompatDelegate.setDefaultNightMode(newMode)
                 switchThemeButton.setImageResource(if (isNightModeOn) R.drawable.sun else R.drawable.moon)
                 isNightModeOn = !isNightModeOn
-                val toastText = if (isNightModeOn) context?.getString(R.string.night_mode_on) else context?.getString(R.string.night_mode_off)
+                val toastText =
+                    if (isNightModeOn) context?.getString(R.string.night_mode_on) else context?.getString(
+                        R.string.night_mode_off
+                    )
                 Toast.makeText(context, toastText, Toast.LENGTH_SHORT).show()
             }
         }
@@ -96,10 +99,9 @@ class ProfileInformationFragment : Fragment() {
                 }
 
                 R.id.log_out -> {
-                    auth.signOut()
                     updateUserStatus("offline")
+                    auth.signOut()
                     findNavController().navigate(R.id.action_profileInformationFragment_to_authActivity)
-                    activity?.finish()
                     true
                 }
 
@@ -194,7 +196,7 @@ class ProfileInformationFragment : Fragment() {
         }
     }
 
-    private fun updateUserStatus(state : String) {
+    private fun updateUserStatus(state: String) {
         val saveCurrentDate: String
         val saveCurrentTime: String
 
@@ -206,12 +208,13 @@ class ProfileInformationFragment : Fragment() {
         val currentTime = SimpleDateFormat("hh:mm a")
         saveCurrentTime = currentTime.format(calendarForTime.time)
 
-        val currentStateMap : MutableMap<String, Any> = mutableMapOf()
+        val currentStateMap: MutableMap<String, Any> = mutableMapOf()
 
         currentStateMap["time"] = saveCurrentTime
         currentStateMap["date"] = saveCurrentDate
         currentStateMap["state"] = state
 
-        db.child("users").child(auth.currentUser?.uid!!).child("user_state").updateChildren(currentStateMap)
+        db.child("users").child(auth.currentUser?.uid!!).child("user_state")
+            .updateChildren(currentStateMap)
     }
 }
