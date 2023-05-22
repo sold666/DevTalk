@@ -2,7 +2,6 @@ package com.dev_talk.main.my_chats
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,6 +40,7 @@ class PersonalChatListFragment : Fragment() {
                 arguments?.getParcelable(PROFESSION_KEY)!!
             }
         adapterRV = PersonalChatsAdapter(data.chats, onChatClickListener)
+        clear(data.chats)
         adapterRV.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
             override fun onChanged() {
                 if (adapterRV.itemCount == 0) {
@@ -57,15 +57,8 @@ class PersonalChatListFragment : Fragment() {
             addItemDecoration(getRecyclerViewDivider(context))
         }
 
+
         val chatDataObserver = Observer<List<Profession>> { newChatData ->
-            // Обновление данных в RecyclerView
-            for (i in newChatData) {
-                Log.d("rww", i.profession.toString() + i.chats.size.toString())
-            }
-
-            Log.d("prof", data.profession)
-            Log.d("data", newChatData.toString())
-
             var chats = newChatData.findLast { p -> p.profession == data.profession }?.chats
             if (chats != null) {
                 chats = chats.filter { ch -> !data.chats.map { c -> c.id }.contains(ch.id)
@@ -92,5 +85,15 @@ class PersonalChatListFragment : Fragment() {
                     putParcelable(PROFESSION_KEY, profession)
                 }
             }
+    }
+
+    fun clear(data: MutableList<Chat>) {
+        val size: Int = data.size
+        if (size > 0) {
+            for (i in 0 until size) {
+                data.removeAt(0)
+            }
+            adapterRV.notifyItemRangeRemoved(0, size)
+        }
     }
 }
