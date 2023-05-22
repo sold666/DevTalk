@@ -17,12 +17,15 @@ import com.dev_talk.common.structures.TagDto
 import com.dev_talk.databinding.FragmentResultBinding
 import com.dev_talk.dto.User
 import com.dev_talk.main.profile.ProfileCache
-import com.dev_talk.main.profile.information.ProfileInformationFragmentDirections
 import com.dev_talk.main.structures.Header
 import com.dev_talk.main.structures.Item
 import com.dev_talk.main.structures.ProfileData
 import com.dev_talk.main.structures.UserTags
-import com.dev_talk.utils.*
+import com.dev_talk.utils.DATABASE_URL
+import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
+import com.dev_talk.utils.LIST_SELECTED_TAGS_KEY
+import com.dev_talk.utils.USER_KEY
+import com.dev_talk.utils.getTagsIcon
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
@@ -30,6 +33,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.stream.Collectors
 
 class ResultFragment : Fragment() {
@@ -163,6 +168,28 @@ class ResultFragment : Fragment() {
             .child(auth.currentUser?.uid!!)
             .child("user_info")
             .setValue(map)
+        updateUserStatus("online")
+    }
+
+    private fun updateUserStatus(state : String) {
+        val saveCurrentDate: String
+        val saveCurrentTime: String
+
+        val calendarForDate = Calendar.getInstance()
+        val currentDate = SimpleDateFormat("MMM dd, yyyy")
+        saveCurrentDate = currentDate.format(calendarForDate.time)
+
+        val calendarForTime = Calendar.getInstance()
+        val currentTime = SimpleDateFormat("hh:mm a")
+        saveCurrentTime = currentTime.format(calendarForTime.time)
+
+        val currentStateMap : MutableMap<String, Any> = mutableMapOf()
+
+        currentStateMap["time"] = saveCurrentTime
+        currentStateMap["date"] = saveCurrentDate
+        currentStateMap["state"] = state
+
+        db.child("users").child(auth.currentUser?.uid!!).child("user_state").updateChildren(currentStateMap)
 
         ProfileCache.name = user.name + " " + user.surname
         ProfileCache.profileData = listProfileData

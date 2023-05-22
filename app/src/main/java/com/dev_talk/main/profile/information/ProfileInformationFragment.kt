@@ -29,6 +29,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
+import java.text.SimpleDateFormat
+import java.util.Calendar
 
 class ProfileInformationFragment : Fragment() {
     private lateinit var binding: FragmentProfileInformationBinding
@@ -53,6 +55,8 @@ class ProfileInformationFragment : Fragment() {
         listenMenuButtons()
         with(binding) {
             name.text = ProfileCache.name
+            status.setCompoundDrawablesWithIntrinsicBounds(R.drawable.status_online, 0, 0, 0)
+            status.text = context?.getString(R.string.status_online)
             setUpRecyclerView(recyclerView = binding.userInfoList, ProfileCache.profileData)
 
             if (ProfileCache.avatar != null) {
@@ -93,6 +97,7 @@ class ProfileInformationFragment : Fragment() {
 
                 R.id.log_out -> {
                     auth.signOut()
+                    updateUserStatus("offline")
                     findNavController().navigate(R.id.action_profileInformationFragment_to_authActivity)
                     activity?.finish()
                     true
@@ -187,5 +192,26 @@ class ProfileInformationFragment : Fragment() {
             layoutManager = manager
             adapter = ProfileInformationProfessionsAndTagsAdapter(data)
         }
+    }
+
+    private fun updateUserStatus(state : String) {
+        val saveCurrentDate: String
+        val saveCurrentTime: String
+
+        val calendarForDate = Calendar.getInstance()
+        val currentDate = SimpleDateFormat("MMM dd, yyyy")
+        saveCurrentDate = currentDate.format(calendarForDate.time)
+
+        val calendarForTime = Calendar.getInstance()
+        val currentTime = SimpleDateFormat("hh:mm a")
+        saveCurrentTime = currentTime.format(calendarForTime.time)
+
+        val currentStateMap : MutableMap<String, Any> = mutableMapOf()
+
+        currentStateMap["time"] = saveCurrentTime
+        currentStateMap["date"] = saveCurrentDate
+        currentStateMap["state"] = state
+
+        db.child("users").child(auth.currentUser?.uid!!).child("user_state").updateChildren(currentStateMap)
     }
 }

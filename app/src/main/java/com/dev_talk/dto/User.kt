@@ -11,6 +11,7 @@ data class User (
     var surname: String,
     var email: String,
     var password: String,
+    var state: List<String>,
     var professions: List<ProfessionDto>,
     var tags: List<TagDto>
 ) : Parcelable {
@@ -18,7 +19,9 @@ data class User (
     constructor() : this(
         "", "",
         "",
-        "", arrayListOf(),
+        "",
+        arrayListOf(),
+        arrayListOf(),
         arrayListOf()
     ) {
 
