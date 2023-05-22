@@ -2,6 +2,7 @@ package com.dev_talk.main.profile.information
 
 import android.content.DialogInterface
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -116,6 +117,7 @@ class ProfileInformationFragment : Fragment() {
                                             ).show()
                                             findNavController().navigate(R.id.action_profileInformationFragment_to_authActivity)
                                         } else {
+                                            Log.d("error", task.exception?.message.toString())
                                             Toast.makeText(
                                                 context,
                                                 context?.getString(R.string.something_wrong),

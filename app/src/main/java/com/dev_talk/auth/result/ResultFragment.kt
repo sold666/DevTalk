@@ -2,6 +2,7 @@ package com.dev_talk.auth.result
 
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,15 +16,20 @@ import com.dev_talk.common.structures.ProfessionDto
 import com.dev_talk.common.structures.TagDto
 import com.dev_talk.databinding.FragmentResultBinding
 import com.dev_talk.dto.User
-import com.dev_talk.utils.DATABASE_URL
-import com.dev_talk.utils.LIST_SELECTED_PROFESSIONS_KEY
-import com.dev_talk.utils.LIST_SELECTED_TAGS_KEY
-import com.dev_talk.utils.USER_KEY
+import com.dev_talk.main.profile.ProfileCache
+import com.dev_talk.main.profile.information.ProfileInformationFragmentDirections
+import com.dev_talk.main.structures.Header
+import com.dev_talk.main.structures.Item
+import com.dev_talk.main.structures.ProfileData
+import com.dev_talk.main.structures.UserTags
+import com.dev_talk.utils.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import java.util.stream.Collectors
 
 class ResultFragment : Fragment() {
@@ -36,6 +42,8 @@ class ResultFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var db: DatabaseReference
     private lateinit var user: User
+    private lateinit var storage: FirebaseStorage
+    private lateinit var listProfileData: ArrayList<ProfileData>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,6 +53,7 @@ class ResultFragment : Fragment() {
         auth = Firebase.auth
         db = FirebaseDatabase.getInstance(DATABASE_URL).reference
         binding = FragmentResultBinding.inflate(inflater)
+        storage = FirebaseStorage.getInstance()
         return binding.root
     }
 
@@ -90,6 +99,7 @@ class ResultFragment : Fragment() {
             addDataForUser(
                 selectedProfessions
             )
+
             binding.resultList.visibility = View.GONE
             binding.backButton.visibility = View.GONE
             binding.nextButton.visibility = View.GONE
@@ -106,11 +116,12 @@ class ResultFragment : Fragment() {
                 override fun onFinish() {
                     progressText.text = context?.getString(R.string.is_ready_text)
                     progressBar.isVisible = false
-                    findNavController().navigate(R.id.action_resultFragment_to_mainActivity)
                     activity?.finish()
+                    findNavController().navigate(R.id.action_resultFragment_to_mainActivity)
                 }
             }.start()
         }
+
     }
 
     private fun generateMapFromArrays(): Map<String, List<String>> {
@@ -127,7 +138,9 @@ class ResultFragment : Fragment() {
     ) {
         val map: MutableMap<String, List<String>> = mutableMapOf()
 
+        listProfileData = arrayListOf()
         professions.forEach {
+            listProfileData.add(Header(it.name))
             val selectedTags: List<String> =
                 if (it.tags.any { t -> t.isSelected }) {
                     it.tags.stream().filter { t -> t.isSelected }.map { it.name }.collect(
@@ -136,6 +149,13 @@ class ResultFragment : Fragment() {
                 } else {
                     listOf("")
                 }
+            val items = arrayListOf<Item>()
+            selectedTags.forEach { tag ->
+                if (tag != "") {
+                    items.add(Item(UserTags(getTagsIcon(tag), tag)))
+                }
+            }
+            listProfileData.addAll(items)
             map[it.name] = selectedTags
         }
         db.child("users").child(auth.currentUser?.uid!!).setValue(user)
@@ -143,5 +163,42 @@ class ResultFragment : Fragment() {
             .child(auth.currentUser?.uid!!)
             .child("user_info")
             .setValue(map)
+
+        ProfileCache.name = user.name + " " + user.surname
+        ProfileCache.profileData = listProfileData
+    }
+
+    private fun setDataFromDatabase() {
+        db.child("users").child(auth.currentUser?.uid!!).get().addOnSuccessListener {
+            if (it.exists()) {
+                listProfileData = arrayListOf()
+                val username = it.child("name").value.toString() + " " + it.child("surname").value
+                val professions = it.child("user_info")
+                professions.children.forEach { profession ->
+                    val header: String = profession.key!!
+                    val tags: List<String> = profession.getValue<List<String>>()!!
+                    listProfileData.add(Header(header))
+                    val items = arrayListOf<Item>()
+                    tags.forEach { tag ->
+                        if (tag != "") {
+                            items.add(Item(UserTags(getTagsIcon(tag), tag)))
+                        }
+                    }
+                    listProfileData.addAll(items)
+                }
+                ProfileCache.name = username
+                ProfileCache.profileData = listProfileData
+                storage.reference
+                    .child("users/" + auth.currentUser?.uid.toString() + "/profile_avatar.jpg")
+                    .downloadUrl
+                    .addOnSuccessListener {
+                        ProfileCache.avatar = it
+                    }
+            } else {
+                Log.d("userData", "Error!")
+            }
+        }.addOnFailureListener { e ->
+            println(e.message.toString())
+        }
     }
 }

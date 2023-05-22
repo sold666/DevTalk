@@ -2,10 +2,12 @@ package com.dev_talk.main.my_chats
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dev_talk.chat.ChatActivity
@@ -54,6 +56,25 @@ class PersonalChatListFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
             addItemDecoration(getRecyclerViewDivider(context))
         }
+
+        val chatDataObserver = Observer<List<Profession>> { newChatData ->
+            // Обновление данных в RecyclerView
+            for (i in newChatData) {
+                Log.d("rww", i.profession.toString() + i.chats.size.toString())
+            }
+
+            Log.d("prof", data.profession)
+            Log.d("data", newChatData.toString())
+
+            var chats = newChatData.findLast { p -> p.profession == data.profession }?.chats
+            if (chats != null) {
+                chats = chats.filter { ch -> !data.chats.map { c -> c.id }.contains(ch.id)
+                } as MutableList<Chat>
+                data.chats.addAll(0, chats)
+                adapterRV.notifyItemRangeInserted(0, chats.size)
+            }
+        }
+        ChatDataRepository.chatData.observe(viewLifecycleOwner, chatDataObserver)
     }
 
     private fun initListeners() {

@@ -6,9 +6,10 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Chat(
+    val id: String = "",
     @DrawableRes
     val icon: Int = 0,
-    val tags: String = "",
+    val name: String = "",
     val lastMessage: String = "",
     val memberCount: String = ""
 ) : Parcelable

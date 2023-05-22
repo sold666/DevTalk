@@ -15,7 +15,12 @@ class PersonalChatsAdapterViewPager(
 
     override fun createFragment(position: Int): Fragment {
         val currentProfession = tabNames[position]
-        return PersonalChatListFragment.newInstance(data[findIndexOfProfession(currentProfession)])
+        val inx = findIndexOfProfession(currentProfession)
+        if (inx == -1) {
+            return PersonalChatListFragment.newInstance(Profession(currentProfession, mutableListOf()))
+        } else {
+            return PersonalChatListFragment.newInstance(data[inx])
+        }
     }
 
     private fun findIndexOfProfession(profession: String): Int {
@@ -24,6 +29,6 @@ class PersonalChatsAdapterViewPager(
                 return index
             }
         }
-        return 0
+        return -1
     }
 }
