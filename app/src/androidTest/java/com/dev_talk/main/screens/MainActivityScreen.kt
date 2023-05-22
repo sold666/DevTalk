@@ -28,4 +28,8 @@ class MainActivityScreen() {
     fun openPersonalChats() {
         onView(withId(R.id.personal_chats_fragment_container)).perform(click())
     }
+
+    fun openFirstChat() {
+        onView(withId(R.id.list_with_my_chats)).perform(click())
+    }
 }
