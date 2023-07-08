@@ -1,7 +1,5 @@
 # DevTalk <img src="https://github.com/sold666/DevTalk/assets/61206345/0d47c7fc-63d3-4450-9c17-8afdb8f2443b" alt="DevTalk" width="80" height="40">
 
-<hr>
-
 > A messenger for developers. <br> The project developed on the "Mobile Development" program in VK
 > Technopolis <img src="https://github.com/sold666/sold666/assets/61206345/6a238107-fecf-44a2-a956-6bc5ac824d0e" alt="VK" height="30" width="30">
 
