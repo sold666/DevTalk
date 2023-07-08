@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/profile_item"
+        android:icon="@drawable/ic_three_points"
+        android:title="@null"
+        app:showAsAction="ifRoom">
+        <menu android:id="@+id/profile_submenu">
+            <item
+                android:id="@+id/edit"
+                android:icon="@drawable/ic_alter_profile_btn"
+                android:title="@string/edit_profile_menu_item_text"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/log_out"
+                android:icon="@drawable/ic_leave"
+                android:title="@string/log_out_menu_item_text"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/delete_profile"
+                android:icon="@drawable/ic_profile_delete"
+                android:title="@string/delete_profile"
+                app:showAsAction="never" />
+        </menu>
+    </item>
+</menu>

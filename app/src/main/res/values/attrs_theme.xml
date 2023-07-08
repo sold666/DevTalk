@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="background_color_primary" format="reference" />
+    <attr name="background_color_individual_parts" format="reference" />
+    <attr name="text_color" format="reference" />
+    <attr name="text_color_secondary" format="reference" />
+    <attr name="search_color" format="reference" />
+    <attr name="add_chat_button_color" format="reference" />
+    <attr name="bottom_main_nav_button_color" format="reference" />
+    <attr name="profile_icons_color" format="reference" />
+    <attr name="secondary_button_color" format="reference" />
+    <attr name="recycler_button_color" format="reference" />
+    <attr name="recycler_stroke_and_text_button_color" format="reference" />
+</resources>

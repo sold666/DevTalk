@@ -1,0 +1,77 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="DevTalkMainTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorSecondary">@color/green_second</item>
+        <item name="text_color">@color/dark</item>
+        <item name="text_color_secondary">@color/grey_fourth</item>
+        <item name="background_color_primary">@color/white_second</item>
+        <item name="background_color_individual_parts">@color/white</item>
+        <item name="search_color">@color/dark</item>
+        <item name="add_chat_button_color">@drawable/custom_add_chat_button</item>
+        <item name="bottom_main_nav_button_color">@color/green_second</item>
+        <item name="profile_icons_color">@color/dark</item>
+        <item name="secondary_button_color">@color/white</item>
+        <item name="recycler_button_color">@color/white</item>
+        <item name="recycler_stroke_and_text_button_color">@color/green</item>
+        <item name="actionOverflowMenuStyle">@style/PopupOverflowMenu</item>
+
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:statusBarColor">@color/black</item>
+    </style>
+
+    <style name="SplashScreenTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:background">@color/white</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="CustomSwitchButton" parent="Widget.AppCompat.CompoundButton.Switch">
+        <item name="thumbTint">@drawable/selector_switch_thumb</item>
+        <item name="trackTint">@drawable/selector_switch_track</item>
+    </style>
+
+    <style name="CustomSearchView" parent="Widget.AppCompat.SearchView">
+        <item name="tint">@color/dark</item>
+        <item name="iconTint">@color/dark</item>
+        <item name="android:textColorHint">@color/white</item>
+    </style>
+
+    <style name="ProfileIconsColor">
+        <item name="iconTint">@color/dark</item>
+        <item name="tint">@color/dark</item>
+    </style>
+
+    <style name="ChatIconsColor">
+        <item name="iconTint">@color/dark</item>
+        <item name="toolbarNavigationButtonStyle">@style/ToolbarButtonNavigationTint</item>
+    </style>
+
+    <style name="ToolbarButtonNavigationTint" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="tint">@color/dark</item>
+    </style>
+
+    <style name="PopupOverflowMenu" parent="@style/Widget.MaterialComponents.PopupMenu.Overflow">
+        <item name="android:popupBackground">@drawable/bg_menu_dropdown</item>
+    </style>
+
+    <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabMaxWidth">200dp</item>
+        <item name="tabIndicatorColor">@color/green_second</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabPaddingStart">12dp</item>
+        <item name="tabPaddingEnd">12dp</item>
+        <item name="tabTextAppearance">@style/CustomTabTextAppearance</item>
+        <item name="tabSelectedTextAppearance">@style/CustomTabSelectedText</item>
+    </style>
+
+    <style name="CustomTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/dark</item>
+        <item name="textAllCaps">true</item>
+    </style>
+
+    <style name="CustomTabSelectedText">
+        <item name="android:textColor">@color/green_second</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

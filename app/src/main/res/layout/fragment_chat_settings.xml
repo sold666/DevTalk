@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/chat_settings_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/background_color_primary">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/chat_settings_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/chat_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="?attr/background_color_individual_parts"
+            android:theme="@style/ChatIconsColor"
+            app:layout_constraintBottom_toBottomOf="@id/chat_avatar"
+            app:layout_constraintStart_toEndOf="@id/chat_avatar"
+            app:layout_constraintTop_toTopOf="@id/chat_avatar"
+            app:menu="@menu/menu_chat_settings_app_bar"
+            app:navigationIcon="@drawable/ic_arrow_back">
+
+            <TextView
+                android:id="@+id/chat_name_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:maxLines="1"
+                android:text="Chat name"
+                android:textColor="?attr/text_color"
+                android:textSize="22sp" />
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        app:layout_constraintTop_toBottomOf="@id/chat_settings_bar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/icon_chat"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="100dp"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop"
+                android:src="@drawable/default_avatar_chat"
+                app:civ_border_color="@color/green_second"
+                app:civ_border_width="2dp"
+                app:layout_constraintBottom_toTopOf="@+id/amount_chat_participants"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/amount_chat_participants"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="@string/members"
+                android:textColor="?attr/text_color"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/icon_chat" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/navigation_panel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="?attr/background_color_individual_parts"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/amount_chat_participants">
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@color/grey_third"
+                    app:layout_constraintBottom_toBottomOf="@+id/switch_button"
+                    app:layout_constraintEnd_toStartOf="@+id/switch_button"
+                    app:layout_constraintTop_toTopOf="@+id/switch_button" />
+
+                <TextView
+                    android:id="@+id/notifications"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="4dp"
+                    android:text="@string/notifications"
+                    android:textColor="?attr/text_color"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:drawableEndCompat="@drawable/ic_notification"
+                    app:drawableTint="?attr/text_color" />
+
+                <TextView
+                    android:id="@+id/mode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mode"
+                    android:textColor="?attr/text_color"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/notifications"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/CustomSwitchButton"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/participant_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:overScrollMode="never"
+                app:fastScrollEnabled="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/navigation_panel" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

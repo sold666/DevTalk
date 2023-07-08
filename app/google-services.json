@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "570162486480",
+    "project_id": "devtalk-b68f9",
+    "storage_bucket": "devtalk-b68f9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:570162486480:android:2cd6b8b810e7c5662912d5",
+        "android_client_info": {
+          "package_name": "com.dev_talk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "570162486480-sv47bsb1oi08qjrtee4lbkergjsajhs6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMzVO2zjMcex75Xd2IZuUp2NoT_PJJePM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "570162486480-sv47bsb1oi08qjrtee4lbkergjsajhs6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
